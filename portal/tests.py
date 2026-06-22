@@ -41,7 +41,7 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "Start running the controls workbench in Linux")
         self.assertContains(response, "WARNING: Flux is")
         self.assertContains(response, "VERY MUCH")
-        self.assertContains(response, "should not be used in production")
+        self.assertContains(response, "Please explore, but do be careful")
         self.assertContains(response, 'data-component="tabs"')
         self.assertContains(response, "data-copy")
         self.assertContains(response, 'data-component="copy-status"')
