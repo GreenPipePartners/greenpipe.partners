@@ -2,7 +2,7 @@ databases:
   - name: greenpipe-partners-db
     databaseName: greenpipe
     user: greenpipe
-    plan: starter
+    plan: basic-256mb
 
 services:
   - type: web

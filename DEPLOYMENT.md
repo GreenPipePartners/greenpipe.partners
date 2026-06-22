@@ -18,7 +18,7 @@ Astro/Starlight docs can be previewed with `npm run docs:dev` and built with `np
 ## Render setup
 
 1. Create a Render Blueprint from this GitHub repository.
-2. Render reads `render.yaml` and creates the Docker-backed `greenpipe-partners` web service and `greenpipe-partners-db` Postgres database.
+2. Render reads `render.yaml` and creates the Docker-backed `greenpipe-partners` web service and `greenpipe-partners-db` Postgres database on the `basic-256mb` instance type.
 3. Point DNS for `greenpipe.partners` and `www.greenpipe.partners` to Render after the service is live.
 4. Keep secret values and billing in Render; keep code, settings, and service shape in Git.
 
