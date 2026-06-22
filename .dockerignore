@@ -1,0 +1,12 @@
+.astro/
+.git/
+.github/
+.opencode/
+.runtime/
+.venv/
+__pycache__/
+db.sqlite3
+node_modules/
+site/
+staticfiles/
+*.pyc

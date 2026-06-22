@@ -1,0 +1,44 @@
+{% extends "portal/base.html" %}
+
+{% block title %}{{ customer }} Report - Green Pipe Partners{% endblock %}
+
+{% block hero %}
+<section class="hero compact report-hero">
+    <p class="eyebrow">{{ customer }}</p>
+    <h1 class="report-title">Weekly Report for {{ report.start_date|date:"F jS, Y" }} to {{ report.end_date|date:"F jS, Y" }}.</h1>
+    {% if report.customer_name %}<p class="hero-copy">Prepared for {{ report.customer_name }}</p>{% endif %}
+    <button class="button secondary print-button" type="button" onclick="window.print()">Print report</button>
+</section>
+{% endblock %}
+
+{% block content %}
+<article class="report-shell" aria-label="Customer report">
+    <section class="report-markdown">
+        {{ gist_report.report_html }}
+    </section>
+
+    {% if gist_report.images %}
+    <section class="report-images" aria-label="Report images">
+        <h2>Images</h2>
+        {% for image in gist_report.images %}
+        <figure class="report-image">
+            <img src="{{ image.url }}" alt="{{ image.filename }}">
+            <figcaption>{{ image.filename }}</figcaption>
+        </figure>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if gist_report.snippets %}
+    <section class="report-snippets" aria-label="Report files">
+        <h2>Files</h2>
+        {% for snippet in gist_report.snippets %}
+        <article class="source-snippet">
+            <h3>{{ snippet.filename }}</h3>
+            <pre><code class="language-{{ snippet.language }}">{{ snippet.content }}</code></pre>
+        </article>
+        {% endfor %}
+    </section>
+    {% endif %}
+</article>
+{% endblock %}

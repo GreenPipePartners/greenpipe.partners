@@ -1,0 +1,27 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local editor/agent state
+.opencode/
+
+# JavaScript dependencies
+node_modules/
+.astro/
+
+# Local runtime state
+.env
+db.sqlite3
+*.sqlite3
+staticfiles/
+
+# Documentation build output
+.runtime/
+site/

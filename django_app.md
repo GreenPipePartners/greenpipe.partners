@@ -1,0 +1,9 @@
+- I want to generate a new django app
+- The django app will keep the `Index.html` as a front page for now
+- Reports are hidden direct URLs managed through Django admin.
+- Report URL shape is `/reports/{customer}/{gist_id}`.
+- Each report Gist must contain `report.md`; additional Gist files render as source snippets by file type.
+- Flux is the flagship product and should be highlighted first on the main site.
+- The main service is getting Flux running in the customer's world: ESXi-compatible environments behind a Flux gateway, time-series consolidation, and LLM subscription management.
+- Flux and fluxy need documentation authored with Astro/Starlight.
+- The Django site should link into those docs while staying server-rendered with HTMX, not React or another SPA framework.

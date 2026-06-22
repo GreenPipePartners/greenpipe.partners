@@ -1,0 +1,113 @@
+name: Sign Flux release handoff
+
+on:
+  workflow_dispatch:
+    inputs:
+      source_repository:
+        description: GitHub repository that produced the handoff artifact
+        required: true
+        default: GreenPipePartners/Flux
+      source_run_id:
+        description: Workflow run ID containing the greenpipe handoff artifact
+        required: true
+        default: "27916772023"
+      handoff_artifact_name:
+        description: Artifact name uploaded by the Flux build workflow
+        required: true
+        default: greenpipe-handoff
+      flux_version:
+        description: Flux release version
+        required: true
+        default: 0.1.0
+      publish_to_repo:
+        description: Commit signed handoff into published/greenpipe-handoff for Render
+        required: true
+        type: boolean
+        default: true
+
+jobs:
+  sign:
+    name: Sign Flux artifacts
+    runs-on: ubuntu-latest
+    environment: flux-release-signing
+    permissions:
+      actions: read
+      contents: write
+
+    steps:
+      - name: Check out website repo
+        uses: actions/checkout@v4
+
+      - name: Download Flux handoff artifact
+        uses: actions/download-artifact@v4
+        with:
+          repository: ${{ inputs.source_repository }}
+          run-id: ${{ inputs.source_run_id }}
+          name: ${{ inputs.handoff_artifact_name }}
+          path: .runtime/greenpipe-handoff
+          github-token: ${{ secrets.FLUX_ARTIFACT_READ_TOKEN || github.token }}
+
+      - name: Normalize handoff artifact root
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -d .runtime/greenpipe-handoff/greenpipe-handoff ]; then
+            mv .runtime/greenpipe-handoff .runtime/greenpipe-handoff-nested
+            mv .runtime/greenpipe-handoff-nested/greenpipe-handoff .runtime/greenpipe-handoff
+            rm -rf .runtime/greenpipe-handoff-nested
+          fi
+
+      - name: Import Flux release signing key
+        shell: bash
+        env:
+          FLUX_RELEASE_GPG_PRIVATE_KEY: ${{ secrets.FLUX_RELEASE_GPG_PRIVATE_KEY }}
+          FLUX_RELEASE_GPG_KEY_ID: ${{ secrets.FLUX_RELEASE_GPG_KEY_ID }}
+        run: |
+          set -euo pipefail
+          mkdir -p ~/.gnupg
+          chmod 700 ~/.gnupg
+          printf '%s' "${FLUX_RELEASE_GPG_PRIVATE_KEY}" | gpg --batch --import
+          gpg --batch --list-secret-keys "${FLUX_RELEASE_GPG_KEY_ID}"
+
+      - name: Sign and verify Flux handoff
+        shell: bash
+        env:
+          FLUX_RELEASE_GPG_KEY_ID: ${{ secrets.FLUX_RELEASE_GPG_KEY_ID }}
+          FLUX_RELEASE_GPG_PASSPHRASE: ${{ secrets.FLUX_RELEASE_GPG_PASSPHRASE }}
+        run: bash scripts/sign_flux_handoff.sh .runtime/greenpipe-handoff "${{ inputs.flux_version }}"
+
+      - name: Stage signed handoff for Render
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf published/greenpipe-handoff
+          mkdir -p published
+          cp -a .runtime/greenpipe-handoff published/greenpipe-handoff
+
+      - name: Commit signed handoff
+        if: ${{ inputs.publish_to_repo }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -A published/greenpipe-handoff
+          if git diff --cached --quiet; then
+            printf 'No signed handoff changes to commit.\n'
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Publish signed Flux ${{ inputs.flux_version }} handoff"
+          git push
+
+      - name: Upload signed handoff bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: greenpipe-handoff-flux-${{ inputs.flux_version }}-signed
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            .runtime/greenpipe-handoff/release/flux/${{ inputs.flux_version }}/
+            .runtime/greenpipe-handoff/release/flux/flux-release.pub
+            .runtime/greenpipe-handoff/docs/flux/${{ inputs.flux_version }}/
+            .runtime/greenpipe-signed-handoff-flux-${{ inputs.flux_version }}.tar.gz
+            published/greenpipe-handoff/

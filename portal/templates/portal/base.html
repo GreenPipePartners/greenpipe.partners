@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Green Pipe Partners{% endblock %}</title>
+    <meta name="description" content="Flux: the Green Pipe controls workbench for SCADA teams.">
+    <link rel="icon" href="{% static 'portal/favicon.ico' %}" sizes="any">
+    <link rel="stylesheet" href="{% static 'portal/styles.css' %}">
+    <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
+    <script src="{% static 'portal/site.js' %}" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="nav" aria-label="Primary navigation">
+            <a class="brand" href="{% url 'portal:home' %}" aria-label="Green Pipe Partners home">
+                <img class="brand-logo" src="{% url 'portal:logo' %}" alt="" width="48" height="48">
+                <span>Green Pipe Partners</span>
+            </a>
+            <div class="nav-links">
+                <a class="nav-link" href="https://github.com/GreenPipePartners/Flux">GitHub</a>
+                <a class="nav-link" href="{% url 'portal:flux_docs_latest' %}">Docs</a>
+                <a class="nav-link" href="{% url 'portal:about' %}">About</a>
+            </div>
+        </nav>
+        {% block hero %}{% endblock %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer" id="contact">
+        <p>&copy; {% now "Y" %} Green Pipe Partners.</p>
+    </footer>
+</body>
+</html>

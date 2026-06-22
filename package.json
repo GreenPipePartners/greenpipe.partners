@@ -1,0 +1,17 @@
+{
+  "name": "greenpipe-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "docs:dev": "astro dev --host 127.0.0.1",
+    "docs:build": "astro build"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "^0.40.0",
+    "astro": "^6.4.8"
+  }
+}

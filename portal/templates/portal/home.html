@@ -1,0 +1,19 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Flux - Green Pipe Partners{% endblock %}
+
+{% block hero %}
+<section class="hero">
+    <p class="eyebrow product-eyebrow">Flux</p>
+    <h1 class="product-title">The open-source manufacturing development platform.</h1>
+    <p class="hero-copy">Start running the controls workbench in Linux.</p>
+    <div class="hero-command">
+        {% include "portal/partials/fluxup_tabs.html" %}
+    </div>
+    <div class="hero-actions">
+        <a class="button primary" href="{% url 'portal:flux_docs_latest' %}">Read docs</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}{% endblock %}

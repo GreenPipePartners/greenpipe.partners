@@ -1,0 +1,75 @@
+:root {
+  --sl-color-accent-low: #dff1e8;
+  --sl-color-accent: #287456;
+  --sl-color-accent-high: #0d241d;
+  --sl-color-text-accent: #287456;
+  --sl-color-bg-nav: #0d241d;
+  --sl-font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+:root[data-theme="dark"] {
+  --sl-color-accent-low: #163d31;
+  --sl-color-accent: #43a66f;
+  --sl-color-accent-high: #dff1e8;
+  --sl-color-text-accent: #9be3ba;
+}
+
+.site-title {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.site-title img {
+  width: 2rem;
+  height: 2rem;
+}
+
+.page > header.header {
+  background: #0d241d;
+  border-bottom-color: rgba(223, 241, 232, 0.18);
+}
+
+.page > header.header a,
+.page > header.header button,
+.page > header.header select {
+  color: #ffffff;
+}
+
+.page > header.header .social-icons::after {
+  border-color: rgba(223, 241, 232, 0.22);
+}
+
+.right-sidebar {
+  background: #0d241d;
+  border-inline-start-color: rgba(223, 241, 232, 0.16);
+}
+
+.right-sidebar-panel {
+  color: #dff1e8;
+}
+
+.right-sidebar-panel h2 {
+  color: #ffffff;
+}
+
+.right-sidebar-panel a {
+  color: rgba(223, 241, 232, 0.72);
+}
+
+.right-sidebar-panel a:hover,
+.right-sidebar-panel a[aria-current="true"] {
+  color: #ffffff;
+}
+
+mobile-starlight-toc nav {
+  background: #0d241d;
+  border-color: rgba(223, 241, 232, 0.16);
+}
+
+#starlight__mobile-toc summary {
+  border-bottom-color: rgba(223, 241, 232, 0.16);
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
