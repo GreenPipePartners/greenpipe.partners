@@ -21,7 +21,7 @@ html {
 
 body {
     margin: 0;
-    background: radial-gradient(circle at top left, var(--green-soft), transparent 32rem), var(--bg);
+    background: var(--bg);
     color: var(--ink);
     line-height: 1.55;
 }
