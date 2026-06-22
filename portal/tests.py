@@ -36,6 +36,7 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "Green Pipe Partners")
         self.assertContains(response, "/logo_hollow.png")
         self.assertContains(response, "/static/portal/favicon.ico")
+        self.assertContains(response, "Introducing Flux: A Green Pipe Solution")
         self.assertContains(response, "The open-source manufacturing development platform")
         self.assertContains(response, "Start running the controls workbench in Linux")
         self.assertContains(response, 'data-component="tabs"')
