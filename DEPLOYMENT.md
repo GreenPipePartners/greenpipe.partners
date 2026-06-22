@@ -40,6 +40,7 @@ The Docker start command runs `python manage.py migrate --noinput` before Gunico
 - The Flux deployment contract lives in `greenpipe-website-contract.md`; the website publishes typed install intent, release artifacts, checksums, signatures, manifests, and status views only.
 - Fluxup is the primary installer UX: `uvx fluxup init`.
 - Reports are hidden direct URLs managed through Django admin. They fetch GitHub Gists by ID and require `report.md`.
+- Django admin is mounted at `/control/`.
 
 ## Admin bootstrap
 

@@ -80,6 +80,8 @@ The workflow downloads a `greenpipe-handoff` artifact from the Flux build, signs
 
 Reports are managed through Django admin with a customer value and a GitHub Gist URL.
 
+Admin is mounted at `/control/`.
+
 The public URL shape is hidden/direct only:
 
 ```text

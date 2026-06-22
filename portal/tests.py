@@ -95,6 +95,17 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 404)
 
+    def test_admin_is_mounted_at_control(self):
+        response = self.client.get("/control/")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertTrue(response["Location"].startswith("/control/login/"))
+
+    def test_admin_default_path_is_not_mounted(self):
+        response = self.client.get("/admin/")
+
+        self.assertEqual(response.status_code, 404)
+
     def test_release_typo_redirects_to_canonical_path(self):
         response = self.client.get("/realease/flux/0.1.0/flux-0.1.0.tar.zst")
 
