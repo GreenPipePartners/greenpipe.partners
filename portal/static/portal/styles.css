@@ -272,6 +272,7 @@ h3 {
 }
 
 .about-card,
+.dev-warning,
 .report-shell {
     border: 1px solid var(--line);
     border-radius: 28px;
@@ -282,6 +283,18 @@ h3 {
 .about-card {
     margin-bottom: 72px;
     padding: clamp(28px, 5vw, 48px);
+}
+
+.dev-warning {
+    margin: 0 0 72px;
+    padding: 18px 22px;
+    background: #fff4d8;
+}
+
+.dev-warning p {
+    margin-bottom: 0;
+    color: var(--ink);
+    font-weight: 750;
 }
 
 .about-card p,
