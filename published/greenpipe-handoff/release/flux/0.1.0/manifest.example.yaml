@@ -1,0 +1,20 @@
+apiVersion: flux.greenpipe.partners/v1
+kind: FluxInstall
+metadata:
+  deployment_id: dep_123
+spec:
+  release:
+    version: 0.1.0
+    artifact_url: https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst
+    sha256: c419a9688ac31be79fc4e83852e5e8c0f88f7742d6a143d406872bff4669bdc3
+    checksum_url: https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sha256
+    signature_url: https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
+    public_key_url: https://greenpipe.partners/release/flux/flux-release.pub
+  target:
+    allowed_hosts: localhost,127.0.0.1
+    web_bind: 0.0.0.0:8000
+  database:
+    mode: local
+  services:
+    enable: true
+    start: true

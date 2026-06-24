@@ -1,0 +1,1856 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Performance-first Ignition companion documentation">
+      
+      
+      
+        <link rel="canonical" href="https://greenpipe.partners/docs/flux/0.1.0/flux-architecture/">
+      
+      
+        <link rel="prev" href="../Master%20Design/">
+      
+      
+        <link rel="next" href="../live-extraction/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>System Boundaries - Flux Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="light-green">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#flux-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Flux Docs" class="md-header__button md-logo" aria-label="Flux Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Flux Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              System Boundaries
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Flux Docs" class="md-nav__button md-logo" aria-label="Flux Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Flux Docs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../operator-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operator Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../native-installer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Native Installer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../greenpipe-website-contract/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GreenPipe Website Contract
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Master%20Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Master Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Boundaries
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Boundaries
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Django Role
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxdeep-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flux.Deep Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-health-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Health Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opc-runtime-truth-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPC Runtime Truth Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-service-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Service Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-utility-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Utility Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fieldagent-runtime-adapter-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FieldAgent Runtime Adapter Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurator-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurator Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../live-extraction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live Extraction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../trace-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trace Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../charts-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charts Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ignition-dev-cell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ignition Dev Cell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deep-openplc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flux.Deep OpenPLC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../apps/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Apps
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Apps
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/spot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/chart/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chart
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/cell/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cell
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/live/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/charts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charts Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/trace/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/serve/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Serve
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/sim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apps/opt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Opt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../runbooks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runbooks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runbooks/local-docs-server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Docs Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runbooks/local-service/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Local Service
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runbooks/fluxolot-fishtank/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fluxolot Fishtank
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spot-card-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spot Card Context
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../live-card-context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Live Card Context Compatibility
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        System Shape
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#boundaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Boundaries
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#django-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Django Role
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fluxdeep-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Flux.Deep Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Simulation Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Production Path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#runtime-health-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Runtime Health Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#opc-runtime-truth-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OPC Runtime Truth Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-service-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Local Service Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#health-utility-boundary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Health Utility Boundary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fieldagent-runtime-adapter-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FieldAgent Runtime Adapter Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configurator-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Configurator Contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="flux-architecture">Flux Architecture</h1>
+<p>Flux is the application boundary around Ignition-facing tooling, runtime data capture, and development environment simulation.</p>
+<h2 id="system-shape">System Shape</h2>
+<div class="highlight"><pre><span></span><code>Ignition Production -&gt; WebDev -&gt; fluxy -&gt; Flux.serve -&gt; Flux.opt -&gt; Flux.spot / Flux.chart / Flux.web
+Ignition Development -&gt; WebDev -&gt; fluxy -&gt; Flux.sim -&gt; Flux.base -&gt; Flux.serve -&gt; FieldAgent processes
+Flux.web -&gt; Configurator -&gt; Flux.sim / Flux.base / Flux.serve
+Flux.Deep -&gt; OpenPLC runtime artifacts
+</code></pre></div>
+<h2 id="boundaries">Boundaries</h2>
+<ul>
+<li>Flux is Linux-exclusive runtime software. Supported operation assumes Linux,
+  bash, systemd/user-systemd service ownership, Gunicorn for Django serving, and
+  Linux-compatible OpenPLC/FieldAgent/QuestDB process control. Windows, PowerShell,
+  <code>.cmd</code> launchers, Windows Services, and Waitress are intentionally unsupported.</li>
+<li><code>fluxy/</code>: Python-for-Ignition client, WebDev deployment tooling, and Ignition expression/tag export utilities.</li>
+<li><code>field/</code>: FieldAgent OPC UA adapter executable. It is not a Flux domain owner; <code>Flux.serve</code> starts one FieldAgent adapter process for each materialized runtime device.</li>
+<li><code>sim/</code>: standalone <code>Flux.sim</code> core for importing Ignition tag exports, reconstructing provider models, flattening OPC requests, and generating simulation/FieldAgent configuration.</li>
+<li><code>deep/</code>: isolated <code>Flux.Deep</code> core for OpenPLC-backed PLC emulation experiments. It starts with Logix L5X source intent and OpenPLC IEC 61131-3 runtime targets.</li>
+<li><code>web/Flux/</code>: Django/HTMX UX, admin, status, configuration, and worker-control surface. It should adapt core packages, not own their core logic.</li>
+<li><code>scripts/flux</code>: operator CLI for local service control, health checks, and managed Ignition dev-cell commands.</li>
+</ul>
+<h2 id="django-role">Django Role</h2>
+<p>Django is the UX and configurator layer:</p>
+<ul>
+<li><code>flux.spot</code>: lightweight DB-backed current-state visualization.</li>
+<li><code>flux.chart</code>: power-user charting, historical exploration, and live trace trials over recorded runtime samples.</li>
+<li><code>flux.trace</code>: chart/history persistence models backing Flux.chart until a planned schema migration.</li>
+<li><code>flux.opt</code>: tag browse optimizer and runtime read planning.</li>
+<li><code>flux.serve</code>: worker/service orchestration UX and adapters.</li>
+<li><code>flux.base</code>: persistent datastore, including simulation catalog rows, materialized runtime device/tag config, and FieldAgent endpoint config.</li>
+<li><code>flux.sim</code>: simulation UX and adapters over root <code>sim/</code>.</li>
+</ul>
+<p>Core import, flattening, expression, server generation, and OPC UA simulation logic should stay outside Django.</p>
+<h2 id="fluxdeep-path">Flux.Deep Path</h2>
+<p>Flux.Deep is intentionally isolated from the Ignition-facing simulation path:</p>
+<ol>
+<li>Keep Logix L5X or related PLC source artifacts as source intent.</li>
+<li>Translate or target OpenPLC-compatible IEC 61131-3 artifacts for execution.</li>
+<li>Use OpenPLC as the backend runtime for PLC emulation trials.</li>
+<li>Add bridges back into Flux.web or Flux.serve only after the runtime adapter contract is proven.</li>
+</ol>
+<p>The seed workspace is <code>deep/examples/hello_world/</code>. It includes a Logix ladder L5X
+file and an OpenPLC Structured Text target that alternates <code>DisplayText</code> between
+<code>hello</code> and <code>world</code> on one second cycles.</p>
+<h2 id="simulation-path">Simulation Path</h2>
+<p>The development replication path is:</p>
+<ol>
+<li>Import an Ignition tag provider export into a standalone <code>sim</code> database.</li>
+<li>Reconstruct the provider tree and UDT structures.</li>
+<li>Use <code>fluxy.ignition_expression</code> to resolve UDT parameter bindings and flatten OPC requests.</li>
+<li>Store the desired simulated devices and tags as <code>Flux.sim</code> catalog configuration.</li>
+<li>Materialize enabled simulated devices and tags into <code>Flux.base</code> runtime FieldAgent endpoint/device/tag rows.</li>
+<li>Use <code>Flux.serve</code> to supervise one FieldAgent OPC UA adapter process per enabled materialized runtime device.</li>
+<li>Use <code>fluxy</code> through WebDev to configure the Ignition development gateway with matching OPC UA connections and tags.</li>
+</ol>
+<h2 id="production-path">Production Path</h2>
+<p>The production path is:</p>
+<ol>
+<li><code>Flux.serve</code> runs worker servicing against production Ignition through <code>fluxy</code> and WebDev.</li>
+<li><code>Flux.opt</code> controls browse/read planning and reduces inefficient tag IO.</li>
+<li>Runtime values are persisted into Flux runtime storage.</li>
+<li><code>Flux.spot</code>, <code>Flux.chart</code>, and <code>Flux.web</code> render from Flux storage instead of causing browser-driven Ignition tag IO.</li>
+</ol>
+<p><code>Flux.chart</code> reads <code>runtime.TagSample</code> and renders uPlot charts from stored samples. The historical chart supports pinned chart markers, a copied Markdown marker-value table, and prompt-based annotations. The streaming chart polls new samples and only follows the newest right edge when the user is already viewing that edge; panning back preserves the inspected viewport while new samples continue to merge. Chart JavaScript architecture is documented in <code>docs/charts-architecture.md</code>.</p>
+<p>Live-to-sim extraction is documented in <code>docs/live-extraction.md</code>. The current trial stays at the Fluxy public API boundary for tag/config/history reads and writes. Raw historian deletion is intentionally deferred to database-specific cleanup adapters because Ignition does not expose a public delete-data-points API.</p>
+<h2 id="runtime-health-contract">Runtime Health Contract</h2>
+<p>Flux runtime health is a cached-state contract, not a browser read loop.</p>
+<div class="highlight"><pre><span></span><code>Flux.serve worker -&gt; Flux.opt block read -&gt; LatestTagValue / TagSample -&gt; Flux.spot / Dashboard
+</code></pre></div>
+<p>Ownership:</p>
+<ul>
+<li><code>Flux.serve</code> supervises long-running samplers and writes heartbeats/snapshots.</li>
+<li><code>Flux.opt</code> chooses due tags, honors active demand, performs block reads, and writes runtime samples.</li>
+<li><code>Flux.spot</code> defines freshness and current-state presentation.</li>
+<li><code>Flux.web</code> renders cached state and may poll small cached fragments.</li>
+</ul>
+<p>Current gap: the dashboard can refresh selected stale tags from a request path, and the Fluxolot sampler is explicitly started by <code>flux start</code>, but the general interface-health sampler should be promoted to a required service when interface runtime tags exist.</p>
+<p>Target contract: page reloads or HTMX polls may update what the user sees, but they must not be the mechanism that makes runtime health fresh.</p>
+<h2 id="opc-runtime-truth-contract">OPC Runtime Truth Contract</h2>
+<p>FieldAgent endpoint rows need composed evidence before the UI claims they are running.</p>
+<p>Minimum evidence:</p>
+<ul>
+<li>desired endpoint state from <code>FieldEndpoint</code></li>
+<li>fresh <code>FieldAgentHeartbeat</code></li>
+<li><code>process_id</code></li>
+<li>endpoint URL and derived/listening port</li>
+<li>fresh <code>ServeServiceSnapshot</code></li>
+<li>optional OS/TCP probe from the service layer</li>
+</ul>
+<p><code>FieldEndpoint.status == running</code> alone means “last persisted endpoint state,” not proven current process truth. If heartbeat or snapshot evidence is stale, UI surfaces should say <code>stale</code> or <code>last reported running</code> and show the reason.</p>
+<h2 id="local-service-boundary">Local Service Boundary</h2>
+<p>Local development runtime is owned by a Linux user systemd service:</p>
+<div class="highlight"><pre><span></span><code>flux-stack.service -&gt; scripts/flux-start.sh -&gt; Django + FieldAgent + Fluxolot sampler
+</code></pre></div>
+<p>The CLI and desktop launchers start/stop the service. Django should not directly own long-lived OS processes from request handlers.</p>
+<p>See <code>docs/operator-guide.md</code>.</p>
+<h2 id="health-utility-boundary">Health Utility Boundary</h2>
+<p>Health checks are split by responsibility:</p>
+<ul>
+<li><code>scripts/flux</code>: operator-facing CLI, shell/service/process checks, output formatting, and fix suggestions.</li>
+<li><code>dashboard.management.commands.flux_doctor_state</code>: JSON app-health bridge for the CLI.</li>
+<li><code>dashboard.services</code>: runtime readiness, Live Ignition Bridge config, stale-tag classification, and block-read recovery.</li>
+<li><code>fluxy</code>: Ignition Gateway, WebDev, and datasource probing.</li>
+</ul>
+<p>This keeps <code>flux doctor</code> useful without turning the CLI into an untestable copy of Django business logic.</p>
+<h2 id="fieldagent-runtime-adapter-contract">FieldAgent Runtime Adapter Contract</h2>
+<p>FieldAgent is the concrete OPC UA runtime adapter below the Flux architecture, not a separate Flux module with domain ownership.</p>
+<ul>
+<li><code>Flux.sim</code> owns device and tag domain configuration: provider import, reconstructed trees, UDT binding flattening, simulated device identity, and simulated tag behavior intent.</li>
+<li><code>Flux.base</code> persists both the desired catalog state and the materialized runtime endpoint/device/tag state that can be supervised.</li>
+<li><code>Flux.serve</code> owns process supervision and starts one FieldAgent process for each enabled materialized runtime device.</li>
+<li>FieldAgent loads the generated per-device runtime config and serves OPC UA for that one device process.</li>
+<li><code>Flux.web</code> configures and displays the catalog/materialization/supervision state; it should not directly own long-lived FieldAgent processes from request handlers.</li>
+<li><code>fluxy</code> configures Ignition through WebDev by creating OPC UA connections and matching Ignition tags that point at the supervised FieldAgent endpoints.</li>
+</ul>
+<p>This resolves the earlier implicit <code>Flux.field</code> boundary: the thing running under <code>Flux.serve</code> is FieldAgent as an adapter process servicing <code>Flux.sim.device</code>, while <code>Flux.sim</code> remains the device/tag domain owner.</p>
+<p>Current limitations:</p>
+<ul>
+<li><code>FLUX_FIELD_AGENT_MODE=legacy</code> still exists and runs one FieldAgent from <code>web/Flux/field/field-config.json</code>; it is a compatibility/operator path, not the target architecture.</li>
+<li>Supervised mode writes runtime configs under <code>.runtime/field-agent</code>, but process lifecycle is still local-development oriented under <code>flux-stack.service</code>.</li>
+<li>Device-level delay metadata is materialized, but the current C# FieldAgent runtime does not yet apply request-level delay behavior.</li>
+<li>Full-provider simulations can generate large FieldAgent/Ignition configurations; use small closed-loop trials before scaling to the full ACM02 provider.</li>
+<li>Ignition cleanup is generated-folder and generated-connection oriented; broad historical or raw gateway cleanup remains adapter-specific and intentionally outside the simulation boundary.</li>
+</ul>
+<p>Next tests:</p>
+<ul>
+<li>Closed-loop device lifecycle: create a test-specific <code>Flux.sim.device</code>, materialize it, start the supervised FieldAgent process, configure Ignition through <code>fluxy</code>, read a test tag, confirm changing values, delete the Ignition tag/folder, verify gone, then remove the runtime device.</li>
+<li>Multi-device supervision: materialize two enabled devices and verify <code>Flux.serve</code> starts two distinct FieldAgent processes with distinct endpoint configs.</li>
+<li>Restart recovery: restart <code>flux-stack.service</code> in supervised mode and verify materialized enabled devices are restored without manual config regeneration.</li>
+<li>Device behavior: prove <code>slow_network</code> once FieldAgent consumes device delay metadata.</li>
+<li>Scale smoke: run a limited preserved-tree ACM02 trial before attempting the full <code>tags02.json</code> configuration.</li>
+</ul>
+<h2 id="configurator-contract">Configurator Contract</h2>
+<p>The configurator coordinates three execution domains:</p>
+<ul>
+<li><code>Flux.sim</code>: owns desired simulated environment, device/tag catalog configuration, and generated tag artifacts.</li>
+<li><code>Flux.base</code>: owns persistence for desired catalog state and materialized runtime endpoint/device/tag configuration.</li>
+<li><code>Flux.serve</code>: owns worker process plans, FieldAgent adapter supervision, and health/status.</li>
+</ul>
+<p>The configurator should persist intent and show status. It should call package APIs or CLIs, not duplicate their internals.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "search.highlight", "search.suggest", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
