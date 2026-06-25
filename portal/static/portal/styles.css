@@ -460,6 +460,48 @@ h3 {
     color: inherit;
 }
 
+.report-code-block {
+    position: relative;
+}
+
+.report-markdown .report-code-block {
+    margin: 1.35rem 0;
+}
+
+.report-markdown .report-code-block pre,
+.source-snippet .report-code-block pre {
+    margin: 0;
+    padding-right: 92px;
+}
+
+.report-code-copy {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    font: inherit;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.report-code-copy:hover,
+.report-code-copy:focus-visible {
+    border-color: rgba(155, 227, 186, 0.72);
+    background: rgba(155, 227, 186, 0.14);
+}
+
+.report-code-copy[data-copied="true"] {
+    color: #9be3ba;
+}
+
 .report-image {
     margin: 1.35rem 0 0;
 }
@@ -487,6 +529,14 @@ h3 {
     padding: 0;
     background: transparent;
     color: inherit;
+}
+
+.report-markdown pre code.hljs,
+.source-snippet pre code.hljs {
+    display: block;
+    overflow: visible;
+    padding: 0;
+    background: transparent;
 }
 
 .footer {
@@ -529,6 +579,7 @@ h3 {
 
     .nav,
     .footer,
+    .report-code-copy,
     .print-button {
         display: none;
     }

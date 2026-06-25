@@ -1,4 +1,6 @@
 (() => {
+    const copyResetTimers = new WeakMap();
+
     const copyText = async (text) => {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
@@ -14,6 +16,23 @@
         textArea.select();
         document.execCommand("copy");
         textArea.remove();
+    };
+
+    const showCopiedState = (button, label = null) => {
+        button.dataset.copied = "true";
+        if (label) {
+            button.dataset.copyLabel = button.dataset.copyLabel || button.textContent;
+            button.textContent = label;
+        }
+
+        window.clearTimeout(copyResetTimers.get(button));
+        copyResetTimers.set(button, window.setTimeout(() => {
+            delete button.dataset.copied;
+            if (button.dataset.copyLabel) {
+                button.textContent = button.dataset.copyLabel;
+                delete button.dataset.copyLabel;
+            }
+        }, 1400));
     };
 
     document.querySelectorAll('[data-component="tabs"]').forEach((tabs) => {
@@ -48,10 +67,35 @@
             }
 
             await copyText(command.textContent.trim());
-            button.dataset.copied = "true";
-            window.setTimeout(() => {
-                delete button.dataset.copied;
-            }, 1400);
+            showCopiedState(button);
         });
+    });
+
+    document.querySelectorAll(".report-markdown pre, .source-snippet pre").forEach((pre) => {
+        const code = pre.querySelector("code");
+        if (!code || pre.dataset.copyReady) {
+            return;
+        }
+
+        if (window.hljs) {
+            window.hljs.highlightElement(code);
+        }
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "report-code-block";
+        pre.before(wrapper);
+        wrapper.appendChild(pre);
+        pre.dataset.copyReady = "true";
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "report-code-copy";
+        button.textContent = "Copy";
+        button.setAttribute("aria-label", "Copy code");
+        button.addEventListener("click", async () => {
+            await copyText(code.textContent);
+            showCopiedState(button, "Copied");
+        });
+        wrapper.appendChild(button);
     });
 })();
