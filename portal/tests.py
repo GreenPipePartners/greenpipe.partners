@@ -203,6 +203,21 @@ class ReportTests(TestCase):
         self.assertEqual(report.get_absolute_url(), f"/reports/PRW/{GIST_ID}")
         self.assertEqual(str(report), "PRW / 2026-06-01 - 2026-06-05")
 
+    def test_engineering_report_model_does_not_require_dates(self):
+        report = Report.objects.create(
+            customer="MOG",
+            customer_name="Magnolia Oil & Gas",
+            report_type=Report.ReportType.ENGINEERING,
+            title="Chemical Data Integration Review",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        self.assertIsNone(report.start_date)
+        self.assertIsNone(report.end_date)
+        self.assertEqual(report.gist_id, GIST_ID)
+        self.assertEqual(report.get_absolute_url(), f"/reports/MOG/{GIST_ID}")
+        self.assertEqual(str(report), "MOG / Chemical Data Integration Review")
+
     @patch("portal.gists.urlopen")
     def test_admin_managed_report_renders_gist_report_and_source_files(self, mock_urlopen):
         mock_urlopen.return_value = FakeResponse(
@@ -273,6 +288,64 @@ class ReportTests(TestCase):
         self.assertNotContains(response, GIST_ID)
         self.assertNotContains(response, "Source")
         self.assertNotContains(response, "Open Gist")
+
+    @patch("portal.gists.urlopen")
+    def test_engineering_report_renders_generic_heading_and_uppercase_report_file(self, mock_urlopen):
+        report_markdown = """# Magnolia Oil & Gas -- Chemical Data Integration Engineering Report
+
+## Source Systems Included
+
+| Source Provider | Source Code | Current Trial Scope |
+| --- | ---: | --- |
+| ChampionX | `CHX` | Historical backload |
+
+## Review Request
+
+```sql
+SELECT source_code
+FROM MDS.CHEM.chemical_lab_result_wide_by_day_location;
+```
+"""
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {
+                    "description": "Magnolia Chemical Analysis Datastore Review",
+                    "files": {
+                        "Report.md": {
+                            "filename": "Report.md",
+                            "content": report_markdown,
+                            "truncated": False,
+                        },
+                        "analysis.sql": {
+                            "filename": "analysis.sql",
+                            "content": "select source_code from mds.chem.chemical_lab_result_wide_by_day_location;\n",
+                            "language": "SQL",
+                            "truncated": False,
+                        },
+                    },
+                }
+            ).encode("utf-8")
+        )
+        Report.objects.create(
+            customer="MOG",
+            customer_name="Magnolia Oil & Gas",
+            report_type=Report.ReportType.ENGINEERING,
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get(f"/reports/MOG/{GIST_ID}")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "MOG Engineering Report")
+        self.assertContains(response, "Magnolia Chemical Analysis Datastore Review")
+        self.assertContains(response, "Prepared for Magnolia Oil &amp; Gas")
+        self.assertContains(response, "Magnolia Oil &amp; Gas -- Chemical Data Integration Engineering Report")
+        self.assertContains(response, "Source Systems Included")
+        self.assertContains(response, "language-sql")
+        self.assertContains(response, "MDS.CHEM.chemical_lab_result_wide_by_day_location")
+        self.assertContains(response, "analysis.sql")
+        self.assertNotContains(response, "Weekly Report for")
+        self.assertNotContains(response, "Report.md")
 
     @patch("portal.gists.urlopen")
     def test_report_requires_report_md(self, mock_urlopen):

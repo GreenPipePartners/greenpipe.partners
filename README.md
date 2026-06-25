@@ -79,6 +79,7 @@ The workflow downloads a `greenpipe-handoff` artifact from the Flux build, signs
 ## Hidden Reports
 
 Reports are managed through Django admin with a customer value and a GitHub Gist URL.
+Use the default `Weekly` type for date-bounded customer updates, or `Engineering` for generic engineering review reports that do not need weekly dates.
 
 Admin is mounted at `/control/`.
 
@@ -88,7 +89,7 @@ The public URL shape is hidden/direct only:
 /reports/{customer}/{gist_id}
 ```
 
-The Gist must contain `report.md`. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
+The Gist must contain `report.md` or `Report.md`. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
 
 ## Deployment
 

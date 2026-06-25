@@ -29,6 +29,7 @@ GIST_FILE_LANGUAGES = {
     ".yml": "yaml",
 }
 IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"}
+REPORT_FILENAME = "report.md"
 
 
 class GistError(Exception):
@@ -51,15 +52,16 @@ def parse_gist_id(gist_url):
 def load_report_gist(gist_id):
     gist = _fetch_json(f"https://api.github.com/gists/{gist_id}")
     files = gist.get("files") or {}
-    report_file = files.get("report.md")
-    if not report_file:
+    report_filename = _report_filename(files)
+    if not report_filename:
         raise GistError("Report gist must contain report.md.")
 
+    report_file = files[report_filename]
     report_markdown = _normalize_report_images(_file_content(report_file))
     images = []
     snippets = []
     for filename in sorted(files):
-        if filename == "report.md":
+        if filename == report_filename:
             continue
         file_info = files[filename]
         if _is_image_file(filename, file_info):
@@ -89,6 +91,15 @@ def load_report_gist(gist_id):
         "images": [image for image in images if image["url"]],
         "snippets": snippets,
     }
+
+
+def _report_filename(files):
+    if REPORT_FILENAME in files:
+        return REPORT_FILENAME
+    for filename in sorted(files):
+        if filename.lower() == REPORT_FILENAME:
+            return filename
+    return ""
 
 
 def _fetch_json(url):

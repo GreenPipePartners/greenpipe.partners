@@ -444,6 +444,22 @@ h3 {
     box-shadow: 0 14px 34px rgba(13, 36, 29, 0.1);
 }
 
+.report-markdown pre {
+    overflow-x: auto;
+    margin: 1.35rem 0;
+    padding: 18px;
+    border-radius: 18px;
+    background: var(--ink);
+    color: var(--white);
+    line-height: 1.55;
+}
+
+.report-markdown pre code {
+    padding: 0;
+    background: transparent;
+    color: inherit;
+}
+
 .report-image {
     margin: 1.35rem 0 0;
 }

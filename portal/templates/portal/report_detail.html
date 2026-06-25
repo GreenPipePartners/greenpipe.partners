@@ -1,11 +1,17 @@
 {% extends "portal/base.html" %}
 
-{% block title %}{{ customer }} Report - Green Pipe Partners{% endblock %}
+{% block title %}{% if report_heading %}{{ report_heading }}{% else %}{{ customer }} Report{% endif %} - Green Pipe Partners{% endblock %}
 
 {% block hero %}
 <section class="hero compact report-hero">
-    <p class="eyebrow">{{ customer }}</p>
-    <h1 class="report-title">Weekly Report for {{ report.start_date|date:"F jS, Y" }} to {{ report.end_date|date:"F jS, Y" }}.</h1>
+    <p class="eyebrow">{{ customer }}{% if report.report_type == "engineering" %} Engineering Report{% endif %}</p>
+    {% if report_heading %}
+    <h1 class="report-title">{{ report_heading }}</h1>
+    {% else %}
+    <h1 class="report-title">
+        Weekly Report for {{ report.start_date|date:"F jS, Y" }} to {{ report.end_date|date:"F jS, Y" }}.
+    </h1>
+    {% endif %}
     {% if report.customer_name %}<p class="hero-copy">Prepared for {{ report.customer_name }}</p>{% endif %}
     <button class="button secondary print-button" type="button" onclick="window.print()">Print report</button>
 </section>

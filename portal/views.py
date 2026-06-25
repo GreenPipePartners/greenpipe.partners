@@ -71,8 +71,19 @@ def report_detail(request, customer, gist_id):
             "report": report,
             "customer": report.customer,
             "gist_report": gist_report,
+            "report_heading": _report_heading(report, gist_report),
         },
     )
+
+
+def _report_heading(report, gist_report):
+    if report.title:
+        return report.title
+    if report.report_type == Report.ReportType.ENGINEERING:
+        return gist_report.get("description") or "Engineering Report"
+    if report.start_date and report.end_date:
+        return ""
+    return "Weekly Report"
 
 
 def _flux_docs_root(version):
