@@ -1,0 +1,28 @@
+{
+  "apiVersion": "flux.greenpipe.partners/v1",
+  "kind": "FluxInstall",
+  "metadata": {
+    "deployment_id": "dep_123"
+  },
+  "spec": {
+    "release": {
+      "version": "0.1.1",
+      "artifact_url": "https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst",
+      "sha256": "1b61f8761720c65f050cb2debbfe0e2394ff480563c059339b557d1ca0de8143",
+      "checksum_url": "https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sha256",
+      "signature_url": "https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sig",
+      "public_key_url": "https://greenpipe.partners/release/flux/flux-release.pub"
+    },
+    "target": {
+      "allowed_hosts": "localhost,127.0.0.1",
+      "web_bind": "0.0.0.0:8000"
+    },
+    "database": {
+      "mode": "local"
+    },
+    "services": {
+      "enable": true,
+      "start": true
+    }
+  }
+}
