@@ -1,7 +1,9 @@
+import csv
 import json
 import os
 import re
 from html import escape
+from io import StringIO
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
@@ -29,6 +31,8 @@ GIST_FILE_LANGUAGES = {
     ".yml": "yaml",
 }
 IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"}
+CSV_FILE_TYPES = {"application/csv", "application/vnd.ms-excel", "text/csv"}
+CSV_PREVIEW_ROW_LIMIT = 25
 REPORT_FILENAME = "report.md"
 
 
@@ -58,6 +62,7 @@ def load_report_gist(gist_id):
 
     report_file = files[report_filename]
     report_markdown = _normalize_report_images(_file_content(report_file))
+    csvs = []
     images = []
     snippets = []
     for filename in sorted(files):
@@ -72,6 +77,15 @@ def load_report_gist(gist_id):
                 }
             )
             continue
+        if _is_csv_file(filename, file_info):
+            csv_content = _file_content(file_info)
+            csvs.append(
+                {
+                    "filename": filename,
+                    "preview_rows": _csv_preview_rows(csv_content),
+                }
+            )
+            continue
         snippets.append(
             {
                 "filename": filename,
@@ -82,15 +96,25 @@ def load_report_gist(gist_id):
 
     return {
         "description": gist.get("description") or "",
+        "report_markdown": report_markdown,
         "report_html": mark_safe(
             markdown.markdown(
                 escape(report_markdown),
                 extensions=["fenced_code", "tables"],
             )
         ),
+        "csvs": csvs,
         "images": [image for image in images if image["url"]],
         "snippets": snippets,
     }
+
+
+def load_report_csv(gist_id, filename):
+    gist = _fetch_json(f"https://api.github.com/gists/{gist_id}")
+    file_info = (gist.get("files") or {}).get(filename)
+    if not file_info or not _is_csv_file(filename, file_info):
+        raise GistError("CSV attachment not found.")
+    return _file_content(file_info)
 
 
 def _report_filename(files):
@@ -177,6 +201,21 @@ def _is_image_file(filename, file_info):
         return True
     lowered = filename.lower()
     return any(lowered.endswith(extension) for extension in IMAGE_EXTENSIONS)
+
+
+def _is_csv_file(filename, file_info):
+    file_type = (file_info.get("type") or "").lower()
+    return filename.lower().endswith(".csv") or file_type in CSV_FILE_TYPES
+
+
+def _csv_preview_rows(csv_content):
+    rows = []
+    reader = csv.reader(StringIO(csv_content))
+    for row in reader:
+        if len(rows) >= CSV_PREVIEW_ROW_LIMIT:
+            break
+        rows.append(row)
+    return rows
 
 
 def _language_for(filename, file_info):

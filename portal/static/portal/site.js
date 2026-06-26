@@ -116,6 +116,18 @@
         });
     });
 
+    document.querySelectorAll("[data-report-markdown-copy]").forEach((button) => {
+        button.addEventListener("click", async () => {
+            const source = document.getElementById("report-markdown-source");
+            if (!source) {
+                return;
+            }
+
+            await copyText(JSON.parse(source.textContent));
+            showCopiedState(button, "Copied");
+        });
+    });
+
     document.querySelectorAll(".report-markdown pre, .source-snippet pre").forEach((pre) => {
         const code = pre.querySelector("code");
         if (!code || pre.dataset.copyReady) {

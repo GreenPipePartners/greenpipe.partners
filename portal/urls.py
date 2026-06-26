@@ -15,5 +15,11 @@ urlpatterns = [
     path("docs/flux/<str:version>/<path:docs_path>", views.flux_docs_file, name="flux_docs_file"),
     path("release/<path:artifact_path>", views.release_file, name="release_file"),
     path("realease/<path:artifact_path>", views.release_typo_redirect, name="release_typo_redirect"),
+    path(
+        "reports/<slug:customer>/<slug:gist_id>/csv/<path:filename>",
+        views.report_csv_download,
+        name="report_csv_download",
+    ),
+    path("reports/<slug:customer>/all/<slug:access_key>", views.customer_reports, name="customer_reports"),
     path("reports/<slug:customer>/<slug:gist_id>", views.report_detail, name="report_detail"),
 ]

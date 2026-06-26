@@ -3,6 +3,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+from django.contrib.auth import get_user_model
 from django.test import override_settings
 from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
@@ -12,6 +13,8 @@ from .models import Report
 
 
 GIST_ID = "6a946f178f4b6df48b30ef12e500ccd0"
+OTHER_GIST_ID = "7b946f178f4b6df48b30ef12e500ccd1"
+THIRD_GIST_ID = "8c946f178f4b6df48b30ef12e500ccd2"
 
 
 class FakeResponse:
@@ -218,8 +221,43 @@ class ReportTests(TestCase):
         self.assertEqual(report.get_absolute_url(), f"/reports/MOG/{GIST_ID}")
         self.assertEqual(str(report), "MOG / Chemical Data Integration Review")
 
+    def test_report_admin_shows_destination_url_after_create(self):
+        user = get_user_model().objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="password",
+        )
+        report = Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            start_date="2026-06-01",
+            end_date="2026-06-05",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        self.client.force_login(user)
+        response = self.client.get(f"/control/portal/report/{report.pk}/change/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Destination URL")
+        self.assertContains(response, f'href="{report.get_absolute_url()}"')
+
+    def test_report_admin_hides_destination_url_before_create(self):
+        user = get_user_model().objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="password",
+        )
+
+        self.client.force_login(user)
+        response = self.client.get("/control/portal/report/add/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertNotContains(response, "Destination URL")
+
     @patch("portal.gists.urlopen")
     def test_admin_managed_report_renders_gist_report_and_source_files(self, mock_urlopen):
+        csv_content = "asset,hours\n" + "\n".join(f"Pump {index},{index}" for index in range(1, 31))
         mock_urlopen.return_value = FakeResponse(
             json.dumps(
                 {
@@ -234,6 +272,13 @@ class ReportTests(TestCase):
                             "filename": "diagram.png",
                             "type": "image/png",
                             "raw_url": "https://gist.githubusercontent.com/Bobby-Miller/gist/raw/diagram.png",
+                            "truncated": False,
+                        },
+                        "metrics.csv": {
+                            "filename": "metrics.csv",
+                            "content": csv_content,
+                            "type": "text/csv",
+                            "raw_url": "https://gist.githubusercontent.com/Bobby-Miller/gist/raw/metrics.csv",
                             "truncated": False,
                         },
                         "sample_file.sql": {
@@ -267,6 +312,9 @@ class ReportTests(TestCase):
         self.assertContains(response, "Weekly Report for June 1st, 2026 to June 5th, 2026.")
         self.assertContains(response, "Prepared for Johnny Ortega")
         self.assertContains(response, "Print report")
+        self.assertContains(response, "Copy as Markdown")
+        self.assertContains(response, "All PRW reports")
+        self.assertContains(response, f'href="/reports/PRW/all/{GIST_ID}"')
         self.assertContains(response, "Daily Report")
         self.assertContains(response, "All systems normal.")
         self.assertContains(response, "<table>")
@@ -279,15 +327,112 @@ class ReportTests(TestCase):
         self.assertContains(response, 'alt="trend"')
         self.assertContains(response, "diagram.png")
         self.assertContains(response, 'src="https://gist.githubusercontent.com/Bobby-Miller/gist/raw/diagram.png"')
+        self.assertContains(response, "CSV Attachments")
+        self.assertContains(response, "metrics.csv")
+        self.assertContains(response, "<th>asset</th>")
+        self.assertContains(response, "<td>Pump 24</td>")
+        self.assertContains(response, "Previewing the first 25 rows.")
+        self.assertContains(response, f'href="/reports/PRW/{GIST_ID}/csv/metrics.csv"')
+        self.assertContains(response, "Download CSV")
+        self.assertNotContains(response, "Pump 25")
+        self.assertNotContains(response, "language-csv")
         self.assertContains(response, "sample_file.sql")
         self.assertContains(response, "language-sql")
         self.assertContains(response, "select 1")
         self.assertContains(response, "sample_python_file.py")
         self.assertContains(response, "language-python")
         self.assertContains(response, "print(&#x27;hello world!&#x27;)")
-        self.assertNotContains(response, GIST_ID)
         self.assertNotContains(response, "Source")
         self.assertNotContains(response, "Open Gist")
+
+    @patch("portal.gists.urlopen")
+    def test_report_csv_download_uses_attachment_response(self, mock_urlopen):
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {
+                    "files": {
+                        "report.md": {"content": "# Daily Report", "truncated": False},
+                        "metrics.csv": {
+                            "filename": "metrics.csv",
+                            "content": "asset,hours\nPump 1,1\n",
+                            "type": "text/csv",
+                            "truncated": False,
+                        },
+                    }
+                }
+            ).encode("utf-8")
+        )
+        Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            start_date="2026-06-01",
+            end_date="2026-06-05",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get(f"/reports/PRW/{GIST_ID}/csv/metrics.csv")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "text/csv; charset=utf-8")
+        self.assertTrue(response["Content-Disposition"].startswith("attachment;"))
+        self.assertIn("metrics.csv", response["Content-Disposition"])
+        self.assertEqual(response.content, b"asset,hours\nPump 1,1\n")
+
+    def test_customer_report_list_is_hidden_by_report_gist_id_and_grouped_by_type(self):
+        Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            start_date="2026-05-26",
+            end_date="2026-05-30",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{OTHER_GIST_ID}",
+        )
+        Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            start_date="2026-06-01",
+            end_date="2026-06-05",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+        Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            report_type=Report.ReportType.ENGINEERING,
+            title="Valve Review",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{THIRD_GIST_ID}",
+        )
+
+        response = self.client.get(f"/reports/PRW/all/{GIST_ID}")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "PRW Reports")
+        self.assertContains(response, "Weekly Reports")
+        self.assertContains(response, "Engineering Reports")
+        self.assertContains(response, "Weekly Report")
+        self.assertContains(response, "June 1, 2026 to June 5, 2026")
+        self.assertContains(response, "May 26, 2026 to May 30, 2026")
+        self.assertContains(response, "Valve Review")
+        self.assertContains(response, f'href="/reports/PRW/{GIST_ID}"')
+        self.assertContains(response, f'href="/reports/PRW/{THIRD_GIST_ID}"')
+
+        content = response.content.decode("utf-8")
+        self.assertLess(content.index("Weekly Reports"), content.index("Engineering Reports"))
+        self.assertEqual(self.client.get(f"/reports/MOG/all/{GIST_ID}").status_code, 404)
+
+    def test_customer_report_list_hides_empty_report_type_groups(self):
+        Report.objects.create(
+            customer="PRW",
+            customer_name="Johnny Ortega",
+            start_date="2026-06-01",
+            end_date="2026-06-05",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get(f"/reports/PRW/all/{GIST_ID}")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Weekly Reports")
+        self.assertNotContains(response, "Engineering Reports")
+        self.assertNotContains(response, "No engineering reports available")
 
     @patch("portal.gists.urlopen")
     def test_engineering_report_renders_generic_heading_and_uppercase_report_file(self, mock_urlopen):

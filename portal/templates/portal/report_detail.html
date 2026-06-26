@@ -13,7 +13,12 @@
     </h1>
     {% endif %}
     {% if report.customer_name %}<p class="hero-copy">Prepared for {{ report.customer_name }}</p>{% endif %}
-    <button class="button secondary print-button" type="button" onclick="window.print()">Print report</button>
+    <div class="report-actions">
+        <button class="button secondary print-button" type="button" onclick="window.print()">Print report</button>
+        <button class="button secondary report-markdown-copy" type="button" data-report-markdown-copy>Copy as Markdown</button>
+        <a class="button secondary" href="{{ customer_reports_url }}">All {{ customer }} reports</a>
+    </div>
+    {{ gist_report.report_markdown|json_script:"report-markdown-source" }}
 </section>
 {% endblock %}
 
@@ -42,6 +47,39 @@
         <article class="source-snippet">
             <h3>{{ snippet.filename }}</h3>
             <pre><code class="language-{{ snippet.language }}">{{ snippet.content }}</code></pre>
+        </article>
+        {% endfor %}
+    </section>
+    {% endif %}
+
+    {% if gist_report.csvs %}
+    <section class="report-csvs" aria-label="CSV attachments">
+        <h2>CSV Attachments</h2>
+        {% for csv_file in gist_report.csvs %}
+        <article class="csv-attachment">
+            <h3>{{ csv_file.filename }}</h3>
+            {% if csv_file.preview_rows %}
+            <div class="csv-preview">
+                <table>
+                    <thead>
+                        <tr>
+                            {% for cell in csv_file.preview_rows.0 %}<th>{{ cell }}</th>{% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in csv_file.preview_rows|slice:"1:" %}
+                        <tr>{% for cell in row %}<td>{{ cell }}</td>{% endfor %}</tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <p class="csv-preview-note">Previewing the first 25 rows.</p>
+            {% else %}
+            <p class="muted">No rows available to preview.</p>
+            {% endif %}
+            {% if csv_file.download_url %}
+            <a class="button secondary csv-download" href="{{ csv_file.download_url }}" download="{{ csv_file.filename }}">Download CSV</a>
+            {% endif %}
         </article>
         {% endfor %}
     </section>
