@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Green Pipe Partners{% endblock %}</title>
     <meta name="description" content="Flux: the Green Pipe controls workbench for SCADA teams.">
+    <script>
+        (() => {
+            let savedTheme = null;
+            try {
+                savedTheme = localStorage.getItem("greenpipe-theme");
+            } catch {
+                savedTheme = null;
+            }
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            document.documentElement.dataset.theme = savedTheme || (prefersDark ? "dark" : "light");
+        })();
+    </script>
     <link rel="icon" href="{% static 'portal/favicon.ico' %}" sizes="any">
     <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="{% static 'portal/styles.css' %}">
@@ -24,6 +36,9 @@
                 <a class="nav-link" href="https://github.com/GreenPipePartners/Flux">GitHub</a>
                 <a class="nav-link" href="{% url 'portal:flux_docs_latest' %}">Docs</a>
                 <a class="nav-link" href="{% url 'portal:about' %}">About</a>
+                <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+                    <span data-theme-toggle-label>🌙</span>
+                </button>
             </div>
         </nav>
         {% block hero %}{% endblock %}

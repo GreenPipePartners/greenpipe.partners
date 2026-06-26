@@ -1,6 +1,51 @@
 (() => {
     const copyResetTimers = new WeakMap();
 
+    const getStoredTheme = () => {
+        try {
+            return localStorage.getItem("greenpipe-theme");
+        } catch {
+            return null;
+        }
+    };
+
+    const storeTheme = (theme) => {
+        try {
+            localStorage.setItem("greenpipe-theme", theme);
+        } catch {
+            return;
+        }
+    };
+
+    const applyTheme = (theme) => {
+        const normalizedTheme = theme === "dark" ? "dark" : "light";
+        const nextTheme = normalizedTheme === "dark" ? "light" : "dark";
+        document.documentElement.dataset.theme = normalizedTheme;
+
+        document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+            button.setAttribute("aria-pressed", normalizedTheme === "dark" ? "true" : "false");
+            button.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+
+            const label = button.querySelector("[data-theme-toggle-label]");
+            if (label) {
+                label.textContent = nextTheme === "dark" ? "🌙" : "☀️";
+            }
+        });
+    };
+
+    const savedTheme = getStoredTheme();
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const currentTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+            const nextTheme = currentTheme === "dark" ? "light" : "dark";
+            storeTheme(nextTheme);
+            applyTheme(nextTheme);
+        });
+    });
+
     const copyText = async (text) => {
         if (navigator.clipboard && window.isSecureContext) {
             await navigator.clipboard.writeText(text);
