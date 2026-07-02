@@ -31,6 +31,10 @@ def about(request):
     return render(request, "portal/about.html")
 
 
+def agentlab(request):
+    return render(request, "portal/agentlab.html")
+
+
 def flux_docs_latest(request):
     return redirect("/docs/flux/0.1.0/", permanent=False)
 

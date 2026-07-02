@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Green Pipe Partners{% endblock %}</title>
-    <meta name="description" content="Flux: the Green Pipe controls workbench for SCADA teams.">
+    <meta name="description" content="{% block meta_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
+    <meta property="og:site_name" content="Green Pipe Partners">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{% block og_title %}Green Pipe Partners{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{% block twitter_title %}Green Pipe Partners{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
     <script>
         (() => {
             let savedTheme = null;
@@ -34,6 +41,7 @@
             </a>
             <div class="nav-links">
                 <a class="nav-link" href="https://github.com/GreenPipePartners/Flux">GitHub</a>
+                <a class="nav-link" href="{% url 'portal:agentlab' %}">AgentLab</a>
                 <a class="nav-link" href="{% url 'portal:flux_docs_latest' %}">Docs</a>
                 <a class="nav-link" href="{% url 'portal:about' %}">About</a>
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">

@@ -87,6 +87,49 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "Flux")
         self.assertContains(response, "Fluxy")
 
+    def test_agentlab_page_renders(self):
+        response = self.client.get(reverse("portal:agentlab"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "AgentLab Training for Controls Engineers")
+        self.assertContains(response, "Three-Day Agent Workbench Deep Dive")
+        self.assertContains(response, "practical Linux-based agent workbench")
+        self.assertContains(response, "applies AI workflows to real controls engineering work")
+        self.assertContains(response, "Set up the engineering workstations")
+        self.assertContains(response, "Build each attendee's Ubuntu VM lab")
+        self.assertContains(response, "Apply the lab to your site")
+        self.assertContains(response, "Day 4 (Optional)")
+        self.assertContains(response, "Build a Rockwell Windows VM with AI agents")
+        self.assertContains(response, "Onsite Training")
+        self.assertContains(response, "$6,900")
+        self.assertContains(response, "Base Training Price")
+        self.assertContains(response, "Linux AgentLab with Omarchy")
+        self.assertContains(response, "Linux AgentLab with Ubuntu")
+        self.assertContains(response, "Bring Your Own Setup")
+        self.assertContains(response, "Build out Rockwell Controls VM")
+        self.assertContains(response, "$2,200 one time")
+        self.assertContains(response, "Includes 1 controls VM license")
+        self.assertContains(response, "Additional Controls VM Licenses")
+        self.assertContains(response, 'max="4"')
+        self.assertContains(response, "$250 each")
+        self.assertContains(response, "A ChatGPT Pro plan is required and is not provided")
+        self.assertContains(response, "https://chatgpt.com/?ifpazk=1k0d2&amp;default_tab=personal&amp;highlight_plan=pro#pricing")
+        self.assertContains(response, "Valid for 30 days")
+        self.assertContains(response, "Travel and onsite expenses may add cost")
+        self.assertContains(response, "Generate Proposal")
+        self.assertNotContains(response, "PDF quotes are generated locally")
+        self.assertNotContains(response, "Flux and Fluxy")
+        self.assertNotContains(response, "Omarchy lab image")
+        self.assertNotContains(response, "3.2K OLED touch display")
+        self.assertNotContains(response, "Mandatory package")
+        self.assertNotContains(response, "AILab Training")
+        self.assertContains(response, "data-ailab-quote")
+
+    def test_old_ailab_url_is_removed(self):
+        response = self.client.get("/ailab/")
+
+        self.assertEqual(response.status_code, 404)
+
     def test_docs_landing_redirects_to_starlight_latest(self):
         response = self.client.get(reverse("portal:docs"))
 

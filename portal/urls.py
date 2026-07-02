@@ -10,6 +10,7 @@ urlpatterns = [
     path("health/", views.health, name="health"),
     path("docs/", views.docs, name="docs"),
     path("about/", views.about, name="about"),
+    path("agentlab/", views.agentlab, name="agentlab"),
     path("docs/flux/latest/", views.flux_docs_latest, name="flux_docs_latest"),
     path("docs/flux/<str:version>/", views.flux_docs_file, name="flux_docs_index"),
     path("docs/flux/<str:version>/<path:docs_path>", views.flux_docs_file, name="flux_docs_file"),

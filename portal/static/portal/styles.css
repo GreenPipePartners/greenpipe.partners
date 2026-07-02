@@ -144,7 +144,9 @@ main,
 .button:focus-visible,
 .tab-label:focus-visible,
 .command-copy:focus-visible,
-.report-code-copy:focus-visible {
+.report-code-copy:focus-visible,
+.ailab-stepper button:focus-visible,
+.ailab-stepper input:focus-visible {
     outline: 3px solid var(--green);
     outline-offset: 4px;
 }
@@ -683,6 +685,314 @@ h3 {
     color: inherit;
 }
 
+.ailab-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: clamp(22px, 4vw, 48px);
+    align-items: stretch;
+}
+
+.ailab-hero h1 {
+    max-width: 900px;
+    font-size: clamp(2.4rem, 6.5vw, 5.7rem);
+    line-height: 0.9;
+    letter-spacing: -0.075em;
+}
+
+.ailab-agenda,
+.ailab-builder,
+.ailab-required-card,
+.ailab-package-card,
+.ailab-summary-card,
+.ailab-specs-panel {
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+}
+
+.ailab-agenda {
+    margin-bottom: 22px;
+    padding: clamp(24px, 4vw, 36px);
+    border-radius: 30px;
+    background: var(--surface-strong);
+}
+
+.ailab-agenda ol {
+    display: grid;
+    gap: 18px;
+    margin: 24px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ailab-agenda li {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr);
+    gap: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+}
+
+.ailab-agenda li > span {
+    color: var(--green);
+    font-size: 0.86rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ailab-agenda h3 {
+    margin-bottom: 8px;
+}
+
+.ailab-agenda p,
+.ailab-section-heading p,
+.ailab-required-card p,
+.ailab-package-card p,
+.ailab-summary-note,
+.ailab-empty-line,
+.ailab-line-item span,
+.ailab-summary-card dt,
+.ailab-spec-grid dd {
+    color: var(--muted);
+}
+
+.ailab-builder {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    gap: 16px;
+    align-items: start;
+    margin-bottom: 22px;
+    padding: 16px;
+    border-radius: 30px;
+    background: linear-gradient(180deg, var(--surface-muted), transparent 340px);
+}
+
+.ailab-package-panel,
+.ailab-package-stack {
+    display: grid;
+    gap: 16px;
+}
+
+.ailab-section-heading {
+    padding: 8px;
+}
+
+.ailab-section-heading h2,
+.ailab-summary-card h2 {
+    margin-bottom: 8px;
+}
+
+.ailab-required-card,
+.ailab-package-card,
+.ailab-summary-card,
+.ailab-specs-panel {
+    border-radius: 24px;
+    background: var(--surface-strong);
+}
+
+.ailab-required-card,
+.ailab-package-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px;
+    padding: 20px;
+}
+
+.ailab-required-card h3,
+.ailab-package-card h3 {
+    margin: 8px 0 6px;
+}
+
+.ailab-required-price,
+.ailab-package-controls {
+    display: grid;
+    min-width: 176px;
+    gap: 8px;
+    align-content: center;
+    justify-items: end;
+    text-align: right;
+}
+
+.ailab-required-check {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    color: var(--green);
+    font-size: 0.86rem;
+    font-weight: 900;
+}
+
+.ailab-option-check {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+    color: var(--green);
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.ailab-option-card {
+    border-color: rgba(40, 116, 86, 0.34);
+}
+
+.ailab-package-card[data-disabled] {
+    display: none;
+}
+
+.ailab-required-price > span,
+.ailab-unit-price {
+    color: var(--muted);
+    font-size: 0.86rem;
+    font-weight: 800;
+}
+
+.ailab-required-price strong {
+    font-size: 1.9rem;
+    letter-spacing: -0.045em;
+}
+
+.ailab-package-copy {
+    display: grid;
+    gap: 12px;
+}
+
+.ailab-stepper {
+    display: grid;
+    grid-template-columns: 42px 58px 42px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--control-bg);
+}
+
+.ailab-stepper button,
+.ailab-stepper input {
+    height: 42px;
+    border: 0;
+    background: transparent;
+    color: var(--ink);
+    text-align: center;
+}
+
+.ailab-stepper button {
+    color: var(--green);
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.ailab-stepper button:disabled {
+    cursor: not-allowed;
+    opacity: 0.35;
+}
+
+.ailab-stepper input {
+    border-right: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    font: inherit;
+    font-weight: 900;
+}
+
+.ailab-summary-card {
+    position: sticky;
+    top: 18px;
+    display: grid;
+    gap: 16px;
+    padding: 20px;
+}
+
+.ailab-summary-card dl {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+}
+
+.ailab-summary-card dl div,
+.ailab-line-item,
+.ailab-total-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.ailab-summary-card dd {
+    margin: 0;
+    font-weight: 900;
+}
+
+.ailab-line-items {
+    display: grid;
+    gap: 9px;
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.ailab-empty-line {
+    margin: 0;
+    font-size: 0.94rem;
+}
+
+.ailab-total-row {
+    align-items: end;
+}
+
+.ailab-total-row span {
+    color: var(--muted);
+    font-weight: 900;
+}
+
+.ailab-total-row strong {
+    color: var(--green);
+    font-size: 2.2rem;
+    letter-spacing: -0.055em;
+}
+
+.ailab-proposal-button {
+    width: 100%;
+    cursor: pointer;
+}
+
+.ailab-summary-note {
+    margin: 0;
+    font-size: 0.86rem;
+}
+
+.ailab-specs-panel {
+    margin-bottom: 72px;
+    overflow: hidden;
+}
+
+.ailab-specs-panel summary {
+    cursor: pointer;
+    padding: 20px;
+    color: var(--green);
+    font-weight: 900;
+}
+
+.ailab-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    margin: 0;
+    padding: 0 20px 20px;
+}
+
+.ailab-spec-grid div {
+    padding: 14px 0;
+    border-top: 1px solid var(--line);
+}
+
+.ailab-spec-grid dt {
+    color: var(--ink);
+    font-weight: 900;
+}
+
+.ailab-spec-grid dd {
+    margin: 4px 0 0;
+}
+
 .report-markdown pre code.hljs,
 .source-snippet pre code.hljs {
     display: block;
@@ -721,6 +1031,32 @@ h3 {
     .report-toolbar {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .ailab-hero,
+    .ailab-builder,
+    .ailab-required-card,
+    .ailab-package-card {
+        grid-template-columns: 1fr;
+    }
+
+    .ailab-spec-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ailab-agenda li {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .ailab-required-price,
+    .ailab-package-controls {
+        justify-items: start;
+        text-align: left;
+    }
+
+    .ailab-summary-card {
+        position: static;
     }
 }
 

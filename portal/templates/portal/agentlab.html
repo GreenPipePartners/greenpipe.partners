@@ -1,0 +1,234 @@
+{% extends "portal/base.html" %}
+
+{% block title %}AgentLab Training - Green Pipe Partners{% endblock %}
+{% block meta_description %}AgentLab Training for Controls Engineers is a three-day onsite class covering Linux, OpenCode, QEMU/KVM, containers, and site-specific controls lab workflows.{% endblock %}
+{% block og_title %}AgentLab Training for Controls Engineers{% endblock %}
+{% block og_description %}A three-day onsite class for controls engineers building practical AI-ready Linux and automation workflows.{% endblock %}
+{% block twitter_title %}AgentLab Training for Controls Engineers{% endblock %}
+{% block twitter_description %}Three-day onsite training covering Linux, OpenCode, virtualization, containers, and site-specific controls lab workflows.{% endblock %}
+
+{% block hero %}
+<section class="hero ailab-hero">
+    <div class="ailab-hero-copy">
+        <p class="eyebrow">AgentLab Training for Controls Engineers</p>
+        <h1>Three-Day Agent Workbench Deep Dive</h1>
+        <p class="hero-copy">
+            An onsite crash course where your team builds a practical Linux-based agent workbench,
+            launches sandbox VMs and containers, and applies AI workflows to real controls engineering work.
+        </p>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="ailab-agenda" id="agenda" aria-label="AgentLab training agenda">
+    <div class="ailab-section-heading">
+        <p class="eyebrow">Training flow</p>
+        <h2>From workstation setup to a site-specific project.</h2>
+    </div>
+    <ol>
+        <li>
+            <span>Day 1</span>
+            <div>
+                <h3>Set up the engineering workstations</h3>
+                <p>Configure computers, OpenCode, and AI-assisted host applications while reviewing the software stack and where each tool fits.</p>
+            </div>
+        </li>
+        <li>
+            <span>Day 2</span>
+            <div>
+                <h3>Build each attendee's Ubuntu VM lab</h3>
+                <p>Stand up a personal Ubuntu VM with containerized Ignition and SQL Server environments while reviewing Docker and WSLC workflows.</p>
+            </div>
+        </li>
+        <li>
+            <span>Day 3</span>
+            <div>
+                <h3>Apply the lab to your site</h3>
+                <p>Implement a practical project tailored to your facility, controls standards, and near-term engineering needs.</p>
+            </div>
+        </li>
+        <li>
+            <span>Day 4 (Optional)</span>
+            <div>
+                <h3>Build a Rockwell Windows VM with AI agents</h3>
+                <p>Use AI agents to help build out a Windows VM with Rockwell software, demonstrating more advanced agent-assisted utility for controls engineering workflows.</p>
+            </div>
+        </li>
+    </ol>
+</section>
+
+<section class="ailab-builder" id="proposal-builder" data-ailab-quote data-base-price="6900" data-max-attendees="5">
+    <div class="ailab-package-panel">
+        <div class="ailab-section-heading">
+            <p class="eyebrow">Proposal builder</p>
+            <h2>Select package quantities</h2>
+            <p>
+                Onsite Training is required. Add up to five total attendee packages across
+                Omarchy, Ubuntu, and bring-your-own setups.
+            </p>
+        </div>
+
+        <article class="ailab-required-card" aria-label="Mandatory Onsite Training package">
+            <div>
+                <h3>Onsite Training</h3>
+                <p>Three days of onsite instruction, lab facilitation, and controls-focused exercises.</p>
+            </div>
+            <div class="ailab-required-price">
+                <label class="ailab-required-check">
+                    <input type="checkbox" checked disabled>
+                    <span>Selected</span>
+                </label>
+                <span>Included in every proposal</span>
+                <strong>$6,900</strong>
+            </div>
+        </article>
+
+        <div class="ailab-package-stack">
+            <article class="ailab-package-card" data-package="omarchy">
+                <div class="ailab-package-copy">
+                    <div>
+                        <h3>Linux AgentLab with Omarchy</h3>
+                        <p>Dell XPS 16-inch lab machine configured for Omarchy, OpenCode, virtualization, and container workflows.</p>
+                    </div>
+                </div>
+                <div class="ailab-package-controls">
+                    <span class="ailab-unit-price">$4,500 each</span>
+                    <div class="ailab-stepper" aria-label="Linux AgentLab with Omarchy quantity">
+                        <button type="button" data-action="decrement" aria-label="Remove one Linux AgentLab with Omarchy">-</button>
+                        <input type="number" min="0" max="5" inputmode="numeric" value="1" data-quantity data-label="Linux AgentLab with Omarchy" data-price="4500">
+                        <button type="button" data-action="increment" aria-label="Add one Linux AgentLab with Omarchy">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="ailab-package-card" data-package="ubuntu">
+                <div class="ailab-package-copy">
+                    <div>
+                        <h3>Linux AgentLab with Ubuntu</h3>
+                        <p>The same Dell XPS 16-inch hardware configured with Ubuntu for teams standardizing on a familiar Linux desktop.</p>
+                    </div>
+                </div>
+                <div class="ailab-package-controls">
+                    <span class="ailab-unit-price">$4,500 each</span>
+                    <div class="ailab-stepper" aria-label="Linux AgentLab with Ubuntu quantity">
+                        <button type="button" data-action="decrement" aria-label="Remove one Linux AgentLab with Ubuntu">-</button>
+                        <input type="number" min="0" max="5" inputmode="numeric" value="0" data-quantity data-label="Linux AgentLab with Ubuntu" data-price="4500">
+                        <button type="button" data-action="increment" aria-label="Add one Linux AgentLab with Ubuntu">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="ailab-package-card" data-package="byo">
+                <div class="ailab-package-copy">
+                    <div>
+                        <h3>Bring Your Own Setup</h3>
+                        <p>Setup and validation for an attendee-provided workstation that meets the class requirements.</p>
+                    </div>
+                </div>
+                <div class="ailab-package-controls">
+                    <span class="ailab-unit-price">$500 each</span>
+                    <div class="ailab-stepper" aria-label="Bring Your Own Setup quantity">
+                        <button type="button" data-action="decrement" aria-label="Remove one Bring Your Own Setup">-</button>
+                        <input type="number" min="0" max="5" inputmode="numeric" value="0" data-quantity data-label="Bring Your Own Setup" data-price="500">
+                        <button type="button" data-action="increment" aria-label="Add one Bring Your Own Setup">+</button>
+                    </div>
+                </div>
+            </article>
+
+            <article class="ailab-package-card ailab-option-card" data-option-card="rockwell-vm-buildout">
+                <div class="ailab-package-copy">
+                    <div>
+                        <h3>Build out Rockwell Controls VM</h3>
+                        <p>Add an extra training day focused on building out a Rockwell controls virtual machine environment. Includes 1 controls VM license.</p>
+                    </div>
+                </div>
+                <div class="ailab-package-controls">
+                    <label class="ailab-option-check">
+                        <input type="checkbox" data-fixed-option data-option="rockwell-vm-buildout" data-label="Build out Rockwell Controls VM (includes 1 controls VM license)" data-price="2200">
+                        <span>Select add-on</span>
+                    </label>
+                    <span class="ailab-unit-price">$2,200 one time</span>
+                </div>
+            </article>
+
+            <article class="ailab-package-card" data-addon="rockwell-vm-licenses" data-disabled>
+                <div class="ailab-package-copy">
+                    <div>
+                        <h3>Additional Controls VM Licenses</h3>
+                        <p>Add up to four more controls VM licenses beyond the one included with the Rockwell VM buildout.</p>
+                    </div>
+                </div>
+                <div class="ailab-package-controls">
+                    <span class="ailab-unit-price">$250 each</span>
+                    <div class="ailab-stepper" aria-label="Additional Controls VM license quantity">
+                        <button type="button" data-action="decrement" aria-label="Remove one Additional Controls VM license">-</button>
+                        <input type="number" min="0" max="4" inputmode="numeric" value="0" data-addon-quantity data-label="Additional Controls VM license" data-price="250" data-requires="rockwell-vm-buildout">
+                        <button type="button" data-action="increment" aria-label="Add one Additional Controls VM license">+</button>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <aside class="ailab-summary-card" aria-label="Quote summary">
+        <div>
+            <p class="eyebrow">Live quote</p>
+            <h2>Proposal total</h2>
+        </div>
+        <dl>
+            <div>
+                <dt>Attendees selected</dt>
+                <dd><span data-attendee-total>1</span> / 5</dd>
+            </div>
+            <div>
+                <dt>Base Training Price</dt>
+                <dd>$6,900</dd>
+            </div>
+        </dl>
+        <div class="ailab-line-items" data-line-items></div>
+        <div class="ailab-total-row">
+            <span>Total</span>
+            <strong data-total>$11,400</strong>
+        </div>
+        <button class="button primary ailab-proposal-button" type="button" data-generate-pdf>Generate Proposal</button>
+        <p class="ailab-summary-note">
+            <strong>Required separately:</strong>
+            A ChatGPT Pro plan is required and is not provided.
+            <a class="text-link" href="https://chatgpt.com/?ifpazk=1k0d2&amp;default_tab=personal&amp;highlight_plan=pro#pricing">Review ChatGPT Pro pricing</a>.
+        </p>
+        <p class="ailab-summary-note">
+            <strong>Proposal terms:</strong>
+            Valid for 30 days. Travel and onsite expenses may add cost depending on location and schedule.
+        </p>
+    </aside>
+</section>
+
+<details class="ailab-specs-panel">
+    <summary>Dell XPS 16-inch lab hardware specifications</summary>
+    <dl class="ailab-spec-grid">
+        <div><dt>Processor</dt><dd>Series 3 Intel Core Ultra X7 Processor 358H, 16 cores, 18MB cache, up to 4.8 GHz.</dd></div>
+        <div><dt>Operating system</dt><dd>Factory OS: Windows 11 Home, Copilot+ PC. Lab image configured for Omarchy or Ubuntu.</dd></div>
+        <div><dt>Graphics</dt><dd>Intel Arc Graphics.</dd></div>
+        <div><dt>Display</dt><dd>16.0-inch touch 3.2K OLED, 20-120Hz, 400 nits.</dd></div>
+        <div><dt>Memory</dt><dd>64GB LPDDR5x dual channel at 9600 MT/s.</dd></div>
+        <div><dt>Storage</dt><dd>2TB M.2 PCIe NVMe SSD.</dd></div>
+        <div><dt>Case</dt><dd>Graphite.</dd></div>
+        <div><dt>Microsoft Office</dt><dd>Microsoft 365 30 day trial.</dd></div>
+        <div><dt>Security</dt><dd>McAfee+ Premium 1-year.</dd></div>
+        <div><dt>Support</dt><dd>Dell Care Premium with Dell Care Plus Services and AD, 12 months.</dd></div>
+        <div><dt>Keyboard</dt><dd>Graphite backlit English keyboard.</dd></div>
+        <div><dt>Ports</dt><dd>3x Thunderbolt 4 USB Type-C with DisplayPort 2.1 and Power Delivery, Kensington lock support via USB Type-C ports, universal audio jack.</dd></div>
+        <div><dt>Dimensions</dt><dd>0.58 in. high for 3.2K OLED, 9.35 in. deep, 13.88 in. wide.</dd></div>
+        <div><dt>Weight</dt><dd>Starting at 3.65 lb for 3.2K OLED.</dd></div>
+        <div><dt>Camera</dt><dd>8MP/4K HDR webcam, Windows Hello compliant, Intel IPU7.</dd></div>
+        <div><dt>Audio</dt><dd>Studio quality tuning with Waves MaxxAudio MaxxVoice 15, quad-speaker design, dual microphone array, Dolby Atmos.</dd></div>
+        <div><dt>Chassis</dt><dd>CNC machined aluminum with Corning Gorilla Glass 3 palm rest and Gorilla Glass Victus OLED cover glass.</dd></div>
+        <div><dt>Sustainability</dt><dd>75% recycled aluminum, 25% low emissions aluminum, 10% recycled glass, recycled or renewable packaging.</dd></div>
+        <div><dt>Wireless</dt><dd>Intel Wi-Fi 7 BE211 2x2 plus Bluetooth 6.0.</dd></div>
+        <div><dt>Battery</dt><dd>3-cell, 70Whr.</dd></div>
+        <div><dt>Power</dt><dd>100W USB Type-C AC adapter.</dd></div>
+        <div><dt>Regulatory</dt><dd>Model P147F, Type P147F001, ENERGY STAR 9.0, EPEAT Gold with Climate+ designation, BFR/PVC free excluding PSU.</dd></div>
+    </dl>
+</details>
+{% endblock %}
