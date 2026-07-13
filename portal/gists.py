@@ -5,8 +5,9 @@ import re
 from html import escape
 from io import StringIO
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlparse
+from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, urlopen
+from uuid import uuid4
 
 import markdown
 from django.utils.safestring import mark_safe
@@ -15,6 +16,14 @@ from django.utils.safestring import mark_safe
 GIST_ID_RE = re.compile(r"^[A-Fa-f0-9]{20,64}$")
 IMG_TAG_RE = re.compile(r"<img\b(?P<attrs>[^>]*)>", re.IGNORECASE)
 IMG_ATTR_RE = re.compile(r"(?P<name>[A-Za-z_:][-A-Za-z0-9_:.]*)\s*=\s*(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)')")
+CALLOUT_RE = re.compile(
+    r"^\s{0,3}>\s*\[!(?P<type>success|recommendation|quote)\](?:[+-])?(?:\s+(?P<title>.+?))?\s*$",
+    re.IGNORECASE,
+)
+CALLOUT_LINE_RE = re.compile(r"^\s{0,3}>\s?(?P<body>.*)$")
+YOUTUBE_LINK_RE = re.compile(r"^\s*\[(?P<label>[^\n\]]+)\]\((?P<url>https://[^\s)]+)\)\s*$", re.IGNORECASE)
+YOUTUBE_VIDEO_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
+YOUTUBE_HOSTS = {"m.youtube.com", "music.youtube.com", "www.youtube.com", "youtube.com"}
 GIST_FILE_LANGUAGES = {
     ".bash": "bash",
     ".css": "css",
@@ -97,12 +106,7 @@ def load_report_gist(gist_id):
     return {
         "description": gist.get("description") or "",
         "report_markdown": report_markdown,
-        "report_html": mark_safe(
-            markdown.markdown(
-                escape(report_markdown),
-                extensions=["fenced_code", "tables"],
-            )
-        ),
+        "report_html": mark_safe(_render_report_markdown(report_markdown)),
         "csvs": csvs,
         "images": [image for image in images if image["url"]],
         "snippets": snippets,
@@ -175,6 +179,118 @@ def _normalize_report_images(markdown_text):
         return f"![{_markdown_label(alt)}]({src})"
 
     return IMG_TAG_RE.sub(replace, markdown_text)
+
+
+def _render_report_markdown(markdown_text):
+    normalized_markdown, replacements = _extract_report_blocks(markdown_text)
+    report_html = _render_safe_markdown(normalized_markdown)
+    for token, block_html in replacements.items():
+        report_html = report_html.replace(f"<p>{token}</p>", block_html)
+    return report_html
+
+
+def _extract_report_blocks(markdown_text):
+    lines = markdown_text.splitlines()
+    normalized_lines = []
+    replacements = {}
+    index = 0
+
+    while index < len(lines):
+        callout_match = CALLOUT_RE.match(lines[index])
+        if callout_match:
+            body_lines = []
+            index += 1
+            while index < len(lines):
+                body_match = CALLOUT_LINE_RE.match(lines[index])
+                if not body_match:
+                    break
+                body_lines.append(body_match.group("body"))
+                index += 1
+
+            callout_type = callout_match.group("type").lower()
+            callout_kind = "recommendation" if callout_type in {"success", "recommendation"} else "quote"
+            default_title = "Recommendation" if callout_kind == "recommendation" else "Quote"
+            title = callout_match.group("title") or default_title
+            token = _report_block_token()
+            replacements[token] = _callout_html(callout_kind, title, body_lines)
+            normalized_lines.extend(("", token, ""))
+            continue
+
+        youtube_match = YOUTUBE_LINK_RE.match(lines[index])
+        if youtube_match:
+            video_id = _youtube_video_id(youtube_match.group("url"))
+            if video_id:
+                token = _report_block_token()
+                replacements[token] = _youtube_html(
+                    video_id,
+                    youtube_match.group("label"),
+                    youtube_match.group("url"),
+                )
+                normalized_lines.extend(("", token, ""))
+                index += 1
+                continue
+
+        normalized_lines.append(lines[index])
+        index += 1
+
+    return "\n".join(normalized_lines), replacements
+
+
+def _report_block_token():
+    return f"GPPREPORTBLOCK{uuid4().hex.upper()}"
+
+
+def _render_safe_markdown(markdown_text):
+    return markdown.markdown(
+        escape(markdown_text),
+        extensions=["fenced_code", "tables"],
+    )
+
+
+def _callout_html(callout_kind, title, body_lines):
+    body_html = _render_safe_markdown("\n".join(body_lines))
+    return (
+        f'<aside class="report-callout report-callout-{callout_kind}">'
+        '<span class="report-callout-icon" aria-hidden="true"></span>'
+        f'<div class="report-callout-title">{escape(title)}</div>'
+        f'<div class="report-callout-body">{body_html}</div>'
+        "</aside>"
+    )
+
+
+def _youtube_video_id(url):
+    parsed = urlparse(url)
+    if parsed.scheme != "https":
+        return ""
+
+    hostname = (parsed.hostname or "").lower()
+    video_id = ""
+    if hostname in {"youtu.be", "www.youtu.be"}:
+        video_id = parsed.path.strip("/").split("/", 1)[0]
+    elif hostname in YOUTUBE_HOSTS:
+        path_parts = [part for part in parsed.path.split("/") if part]
+        if parsed.path.rstrip("/") == "/watch":
+            video_id = (parse_qs(parsed.query).get("v") or [""])[0]
+        elif len(path_parts) >= 2 and path_parts[0] in {"embed", "shorts"}:
+            video_id = path_parts[1]
+
+    return video_id if YOUTUBE_VIDEO_ID_RE.fullmatch(video_id) else ""
+
+
+def _youtube_html(video_id, label, source_url):
+    safe_label = escape(label)
+    return (
+        '<figure class="report-video">'
+        '<div class="report-video-frame">'
+        f'<iframe src="https://www.youtube-nocookie.com/embed/{video_id}" '
+        f'title="{safe_label}" loading="lazy" '
+        'referrerpolicy="strict-origin-when-cross-origin" '
+        'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" '
+        "allowfullscreen></iframe>"
+        "</div>"
+        f'<figcaption><a href="{escape(source_url)}">{safe_label}</a></figcaption>'
+        "</figure>"
+    )
 
 
 def _image_attrs(attrs_text):

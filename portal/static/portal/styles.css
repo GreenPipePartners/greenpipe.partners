@@ -19,6 +19,10 @@
     --code-button-bg: rgba(255, 255, 255, 0.1);
     --warning-bg: #fff4d8;
     --accent-text: #9be3ba;
+    --recommendation-bg: #edf8f1;
+    --recommendation-border: #2f855a;
+    --quote-bg: rgba(13, 36, 29, 0.05);
+    --quote-border: #74817b;
     --white: #ffffff;
     --shadow: 0 24px 70px rgba(13, 36, 29, 0.12);
     --table-shadow: 0 14px 34px rgba(13, 36, 29, 0.08);
@@ -49,6 +53,10 @@
     --code-button-bg: rgba(223, 241, 232, 0.1);
     --warning-bg: rgba(154, 113, 16, 0.24);
     --accent-text: #9be3ba;
+    --recommendation-bg: rgba(67, 166, 111, 0.14);
+    --recommendation-border: #58bd82;
+    --quote-bg: rgba(255, 255, 255, 0.06);
+    --quote-border: rgba(255, 255, 255, 0.48);
     --shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
     --table-shadow: 0 14px 34px rgba(0, 0, 0, 0.22);
     --image-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
@@ -598,6 +606,110 @@ h3 {
     box-shadow: var(--image-shadow);
 }
 
+.report-callout {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr);
+    column-gap: 12px;
+    margin: 1.35rem 0;
+    padding: 18px 20px;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: 14px;
+    color: var(--ink);
+}
+
+.report-callout-icon {
+    display: grid;
+    grid-row: 1 / span 2;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.report-callout-title {
+    grid-column: 2;
+    font-weight: 900;
+    line-height: 1.3;
+}
+
+.report-callout-body {
+    grid-column: 2;
+    min-width: 0;
+    margin-top: 6px;
+}
+
+.report-markdown .report-callout-body p {
+    color: inherit;
+}
+
+.report-markdown .report-callout-body > :last-child {
+    margin-bottom: 0;
+}
+
+.report-callout-recommendation {
+    border-color: var(--recommendation-border);
+    background: var(--recommendation-bg);
+}
+
+.report-callout-recommendation .report-callout-icon {
+    color: var(--recommendation-border);
+}
+
+.report-callout-recommendation .report-callout-icon::before {
+    content: "\2713";
+}
+
+.report-callout-quote {
+    border-color: var(--quote-border);
+    background: var(--quote-bg);
+}
+
+.report-callout-quote .report-callout-icon {
+    border: 0;
+    color: var(--quote-border);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 2rem;
+}
+
+.report-callout-quote .report-callout-icon::before {
+    content: "\201C";
+}
+
+.report-video {
+    margin: 1.5rem 0;
+}
+
+.report-video-frame {
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: #000000;
+    box-shadow: var(--image-shadow);
+}
+
+.report-video iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.report-video figcaption {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.report-video figcaption a {
+    color: var(--green);
+    font-weight: 800;
+}
+
 .report-markdown pre {
     overflow-x: auto;
     margin: 1.35rem 0;
@@ -1069,6 +1181,7 @@ h3 {
     .footer,
     .report-actions,
     .report-code-copy,
+    .report-video-frame,
     .print-button {
         display: none;
     }

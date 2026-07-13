@@ -8,7 +8,7 @@ from django.test import override_settings
 from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
-from .gists import parse_gist_id
+from .gists import _render_report_markdown, parse_gist_id
 from .models import Report
 
 
@@ -228,6 +228,29 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "image/png")
 
+
+
+class ReportMarkdownTests(SimpleTestCase):
+    def test_renders_obsidian_callouts_and_youtube_links(self):
+        report_html = _render_report_markdown(
+            "> [!success] Recommendation\n"
+            "> Advance the **pilot**.\n\n"
+            "[Flux demonstration](https://youtu.be/DG2SbUPBALs)\n\n"
+            "> [!quote] The decision in one sentence\n"
+            "> Move forward with confidence.\n\n"
+            "[Supporting material](https://example.com/demo)"
+        )
+
+        self.assertIn('class="report-callout report-callout-recommendation"', report_html)
+        self.assertIn('<div class="report-callout-title">Recommendation</div>', report_html)
+        self.assertIn("Advance the <strong>pilot</strong>.", report_html)
+        self.assertIn('class="report-callout report-callout-quote"', report_html)
+        self.assertIn('<div class="report-callout-title">The decision in one sentence</div>', report_html)
+        self.assertIn('src="https://www.youtube-nocookie.com/embed/DG2SbUPBALs"', report_html)
+        self.assertIn('title="Flux demonstration"', report_html)
+        self.assertIn('loading="lazy"', report_html)
+        self.assertIn('<a href="https://example.com/demo">Supporting material</a>', report_html)
+        self.assertEqual(report_html.count('class="report-video"'), 1)
 
 
 class ReportTests(TestCase):

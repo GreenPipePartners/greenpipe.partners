@@ -1,6 +1,11 @@
 {% extends "portal/base.html" %}
 
 {% block title %}{% if report_heading %}{{ report_heading }}{% else %}{{ customer }} Report{% endif %} - Green Pipe Partners{% endblock %}
+{% block meta_description %}Green Pipe Reporting{% endblock %}
+{% block og_title %}{% if report_heading %}{{ report_heading }}{% else %}{{ customer }} Report{% endif %}{% endblock %}
+{% block og_description %}Green Pipe Reporting{% endblock %}
+{% block twitter_title %}{% if report_heading %}{{ report_heading }}{% else %}{{ customer }} Report{% endif %}{% endblock %}
+{% block twitter_description %}Green Pipe Reporting{% endblock %}
 
 {% block hero %}
 <section class="hero compact report-hero">
