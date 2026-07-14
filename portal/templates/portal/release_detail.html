@@ -1,0 +1,28 @@
+{% extends "portal/base.html" %}
+
+{% block title %}{{ release_heading|capfirst }} - Green Pipe Partners{% endblock %}
+{% block meta_description %}{{ gist_release.description|default:"Green Pipe Partners software release notice" }}{% endblock %}
+{% block og_title %}{{ release_heading|capfirst }}{% endblock %}
+{% block og_description %}{{ gist_release.description|default:"Green Pipe Partners software release notice" }}{% endblock %}
+{% block twitter_title %}{{ release_heading|capfirst }}{% endblock %}
+{% block twitter_description %}{{ gist_release.description|default:"Green Pipe Partners software release notice" }}{% endblock %}
+
+{% block hero %}
+<section class="hero compact report-hero">
+    <p class="eyebrow">{{ release.topic }} release</p>
+    <h1 class="report-title">{{ release_heading }}</h1>
+    <p class="hero-copy">Published {{ release.release_date|date:"F j, Y" }}</p>
+    <div class="report-actions">
+        <button class="button secondary print-button" type="button" onclick="window.print()">Print release</button>
+        <button class="button secondary report-markdown-copy" type="button" data-report-markdown-copy>Copy as Markdown</button>
+        <a class="button secondary" href="{% url 'portal:release_index' %}">All releases</a>
+    </div>
+    {{ gist_release.document_markdown|json_script:"report-markdown-source" }}
+</section>
+{% endblock %}
+
+{% block content %}
+<article class="report-shell" aria-label="{{ release.topic }} release notice">
+    {% include "portal/partials/gist_document.html" with gist_document=gist_release document_label="Release" %}
+</article>
+{% endblock %}

@@ -1,4 +1,5 @@
 import json
+from datetime import date
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
@@ -9,7 +10,7 @@ from django.test import SimpleTestCase, TestCase
 from django.urls import reverse
 
 from .gists import _render_report_markdown, parse_gist_id
-from .models import Report
+from .models import Release, Report
 
 
 GIST_ID = "6a946f178f4b6df48b30ef12e500ccd0"
@@ -586,3 +587,158 @@ FROM MDS.CHEM.chemical_lab_result_wide_by_day_location;
         response = self.client.get("/reports/")
 
         self.assertEqual(response.status_code, 404)
+
+
+class ReleaseTests(TestCase):
+    def test_release_model_normalizes_topic_and_derives_public_url(self):
+        release = Release.objects.create(
+            topic="Flux",
+            release_date=date(2026, 7, 14),
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        self.assertEqual(release.topic, "flux")
+        self.assertEqual(release.gist_id, GIST_ID)
+        self.assertEqual(release.get_absolute_url(), "/release/flux/2026-07-14")
+        self.assertEqual(str(release), "flux / 2026-07-14")
+
+    def test_release_admin_shows_destination_url_after_create(self):
+        user = get_user_model().objects.create_superuser(
+            username="release-admin",
+            email="release-admin@example.com",
+            password="password",
+        )
+        release = Release.objects.create(
+            topic="flux",
+            release_date=date(2026, 7, 14),
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        self.client.force_login(user)
+        response = self.client.get(f"/control/portal/release/{release.pk}/change/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Destination URL")
+        self.assertContains(response, f'href="{release.get_absolute_url()}"')
+
+    @patch("portal.gists.urlopen")
+    def test_public_release_renders_gist_and_links_to_release_index(self, mock_urlopen):
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {
+                    "description": "Flux 0.2 is available",
+                    "files": {
+                        "Release.md": {
+                            "filename": "Release.md",
+                            "content": "# Flux 0.2\n\nThis release adds public notices.",
+                            "truncated": False,
+                        },
+                        "upgrade.py": {
+                            "filename": "upgrade.py",
+                            "content": "print('upgrade')\n",
+                            "language": "Python",
+                            "truncated": False,
+                        },
+                        "compatibility.csv": {
+                            "filename": "compatibility.csv",
+                            "content": "platform,status\nLinux,supported\n",
+                            "type": "text/csv",
+                            "truncated": False,
+                        },
+                    },
+                }
+            ).encode("utf-8")
+        )
+        Release.objects.create(
+            topic="flux",
+            release_date=date(2026, 7, 14),
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get("/release/flux/2026-07-14")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Flux 0.2 is available")
+        self.assertContains(response, "Published July 14, 2026")
+        self.assertContains(response, "This release adds public notices.")
+        self.assertContains(response, "upgrade.py")
+        self.assertContains(response, "language-python")
+        self.assertContains(response, "compatibility.csv")
+        self.assertContains(response, 'href="/release/flux/2026-07-14/csv/compatibility.csv"')
+        self.assertContains(response, 'href="/release/"')
+        self.assertContains(response, "All releases")
+        self.assertNotContains(response, "Release.md")
+
+    @patch("portal.gists.urlopen")
+    def test_release_csv_download_uses_attachment_response(self, mock_urlopen):
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {
+                    "files": {
+                        "compatibility.csv": {
+                            "filename": "compatibility.csv",
+                            "content": "platform,status\nLinux,supported\n",
+                            "type": "text/csv",
+                            "truncated": False,
+                        }
+                    }
+                }
+            ).encode("utf-8")
+        )
+        Release.objects.create(
+            topic="flux",
+            release_date=date(2026, 7, 14),
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get("/release/flux/2026-07-14/csv/compatibility.csv")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["Content-Type"], "text/csv; charset=utf-8")
+        self.assertIn("compatibility.csv", response["Content-Disposition"])
+        self.assertEqual(response.content, b"platform,status\nLinux,supported\n")
+
+    def test_release_index_groups_by_topic_then_newest_date(self):
+        for topic, release_date, gist_id in [
+            ("flux", date(2026, 6, 1), GIST_ID),
+            ("agentlab", date(2026, 7, 1), OTHER_GIST_ID),
+            ("flux", date(2026, 7, 14), THIRD_GIST_ID),
+        ]:
+            Release.objects.create(
+                topic=topic,
+                release_date=release_date,
+                gist_url=f"https://gist.github.com/Bobby-Miller/{gist_id}",
+            )
+
+        response = self.client.get("/release/")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Releases by topic and date.")
+        self.assertContains(response, 'href="/release/agentlab/2026-07-01"')
+        self.assertContains(response, 'href="/release/flux/2026-07-14"')
+        self.assertContains(response, 'href="/release/flux/2026-06-01"')
+
+        content = response.content.decode("utf-8")
+        self.assertLess(content.index("<h2>Agentlab</h2>"), content.index("<h2>Flux</h2>"))
+        self.assertLess(content.index("July 14, 2026"), content.index("June 1, 2026"))
+
+    @patch("portal.gists.urlopen")
+    def test_release_requires_release_md(self, mock_urlopen):
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps({"files": {"notes.txt": {"content": "No release file", "truncated": False}}}).encode(
+                "utf-8"
+            )
+        )
+        Release.objects.create(
+            topic="flux",
+            release_date=date(2026, 7, 14),
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get("/release/flux/2026-07-14")
+
+        self.assertEqual(response.status_code, 404)
+
+    def test_release_detail_rejects_invalid_or_unpublished_dates(self):
+        self.assertEqual(self.client.get("/release/flux/2026-02-30").status_code, 404)
+        self.assertEqual(self.client.get("/release/flux/2026-07-14").status_code, 404)

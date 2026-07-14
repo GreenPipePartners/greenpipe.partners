@@ -43,6 +43,7 @@ IMAGE_EXTENSIONS = {".gif", ".jpeg", ".jpg", ".png", ".svg", ".webp"}
 CSV_FILE_TYPES = {"application/csv", "application/vnd.ms-excel", "text/csv"}
 CSV_PREVIEW_ROW_LIMIT = 25
 REPORT_FILENAME = "report.md"
+RELEASE_FILENAME = "release.md"
 
 
 class GistError(Exception):
@@ -55,27 +56,38 @@ def parse_gist_id(gist_url):
     gist_id = path_parts[-1] if path_parts else gist_url.strip()
 
     if parsed.scheme and parsed.netloc.lower() != "gist.github.com":
-        raise ValueError("Report gist URLs must use gist.github.com.")
+        raise ValueError("Gist URLs must use gist.github.com.")
     if not GIST_ID_RE.fullmatch(gist_id):
-        raise ValueError("Report gist URL must end with a GitHub Gist ID.")
+        raise ValueError("Gist URL must end with a GitHub Gist ID.")
 
     return gist_id
 
 
 def load_report_gist(gist_id):
+    gist_document = _load_gist_document(gist_id, REPORT_FILENAME, "Report")
+    gist_document["report_markdown"] = gist_document["document_markdown"]
+    gist_document["report_html"] = gist_document["document_html"]
+    return gist_document
+
+
+def load_release_gist(gist_id):
+    return _load_gist_document(gist_id, RELEASE_FILENAME, "Release")
+
+
+def _load_gist_document(gist_id, document_filename, document_label):
     gist = _fetch_json(f"https://api.github.com/gists/{gist_id}")
     files = gist.get("files") or {}
-    report_filename = _report_filename(files)
-    if not report_filename:
-        raise GistError("Report gist must contain report.md.")
+    gist_document_filename = _gist_document_filename(files, document_filename)
+    if not gist_document_filename:
+        raise GistError(f"{document_label} gist must contain {document_filename}.")
 
-    report_file = files[report_filename]
-    report_markdown = _normalize_report_images(_file_content(report_file))
+    document_file = files[gist_document_filename]
+    document_markdown = _normalize_report_images(_file_content(document_file))
     csvs = []
     images = []
     snippets = []
     for filename in sorted(files):
-        if filename == report_filename:
+        if filename == gist_document_filename:
             continue
         file_info = files[filename]
         if _is_image_file(filename, file_info):
@@ -105,15 +117,15 @@ def load_report_gist(gist_id):
 
     return {
         "description": gist.get("description") or "",
-        "report_markdown": report_markdown,
-        "report_html": mark_safe(_render_report_markdown(report_markdown)),
+        "document_markdown": document_markdown,
+        "document_html": mark_safe(_render_report_markdown(document_markdown)),
         "csvs": csvs,
         "images": [image for image in images if image["url"]],
         "snippets": snippets,
     }
 
 
-def load_report_csv(gist_id, filename):
+def load_gist_csv(gist_id, filename):
     gist = _fetch_json(f"https://api.github.com/gists/{gist_id}")
     file_info = (gist.get("files") or {}).get(filename)
     if not file_info or not _is_csv_file(filename, file_info):
@@ -121,11 +133,15 @@ def load_report_csv(gist_id, filename):
     return _file_content(file_info)
 
 
-def _report_filename(files):
-    if REPORT_FILENAME in files:
-        return REPORT_FILENAME
+def load_report_csv(gist_id, filename):
+    return load_gist_csv(gist_id, filename)
+
+
+def _gist_document_filename(files, expected_filename):
+    if expected_filename in files:
+        return expected_filename
     for filename in sorted(files):
-        if filename.lower() == REPORT_FILENAME:
+        if filename.lower() == expected_filename:
             return filename
     return ""
 

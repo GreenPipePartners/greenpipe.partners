@@ -1,11 +1,20 @@
+from datetime import date
+from itertools import groupby
+
 from django.conf import settings
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils.http import content_disposition_header
 
-from .gists import GistError, load_report_csv, load_report_gist
-from .models import Report
+from .gists import (
+    GistError,
+    load_gist_csv,
+    load_release_gist,
+    load_report_csv,
+    load_report_gist,
+)
+from .models import Release, Report
 
 
 def home(request):
@@ -58,6 +67,54 @@ def release_file(request, artifact_path):
     if file_path.is_dir():
         raise Http404("Published file not found.")
     return FileResponse(file_path.open("rb"))
+
+
+def release_index(request):
+    releases = Release.objects.order_by("topic", "-release_date")
+    release_groups = [
+        {"topic": topic, "releases": list(topic_releases)}
+        for topic, topic_releases in groupby(releases, key=lambda release: release.topic)
+    ]
+    return render(request, "portal/release_list.html", {"release_groups": release_groups})
+
+
+def release_detail(request, topic, release_date):
+    parsed_date = _parse_release_date(release_date)
+    release = Release.objects.filter(topic=topic, release_date=parsed_date).first()
+    if not release:
+        raise Http404("Release not found.")
+
+    try:
+        gist_release = load_release_gist(release.gist_id)
+    except GistError as exc:
+        raise Http404(str(exc)) from exc
+    _add_release_csv_download_urls(release, gist_release)
+
+    return render(
+        request,
+        "portal/release_detail.html",
+        {
+            "release": release,
+            "gist_release": gist_release,
+            "release_heading": gist_release.get("description") or f"{release.topic} release",
+        },
+    )
+
+
+def release_csv_download(request, topic, release_date, filename):
+    parsed_date = _parse_release_date(release_date)
+    release = Release.objects.filter(topic=topic, release_date=parsed_date).first()
+    if not release:
+        raise Http404("Release not found.")
+
+    try:
+        csv_content = load_gist_csv(release.gist_id, filename)
+    except GistError as exc:
+        raise Http404(str(exc)) from exc
+
+    response = HttpResponse(csv_content, content_type="text/csv; charset=utf-8")
+    response["Content-Disposition"] = content_disposition_header(True, filename)
+    return response
 
 
 def report_detail(request, customer, gist_id):
@@ -145,6 +202,18 @@ def _add_csv_download_urls(report, gist_report):
         )
 
 
+def _add_release_csv_download_urls(release, gist_release):
+    for csv_file in gist_release.get("csvs", []):
+        csv_file["download_url"] = reverse(
+            "portal:release_csv_download",
+            kwargs={
+                "topic": release.topic,
+                "release_date": release.release_date,
+                "filename": csv_file["filename"],
+            },
+        )
+
+
 def _customer_reports_url(report):
     return reverse(
         "portal:customer_reports",
@@ -178,6 +247,13 @@ def _report_list_meta(report):
 
 def _format_report_date(value):
     return f"{value:%B} {value.day}, {value:%Y}"
+
+
+def _parse_release_date(value):
+    try:
+        return date.fromisoformat(value)
+    except ValueError as exc:
+        raise Http404("Release not found.") from exc
 
 
 def _flux_docs_root(version):

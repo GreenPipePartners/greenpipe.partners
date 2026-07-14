@@ -91,6 +91,17 @@ The public URL shape is hidden/direct only:
 
 The Gist must contain `report.md` or `Report.md`. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
 
+## Public Releases
+
+Release notices are managed through Django admin with a topic, release date, and GitHub Gist URL. The Gist must contain `release.md` (case-insensitive); images, CSV attachments, and source files are rendered with the notice.
+
+```text
+/release/
+/release/{topic}/{YYYY-MM-DD}
+```
+
+The public index groups releases by topic and lists the newest release dates first. These notice routes coexist with static release artifacts under `/release/{topic}/{version}/...`.
+
 ## Deployment
 
 Render service and Postgres configuration lives in `render.yaml`. Operational notes live in `DEPLOYMENT.md`.

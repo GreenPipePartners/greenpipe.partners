@@ -1,0 +1,32 @@
+{% extends "portal/base.html" %}
+
+{% block title %}Software Releases - Green Pipe Partners{% endblock %}
+{% block meta_description %}Public software release notices from Green Pipe Partners{% endblock %}
+
+{% block hero %}
+<section class="hero compact report-hero">
+    <p class="eyebrow">Public release notices</p>
+    <h1 class="report-title">Releases by topic and date.</h1>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="report-shell report-index" aria-label="Software releases">
+    {% for group in release_groups %}
+    <section class="report-index-group">
+        <h2>{{ group.topic|title }}</h2>
+        <ul class="report-index-list">
+            {% for release in group.releases %}
+            <li>
+                <a class="text-link" href="{{ release.get_absolute_url }}">
+                    <time datetime="{{ release.release_date|date:'Y-m-d' }}">{{ release.release_date|date:"F j, Y" }}</time>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% empty %}
+    <p class="muted">No releases have been published yet.</p>
+    {% endfor %}
+</section>
+{% endblock %}

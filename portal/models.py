@@ -44,3 +44,39 @@ class Report(models.Model):
         if self.start_date or self.end_date:
             return f"{self.customer} / {self.start_date} - {self.end_date}"
         return f"{self.customer} / {self.get_report_type_display()} Report"
+
+
+class Release(models.Model):
+    topic = models.SlugField(max_length=80)
+    release_date = models.DateField()
+    gist_url = models.URLField()
+    gist_id = models.CharField(max_length=64, editable=False)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=["topic", "release_date"], name="unique_release_topic_date")
+        ]
+        ordering = ["topic", "-release_date"]
+
+    def clean(self):
+        self.topic = self.topic.strip().lower()
+        try:
+            self.gist_id = parse_gist_id(self.gist_url)
+        except ValueError as exc:
+            raise ValidationError({"gist_url": str(exc)}) from exc
+
+    def save(self, *args, **kwargs):
+        self.topic = self.topic.strip().lower()
+        self.gist_id = parse_gist_id(self.gist_url)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse(
+            "portal:release_detail",
+            kwargs={"topic": self.topic, "release_date": self.release_date},
+        )
+
+    def __str__(self):
+        return f"{self.topic} / {self.release_date}"
