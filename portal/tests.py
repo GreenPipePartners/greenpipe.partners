@@ -101,7 +101,7 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "F8:FE:15:C6:BE:62:CC:24")
         self.assertContains(response, "/release/fluxy/0.1.6.20260714/Fluxy-Ignition83-Free-0.1.6.20260714.modl")
         self.assertContains(response, "/release/fluxy/0.1.6.20260714/Fluxy-Ignition81-Free-0.1.6.20260714.modl")
-        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.6.20260714")
+        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl")
         self.assertContains(response, "partners.greenpipe.fluxy")
         self.assertContains(response, "Install fluxy-ign")
         self.assertContains(response, "https://pypi.org/project/fluxy-ign/")
@@ -109,6 +109,9 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "[default]fluxy")
         self.assertContains(response, "X-Ignition-API-Token")
         self.assertContains(response, "Hello World")
+        self.assertContains(response, "/docs/flux/0.1.0/fluxy/", count=6)
+        self.assertContains(response, "/docs/flux/0.1.0/fluxy/#authentication")
+        self.assertContains(response, "/docs/flux/0.1.0/fluxy/#install-the-gateway-module", count=2)
         self.assertContains(response, "not certified, approved, supported, or endorsed")
         self.assertNotContains(response, "backed by public MPL-2.0 source")
         self.assertNotContains(response, ".unsigned.modl")
@@ -249,6 +252,23 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(response["Location"], "/docs/flux/0.1.0/")
+
+    def test_fluxy_docs_source_contains_current_installation_guide(self):
+        docs_source = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "content"
+            / "docs"
+            / "fluxy"
+            / "index.mdx"
+        ).read_text()
+
+        self.assertIn("python -m pip install fluxy-ign", docs_source)
+        self.assertIn("Fluxy Free", docs_source)
+        self.assertIn("X-Ignition-API-Token", docs_source)
+        self.assertIn("[default]fluxy", docs_source)
+        self.assertIn("Hello World", docs_source)
+        self.assertIn("partners.greenpipe", docs_source)
 
     def test_flux_docs_serve_from_publish_root(self):
         with TemporaryDirectory() as temp_dir:

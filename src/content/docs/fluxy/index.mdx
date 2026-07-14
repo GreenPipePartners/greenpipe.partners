@@ -1,22 +1,188 @@
 ---
-title: fluxy
-description: Connect Ignition to Python 3.
+title: Fluxy
+description: Install Fluxy Free and control Ignition tags from Python 3.
 ---
 
-fluxy is a free open-source Python library for connecting Ignition to Python 3.
+Fluxy connects external Python 3 programs to a small, authenticated allowlist of Ignition Gateway operations. It combines the signed **Fluxy Free** Gateway module with the [`fluxy-ign`](https://pypi.org/project/fluxy-ign/) Python package.
 
-Project repository: [Bobby-Miller/Fluxy](https://github.com/Bobby-Miller/Fluxy)
+:::note[Two components]
+Install the Gateway module that matches your Ignition version, then install `fluxy-ign` in the Python environment that will call it.
+:::
 
-## What it is for
+## Requirements
 
-- Moving data between Ignition projects and Python tooling.
-- Building small automation paths without turning Ignition into a general-purpose Python app host.
-- Supporting Flux workflows where Python is the right tool.
+- Ignition 8.1.50 or newer, or Ignition 8.3.4 or newer.
+- Python 3.12 or newer on the external machine.
+- HTTPS for any connection that leaves the Gateway host.
+- An Ignition tag provider. The examples use the built-in `default` provider.
 
-## Planned docs
+## Install the Gateway module
 
-- Installation.
-- Connection setup.
-- Basic examples.
-- Ignition project patterns.
-- Troubleshooting.
+1. Open the [Fluxy download page](/fluxy/#downloads).
+2. Download the `.modl` file for your Gateway's major version.
+3. In the Ignition Gateway, open **Modules** and choose **Install or Upgrade a Module**.
+4. Upload the module and accept the MPL-2.0 license.
+5. Verify that the signing certificate subject is **Green Pipe Partners, LLC** and that its SHA-256 fingerprint is:
+
+```text
+F8:FE:15:C6:BE:62:CC:24:78:C4:25:0F:90:4F:74:72:37:83:07:D5:62:30:77:65:78:27:5A:5B:83:DD:15:64
+```
+
+6. Complete the Gateway restart if Ignition stages the installation for restart.
+7. Confirm **Fluxy Free** is running with module ID `partners.greenpipe.fluxy` before configuring Python.
+
+Do not enable unsigned modules. Fluxy Free is signed and does not require an Ignition module entitlement.
+
+## Install the Python client
+
+Install the published `fluxy-ign` package:
+
+```bash
+python -m pip install fluxy-ign
+```
+
+The distribution name is `fluxy-ign`; the Python import is `fluxy`.
+
+## Authentication
+
+Every module route requires a credential. Keep tokens outside source control and replace the placeholders in the examples before running them.
+
+### Ignition 8.3
+
+1. Open **Platform > Security > General Settings**.
+2. Configure Gateway API Access, Read, and Write permissions for a static security level your service key can hold.
+3. Create the key under **Platform > Security > API Keys**.
+4. Save the complete one-time credential, including the key name, such as `fluxy-service:secret`.
+5. Use a base URL ending in `/data`:
+
+```text
+https://your-gateway.example/data
+```
+
+For production, use dedicated security levels and separate read-only and write-enabled keys rather than broad `Authenticated` access.
+
+### Ignition 8.1
+
+Ignition 8.1 does not provide native Gateway API keys. Generate a random token and calculate its SHA-256 hash without a trailing newline:
+
+```bash
+printf '%s' 'replace-with-a-random-token' | sha256sum
+```
+
+Add the hash to `data/ignition.conf` using the next available `wrapper.java.additional.N` index:
+
+```properties
+wrapper.java.additional.N=-Dfluxy.apiTokenSha256=<64-character-write-token-sha256>
+wrapper.java.additional.M=-Dfluxy.readApiTokenSha256=<optional-read-only-token-sha256>
+```
+
+Restart the Gateway after changing these properties. Use a base URL ending in `/main/data`:
+
+```text
+https://your-gateway.example/main/data
+```
+
+The write token can call all Fluxy routes. The optional read token can call only read routes. Store only hashes in Gateway configuration and use at least 256 random bits for each token.
+
+## Hello World tag
+
+This example creates a String memory tag named `fluxy` at `[default]fluxy`, writes `Hello World`, reads it back, and prints the result.
+
+Save it as `hello_fluxy.py`. The example uses the Ignition 8.3 URL; use `/main/data` instead when connecting to Ignition 8.1.
+
+```python
+import httpx
+from fluxy import Fluxy
+
+api_token = "fluxy-service:replace-with-your-secret"
+
+with httpx.Client(
+    headers={"X-Ignition-API-Token": api_token}
+) as client:
+    fx = Fluxy(
+        "https://your-gateway.example/data",
+        tag_provider="default",
+        http_client=client,
+    )
+
+    tag_path = "[default]fluxy"
+    fx.tag.configure(
+        [
+            {
+                "name": "fluxy",
+                "tagType": "AtomicTag",
+                "valueSource": "memory",
+                "dataType": "String",
+                "value": "",
+            }
+        ],
+        base_path="[default]",
+        collision_policy="o",
+    )
+
+    fx.tag.write_blocking(tag_path, "Hello World")
+    value = fx.tag.read_blocking(tag_path)
+    print(value.value)
+```
+
+Run it:
+
+```bash
+python hello_fluxy.py
+```
+
+Expected output:
+
+```text
+Hello World
+```
+
+Open the Ignition Tag Browser and confirm `[default]fluxy` is a String memory tag with the same value.
+
+## Common operations
+
+```python
+# Read one tag.
+value = fx.tag.read_blocking("[default]Area/Temperature")
+
+# Write one tag.
+result = fx.tag.write_blocking("[default]Area/Setpoint", 72.5)
+
+# Browse a folder.
+children = fx.tag.browse("[default]Area")
+
+# Request a project scan after changing project files.
+scan = fx.project.request_scan()
+```
+
+Only call write or configure operations with credentials intended for mutation routes. Fluxy does not accept arbitrary Python source or arbitrary Ignition function names.
+
+## Troubleshooting
+
+### HTTP 401 or 403
+
+- Confirm the complete token is in the `X-Ignition-API-Token` header.
+- On 8.3, confirm the API key has the Gateway API Access permission and the required Read or Write security level.
+- On 8.1, recompute the SHA-256 hash without a newline and confirm the Gateway was restarted after editing `ignition.conf`.
+
+### HTTP 404
+
+- Confirm Fluxy Free is running under **Modules**.
+- Use `/data` for Ignition 8.3 and `/main/data` for Ignition 8.1.
+- Keep `/fluxy/...` out of the configured base URL; the Python client appends route paths itself.
+
+### Tag quality is `Bad_DoesNotExist`
+
+Confirm the provider exists and the path begins with the correct provider, such as `[default]`.
+
+### TLS or certificate errors
+
+The module-signing certificate verifies the `.modl`; it is separate from the HTTPS certificate used by the Gateway or reverse proxy. Configure a trusted HTTPS certificate for remote clients rather than disabling certificate validation.
+
+## Project links
+
+- [Fluxy downloads](/fluxy/)
+- [`fluxy-ign` on PyPI](https://pypi.org/project/fluxy-ign/)
+- [Python client source](https://github.com/GreenPipePartners/Fluxy)
+- [Gateway module source](https://github.com/GreenPipePartners/Fluxy-modl)
+- [Current release metadata](/release/fluxy/latest.json)

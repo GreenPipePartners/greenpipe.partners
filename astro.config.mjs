@@ -18,7 +18,7 @@ export default defineConfig({
           items: [
             { label: "Intro", slug: "" },
             { label: "Flux", slug: "flux" },
-            { label: "fluxy", slug: "fluxy" },
+            { label: "Fluxy", slug: "fluxy" },
           ],
         },
       ],
