@@ -3,7 +3,7 @@ title: Gateway Function Reference
 description: Every function exposed by the Fluxy Free Ignition Gateway module.
 ---
 
-Fluxy Free `0.1.6.20260714` exposes **13 authenticated Gateway functions**. Ignition 8.1 and 8.3 use the same JSON contract and Python names; only the route prefix, authorization implementation, and underlying version adapters differ.
+Fluxy Free `0.2.0.20260714` declares **28 authenticated Gateway functions**. All 28 are available on Ignition 8.3; 26 are available on Ignition 8.1 because historian metadata requires 8.3. The route prefix, authorization implementation, and underlying version adapters differ, but supported operations retain the same JSON contract and Python names.
 
 :::caution[Native module scope]
 This page lists functions exposed by the signed Fluxy Free Gateway module. The `fluxy-ign` package also contains APIs for the optional WebDev transport. Functions not listed here are not available through the native module and return HTTP 404.
@@ -18,7 +18,7 @@ All functions use HTTP `POST`.
 | Ignition 8.3.4+ | `/data/fluxy` | Complete Ignition Gateway API key in `X-Ignition-API-Token` |
 | Ignition 8.1.50+ | `/main/data/fluxy` | Fluxy token whose SHA-256 hash is configured on the Gateway |
 
-JSON routes accept `Content-Type: application/json` and reject request bodies larger than 1 MiB. Every route returns `X-Fluxy-Request-Id` and `X-Fluxy-Run-Id` response headers. Clients may supply:
+JSON routes accept `Content-Type: application/json`, reject request bodies larger than 1 MiB, and reject ordinary JSON responses larger than 4 MiB. Collection requests accept at most 1,000 items. Every route returns `X-Fluxy-Request-Id` and `X-Fluxy-Run-Id` response headers. Clients may supply:
 
 - `X-Fluxy-Request-Id`: unique operation correlation ID.
 - `X-Fluxy-Run-Id`: stable script or batch correlation ID.
@@ -26,23 +26,40 @@ JSON routes accept `Content-Type: application/json` and reject request bodies la
 
 Ignition 8.3 authorization uses the Gateway API Read or Write permission shown below. Ignition 8.1 uses the configured read token or write token; the write token can call both access levels.
 
+Every Write operation emits a mutation audit record when the Gateway audit profile is configured. Audit records contain operation and target identifiers, but never imported tag definitions, tag or historian values, annotation data, metadata values, API credentials, or complete request bodies.
+
 ## Function index
 
 | Python API | Gateway route | Access | Underlying Ignition API |
 | --- | --- | --- | --- |
 | `fx.util.get_version()` | `util/getVersion` | Read | `system.util.getVersion` |
+| Current client source | `util/getCapabilities` | Read | Shared native route manifest |
+| `fx.util.get_modules()` | `util/getModules` | Read | `system.util.getModules` |
 | `fx.util.query_audit_log(...)` | `util/queryAuditLog` | Read | `system.util.queryAuditLog` |
 | `fx.tag.read_blocking(...)` | `tag/readBlocking` | Read | `system.tag.readBlocking` |
 | `fx.tag.browse(...)` | `tag/browse` | Read | `system.tag.browse` |
 | `fx.tag.get_configuration(...)` | `tag/getConfiguration` | Read | `system.tag.getConfiguration` |
+| `fx.tag.export_tags(...)` | `tag/exportTags` | Read | `system.tag.exportTags` |
+| `fx.tag.query(...)` | `tag/queryTags` | Read | `system.tag.query` |
 | `fx.tag.configure(...)` | `tag/configure` | Write | `system.tag.configure` |
 | `fx.tag.write_blocking(...)` | `tag/writeBlocking` | Write | `system.tag.writeBlocking` |
 | `fx.tag.delete_tags(...)` | `tag/deleteTags` | Write | `system.tag.deleteTags` |
+| `fx.tag.copy(...)` | `tag/copy` | Write | `system.tag.copy` |
+| `fx.tag.move(...)` | `tag/move` | Write | `system.tag.move` |
+| `fx.tag.rename(...)` | `tag/rename` | Write | `system.tag.rename` |
+| `fx.tag.import_tags(...)` | `tag/importTags` | Write | `system.tag.importTags` |
 | `fx.historian.browse(...)` | `historian/browse` | Read | 8.3 `system.historian.browse`; 8.1 `system.tag.browseHistoricalTags` |
 | `fx.historian.query_raw_points(...)` | `historian/queryRawPoints` | Read | 8.3 `system.historian.queryRawPoints`; 8.1 `system.tag.queryTagHistory` |
 | Client helper in current source | `historian/queryRawPointsStream` | Read | Java `TagHistoryManager.queryHistory` |
+| `fx.historian.query_aggregated_points(...)` | `historian/queryAggregatedPoints` | Read | 8.3 `system.historian.queryAggregatedPoints`; 8.1 history/calculation adapters |
+| `fx.historian.query_annotations(...)` | `historian/queryAnnotations` | Read | 8.3 `system.historian.queryAnnotations`; 8.1 `system.tag.queryAnnotations` |
+| `fx.historian.query_metadata(...)` | `historian/queryMetadata` | Read | 8.3 only: `system.historian.queryMetadata` |
 | `fx.historian.store_data_points(...)` | `historian/storeDataPoints` | Write | 8.3 `system.historian.storeDataPoints`; 8.1 `system.tag.storeTagHistory` |
+| `fx.historian.store_annotations(...)` | `historian/storeAnnotations` | Write | 8.3 `system.historian.storeAnnotations`; 8.1 `system.tag.storeAnnotations` |
+| `fx.historian.delete_annotations(...)` | `historian/deleteAnnotations` | Write | 8.3 `system.historian.deleteAnnotations`; 8.1 `system.tag.deleteAnnotations` |
+| `fx.historian.store_metadata(...)` | `historian/storeMetadata` | Write | 8.3 only: `system.historian.storeMetadata` |
 | `fx.project.request_scan()` | `project/requestScan` | Read | Java `ProjectManager.requestScan` |
+| `fx.project.get_project_names()` | `project/getProjectNames` | Read | `system.project.getProjectNames` |
 
 Routes below are relative to `/data/fluxy/` on 8.3 or `/main/data/fluxy/` on 8.1.
 
@@ -56,6 +73,34 @@ Routes below are relative to `/data/fluxy/` on 8.3 or `/main/data/fluxy/` on 8.1
 - **Access:** Read
 - **Request:** empty JSON object.
 - **Response:** `version`, `major`, `minor`, `transport`, and `contractVersion`.
+
+```json
+{}
+```
+
+### Get module capabilities
+
+`POST util/getCapabilities`
+
+- **Python:** `fx.util.get_capabilities()` in current client source. PyPI `fluxy-ign 0.1.1` can call the raw route directly but does not include this helper.
+- **Access:** Read
+- **Request:** empty JSON object.
+- **Response:** transport, contract version, module version, Ignition family, and all 28 declared operations with `access` and version-specific `available` fields.
+
+```json
+{}
+```
+
+Use capability discovery before optional operations. Ignition 8.1 reports `historian/queryMetadata` and `historian/storeMetadata` with `available: false`; those routes are not mounted on 8.1.
+
+### List installed modules
+
+`POST util/getModules`
+
+- **Python:** `fx.util.get_modules()`
+- **Access:** Read
+- **Request:** empty JSON object.
+- **Response:** the installed module inventory as `columns` and `rows`; the Python client converts it to row mappings.
 
 ```json
 {}
@@ -132,6 +177,45 @@ Routes below are relative to `/data/fluxy/` on 8.3 or `/main/data/fluxy/` on 8.1
 }
 ```
 
+### Export tags
+
+`POST tag/exportTags`
+
+- **Python:** `fx.tag.export_tags(tag_paths, recursive=True)`
+- **Access:** Read
+- **Required:** `tagPaths` list.
+- **Optional:** `recursive`; default `true`.
+- **Response:** decoded `tags` plus the original Ignition `rawJson` export.
+
+```json
+{
+  "tagPaths": ["[default]Area"],
+  "recursive": true
+}
+```
+
+### Query tags
+
+`POST tag/queryTags`
+
+- **Python:** `fx.tag.query(provider, query=None, limit=None, continuation=None)`
+- **Access:** Read
+- **Required:** `provider` string.
+- **Optional:** Ignition tag-report `query` object, `limit`, and `continuation` point.
+- **Limits:** omitted `limit` defaults to `1000`; accepted range is `1` through `10000`.
+- **Response:** requested tag properties and `continuationPoint`. JSON-compatible property types are preserved.
+
+```json
+{
+  "provider": "default",
+  "query": {
+    "condition": {"path": "Area/*", "tagType": "AtomicTag"},
+    "returnProperties": ["path", "tagType", "valueSource"]
+  },
+  "limit": 100
+}
+```
+
 ### Configure tags
 
 `POST tag/configure`
@@ -194,6 +278,77 @@ Routes below are relative to `/data/fluxy/` on 8.3 or `/main/data/fluxy/` on 8.1
 }
 ```
 
+### Copy tags
+
+`POST tag/copy`
+
+- **Python:** `fx.tag.copy(tag_paths, destination_path, collision_policy="o")`
+- **Access:** Write
+- **Required:** `tagPaths` list and `destinationPath` string.
+- **Optional:** `collisionPolicy`; default `o`.
+- **Response:** source, destination, and quality for every copied tag.
+
+```json
+{
+  "tagPaths": ["[default]Area/Source"],
+  "destinationPath": "[default]Area/Copies",
+  "collisionPolicy": "o"
+}
+```
+
+### Move a tag
+
+`POST tag/move`
+
+- **Python:** `fx.tag.move(source_path, destination_path)`
+- **Access:** Write
+- **Required:** `sourcePath` and destination-folder `destinationPath` strings.
+- **Response:** source, destination, and quality.
+
+```json
+{
+  "sourcePath": "[default]Area/Source",
+  "destinationPath": "[default]Area/Moved"
+}
+```
+
+### Rename a tag
+
+`POST tag/rename`
+
+- **Python:** `fx.tag.rename(tag_path, new_name)`
+- **Access:** Write
+- **Required:** `tagPath` and `newName` strings.
+- **Response:** original path, new name, and quality.
+
+```json
+{
+  "tagPath": "[default]Area/OldName",
+  "newName": "NewName"
+}
+```
+
+### Import tags
+
+`POST tag/importTags`
+
+- **Python:** `fx.tag.import_tags(tags, base_path=..., collision_policy="o")`
+- **Access:** Write
+- **Required:** `tags` as decoded tag-export JSON or a raw JSON string, plus `basePath`.
+- **Optional:** `collisionPolicy`; default `o`.
+- **Response:** one quality per imported root tag.
+
+```json
+{
+  "basePath": "[default]",
+  "collisionPolicy": "o",
+  "tags": {
+    "name": "ImportedFolder",
+    "tagType": "Folder"
+  }
+}
+```
+
 ## Historian functions
 
 Historian functions require an enabled, licensed or active-trial historian module and a configured provider.
@@ -232,6 +387,34 @@ Historian functions require an enabled, licensed or active-trial historian modul
   "returnSize": 100
 }
 ```
+
+### Query aggregated history
+
+`POST historian/queryAggregatedPoints`
+
+- **Python:** `fx.historian.query_aggregated_points(...)`
+- **Access:** Read
+- **Required:** `paths` list, `startTime`, and `endTime` as epoch milliseconds.
+- **Optional:** `aggregates`, `fillModes`, `columnNames`, `returnFormat`, `returnSize`, `includeBounds`, and `excludeObservations`.
+- **Limits:** `returnSize` defaults to `1` and accepts `1` through `100000`.
+- **Response:** an Ignition Dataset serialized as `columns` and `rows`.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startTime": 1783987200000,
+  "endTime": 1784073600000,
+  "aggregates": ["Maximum"],
+  "fillModes": ["NONE"],
+  "columnNames": ["Maximum"],
+  "returnFormat": "CALCULATION",
+  "returnSize": 1,
+  "includeBounds": false,
+  "excludeObservations": false
+}
+```
+
+On Ignition 8.1, `CALCULATION` uses `system.tag.queryTagCalculations`; `WIDE` and `TALL` use `system.tag.queryTagHistory`. The 8.1 adapter supports a consistent `DERIVED` or `NONE` fill mode for all paths and rejects other fill modes or `excludeObservations: true` rather than silently changing semantics.
 
 ### Stream raw history
 
@@ -275,6 +458,98 @@ Historian functions require an enabled, licensed or active-trial historian modul
 }
 ```
 
+### Store annotations
+
+`POST historian/storeAnnotations`
+
+- **Python:** `fx.historian.store_annotations(...)`
+- **Access:** Write
+- **Required:** equally sized `paths` and epoch-millisecond `startTimes` lists.
+- **Optional:** equally sized `endTimes`, `types`, `data`, `storageIds`, and `deleted` lists.
+- **Response:** one quality string per annotation.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startTimes": [1783987200000],
+  "endTimes": [1783987260000],
+  "types": ["note"],
+  "data": ["Operator check"]
+}
+```
+
+### Query annotations
+
+`POST historian/queryAnnotations`
+
+- **Python:** `fx.historian.query_annotations(paths, start_date, end_date=None, allowed_types=None)`
+- **Access:** Read
+- **Required:** `paths` list and epoch-millisecond `startDate`.
+- **Optional:** epoch-millisecond `endDate` and `allowedTypes` list.
+- **Response:** storage ID, path, time range, type, data, and available author/deleted fields.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startDate": 1783987200000,
+  "endDate": 1784073600000,
+  "allowedTypes": ["note"]
+}
+```
+
+### Delete annotations
+
+`POST historian/deleteAnnotations`
+
+- **Python:** `fx.historian.delete_annotations(paths, storage_ids)`
+- **Access:** Write
+- **Required:** equally sized `paths` and `storageIds` lists.
+- **Response:** one quality string per deletion.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "storageIds": ["annotation-storage-id"]
+}
+```
+
+### Store metadata
+
+`POST historian/storeMetadata`
+
+- **Python:** `fx.historian.store_metadata(paths, timestamps, properties)`
+- **Availability:** Ignition 8.3 only.
+- **Access:** Write
+- **Required:** equally sized `paths` and epoch-millisecond `timestamps` lists plus a `properties` object.
+- **Response:** one quality string per path.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "timestamps": [1783987200000],
+  "properties": {"documentation": "Commissioned", "engUnit": "degF"}
+}
+```
+
+### Query metadata
+
+`POST historian/queryMetadata`
+
+- **Python:** `fx.historian.query_metadata(paths, start_date=None, end_date=None)`
+- **Availability:** Ignition 8.3 only.
+- **Access:** Read
+- **Required:** `paths` list.
+- **Optional:** epoch-millisecond `startDate` and `endDate`; an end date requires a start date.
+- **Response:** path, timestamp, quality, and metadata properties.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startDate": 1783987200000,
+  "endDate": 1784073600000
+}
+```
+
 ## Project functions
 
 ### Request project scan
@@ -293,6 +568,19 @@ Historian functions require an enabled, licensed or active-trial historian modul
 ```
 
 A timeout stops only the HTTP request from waiting. It does not cancel the project scan. Use this function after changing files under `data/projects/`; do not restart the Gateway merely to load project changes.
+
+### List projects
+
+`POST project/getProjectNames`
+
+- **Python:** `fx.project.get_project_names()`
+- **Access:** Read
+- **Request:** empty JSON object.
+- **Response:** `projectNames` list.
+
+```json
+{}
+```
 
 ## Direct HTTP example
 
@@ -315,8 +603,6 @@ The native module intentionally does not expose arbitrary scripting or the broad
 - User, role, schedule, and holiday management.
 - OPC UA connection management.
 - Arbitrary script or function execution.
-- Tag copy, move, rename, import, export, and query operations.
-- Historian aggregates, annotations, and metadata operations.
 
 Use only functions in this reference when the client base URL targets the Fluxy Free Gateway module.
 
