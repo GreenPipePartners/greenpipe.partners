@@ -21,6 +21,10 @@ def home(request):
     return render(request, "portal/home.html")
 
 
+def fluxy(request):
+    return render(request, "portal/fluxy.html")
+
+
 def logo(request):
     logo_path = settings.BASE_DIR / "logo_hollow.png"
     if not logo_path.exists():

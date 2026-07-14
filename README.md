@@ -19,6 +19,8 @@ Health check: `http://127.0.0.1:8000/health/`
 
 About page: `http://127.0.0.1:8000/about/`
 
+Fluxy downloads: `http://127.0.0.1:8000/fluxy/`
+
 Flux docs: `http://127.0.0.1:8000/docs/flux/latest/`
 
 ## Product Docs
@@ -43,6 +45,7 @@ The website publishes install intent and release metadata. It must not SSH into 
 
 - Public install CTA is on `/`
 - Canonical artifact route: `/release/flux/{version}/...`
+- Fluxy module artifact route: `/release/fluxy/{version}/...`
 - Public signing key route: `/release/flux/flux-release.pub`
 - Typo route `/realease/...` redirects to `/release/...`
 - Managed install API shape is documented in `greenpipe-website-contract.md`

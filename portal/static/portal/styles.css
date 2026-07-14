@@ -368,6 +368,106 @@ h3 {
     padding: clamp(28px, 5vw, 48px);
 }
 
+.fluxy-release-shell {
+    margin-bottom: 72px;
+}
+
+.fluxy-release-summary,
+.fluxy-download-grid {
+    display: grid;
+    gap: 18px;
+}
+
+.fluxy-release-summary {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 18px;
+}
+
+.fluxy-release-summary div,
+.fluxy-trust-note,
+.fluxy-download-card,
+.fluxy-install-card {
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+}
+
+.fluxy-release-summary div {
+    padding: 18px 20px;
+}
+
+.fluxy-release-summary span,
+.fluxy-release-summary strong {
+    display: block;
+}
+
+.fluxy-release-summary span {
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.fluxy-trust-note,
+.fluxy-install-card {
+    margin-bottom: 18px;
+    padding: clamp(22px, 4vw, 32px);
+}
+
+.fluxy-trust-note {
+    border-color: var(--green);
+}
+
+.fluxy-trust-note code {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--ink);
+}
+
+.fluxy-trust-links,
+.fluxy-artifact-links,
+.fluxy-release-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 18px;
+}
+
+.fluxy-trust-links {
+    margin: 18px 0 0;
+}
+
+.fluxy-download-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-bottom: 18px;
+}
+
+.fluxy-download-card {
+    padding: clamp(24px, 4vw, 36px);
+}
+
+.fluxy-download-card .button {
+    margin: 8px 0 18px;
+}
+
+.fluxy-install-card ol {
+    padding-left: 1.25rem;
+}
+
+.fluxy-install-card li + li {
+    margin-top: 10px;
+}
+
+.fluxy-disclaimer {
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.fluxy-release-links {
+    margin-bottom: 0;
+}
+
 .dev-warning {
     margin: 0 0 72px;
     padding: 18px 22px;
@@ -1143,6 +1243,11 @@ h3 {
     .report-toolbar {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .fluxy-release-summary,
+    .fluxy-download-grid {
+        grid-template-columns: 1fr;
     }
 
     .ailab-hero,

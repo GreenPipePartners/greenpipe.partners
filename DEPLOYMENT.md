@@ -11,7 +11,7 @@ uv run python manage.py test
 uv run python manage.py runserver
 ```
 
-Open `http://127.0.0.1:8000/` for the homepage, `http://127.0.0.1:8000/about/` for About, `http://127.0.0.1:8000/docs/flux/latest/` for Flux docs, and `http://127.0.0.1:8000/health/` for the health check.
+Open `http://127.0.0.1:8000/` for the homepage, `http://127.0.0.1:8000/about/` for About, `http://127.0.0.1:8000/fluxy/` for signed Fluxy module downloads, `http://127.0.0.1:8000/docs/flux/latest/` for Flux docs, and `http://127.0.0.1:8000/health/` for the health check.
 
 Astro/Starlight docs can be previewed with `npm run docs:dev` and built with `npm run docs:build`. Docs builds require Node `>=22.12.0`.
 
@@ -36,6 +36,7 @@ The Docker start command runs `python manage.py migrate --noinput` before Gunico
 - `DJANGO_SECRET_KEY`, `DJANGO_DEBUG`, `DJANGO_ALLOWED_HOSTS`, CSRF origins, and `DATABASE_URL` are environment-driven.
 - The frontend is Django templates plus HTMX, not a React/SPA stack.
 - Flux and fluxy long-form docs are authored with Astro/Starlight. Decide before production whether docs publish from this service, a Render static site, or `docs.greenpipe.partners`.
+- Signed Fluxy `.modl` files, checksums, SBOMs, certificate, and release metadata are committed under `published/greenpipe-handoff/release/fluxy/{version}/` and served from `/release/fluxy/{version}/`.
 - Astro production output is `.runtime/site/` and should be mounted as static docs, not rendered by Django per request.
 - The Flux deployment contract lives in `greenpipe-website-contract.md`; the website publishes typed install intent, release artifacts, checksums, signatures, manifests, and status views only.
 - Fluxup is the primary installer UX: `uvx fluxup init`.

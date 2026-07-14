@@ -1,3 +1,4 @@
+import hashlib
 import json
 from datetime import date
 from pathlib import Path
@@ -84,9 +85,59 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "Green Pipe Partners is a software company")
         self.assertContains(response, "open-source industrial and manufacturing development tools")
         self.assertContains(response, "https://github.com/GreenPipePartners/Flux")
-        self.assertContains(response, "https://github.com/Bobby-Miller/Fluxy")
+        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy")
         self.assertContains(response, "Flux")
         self.assertContains(response, "Fluxy")
+
+    def test_fluxy_page_renders_signed_downloads(self):
+        response = self.client.get(reverse("portal:fluxy"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Fluxy Free public beta")
+        self.assertContains(response, "0.1.3.20260714")
+        self.assertContains(response, "Ignition 8.3")
+        self.assertContains(response, "Ignition 8.1")
+        self.assertContains(response, "Green Pipe Partners, LLC")
+        self.assertContains(response, "F8:FE:15:C6:BE:62:CC:24")
+        self.assertContains(response, "/release/fluxy/0.1.3.20260714/Fluxy-Ignition83-Free-0.1.3.20260714.modl")
+        self.assertContains(response, "/release/fluxy/0.1.3.20260714/Fluxy-Ignition81-Free-0.1.3.20260714.modl")
+        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.3.20260714")
+        self.assertContains(response, "not certified, approved, supported, or endorsed")
+        self.assertNotContains(response, ".unsigned.modl")
+
+    def test_fluxy_artifacts_are_served_and_match_published_checksums(self):
+        version = "0.1.3.20260714"
+        release_root = (
+            Path(__file__).resolve().parents[1]
+            / "published"
+            / "greenpipe-handoff"
+            / "release"
+            / "fluxy"
+            / version
+        )
+
+        for ignition_line in ("81", "83"):
+            filename = f"Fluxy-Ignition{ignition_line}-Free-{version}.modl"
+            artifact = release_root / filename
+            expected = (release_root / f"{filename}.sha256").read_text().split()[0]
+            self.assertEqual(hashlib.sha256(artifact.read_bytes()).hexdigest(), expected)
+
+            response = self.client.get(f"/release/fluxy/{version}/{filename}")
+            self.assertEqual(response.status_code, 200)
+            response_digest = hashlib.sha256(b"".join(response.streaming_content)).hexdigest()
+            self.assertEqual(response_digest, expected)
+
+    def test_fluxy_latest_metadata_points_to_tagged_release(self):
+        response = self.client.get("/release/fluxy/latest.json")
+
+        self.assertEqual(response.status_code, 200)
+        payload = json.loads(b"".join(response.streaming_content))
+        self.assertEqual(payload["version"], "0.1.3.20260714")
+        self.assertEqual(payload["channel"], "public-beta")
+        self.assertEqual(
+            payload["source"],
+            "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.3.20260714",
+        )
 
     def test_agentlab_page_renders(self):
         response = self.client.get(reverse("portal:agentlab"))

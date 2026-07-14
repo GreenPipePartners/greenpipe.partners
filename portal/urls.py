@@ -6,6 +6,7 @@ app_name = "portal"
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("fluxy/", views.fluxy, name="fluxy"),
     path("logo_hollow.png", views.logo, name="logo"),
     path("health/", views.health, name="health"),
     path("docs/", views.docs, name="docs"),
