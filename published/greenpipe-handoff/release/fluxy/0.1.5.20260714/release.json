@@ -1,0 +1,41 @@
+{
+  "apiVersion": "fluxy.greenpipe.partners/v1",
+  "kind": "FluxyModuleRelease",
+  "metadata": {
+    "channel": "public-beta",
+    "version": "0.1.5.20260714"
+  },
+  "module": {
+    "id": "partners.greenpipe.fluxy",
+    "assignedPrefix": "partners.greenpipe",
+    "free": true
+  },
+  "source": {
+    "repository": "https://github.com/GreenPipePartners/Fluxy-modl",
+    "tag": "v0.1.5.20260714",
+    "commit": "68d96cef9de848dc20cf25eeff6bd7582df40a48",
+    "license": "MPL-2.0"
+  },
+  "signing": {
+    "type": "self-signed",
+    "subject": "CN=Green Pipe Partners, LLC",
+    "certificateUrl": "https://greenpipe.partners/release/fluxy/0.1.5.20260714/Fluxy-Beta-Signing-Certificate.pem",
+    "sha256Fingerprint": "F8:FE:15:C6:BE:62:CC:24:78:C4:25:0F:90:4F:74:72:37:83:07:D5:62:30:77:65:78:27:5A:5B:83:DD:15:64"
+  },
+  "artifacts": [
+    {
+      "ignitionLine": "8.1",
+      "minimumIgnitionVersion": "8.1.50",
+      "file": "Fluxy-Ignition81-Free-0.1.5.20260714.modl",
+      "size": 64280,
+      "sha256": "a97b4774dad55f9f812fceda8ba44e6ec42c163922df128e9e1ca0b82188e06f"
+    },
+    {
+      "ignitionLine": "8.3",
+      "minimumIgnitionVersion": "8.3.4",
+      "file": "Fluxy-Ignition83-Free-0.1.5.20260714.modl",
+      "size": 61121,
+      "sha256": "8bc17c55fe6592b33f238f384f7bc8a9259e479783c10894d8d07de4dcacee7b"
+    }
+  ]
+}

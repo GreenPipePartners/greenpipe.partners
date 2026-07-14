@@ -94,19 +94,20 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Fluxy Free public beta")
-        self.assertContains(response, "0.1.3.20260714")
+        self.assertContains(response, "0.1.5.20260714")
         self.assertContains(response, "Ignition 8.3")
         self.assertContains(response, "Ignition 8.1")
         self.assertContains(response, "Green Pipe Partners, LLC")
         self.assertContains(response, "F8:FE:15:C6:BE:62:CC:24")
-        self.assertContains(response, "/release/fluxy/0.1.3.20260714/Fluxy-Ignition83-Free-0.1.3.20260714.modl")
-        self.assertContains(response, "/release/fluxy/0.1.3.20260714/Fluxy-Ignition81-Free-0.1.3.20260714.modl")
-        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.3.20260714")
+        self.assertContains(response, "/release/fluxy/0.1.5.20260714/Fluxy-Ignition83-Free-0.1.5.20260714.modl")
+        self.assertContains(response, "/release/fluxy/0.1.5.20260714/Fluxy-Ignition81-Free-0.1.5.20260714.modl")
+        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.5.20260714")
+        self.assertContains(response, "partners.greenpipe.fluxy")
         self.assertContains(response, "not certified, approved, supported, or endorsed")
         self.assertNotContains(response, ".unsigned.modl")
 
     def test_fluxy_artifacts_are_served_and_match_published_checksums(self):
-        version = "0.1.3.20260714"
+        version = "0.1.5.20260714"
         release_root = (
             Path(__file__).resolve().parents[1]
             / "published"
@@ -132,11 +133,11 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 200)
         payload = json.loads(b"".join(response.streaming_content))
-        self.assertEqual(payload["version"], "0.1.3.20260714")
+        self.assertEqual(payload["version"], "0.1.5.20260714")
         self.assertEqual(payload["channel"], "public-beta")
         self.assertEqual(
             payload["source"],
-            "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.3.20260714",
+            "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.5.20260714",
         )
 
     def test_agentlab_page_renders(self):

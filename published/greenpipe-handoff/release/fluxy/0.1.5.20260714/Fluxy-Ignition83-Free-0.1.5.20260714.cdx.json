@@ -5,17 +5,17 @@
   "metadata": {
     "component": {
       "type": "application",
-      "group": "com.greenpipepartners.fluxy",
+      "group": "partners.greenpipe.fluxy",
       "name": "fluxy-ignition-module",
-      "version": "0.1.3.20260714",
+      "version": "0.1.5.20260714",
       "licenses": [{"license": {"id": "MPL-2.0"}}],
       "properties": [
         {"name": "fluxy:ignitionTarget", "value": "8.3.4"},
         {"name": "fluxy:licenseMode", "value": "free"}
       ],
       "externalReferences": [
-        {"type": "vcs", "url": "https://github.com/GreenPipePartners/Fluxy-modl/tree/b89f8048b4f5d46cabae059a64035e964f34d152"},
-        {"type": "distribution", "url": "https://github.com/GreenPipePartners/Fluxy-modl/archive/b89f8048b4f5d46cabae059a64035e964f34d152.tar.gz"}
+        {"type": "vcs", "url": "https://github.com/GreenPipePartners/Fluxy-modl/tree/68d96cef9de848dc20cf25eeff6bd7582df40a48"},
+        {"type": "distribution", "url": "https://github.com/GreenPipePartners/Fluxy-modl/archive/68d96cef9de848dc20cf25eeff6bd7582df40a48.tar.gz"}
       ]
     }
   },
