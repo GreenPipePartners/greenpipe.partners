@@ -382,6 +382,27 @@ class ReportTests(TestCase):
         self.assertEqual(report.get_absolute_url(), f"/reports/PRW/{GIST_ID}")
         self.assertEqual(str(report), "PRW / 2026-06-01 - 2026-06-05")
 
+    @patch("portal.gists.urlopen")
+    def test_report_customer_can_contain_spaces(self, mock_urlopen):
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {"files": {"report.md": {"content": "# Prairie Works Report", "truncated": False}}}
+            ).encode("utf-8")
+        )
+        report = Report.objects.create(
+            customer="Prairie Works",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        self.assertEqual(report.get_absolute_url(), f"/reports/Prairie%20Works/{GIST_ID}")
+
+        response = self.client.get(report.get_absolute_url())
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Prairie Works Report")
+        self.assertContains(response, f'href="/reports/Prairie%20Works/all/{GIST_ID}"')
+        self.assertEqual(self.client.get(f"/reports/Prairie%20Works/all/{GIST_ID}").status_code, 200)
+
     def test_engineering_report_model_does_not_require_dates(self):
         report = Report.objects.create(
             customer="MOG",
@@ -700,16 +721,18 @@ FROM MDS.CHEM.chemical_lab_result_wide_by_day_location;
 
 class ReleaseTests(TestCase):
     def test_release_model_normalizes_topic_and_derives_public_url(self):
-        release = Release.objects.create(
-            topic="Flux",
+        release = Release(
+            topic="Flux Updates",
             release_date=date(2026, 7, 14),
             gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
         )
+        release.full_clean()
+        release.save()
 
-        self.assertEqual(release.topic, "flux")
+        self.assertEqual(release.topic, "flux updates")
         self.assertEqual(release.gist_id, GIST_ID)
-        self.assertEqual(release.get_absolute_url(), "/release/flux/2026-07-14")
-        self.assertEqual(str(release), "flux / 2026-07-14")
+        self.assertEqual(release.get_absolute_url(), "/release/flux%20updates/2026-07-14")
+        self.assertEqual(str(release), "flux updates / 2026-07-14")
 
     def test_release_admin_shows_destination_url_after_create(self):
         user = get_user_model().objects.create_superuser(
@@ -810,7 +833,7 @@ class ReleaseTests(TestCase):
     def test_release_index_groups_by_topic_then_newest_date(self):
         for topic, release_date, gist_id in [
             ("flux", date(2026, 6, 1), GIST_ID),
-            ("agentlab", date(2026, 7, 1), OTHER_GIST_ID),
+            ("agent lab", date(2026, 7, 1), OTHER_GIST_ID),
             ("flux", date(2026, 7, 14), THIRD_GIST_ID),
         ]:
             Release.objects.create(
@@ -822,13 +845,12 @@ class ReleaseTests(TestCase):
         response = self.client.get("/release/")
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Releases by topic and date.")
-        self.assertContains(response, 'href="/release/agentlab/2026-07-01"')
+        self.assertContains(response, 'href="/release/agent%20lab/2026-07-01"')
         self.assertContains(response, 'href="/release/flux/2026-07-14"')
         self.assertContains(response, 'href="/release/flux/2026-06-01"')
 
         content = response.content.decode("utf-8")
-        self.assertLess(content.index("<h2>Agentlab</h2>"), content.index("<h2>Flux</h2>"))
+        self.assertLess(content.index("<h2>Agent Lab</h2>"), content.index("<h2>Flux</h2>"))
         self.assertLess(content.index("July 14, 2026"), content.index("June 1, 2026"))
 
     @patch("portal.gists.urlopen")

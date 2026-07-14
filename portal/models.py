@@ -1,8 +1,15 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import RegexValidator
 from django.db import models
 from django.urls import reverse
 
 from .gists import parse_gist_id
+
+
+release_topic_validator = RegexValidator(
+    regex=r"^[-a-zA-Z0-9_ ]+$",
+    message="Topics can contain letters, numbers, spaces, hyphens, and underscores.",
+)
 
 
 class Report(models.Model):
@@ -47,7 +54,7 @@ class Report(models.Model):
 
 
 class Release(models.Model):
-    topic = models.SlugField(max_length=80)
+    topic = models.CharField(max_length=80, validators=[release_topic_validator])
     release_date = models.DateField()
     gist_url = models.URLField()
     gist_id = models.CharField(max_length=64, editable=False)
@@ -61,14 +68,14 @@ class Release(models.Model):
         ordering = ["topic", "-release_date"]
 
     def clean(self):
-        self.topic = self.topic.strip().lower()
+        self.topic = " ".join(self.topic.split()).lower()
         try:
             self.gist_id = parse_gist_id(self.gist_url)
         except ValueError as exc:
             raise ValidationError({"gist_url": str(exc)}) from exc
 
     def save(self, *args, **kwargs):
-        self.topic = self.topic.strip().lower()
+        self.topic = " ".join(self.topic.split()).lower()
         self.gist_id = parse_gist_id(self.gist_url)
         super().save(*args, **kwargs)
 
