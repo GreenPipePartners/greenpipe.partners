@@ -7,9 +7,10 @@
 <section class="hero compact fluxy-hero">
     <p class="eyebrow">Fluxy Free public beta</p>
     <h1>Python 3 access to the Ignition Gateway.</h1>
-    <p class="hero-copy">Signed Gateway modules for Ignition 8.1.50+ and 8.3.4+, backed by public MPL-2.0 source.</p>
+    <p class="hero-copy">Signed Gateway modules for Ignition 8.1.50+ and 8.3.4+.</p>
     <div class="hero-actions">
-        <a class="button primary" href="#downloads">Choose your Gateway</a>
+        <a class="button primary" href="#python-quickstart">Install fluxy-ign</a>
+        <a class="button secondary" href="#downloads">Choose your Gateway</a>
         <a class="button secondary" href="https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.6.20260714">Review source</a>
     </div>
 </section>
@@ -22,6 +23,79 @@
         <div><span>Module license</span><strong>MPL-2.0</strong></div>
         <div><span>Release channel</span><strong>Self-signed beta</strong></div>
     </div>
+
+    <section class="fluxy-quickstart" id="python-quickstart" aria-labelledby="python-quickstart-title">
+        <div class="fluxy-quickstart-heading">
+            <div>
+                <p class="eyebrow">Python quickstart</p>
+                <h2 id="python-quickstart-title">Install the client. Write Hello World.</h2>
+                <p>Create a String memory tag named <code>fluxy</code>, write to it, and read the value back from Ignition.</p>
+            </div>
+            <a class="button secondary" href="https://pypi.org/project/fluxy-ign/">View fluxy-ign on PyPI</a>
+        </div>
+
+        <div class="fluxy-quickstart-grid">
+            <article class="fluxy-quickstart-step">
+                <span class="fluxy-step-number">01</span>
+                <h3>Install fluxy-ign</h3>
+                <p>The PyPI package includes the Python client and its HTTP dependency. Python 3.12 or newer is required.</p>
+                <div class="source-snippet">
+                    <pre><code class="language-bash">python -m pip install fluxy-ign</code></pre>
+                </div>
+            </article>
+
+            <article class="fluxy-quickstart-step">
+                <span class="fluxy-step-number">02</span>
+                <h3>Choose the Gateway URL</h3>
+                <p>For Ignition 8.3, use <code>https://your-gateway.example/data</code> and your complete Gateway API token. Ignition 8.1 uses <code>/main/data</code> and the token configured for Fluxy.</p>
+                <a class="text-link" href="https://github.com/GreenPipePartners/Fluxy-modl/blob/v0.1.6.20260714/docs/ignition-module.md#authorization">Authentication setup</a>
+            </article>
+        </div>
+
+        <article class="fluxy-quickstart-code">
+            <span class="fluxy-step-number">03</span>
+            <h3>Create, write, and read the tag</h3>
+            <p>Save this as <code>hello_fluxy.py</code>, replace the Gateway URL and token, then run <code>python hello_fluxy.py</code>.</p>
+            <div class="source-snippet">
+                <pre><code class="language-python">import httpx
+from fluxy import Fluxy
+
+api_token = "fluxy-service:replace-with-your-secret"
+
+with httpx.Client(
+    headers={"X-Ignition-API-Token": api_token}
+) as client:
+    fx = Fluxy(
+        "https://your-gateway.example/data",
+        tag_provider="default",
+        http_client=client,
+    )
+
+    tag_path = "[default]fluxy"
+    fx.tag.configure(
+        [
+            {
+                "name": "fluxy",
+                "tagType": "AtomicTag",
+                "valueSource": "memory",
+                "dataType": "String",
+                "value": "",
+            }
+        ],
+        base_path="[default]",
+        collision_policy="o",
+    )
+
+    fx.tag.write_blocking(tag_path, "Hello World")
+    value = fx.tag.read_blocking(tag_path)
+    print(value.value)</code></pre>
+            </div>
+            <div class="fluxy-quickstart-output">
+                <span>Expected output</span>
+                <code>Hello World</code>
+            </div>
+        </article>
+    </section>
 
     <div class="fluxy-trust-note" role="note">
         <p class="eyebrow">Verify before installing</p>

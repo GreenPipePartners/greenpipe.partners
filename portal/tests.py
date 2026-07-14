@@ -103,7 +103,14 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "/release/fluxy/0.1.6.20260714/Fluxy-Ignition81-Free-0.1.6.20260714.modl")
         self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy-modl/tree/v0.1.6.20260714")
         self.assertContains(response, "partners.greenpipe.fluxy")
+        self.assertContains(response, "Install fluxy-ign")
+        self.assertContains(response, "https://pypi.org/project/fluxy-ign/")
+        self.assertContains(response, "python -m pip install fluxy-ign")
+        self.assertContains(response, "[default]fluxy")
+        self.assertContains(response, "X-Ignition-API-Token")
+        self.assertContains(response, "Hello World")
         self.assertContains(response, "not certified, approved, supported, or endorsed")
+        self.assertNotContains(response, "backed by public MPL-2.0 source")
         self.assertNotContains(response, ".unsigned.modl")
 
     def test_fluxy_artifacts_are_served_and_match_published_checksums(self):
