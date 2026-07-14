@@ -1,0 +1,328 @@
+---
+title: Gateway Function Reference
+description: Every function exposed by the Fluxy Free Ignition Gateway module.
+---
+
+Fluxy Free `0.1.6.20260714` exposes **13 authenticated Gateway functions**. Ignition 8.1 and 8.3 use the same JSON contract and Python names; only the route prefix, authorization implementation, and underlying version adapters differ.
+
+:::caution[Native module scope]
+This page lists functions exposed by the signed Fluxy Free Gateway module. The `fluxy-ign` package also contains APIs for the optional WebDev transport. Functions not listed here are not available through the native module and return HTTP 404.
+:::
+
+## Connection contract
+
+All functions use HTTP `POST`.
+
+| Gateway | Route prefix | Credential |
+| --- | --- | --- |
+| Ignition 8.3.4+ | `/data/fluxy` | Complete Ignition Gateway API key in `X-Ignition-API-Token` |
+| Ignition 8.1.50+ | `/main/data/fluxy` | Fluxy token whose SHA-256 hash is configured on the Gateway |
+
+JSON routes accept `Content-Type: application/json` and reject request bodies larger than 1 MiB. Every route returns `X-Fluxy-Request-Id` and `X-Fluxy-Run-Id` response headers. Clients may supply:
+
+- `X-Fluxy-Request-Id`: unique operation correlation ID.
+- `X-Fluxy-Run-Id`: stable script or batch correlation ID.
+- `X-Fluxy-Script`: optional script name.
+
+Ignition 8.3 authorization uses the Gateway API Read or Write permission shown below. Ignition 8.1 uses the configured read token or write token; the write token can call both access levels.
+
+## Function index
+
+| Python API | Gateway route | Access | Underlying Ignition API |
+| --- | --- | --- | --- |
+| `fx.util.get_version()` | `util/getVersion` | Read | `system.util.getVersion` |
+| `fx.util.query_audit_log(...)` | `util/queryAuditLog` | Read | `system.util.queryAuditLog` |
+| `fx.tag.read_blocking(...)` | `tag/readBlocking` | Read | `system.tag.readBlocking` |
+| `fx.tag.browse(...)` | `tag/browse` | Read | `system.tag.browse` |
+| `fx.tag.get_configuration(...)` | `tag/getConfiguration` | Read | `system.tag.getConfiguration` |
+| `fx.tag.configure(...)` | `tag/configure` | Write | `system.tag.configure` |
+| `fx.tag.write_blocking(...)` | `tag/writeBlocking` | Write | `system.tag.writeBlocking` |
+| `fx.tag.delete_tags(...)` | `tag/deleteTags` | Write | `system.tag.deleteTags` |
+| `fx.historian.browse(...)` | `historian/browse` | Read | 8.3 `system.historian.browse`; 8.1 `system.tag.browseHistoricalTags` |
+| `fx.historian.query_raw_points(...)` | `historian/queryRawPoints` | Read | 8.3 `system.historian.queryRawPoints`; 8.1 `system.tag.queryTagHistory` |
+| Client helper in current source | `historian/queryRawPointsStream` | Read | Java `TagHistoryManager.queryHistory` |
+| `fx.historian.store_data_points(...)` | `historian/storeDataPoints` | Write | 8.3 `system.historian.storeDataPoints`; 8.1 `system.tag.storeTagHistory` |
+| `fx.project.request_scan()` | `project/requestScan` | Read | Java `ProjectManager.requestScan` |
+
+Routes below are relative to `/data/fluxy/` on 8.3 or `/main/data/fluxy/` on 8.1.
+
+## Utility functions
+
+### Get Gateway version
+
+`POST util/getVersion`
+
+- **Python:** `fx.util.get_version()`
+- **Access:** Read
+- **Request:** empty JSON object.
+- **Response:** `version`, `major`, `minor`, `transport`, and `contractVersion`.
+
+```json
+{}
+```
+
+### Query audit log
+
+`POST util/queryAuditLog`
+
+- **Python:** `fx.util.query_audit_log(...)`
+- **Access:** Read
+- **Required:** `auditProfileName` string.
+- **Optional:** `startDate`, `endDate` as epoch milliseconds; `actorFilter`, `actionFilter`, `targetFilter`, `valueFilter`, `systemFilter`, and `contextFilter`.
+- **Response:** an Ignition Dataset serialized as `columns` and `rows`; the Python client converts it to row mappings.
+
+```json
+{
+  "auditProfileName": "Fluxy Audit",
+  "actionFilter": "Fluxy.tag/writeBlocking",
+  "targetFilter": "[default]Area/Setpoint"
+}
+```
+
+## Tag functions
+
+### Read tags
+
+`POST tag/readBlocking`
+
+- **Python:** `fx.tag.read_blocking(tag_paths, timeout_ms=None)`
+- **Access:** Read
+- **Required:** `tagPaths` list.
+- **Optional:** `timeoutMs`; default `45000`.
+- **Response:** one entry per path with `tagPath`, JSON-compatible `value`, `quality`, and ISO timestamp.
+
+```json
+{
+  "tagPaths": ["[default]Area/Temperature"],
+  "timeoutMs": 45000
+}
+```
+
+### Browse tags
+
+`POST tag/browse`
+
+- **Python:** `fx.tag.browse(path, tag_filter=None)`
+- **Access:** Read
+- **Required:** `path` string.
+- **Optional:** `filter` object using Ignition tag browse filters.
+- **Response:** entries containing available `name`, `fullPath`, `tagType`, `dataType`, and `hasChildren` fields.
+
+```json
+{
+  "path": "[default]Area",
+  "filter": {"tagType": "AtomicTag"}
+}
+```
+
+### Get tag configuration
+
+`POST tag/getConfiguration`
+
+- **Python:** `fx.tag.get_configuration(path, recursive=False)`
+- **Access:** Read
+- **Required:** one `path` string or a `paths` list.
+- **Optional:** `recursive`; default `false`.
+- **Response:** normalized tag configuration objects, including nested `tags` when requested.
+
+```json
+{
+  "path": "[default]Area/Temperature",
+  "recursive": false
+}
+```
+
+### Configure tags
+
+`POST tag/configure`
+
+- **Python:** `fx.tag.configure(tags, base_path=..., collision_policy="o")`
+- **Access:** Write
+- **Required:** `basePath` string and `tags` list.
+- **Optional:** `collisionPolicy`; default `o` for overwrite.
+- **Response:** quality and name for each submitted tag.
+- **Audit:** successful mutations are written to the configured Gateway audit profile.
+
+```json
+{
+  "basePath": "[default]",
+  "collisionPolicy": "o",
+  "tags": [
+    {
+      "name": "fluxy",
+      "tagType": "AtomicTag",
+      "valueSource": "memory",
+      "dataType": "String",
+      "value": "Hello World"
+    }
+  ]
+}
+```
+
+### Write tags
+
+`POST tag/writeBlocking`
+
+- **Python:** `fx.tag.write_blocking(tag_paths, values, timeout_ms=None)`
+- **Access:** Write
+- **Required:** equally sized `tagPaths` and `values` lists.
+- **Optional:** `timeoutMs`; default `45000`.
+- **Response:** quality and path for every write.
+- **Audit:** successful mutations are written to the configured Gateway audit profile. Values are not logged or audited.
+
+```json
+{
+  "tagPaths": ["[default]fluxy"],
+  "values": ["Hello World"],
+  "timeoutMs": 45000
+}
+```
+
+### Delete tags
+
+`POST tag/deleteTags`
+
+- **Python:** `fx.tag.delete_tags(tag_paths)`
+- **Access:** Write
+- **Required:** `tagPaths` list.
+- **Response:** quality and path for every deletion.
+- **Audit:** successful mutations are written to the configured Gateway audit profile.
+
+```json
+{
+  "tagPaths": ["[default]TemporaryTag"]
+}
+```
+
+## Historian functions
+
+Historian functions require an enabled, licensed or active-trial historian module and a configured provider.
+
+### Browse history
+
+`POST historian/browse`
+
+- **Python:** `fx.historian.browse(path, continuation_point=None)`
+- **Access:** Read
+- **Required:** `path` string.
+- **Optional:** `continuationPoint` returned by a previous browse response.
+- **Response:** historical paths, display paths, child state, type, metadata, continuation point, and result quality.
+
+```json
+{
+  "path": "histprov:Core Historian:/"
+}
+```
+
+### Query raw history
+
+`POST historian/queryRawPoints`
+
+- **Python:** `fx.historian.query_raw_points(paths, start_time, end_time, return_size=100)`
+- **Access:** Read
+- **Required:** `paths` list, `startTime`, and `endTime` as epoch milliseconds.
+- **Optional:** `returnSize`; default `100`.
+- **Response:** an Ignition Dataset serialized as `columns` and `rows`, converted to row mappings by the Python client.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startTime": 1783987200000,
+  "endTime": 1783990800000,
+  "returnSize": 100
+}
+```
+
+### Stream raw history
+
+`POST historian/queryRawPointsStream`
+
+- **Python:** `fx.historian.stream_raw_points(...)` in current client source. PyPI `fluxy-ign 0.1.1` can call the raw route directly but does not yet include this helper.
+- **Access:** Read
+- **Content type:** `application/x-ndjson`.
+- **Required:** `paths` list, `startTime`, and `endTime` as epoch milliseconds.
+- **Optional:** `blockRows`; default `1000`, range `1` through `5000`.
+- **Limits:** 1-128 paths, one history provider per request, 4 MiB maximum encoded block, 1 GiB maximum stream, and 30-minute maximum duration.
+- **Events:** `schema`, zero or more `block` events, then `end`; failures use an `error` event when the response is already streaming.
+- **Headers:** also returns `X-Fluxy-Query-Id` and `X-Fluxy-Stream-Version`.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "startTime": 1783987200000,
+  "endTime": 1784073600000,
+  "blockRows": 1000
+}
+```
+
+### Store raw history
+
+`POST historian/storeDataPoints`
+
+- **Python:** `fx.historian.store_data_points(paths, values, timestamps, qualities=None)`
+- **Access:** Write
+- **Required:** equally sized `paths`, `values`, and epoch-millisecond `timestamps` lists.
+- **Optional:** `qualities`; defaults to `192` (`Good`) for every path.
+- **Response:** one quality string per submitted point.
+- **Audit:** successful mutations are written to the configured Gateway audit profile. Values are not logged or audited.
+
+```json
+{
+  "paths": ["histprov:Core Historian:/sys:gateway:/prov:default:/tag:Area/Temperature"],
+  "values": [72.5],
+  "timestamps": [1783987200000],
+  "qualities": [192]
+}
+```
+
+## Project functions
+
+### Request project scan
+
+`POST project/requestScan`
+
+- **Python:** `fx.project.request_scan()`; current client source also accepts `timeout_seconds`.
+- **Access:** Read.
+- **Optional:** `timeoutSeconds`; default `10`, range `1` through `300`.
+- **Response:** `ok`, completion message, and `durationMillis`.
+
+```json
+{
+  "timeoutSeconds": 30
+}
+```
+
+A timeout stops only the HTTP request from waiting. It does not cancel the project scan. Use this function after changing files under `data/projects/`; do not restart the Gateway merely to load project changes.
+
+## Direct HTTP example
+
+```bash
+curl --request POST \
+  --header 'Content-Type: application/json' \
+  --header 'X-Ignition-API-Token: fluxy-service:replace-with-your-secret' \
+  --data '{"tagPaths":["[default]fluxy"]}' \
+  'https://your-gateway.example/data/fluxy/tag/readBlocking'
+```
+
+## Not exposed by the Gateway module
+
+The native module intentionally does not expose arbitrary scripting or the broader WebDev function catalog. The following `fluxy-ign` namespaces are not currently module routes:
+
+- Database and named-query operations.
+- Device and OPC management.
+- Alarm operations.
+- Reporting.
+- User, role, schedule, and holiday management.
+- OPC UA connection management.
+- Arbitrary script or function execution.
+- Tag copy, move, rename, import, export, and query operations.
+- Historian aggregates, annotations, and metadata operations.
+
+Use only functions in this reference when the client base URL targets the Fluxy Free Gateway module.
+
+## Related pages
+
+- [Install and authenticate Fluxy](/docs/flux/0.1.0/fluxy/)
+- [Download Fluxy Free](/fluxy/)
+- [Gateway module source](https://github.com/GreenPipePartners/Fluxy-modl)
+- [Python client source](https://github.com/GreenPipePartners/Fluxy)

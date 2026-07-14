@@ -19,6 +19,7 @@ export default defineConfig({
             { label: "Intro", slug: "" },
             { label: "Flux", slug: "flux" },
             { label: "Fluxy", slug: "fluxy" },
+            { label: "Gateway functions", slug: "fluxy/gateway-functions" },
           ],
         },
       ],

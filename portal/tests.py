@@ -269,6 +269,36 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertIn("[default]fluxy", docs_source)
         self.assertIn("Hello World", docs_source)
         self.assertIn("partners.greenpipe", docs_source)
+        self.assertIn("/docs/flux/0.1.0/fluxy/gateway-functions/", docs_source)
+
+    def test_fluxy_gateway_function_reference_lists_every_module_route(self):
+        reference = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "content"
+            / "docs"
+            / "fluxy"
+            / "gateway-functions.mdx"
+        ).read_text()
+        routes = {
+            "util/getVersion",
+            "util/queryAuditLog",
+            "tag/readBlocking",
+            "tag/browse",
+            "tag/getConfiguration",
+            "tag/configure",
+            "tag/writeBlocking",
+            "tag/deleteTags",
+            "historian/browse",
+            "historian/queryRawPoints",
+            "historian/queryRawPointsStream",
+            "historian/storeDataPoints",
+            "project/requestScan",
+        }
+
+        self.assertIn("13 authenticated Gateway functions", reference)
+        for route in routes:
+            self.assertIn(route, reference)
 
     def test_flux_docs_serve_from_publish_root(self):
         with TemporaryDirectory() as temp_dir:
