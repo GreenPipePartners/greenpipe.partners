@@ -22,6 +22,12 @@ export default defineConfig({
             { label: "Gateway functions", slug: "fluxy/gateway-functions" },
           ],
         },
+        {
+          label: "Examples",
+          items: [
+            { label: "NumPy tag analysis", slug: "fluxy/examples/numpy" },
+          ],
+        },
       ],
     }),
   ],

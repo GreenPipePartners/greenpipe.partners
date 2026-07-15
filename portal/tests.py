@@ -270,6 +270,27 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertIn("Hello World", docs_source)
         self.assertIn("partners.greenpipe", docs_source)
         self.assertIn("/docs/flux/0.1.0/fluxy/gateway-functions/", docs_source)
+        self.assertIn("/docs/flux/0.1.0/fluxy/examples/numpy/", docs_source)
+
+    def test_fluxy_numpy_example_validates_quality_and_writes_statistics(self):
+        example = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "content"
+            / "docs"
+            / "fluxy"
+            / "examples"
+            / "numpy.mdx"
+        ).read_text()
+
+        self.assertIn("python -m pip install fluxy-ign numpy", example)
+        self.assertIn('os.environ["IGNITION_API_TOKEN"]', example)
+        self.assertIn("fx.tag.read_blocking(input_paths)", example)
+        self.assertIn("np.asarray", example)
+        self.assertIn("np.mean", example)
+        self.assertIn("np.std", example)
+        self.assertIn("quality.startswith", example)
+        self.assertIn("fx.tag.write_blocking", example)
 
     def test_fluxy_gateway_function_reference_lists_every_module_route(self):
         reference = (

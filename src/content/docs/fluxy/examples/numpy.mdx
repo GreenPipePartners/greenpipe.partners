@@ -1,0 +1,156 @@
+---
+title: Analyze Tags With NumPy
+description: Batch-read Ignition tags with Fluxy, calculate NumPy statistics, and write derived values back safely.
+---
+
+This example uses Fluxy to move a group of qualified Ignition tag values into a NumPy array. It calculates the mean, standard deviation, and z-scores, then writes the derived statistics back to Ignition.
+
+The example uses memory tags, so it does not require an OPC connection or a licensed Historian module.
+
+## Install
+
+Install Fluxy and NumPy in the same Python environment:
+
+```bash
+python -m pip install fluxy-ign numpy
+```
+
+Set the Gateway URL and API token outside the source file:
+
+```bash
+export IGNITION_URL='https://your-gateway.example/data'
+export IGNITION_API_TOKEN='fluxy-service:replace-with-your-secret'
+```
+
+Use an Ignition 8.1 URL ending in `/main/data` instead. The credential needs Gateway API Read and Write access because the example creates and writes tags.
+
+## Complete example
+
+Save this as `fluxy_numpy.py`:
+
+```python
+import os
+
+import httpx
+import numpy as np
+from fluxy import Fluxy
+
+
+base_url = os.environ["IGNITION_URL"]
+api_token = os.environ["IGNITION_API_TOKEN"]
+
+input_paths = [
+    "[default]NumpyExample/Sensor01",
+    "[default]NumpyExample/Sensor02",
+    "[default]NumpyExample/Sensor03",
+    "[default]NumpyExample/Sensor04",
+]
+output_paths = [
+    "[default]NumpyExample/Average",
+    "[default]NumpyExample/StandardDeviation",
+]
+
+with httpx.Client(headers={"X-Ignition-API-Token": api_token}) as client:
+    fx = Fluxy(base_url, tag_provider="default", http_client=client)
+
+    fx.tag.configure(
+        [
+            {
+                "name": "NumpyExample",
+                "tagType": "Folder",
+                "tags": [
+                    {
+                        "name": name,
+                        "tagType": "AtomicTag",
+                        "valueSource": "memory",
+                        "dataType": "Float8",
+                        "value": 0.0,
+                    }
+                    for name in [
+                        "Sensor01",
+                        "Sensor02",
+                        "Sensor03",
+                        "Sensor04",
+                        "Average",
+                        "StandardDeviation",
+                    ]
+                ],
+            }
+        ],
+        base_path="[default]",
+        collision_policy="o",
+    )
+
+    seed_results = fx.tag.write_blocking(input_paths, [71.0, 72.0, 73.0, 74.0])
+    if any(not result.quality.startswith("Good") for result in seed_results):
+        raise RuntimeError(f"Unable to seed input tags: {seed_results}")
+
+    qualified_values = fx.tag.read_blocking(input_paths)
+    bad_values = [
+        item for item in qualified_values if not item.quality.startswith("Good")
+    ]
+    if bad_values:
+        raise RuntimeError(f"Refusing to analyze bad-quality values: {bad_values}")
+
+    values = np.asarray(
+        [float(item.value) for item in qualified_values],
+        dtype=np.float64,
+    )
+    average = float(np.mean(values))
+    standard_deviation = float(np.std(values))
+    z_scores = (
+        (values - average) / standard_deviation
+        if standard_deviation
+        else np.zeros_like(values)
+    )
+
+    output_results = fx.tag.write_blocking(
+        output_paths,
+        [average, standard_deviation],
+    )
+    if any(not result.quality.startswith("Good") for result in output_results):
+        raise RuntimeError(f"Unable to write calculated tags: {output_results}")
+
+    print("Values:", values)
+    print(f"Average: {average:.3f}")
+    print(f"Standard deviation: {standard_deviation:.3f}")
+    print("Z-scores:", np.round(z_scores, 3))
+```
+
+Run it:
+
+```bash
+python fluxy_numpy.py
+```
+
+Expected output:
+
+```text
+Values: [71. 72. 73. 74.]
+Average: 72.500
+Standard deviation: 1.118
+Z-scores: [-1.342 -0.447  0.447  1.342]
+```
+
+The same average and standard deviation are written to:
+
+- `[default]NumpyExample/Average`
+- `[default]NumpyExample/StandardDeviation`
+
+## Why validate quality first?
+
+Every Fluxy tag read includes an Ignition quality code. Converting a disconnected, missing, or stale value into a NumPy array without checking quality can produce misleading calculations. This example stops before calculation when any input is not `Good` and checks every write result as well.
+
+For production workloads, decide whether your application should reject the complete batch, exclude individual bad values, or retain a parallel NumPy quality mask. Do not silently treat bad-quality values as zero.
+
+## Clean up
+
+Before leaving the `with httpx.Client(...)` block, remove the example folder when you no longer need it:
+
+```python
+result = fx.tag.delete_tags("[default]NumpyExample")
+if not result.quality.startswith("Good"):
+    raise RuntimeError(f"Unable to delete example tags: {result}")
+```
+
+See the [Gateway function reference](/docs/flux/0.1.0/fluxy/gateway-functions/) for the complete read, write, configure, and delete contracts.
