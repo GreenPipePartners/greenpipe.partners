@@ -292,6 +292,19 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertIn("quality.startswith", example)
         self.assertIn("fx.tag.write_blocking", example)
 
+    def test_flux_docs_use_compact_desktop_table_of_contents(self):
+        styles = (
+            Path(__file__).resolve().parents[1]
+            / "src"
+            / "styles"
+            / "greenpipe.css"
+        ).read_text()
+
+        self.assertIn(".right-sidebar-container", styles)
+        self.assertIn("flex: 0 0 12rem", styles)
+        self.assertIn("width: calc(100% - 12rem)", styles)
+        self.assertIn("@media (min-width: 72rem)", styles)
+
     def test_fluxy_gateway_function_reference_lists_every_module_route(self):
         reference = (
             Path(__file__).resolve().parents[1]

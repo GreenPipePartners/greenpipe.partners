@@ -61,6 +61,31 @@
   color: #ffffff;
 }
 
+@media (min-width: 72rem) {
+  .right-sidebar-container {
+    flex: 0 0 12rem;
+    width: 12rem !important;
+  }
+
+  .right-sidebar-container + .main-pane {
+    flex: 1 1 auto;
+    width: calc(100% - 12rem) !important;
+  }
+
+  .right-sidebar {
+    width: 12rem !important;
+  }
+
+  .right-sidebar-panel {
+    padding: 0.75rem 0.625rem;
+  }
+
+  .right-sidebar-panel .sl-container {
+    width: 10.75rem !important;
+    max-width: 10.75rem !important;
+  }
+}
+
 mobile-starlight-toc nav {
   background: #0d241d;
   border-color: rgba(223, 241, 232, 0.16);
