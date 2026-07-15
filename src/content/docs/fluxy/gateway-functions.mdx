@@ -1,12 +1,12 @@
 ---
 title: Gateway Function Reference
-description: Every function exposed by the Fluxy Free Ignition Gateway module.
+description: Every function exposed by the Fluxy Ignition Gateway module.
 ---
 
-Fluxy Free `0.2.0.20260714` declares **28 authenticated Gateway functions**. All 28 are available on Ignition 8.3; 26 are available on Ignition 8.1 because historian metadata requires 8.3. The route prefix, authorization implementation, and underlying version adapters differ, but supported operations retain the same JSON contract and Python names.
+Fluxy `0.2.0.20260714` declares **28 authenticated Gateway functions**. All 28 are available on Ignition 8.3; 26 are available on Ignition 8.1 because historian metadata requires 8.3. The route prefix, authorization implementation, and underlying version adapters differ, but supported operations retain the same JSON contract and Python names.
 
 :::caution[Native module scope]
-This page lists functions exposed by the signed Fluxy Free Gateway module. The `fluxy-ign` package also contains APIs for the optional WebDev transport. Functions not listed here are not available through the native module and return HTTP 404.
+This page lists functions exposed by the signed Fluxy Gateway module. The `fluxy-ign` package also contains APIs for the optional WebDev transport. Functions not listed here are not available through the native module and return HTTP 404.
 :::
 
 ## Connection contract
@@ -604,11 +604,11 @@ The native module intentionally does not expose arbitrary scripting or the broad
 - OPC UA connection management.
 - Arbitrary script or function execution.
 
-Use only functions in this reference when the client base URL targets the Fluxy Free Gateway module.
+Use only functions in this reference when the client base URL targets the Fluxy Gateway module.
 
 ## Related pages
 
 - [Install and authenticate Fluxy](/docs/flux/0.1.0/fluxy/)
-- [Download Fluxy Free](/fluxy/)
+- [Download Fluxy](/fluxy/)
 - [Gateway module source](https://github.com/GreenPipePartners/Fluxy-modl)
 - [Python client source](https://github.com/GreenPipePartners/Fluxy)
