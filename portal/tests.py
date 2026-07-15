@@ -303,6 +303,9 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertIn(".right-sidebar-container", styles)
         self.assertIn("flex: 0 0 12rem", styles)
         self.assertIn("width: calc(100% - 12rem)", styles)
+        self.assertIn("--sl-content-margin-inline: auto", styles)
+        self.assertIn("--sl-content-width: 50rem", styles)
+        self.assertIn("padding-inline-end: 2rem", styles)
         self.assertIn("@media (min-width: 72rem)", styles)
 
     def test_fluxy_gateway_function_reference_lists_every_module_route(self):

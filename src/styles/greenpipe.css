@@ -68,7 +68,11 @@
   }
 
   .right-sidebar-container + .main-pane {
+    --sl-content-margin-inline: auto;
+    --sl-content-width: 50rem;
+
     flex: 1 1 auto;
+    padding-inline-end: 2rem;
     width: calc(100% - 12rem) !important;
   }
 
