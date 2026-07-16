@@ -979,6 +979,186 @@ h3 {
     color: inherit;
 }
 
+.ailab-tab-list {
+    margin-bottom: 22px;
+}
+
+.ailab-page-tabs > .tab-list .tab-label[data-selected] {
+    background: var(--primary-button-bg);
+    color: var(--primary-button-ink);
+}
+
+.ailab-tab-panel[hidden] {
+    display: none;
+}
+
+.ailab-release {
+    display: grid;
+    gap: 18px;
+    margin-bottom: 72px;
+}
+
+.ailab-release-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 32px;
+    align-items: end;
+    overflow: hidden;
+    padding: clamp(28px, 5vw, 56px);
+    border: 1px solid rgba(155, 227, 186, 0.24);
+    border-radius: 30px;
+    background:
+        radial-gradient(circle at 88% 18%, rgba(155, 227, 186, 0.2), transparent 26%),
+        linear-gradient(135deg, #0d241d 0%, #123a2c 58%, #0d241d 100%);
+    color: #ffffff;
+    box-shadow: var(--shadow);
+}
+
+.ailab-release-hero::after {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border: 1px solid rgba(155, 227, 186, 0.18);
+    border-radius: 50%;
+    content: "";
+    inset: -90px -70px auto auto;
+}
+
+.ailab-release-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.ailab-release-hero h2 {
+    max-width: 760px;
+    margin-bottom: 16px;
+    font-size: clamp(2.2rem, 5vw, 4.6rem);
+    line-height: 0.94;
+    letter-spacing: -0.065em;
+}
+
+.ailab-release-hero p:not(.eyebrow) {
+    max-width: 720px;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 1.05rem;
+}
+
+.ailab-release-version {
+    padding: 8px 12px;
+    border: 1px solid rgba(155, 227, 186, 0.3);
+    border-radius: 999px;
+    background: rgba(155, 227, 186, 0.1);
+    color: #9be3ba;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.84rem;
+    font-weight: 900;
+}
+
+.ailab-release-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+    gap: 18px;
+}
+
+.ailab-release-card {
+    padding: clamp(22px, 4vw, 34px);
+    border: 1px solid var(--line);
+    border-radius: 26px;
+    background: var(--surface-strong);
+    box-shadow: var(--shadow);
+}
+
+.ailab-release-card h3 {
+    margin-bottom: 10px;
+    font-size: clamp(1.35rem, 2.8vw, 2rem);
+}
+
+.ailab-release-lede,
+.ailab-release-note {
+    color: var(--muted);
+}
+
+.ailab-release-lede {
+    max-width: 650px;
+    margin-bottom: 22px;
+}
+
+.ailab-release-note {
+    margin: 16px 0 0;
+    font-size: 0.88rem;
+}
+
+.ailab-release-download {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    border-radius: 999px;
+    background: var(--primary-button-bg);
+    color: var(--primary-button-ink);
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.ailab-release-facts dl,
+.ailab-credential-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+}
+
+.ailab-release-facts dl div,
+.ailab-credential-list div {
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 11px 0;
+    border-top: 1px solid var(--line);
+}
+
+.ailab-release-facts dt,
+.ailab-credential-list dt {
+    color: var(--muted);
+    font-weight: 800;
+}
+
+.ailab-release-facts dd,
+.ailab-credential-list dd {
+    margin: 0;
+    font-weight: 900;
+    text-align: right;
+}
+
+.ailab-release-checksum {
+    display: block;
+    padding: 16px;
+    border-radius: 16px;
+    background: var(--code-bg);
+    color: var(--accent-text);
+    font-size: 0.83rem;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+.ailab-release-included {
+    display: grid;
+    grid-template-columns: minmax(220px, 0.7fr) minmax(0, 1.3fr);
+    gap: 32px;
+}
+
+.ailab-release-included ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    color: var(--muted);
+}
+
+.ailab-release-included li + li {
+    margin-top: 10px;
+}
+
 .ailab-hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -1340,8 +1520,15 @@ h3 {
     .ailab-hero,
     .ailab-builder,
     .ailab-required-card,
-    .ailab-package-card {
+    .ailab-package-card,
+    .ailab-release-hero,
+    .ailab-release-grid,
+    .ailab-release-included {
         grid-template-columns: 1fr;
+    }
+
+    .ailab-release-version {
+        justify-self: start;
     }
 
     .ailab-spec-grid {
