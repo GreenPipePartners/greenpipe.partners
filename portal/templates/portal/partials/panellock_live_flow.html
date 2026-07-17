@@ -1,18 +1,18 @@
 <p class="visually-hidden">PanelLock Portal sends a signed plan over HTTPS to an Independent AgentLab. Human authorization allows a Direct Ethernet connection to the Panel PC. Validation evidence returns to AgentLab.</p>
 
-<figure class="raft-demo" data-panel-flow data-current-step="idle" data-outcome="ready" data-flow-variant="general">
+<figure class="raft-demo" data-panel-flow data-current-step="idle" data-outcome="ready" data-flow-variant="spare">
     {% if flow_tabs %}
     <div class="raft-variant-tabs" role="tablist" aria-label="PanelLock flow example">
-        <button type="button" role="tab" aria-selected="true" data-flow-variant-trigger="general">General</button>
-        <button type="button" role="tab" aria-selected="false" data-flow-variant-trigger="update">Update</button>
-        <button type="button" role="tab" aria-selected="false" data-flow-variant-trigger="spare">Spare</button>
+        <button type="button" role="tab" aria-selected="true" data-flow-variant-trigger="spare"><span>Spare Panel<br>Replacement</span></button>
+        <button type="button" role="tab" aria-selected="false" data-flow-variant-trigger="update"><span>Panel Upgrade</span></button>
+        <button type="button" role="tab" aria-selected="false" data-flow-variant-trigger="general"><span>General Flow</span></button>
     </div>
     {% endif %}
     <div class="raft-demo__shell">
         <div class="raft-demo__bar">
             <div class="raft-demo__identity">
                 <span class="raft-demo__mark" aria-hidden="true">PL</span>
-                <div><strong>PanelLock execution path</strong><small data-flow-subtitle>Controlled modernization simulation</small></div>
+                <div><strong>PanelLock execution path</strong><small data-flow-subtitle>Existing-project spare synchronization</small></div>
             </div>
             <div class="raft-demo__live"><span aria-hidden="true"></span><strong data-flow-mode>READY</strong></div>
         </div>
@@ -58,7 +58,7 @@
 
                     <g class="raft-path-label raft-path-label--https" aria-hidden="true">
                         <rect x="385" y="251" width="190" height="38" rx="19"></rect>
-                        <text x="480" y="276" text-anchor="middle" data-flow-plan-label>SIGNED PLAN / HTTPS</text>
+                        <text x="480" y="276" text-anchor="middle" data-flow-plan-label>SIGNED SPARE PLAN / HTTPS</text>
                     </g>
                     <g class="raft-path-label raft-path-label--ethernet" aria-hidden="true">
                         <rect x="385" y="594" width="179" height="38" rx="19"></rect>
@@ -81,7 +81,7 @@
                         </g>
                         <text class="raft-node__kicker" x="108" y="35">AUTHORIZED CONTROL PLANE</text>
                         <text class="raft-node__title" x="108" y="69">PanelLock Portal</text>
-                        <text class="raft-node__detail" x="108" y="99" data-flow-node-detail="portal">Defines scope / signs plan / records intent</text>
+                        <text class="raft-node__detail" x="108" y="99" data-flow-node-detail="portal">Defines project match / signs source / records result</text>
                         <g class="raft-node__badge" transform="translate(25 96)"><rect width="64" height="22" rx="11"></rect><text x="32" y="15" text-anchor="middle">REMOTE</text></g>
                     </g>
 
@@ -95,7 +95,7 @@
                         </g>
                         <text class="raft-node__kicker" x="116" y="39">INDEPENDENT SERVICE APPLIANCE</text>
                         <text class="raft-node__title" x="116" y="76">AgentLab</text>
-                        <text class="raft-node__detail" x="116" y="107" data-flow-node-detail="agentlab">Validates scope / waits for a person / collects proof</text>
+                        <text class="raft-node__detail" x="116" y="107" data-flow-node-detail="agentlab">Checks backup / writes spare / collects proof</text>
                         <g class="raft-node__badge raft-node__badge--green" transform="translate(25 119)"><rect width="128" height="23" rx="11"></rect><text x="64" y="16" text-anchor="middle">NO IP FORWARDING</text></g>
                         <g class="raft-scan" aria-hidden="true"><rect x="12" y="9" width="432" height="4" rx="2"></rect></g>
                     </g>
@@ -120,9 +120,9 @@
                         <g class="raft-node__icon raft-node__icon--panel" transform="translate(25 25)" aria-hidden="true">
                             <rect width="62" height="50" rx="7"></rect><rect x="10" y="10" width="42" height="25" rx="3"></rect><path d="M24 50v7h14v-7"></path>
                         </g>
-                        <text class="raft-node__kicker" x="108" y="31" data-flow-node-kicker="panel">CONTROLLED ENDPOINT</text>
-                        <text class="raft-node__title" x="108" y="63" data-flow-node-title="panel">Panel PC</text>
-                        <text class="raft-node__detail" x="108" y="88" data-flow-node-detail="panel">Local execution / measured result / no cloud agent</text>
+                        <text class="raft-node__kicker" x="108" y="31" data-flow-node-kicker="panel">STAGED REPLACEMENT</text>
+                        <text class="raft-node__title" x="108" y="63" data-flow-node-title="panel">Spare Panel PC</text>
+                        <text class="raft-node__detail" x="108" y="88" data-flow-node-detail="panel">Matched to existing project / restored / validated</text>
                     </g>
 
                     <g class="raft-token" data-flow-token aria-hidden="true" hidden>
@@ -132,9 +132,9 @@
             </div>
 
             <aside class="raft-inspector" aria-label="Current flow state" aria-live="polite">
-                <div class="raft-inspector__step"><span data-flow-step-number>00</span><span data-flow-step-label>SYSTEM READY</span></div>
-                <h2 data-flow-title>Nothing crosses the boundary by default.</h2>
-                <p data-flow-description>The portal, AgentLab, and panel are separate. Start the flow to follow one authorized change.</p>
+                <div class="raft-inspector__step"><span data-flow-step-number>00</span><span data-flow-step-label>SPARE READY</span></div>
+                <h2 data-flow-title>The spare is untouched by default.</h2>
+                <p data-flow-description>Start the flow to match a spare to an approved existing Panel PC project without altering the live panel.</p>
 
                 {% if flow_tabs %}
                 <section class="raft-flow-context raft-flow-payload" data-flow-payload hidden aria-label="Flow context example">
@@ -168,7 +168,7 @@
                 {% endif %}
 
                 <div class="raft-approval" data-flow-approval hidden>
-                    <p><strong data-flow-approval-title>AgentLab is waiting.</strong> <span data-flow-approval-copy>The direct panel connection remains closed until a person decides.</span></p>
+                    <p><strong data-flow-approval-title>AgentLab spare preflight passed.</strong> <span data-flow-approval-copy>The spare remains untouched until a person approves the existing project source and target hardware.</span></p>
                     <div>
                         <button type="button" class="raft-action raft-action--approve" data-flow-approve>Authorize plan</button>
                         <button type="button" class="raft-action raft-action--reject" data-flow-reject>Reject</button>
@@ -196,12 +196,12 @@
                 <button type="button" class="raft-control" data-flow-reset>Reset</button>
             </div>
             <div class="raft-timeline" aria-label="PanelLock flow steps">
-                <button type="button" data-flow-trigger="0"><span class="raft-timeline__number">01</span><span class="raft-timeline__label" data-flow-trigger-label>Signed plan</span></button>
-                <button type="button" data-flow-trigger="1"><span class="raft-timeline__number">02</span><span class="raft-timeline__label" data-flow-trigger-label>Validate</span></button>
+                <button type="button" data-flow-trigger="0"><span class="raft-timeline__number">01</span><span class="raft-timeline__label" data-flow-trigger-label>Spare plan</span></button>
+                <button type="button" data-flow-trigger="1"><span class="raft-timeline__number">02</span><span class="raft-timeline__label" data-flow-trigger-label>Preflight</span></button>
                 <button type="button" data-flow-trigger="2"><span class="raft-timeline__number">03</span><span class="raft-timeline__label" data-flow-trigger-label>Authorize</span></button>
-                <button type="button" data-flow-trigger="3"><span class="raft-timeline__number">04</span><span class="raft-timeline__label" data-flow-trigger-label>Execute</span></button>
-                <button type="button" data-flow-trigger="4"><span class="raft-timeline__number">05</span><span class="raft-timeline__label" data-flow-trigger-label>Evidence</span></button>
-                <button type="button" data-flow-trigger="5"><span class="raft-timeline__number">06</span><span class="raft-timeline__label" data-flow-trigger-label>Verified</span></button>
+                <button type="button" data-flow-trigger="3"><span class="raft-timeline__number">04</span><span class="raft-timeline__label" data-flow-trigger-label>Write spare</span></button>
+                <button type="button" data-flow-trigger="4"><span class="raft-timeline__number">05</span><span class="raft-timeline__label" data-flow-trigger-label>Validate</span></button>
+                <button type="button" data-flow-trigger="5"><span class="raft-timeline__number">06</span><span class="raft-timeline__label" data-flow-trigger-label>Matched</span></button>
             </div>
         </div>
     </div>
