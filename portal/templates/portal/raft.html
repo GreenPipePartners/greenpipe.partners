@@ -1,0 +1,22 @@
+{% extends "portal/base.html" %}
+{% load static %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'portal/raft.css' %}">{% endblock %}
+{% block extra_js %}<script src="{% static 'portal/raft.js' %}" defer></script>{% endblock %}
+
+{% block content %}
+<article class="raft-page">
+    <header class="raft-intro">
+        <div>
+            <p class="eyebrow">Interactive architecture trial</p>
+            <h1>Watch a controlled panel change cross each boundary.</h1>
+        </div>
+        <div class="raft-intro__copy">
+            <p>PanelLock prepares the scope. An independent AgentLab validates it. A person decides whether work reaches the panel. Evidence returns through the same controlled path.</p>
+            <p class="raft-trial-note"><span aria-hidden="true"></span>This demonstration does not connect to a real panel.</p>
+        </div>
+    </header>
+
+    {% include "portal/partials/panellock_live_flow.html" %}
+</article>
+{% endblock %}

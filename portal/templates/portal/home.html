@@ -1,4 +1,5 @@
 {% extends "portal/base.html" %}
+{% load static %}
 
 {% block title %}Open-Source Manufacturing Software - Green Pipe Partners{% endblock %}
 {% block meta_description %}Green Pipe Partners champions open-source software development for manufacturing through AgentLab, PanelLock, and Flux.{% endblock %}
@@ -6,11 +7,22 @@
 {% block og_description %}Configured AgentLab workbenches, controlled PanelLock modernization, and the open Flux software foundation.{% endblock %}
 {% block twitter_title %}Open-Source Manufacturing Software - Green Pipe Partners{% endblock %}
 {% block twitter_description %}Making open-source software the default choice for manufacturing.{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'portal/raft.css' %}">{% endblock %}
+{% block extra_js %}<script src="{% static 'portal/raft.js' %}" defer></script>{% endblock %}
 
 {% block hero %}
-<section class="hero home-hero">
-    <h1 class="visually-hidden">Make open source the default choice for manufacturing.</h1>
-    {% include "portal/partials/home_open_dialog.html" %}
+<section class="hero home-hero home-flow-hero">
+    <div class="home-flow-hero__intro">
+        <div>
+            <p class="eyebrow">Controlled modernization, made visible</p>
+            <h1 class="home-dialog-title">Secure Open-Source Controls Software</h1>
+        </div>
+        <div class="home-flow-hero__copy">
+            <p>See how software reaches a panel without turning the plant into a cloud extension. PanelLock defines the plan, AgentLab validates it, authorized staff release it, and evidence returns.</p>
+            <a class="text-link" href="{% url 'panellock:index' %}">Explore PanelLock</a>
+        </div>
+    </div>
+    {% include "portal/partials/panellock_live_flow.html" %}
 </section>
 {% endblock %}
 

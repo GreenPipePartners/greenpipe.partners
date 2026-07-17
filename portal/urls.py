@@ -11,6 +11,7 @@ urlpatterns = [
     path("health/", views.health, name="health"),
     path("docs/", views.docs, name="docs"),
     path("about/", views.about, name="about"),
+    path("raft/", views.raft, name="raft"),
     path("agentlab/", views.agentlab, name="agentlab"),
     path("agentlabs/", views.agentlabs, name="agentlabs"),
     path("docs/flux/latest/", views.flux_docs_latest, name="flux_docs_latest"),

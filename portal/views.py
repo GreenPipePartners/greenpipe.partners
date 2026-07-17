@@ -54,6 +54,17 @@ def about(request):
     return render(request, "portal/about.html")
 
 
+def raft(request):
+    return render(
+        request,
+        "portal/raft.html",
+        {
+            "page_title": "PanelLock Live Flow - Green Pipe Partners",
+            "page_description": "An interactive demonstration of a controlled PanelLock change through Portal, AgentLab, human authorization, and panel validation.",
+        },
+    )
+
+
 def agentlab(request):
     return render(request, "portal/agentlab.html")
 
