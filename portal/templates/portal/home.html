@@ -21,7 +21,7 @@
             <a class="text-link" href="{% url 'panellock:index' %}">Explore PanelLock</a>
         </div>
     </div>
-    {% include "portal/partials/panellock_live_flow.html" %}
+    {% include "portal/partials/panellock_live_flow.html" with flow_tabs=True %}
 </section>
 {% endblock %}
 

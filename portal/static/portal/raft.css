@@ -81,6 +81,36 @@
     margin: 0;
 }
 
+.raft-variant-tabs {
+    display: inline-flex;
+    gap: 4px;
+    margin: 0 0 14px;
+    padding: 4px;
+    border: 1px solid rgba(68, 137, 99, 0.28);
+    border-radius: 13px;
+    background: rgba(7, 25, 17, 0.7);
+}
+
+.raft-variant-tabs button {
+    min-width: 92px;
+    min-height: 38px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 850;
+}
+
+.raft-variant-tabs button[aria-selected="true"] {
+    background: #0f3728;
+    color: #8af0ad;
+    box-shadow: inset 0 0 0 1px rgba(105, 230, 157, 0.28);
+}
+
 .raft-demo__shell {
     --raft-bg: #07110e;
     --raft-panel: #0b1814;
@@ -549,6 +579,79 @@
     background: rgba(255, 195, 90, 0.08);
 }
 
+.raft-flow-context {
+    margin: -3px 0 19px;
+    padding: 14px;
+    border: 1px solid rgba(105, 230, 157, 0.28);
+    border-radius: 16px;
+    background: rgba(105, 230, 157, 0.045);
+}
+
+.raft-flow-payload {
+    border: 1px solid rgba(113, 183, 255, 0.3);
+    background: rgba(113, 183, 255, 0.035);
+}
+
+.raft-flow-payload[hidden] {
+    display: none;
+}
+
+.raft-flow-payload .raft-flow-context__heading strong {
+    background: rgba(113, 183, 255, 0.1);
+    color: var(--raft-blue);
+}
+
+.raft-flow-context[hidden] {
+    display: none;
+}
+
+.raft-flow-context__heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 9px;
+    color: var(--raft-white);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.66rem;
+    font-weight: 850;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.raft-flow-context__heading strong {
+    padding: 4px 7px;
+    border-radius: 999px;
+    background: rgba(105, 230, 157, 0.12);
+    color: var(--raft-green);
+    font-size: 0.58rem;
+}
+
+.raft-flow-context dl {
+    margin: 0;
+}
+
+.raft-flow-context dl div {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 9px;
+    padding: 7px 0;
+    border-top: 1px solid var(--raft-line);
+    font-size: 0.68rem;
+}
+
+.raft-flow-context dt {
+    color: var(--raft-muted);
+}
+
+.raft-flow-context dd {
+    margin: 0;
+    color: #c5d9cf;
+    font-weight: 750;
+    overflow-wrap: anywhere;
+    white-space: pre-line;
+}
+
 .raft-approval[hidden] {
     display: none;
 }
@@ -567,7 +670,8 @@
 
 .raft-action,
 .raft-control,
-.raft-timeline button {
+.raft-timeline button,
+.raft-variant-tabs button {
     border: 0;
     color: inherit;
     cursor: pointer;
@@ -745,11 +849,15 @@
     content: "";
 }
 
-.raft-timeline button span {
+.raft-timeline__number {
     color: #4f645a;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     font-size: 0.58rem;
     letter-spacing: 0.08em;
+}
+
+.raft-timeline__label {
+    min-width: 0;
 }
 
 .raft-timeline button[aria-current="step"] {
@@ -771,7 +879,8 @@
 
 .raft-action:focus-visible,
 .raft-control:focus-visible,
-.raft-timeline button:focus-visible {
+.raft-timeline button:focus-visible,
+.raft-variant-tabs button:focus-visible {
     outline: 3px solid var(--raft-blue);
     outline-offset: 3px;
 }
@@ -830,6 +939,16 @@
     .raft-intro h1 {
         max-width: 620px;
         font-size: clamp(2.25rem, 12vw, 4.2rem);
+    }
+
+    .raft-variant-tabs {
+        display: flex;
+        width: 100%;
+    }
+
+    .raft-variant-tabs button {
+        min-width: 0;
+        flex: 1;
     }
 
     .raft-demo__shell {
