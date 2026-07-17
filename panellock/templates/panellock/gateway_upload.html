@@ -1,0 +1,22 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Gateway Upload - {{ organization.name }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block extra_js %}<script src="{% static 'panellock/gateway_upload.js' %}" defer></script>{% endblock %}
+{% block content %}
+<section class="account-shell gateway-upload-shell" data-gateway-upload data-upload-url="{% url 'panellock:upload_session' organization.slug %}">
+    <div class="account-card">
+        <p class="eyebrow">Gateway Upload</p>
+        <h1>{{ organization.name }}</h1>
+        <p>Upload a native gateway backup or supported project archive to any managed panel for this customer. The browser calculates SHA-256 before requesting a 15-minute private quarantine session.</p>
+        <form class="stack-form" data-gateway-upload-form>{% csrf_token %}
+            <label>Destination Panel<select data-upload-panel required>{% for panel in panels %}<option value="{{ panel.id }}"{% if panel.id == selected_panel_id %} selected{% endif %}>{{ panel.project.name|default:"Unassigned project" }} / {{ panel.name }}</option>{% endfor %}</select></label>
+            <label>Gateway or project archive<input type="file" data-upload-file accept=".gwbk,.zip,.mer,.apa,.acd,.json,.xml,.yaml,.yml" required></label>
+            <button class="button primary" type="submit">Prepare and upload</button>
+        </form>
+        <p class="gateway-upload-status" data-upload-status aria-live="polite">No file selected.</p>
+        <p class="form-note">Do not upload credentials in plain text. Large gateway exports may take several minutes to hash before upload.</p>
+        <a class="text-link" href="{% url 'panellock:organization_portal' organization.slug %}">Back to panel inventory</a>
+    </div>
+</section>
+{% endblock %}

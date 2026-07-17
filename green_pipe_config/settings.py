@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "organizations",
+    "panellock",
     "portal",
 ]
 
@@ -49,6 +51,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "green_pipe_config.middleware.SecurityHeadersMiddleware",
 ]
 
 if not DEBUG:
@@ -134,9 +137,50 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+LOGIN_URL = "organizations:login"
+LOGIN_REDIRECT_URL = "panellock:portal"
+LOGOUT_REDIRECT_URL = "panellock:index"
+
+EMAIL_BACKEND = os.environ.get(
+    "DJANGO_EMAIL_BACKEND",
+    "django.core.mail.backends.console.EmailBackend",
+)
+EMAIL_HOST = os.environ.get("DJANGO_EMAIL_HOST", "localhost")
+EMAIL_PORT = int(os.environ.get("DJANGO_EMAIL_PORT", "587"))
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = env_bool("DJANGO_EMAIL_USE_TLS", default=True)
+DEFAULT_FROM_EMAIL = os.environ.get("DJANGO_DEFAULT_FROM_EMAIL", "PanelLock <panellock@greenpipe.partners>")
+PANELLOCK_SALES_EMAIL = os.environ.get("PANELLOCK_SALES_EMAIL", "info@greenpipe.partners")
+PANELLOCK_APPROVAL_EMAIL = os.environ.get(
+    "PANELLOCK_APPROVAL_EMAIL",
+    "amanda.miller@greenpipe.partners",
+)
+PANELLOCK_S3_BUCKET = os.environ.get("PANELLOCK_S3_BUCKET", "")
+PANELLOCK_S3_REGION = os.environ.get("PANELLOCK_S3_REGION", "us-east-1")
+PANELLOCK_S3_LOCATIONS = {
+    "us-east": {
+        "bucket": os.environ.get("PANELLOCK_S3_BUCKET_US_EAST", PANELLOCK_S3_BUCKET),
+        "region": os.environ.get("PANELLOCK_S3_REGION_US_EAST", PANELLOCK_S3_REGION),
+    },
+    "us-west": {
+        "bucket": os.environ.get("PANELLOCK_S3_BUCKET_US_WEST", ""),
+        "region": os.environ.get("PANELLOCK_S3_REGION_US_WEST", "us-west-2"),
+    },
+}
+PANELLOCK_UPLOAD_MAX_BYTES = int(os.environ.get("PANELLOCK_UPLOAD_MAX_BYTES", str(10 * 1024**3)))
+PANELLOCK_DEVICE_CLOCK_SKEW_SECONDS = int(os.environ.get("PANELLOCK_DEVICE_CLOCK_SKEW_SECONDS", "300"))
+PANELLOCK_STRIPE_WEBHOOK_SECRET = os.environ.get("PANELLOCK_STRIPE_WEBHOOK_SECRET", "")
+PANELLOCK_KMS_KEY_ID = os.environ.get("PANELLOCK_KMS_KEY_ID", "")
+
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 SESSION_COOKIE_SECURE = not DEBUG
 CSRF_COOKIE_SECURE = not DEBUG
+SESSION_COOKIE_HTTPONLY = True
+SESSION_COOKIE_SAMESITE = "Lax"
+CSRF_COOKIE_SAMESITE = "Lax"
+SECURE_REFERRER_POLICY = "strict-origin-when-cross-origin"
+X_FRAME_OPTIONS = "DENY"
 SECURE_SSL_REDIRECT = env_bool("DJANGO_SECURE_SSL_REDIRECT", default=False)
 SECURE_HSTS_SECONDS = int(os.environ.get("DJANGO_SECURE_HSTS_SECONDS", "0"))
 SECURE_HSTS_INCLUDE_SUBDOMAINS = env_bool("DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS")

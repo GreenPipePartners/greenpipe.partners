@@ -1,0 +1,18 @@
+<section class="ailab-release" aria-labelledby="agentlab-release-title">
+    <header class="ailab-release-hero">
+        <div><p class="eyebrow">Public VM release</p><h2 id="agentlab-release-title">Start with the AgentLab Ubuntu base.</h2><p>A sanitized, boot-tested Ubuntu 24.04 desktop image with OpenCode, Docker, QEMU Guest Agent, and SPICE integration ready for controls lab work.</p></div>
+        <span class="ailab-release-version">2026.07.15</span>
+    </header>
+    <div class="ailab-release-grid">
+        <article class="ailab-release-card ailab-download-card"><p class="eyebrow">Download</p><h3>GPP_VM-2026.07.15.qcow2</h3><p class="ailab-release-lede">The 5.7 GiB QCOW2 image is hosted on Google Drive and imports directly into KVM/QEMU, virt-manager, or Proxmox.</p><a class="button ailab-release-download" href="https://drive.google.com/file/d/17Uukhn7_MHFWiStWfjuujK2U-wU9hA0d/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Download VM image</a><p class="ailab-release-note">Google Drive cannot virus-scan a file this large. Verify the SHA-256 digest below before importing it.</p></article>
+        <aside class="ailab-release-card ailab-release-facts" aria-label="VM release details"><p class="eyebrow">Release details</p><dl><div><dt>Operating system</dt><dd>Ubuntu 24.04.4 LTS</dd></div><div><dt>Image format</dt><dd>QCOW2</dd></div><div><dt>Download size</dt><dd>5.7 GiB</dd></div><div><dt>Virtual disk</dt><dd>120 GiB</dd></div><div><dt>Recommended</dt><dd>8 vCPU / 24 GiB RAM</dd></div><div><dt>Ignition</dt><dd>Not included</dd></div></dl></aside>
+    </div>
+    <div class="ailab-release-grid ailab-release-onboarding">
+        <article class="ailab-release-card"><p class="eyebrow">First login</p><h3>Sign in as FluxLab</h3><dl class="ailab-credential-list"><div><dt>Username</dt><dd><code>fluxlab</code></dd></div><div><dt>Temporary password</dt><dd><code>FluxLab-ChangeMe1</code></dd></div></dl><p class="ailab-release-note">The VM requires a password change at first login. Automatic login is disabled.</p></article>
+        <article class="ailab-release-card"><p class="eyebrow">Integrity</p><h3>Verify before import</h3><code class="ailab-release-checksum">db92866e2994a80bab201d3aeb3b7d0054dbb4b27fbafc52353c3e941e355420</code><p class="ailab-release-note">Run <code>sha256sum GPP_VM-2026.07.15.qcow2</code> and compare the result exactly.</p></article>
+    </div>
+    <section class="ailab-release-card ailab-release-included" aria-labelledby="agentlab-included-title">
+        <div><p class="eyebrow">Core installation</p><h3 id="agentlab-included-title">A clean base, not a preconfigured plant.</h3></div>
+        <ul><li>OpenCode 1.18.1 with authentication and session state removed</li><li>Docker Engine 29.1.3 and Docker Compose 2.40.3</li><li>QEMU Guest Agent and SPICE desktop integration</li><li>No Ignition installation, browser profiles, SSH keys, or personal files</li></ul>
+    </section>
+</section>

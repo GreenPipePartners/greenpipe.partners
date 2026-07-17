@@ -1,0 +1,16 @@
+<details class="panellock-spec-card">
+    <summary>
+        <strong>{{ offer.name }}</strong>
+        <span>{{ offer.display_price }}</span>
+        <i aria-hidden="true">+</i>
+    </summary>
+    <div class="panellock-spec-body">
+        {% if offer.description %}<p>{{ offer.description }}</p>{% endif %}
+        {% if offer.specifications %}
+        <dl>
+            {% for label, value in offer.specifications.items %}<div><dt>{{ label }}</dt><dd>{{ value }}</dd></div>{% endfor %}
+        </dl>
+        {% endif %}
+        {% if offer.external_url %}<a href="{{ offer.external_url }}" target="_blank" rel="noopener">View configured hardware</a>{% endif %}
+    </div>
+</details>

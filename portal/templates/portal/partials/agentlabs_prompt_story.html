@@ -1,0 +1,91 @@
+{% load static %}
+<section class="oc-demo-section" aria-labelledby="agentlabs-story-heading">
+    <div class="oc-demo-intro"><h2 id="agentlabs-story-heading">Ask for the lab. Watch the agent build it.</h2><p>An illustrative OpenCode session showing how a plain-language controls request becomes a repeatable AgentLab build.</p></div>
+    <figure class="oc-story-player" aria-label="AgentLab Fluxolot VM provisioning demonstration" data-prompt-story data-story-durations="8500,12000,12000,13000,13000,16000">
+        <div class="oc-terminal">
+            <div class="oc-terminal__bar" aria-hidden="true"><span class="oc-terminal__title">opencode@agentlab: fluxolot-vm-lab</span></div>
+            <div class="oc-terminal__screen" aria-live="polite">
+                <section class="oc-terminal__story" data-story-panel aria-hidden="false">
+                    <div class="oc-terminal__story-body oc-landing-body">
+                        <div class="oc-landing-workspace"><div class="oc-landing"><img class="oc-landing__logo" src="{% static 'portal/opencode-wordmark-dark.svg' %}" alt="OpenCode" width="641" height="115" loading="lazy" decoding="async" draggable="false"><div class="oc-composer oc-landing-prompt"><div class="oc-composer__input"><span data-typewriter data-text="Replicate the base VM and load up a new VM lab with our Fluxolot Ignition project containerized, and build the Ignition database with it."></span></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div></div></div>
+                    </div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-message oc-user-message">Replicate the base VM and load up a new VM lab with our Fluxolot Ignition project containerized, and build the Ignition database with it.</div>
+                        <div class="oc-message oc-assistant-message" data-model-typewriter><p>I'm on it. I'll verify the approved base image, create an isolated VM clone, build the pinned Ignition and database containers, restore Fluxolot, and validate the finished lab.</p><p>I'll preserve the base VM and report each result as I work.</p></div>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · agentlab</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · agentlab</div>
+                        <div class="oc-message oc-user-message">Replicate the base VM and load up a new VM lab with our Fluxolot Ignition project containerized, and build the Ignition database with it.</div>
+                        <div class="oc-thought" data-model-typewriter>I need to keep the source image immutable, verify capacity and checksums, create an isolated clone, pin the container versions, restore only approved Fluxolot artifacts, initialize the database, and finish with reproducible health checks.</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <pre class="oc-code oc-code--diff" data-model-typewriter><span class="oc-code__add">+ name: fluxolot-vm-lab-01</span>
+<span class="oc-code__add">+ base_image: gpp-base-ubuntu-24.04</span>
+<span class="oc-code__add">+ network: isolated-controls-lab</span>
+<span class="oc-code__add">+ services:</span>
+<span class="oc-code__add">+   ignition:</span>
+<span class="oc-code__add">+     image: inductiveautomation/ignition:8.3.8</span>
+<span class="oc-code__add">+     restore: ./artifacts/fluxolot.gwbk</span>
+<span class="oc-code__add">+   database:</span>
+<span class="oc-code__add">+     image: postgres:17</span>
+<span class="oc-code__add">+     migrations: ./database/migrations</span>
+<span class="oc-code__add">+ verify: [gateway, database, tags, history]</span></pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Wrote</strong> · lab/fluxolot/compose.yaml · +12</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <pre class="oc-log" data-model-typewriter>agentlab.vm [INFO] base checksum verified: gpp-base-ubuntu-24.04
+agentlab.vm [INFO] cloned fluxolot-vm-lab-01; source remains read-only
+agentlab.net [INFO] attached isolated-controls-lab; external ingress disabled
+compose [INFO] ignition:8.3.8 healthy
+compose [INFO] postgres:17 healthy
+fluxolot.restore [INFO] gateway project restored
+fluxolot.database [INFO] schema and seed migrations applied
+agentlab.verify [INFO] checking gateway, database, tags, and history...</pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · agentlab · running</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-success" data-model-typewriter><p><span class="oc-success__pass">PASS.</span> Fluxolot VM lab is ready.</p><p>Ignition and PostgreSQL are healthy. The project restore, migrations, tags, and history checks pass.</p><p>Build record: <span class="oc-path">agentlab://fluxolot-vm-lab-01/builds/001</span></p></div>
+                        <div class="oc-thought" data-model-typewriter data-reveal-on-type>Prepared for staff review and repeatable rebuild.</div>
+                        <pre class="oc-log" data-model-typewriter data-reveal-on-type>CREATED fluxolot-vm-lab-01
+BASE VM UNCHANGED
+STATUS ready-for-review</pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · completed</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · agentlab · fluxolot-lab</div></div>
+                    <span class="oc-story-path">~/agentlabs/fluxolot-vm-lab/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+            </div>
+        </div>
+        <figcaption class="oc-terminal__captions" aria-live="polite">
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="false"><strong>prompt in OpenCode:</strong> ask for the desired controls lab in plain language.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>agent response:</strong> the completed prompt moves into the transcript and the agent answers.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>reason about the work:</strong> the agent identifies boundaries, dependencies, and verification steps.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>write the build:</strong> the agent creates a pinned, repeatable lab definition.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>execute visibly:</strong> VM, container, project, and database work stream into the session.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>return evidence:</strong> the finished lab includes health results and a reproducible build record.</span>
+        </figcaption>
+        <div class="oc-terminal__controls" role="group" aria-label="AgentLab story playback controls"><div class="oc-terminal__controls-group"><div class="oc-terminal__stories" aria-label="AgentLab story progress">
+            <button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show prompt typing"><span>Prompt</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show agent response"><span>Response</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show reasoning"><span>Reason</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show generated build"><span>Write</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show execution"><span>Execute</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show result"><span>Result</span></button>
+        </div><button class="oc-terminal__playback" type="button" data-story-playback aria-label="Play story playback" aria-pressed="false"><span class="oc-terminal__replay" aria-hidden="true">&#8634; <span>play again</span></span></button></div></div>
+    </figure>
+</section>

@@ -1,0 +1,4 @@
+{% extends "portal/base.html" %}{% load static %}
+{% block title %}PanelLock Customer Portal{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}<section class="portal-shell"><p class="eyebrow">PanelLock portal</p><h1>Your organizations</h1><div class="portal-card-grid">{% for membership in memberships %}<a class="portal-card" href="{% url 'panellock:organization_portal' membership.organization.slug %}"><span>{{ membership.get_role_display }}</span><h2>{{ membership.organization.name }}</h2><p>Open panels, backups, devices, and update notices.</p></a>{% empty %}<div class="portal-card"><h2>No organization access</h2><p>PanelLock is invitation-only. Ask your organization owner or Green Pipe Partners for an invitation.</p></div>{% endfor %}</div></section>{% endblock %}

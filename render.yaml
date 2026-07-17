@@ -24,6 +24,12 @@ services:
         value: https://greenpipe.partners,https://www.greenpipe.partners
       - key: DJANGO_SECURE_SSL_REDIRECT
         value: "True"
+      - key: DJANGO_SECURE_HSTS_SECONDS
+        value: "31536000"
+      - key: DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS
+        value: "True"
+      - key: DJANGO_SECURE_HSTS_PRELOAD
+        value: "True"
       - key: DJANGO_SUPERUSER_USERNAME
         value: admin
       - key: DJANGO_SUPERUSER_EMAIL
@@ -32,6 +38,96 @@ services:
         sync: false
       - key: GITHUB_TOKEN
         sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: greenpipe-partners-db
+          property: connectionString
+      - key: PANELLOCK_SALES_EMAIL
+        value: info@greenpipe.partners
+      - key: PANELLOCK_APPROVAL_EMAIL
+        value: amanda.miller@greenpipe.partners
+      - key: DJANGO_EMAIL_BACKEND
+        value: django.core.mail.backends.smtp.EmailBackend
+      - key: DJANGO_EMAIL_HOST
+        sync: false
+      - key: DJANGO_EMAIL_PORT
+        value: "587"
+      - key: DJANGO_EMAIL_HOST_USER
+        sync: false
+      - key: DJANGO_EMAIL_HOST_PASSWORD
+        sync: false
+      - key: PANELLOCK_S3_BUCKET
+        sync: false
+      - key: PANELLOCK_S3_REGION
+        value: us-east-1
+      - key: PANELLOCK_S3_BUCKET_US_EAST
+        sync: false
+      - key: PANELLOCK_S3_REGION_US_EAST
+        value: us-east-1
+      - key: PANELLOCK_S3_BUCKET_US_WEST
+        sync: false
+      - key: PANELLOCK_S3_REGION_US_WEST
+        value: us-west-2
+      - key: PANELLOCK_KMS_KEY_ID
+        sync: false
+      - key: PANELLOCK_STRIPE_WEBHOOK_SECRET
+        sync: false
+  - type: cron
+    name: panellock-catalog-review
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    schedule: "0 14 1 * *"
+    dockerCommand: uv run python manage.py review_panellock_catalog --days 30
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: DJANGO_SECRET_KEY
+      - key: DATABASE_URL
+        fromDatabase:
+          name: greenpipe-partners-db
+          property: connectionString
+      - key: PANELLOCK_SALES_EMAIL
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: PANELLOCK_SALES_EMAIL
+      - key: DJANGO_EMAIL_BACKEND
+        value: django.core.mail.backends.smtp.EmailBackend
+      - key: DJANGO_EMAIL_HOST
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: DJANGO_EMAIL_HOST
+      - key: DJANGO_EMAIL_HOST_USER
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: DJANGO_EMAIL_HOST_USER
+      - key: DJANGO_EMAIL_HOST_PASSWORD
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: DJANGO_EMAIL_HOST_PASSWORD
+  - type: cron
+    name: panellock-plan-expiry
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    schedule: "*/15 * * * *"
+    dockerCommand: uv run python manage.py expire_panellock_plans
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        fromService:
+          type: web
+          name: greenpipe-partners
+          envVarKey: DJANGO_SECRET_KEY
       - key: DATABASE_URL
         fromDatabase:
           name: greenpipe-partners-db

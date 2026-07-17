@@ -39,7 +39,7 @@ The Docker start command runs `python manage.py migrate --noinput` before Gunico
 - Signed Fluxy `.modl` files, checksums, SBOMs, certificate, and release metadata are committed under `published/greenpipe-handoff/release/fluxy/{version}/` and served from `/release/fluxy/{version}/`.
 - Astro production output is `.runtime/site/` and should be mounted as static docs, not rendered by Django per request.
 - The Flux deployment contract lives in `greenpipe-website-contract.md`; the website publishes typed install intent, release artifacts, checksums, signatures, manifests, and status views only.
-- Fluxup is the primary installer UX: `uvx fluxup init`.
+- Fluxup is the primary installer UX: `sudo "$(command -v uvx)" fluxup init`.
 - Reports are hidden direct URLs managed through Django admin. They fetch GitHub Gists by ID and require `report.md`.
 - Django admin is mounted at `/control/`.
 
@@ -81,3 +81,24 @@ The signer exports `published/greenpipe-handoff/release/flux/flux-release.pub`; 
 
 If branch protection blocks direct workflow commits, run with `publish_to_repo=false`, download the signed handoff artifact, unpack it into `published/greenpipe-handoff`, and commit it through the normal review path.
 - Keep `render.yaml` and this runbook updated whenever deployment shape changes.
+
+## PanelLock production configuration
+
+Required before enabling backup upload or managed execution:
+
+- `PANELLOCK_S3_BUCKET_US_EAST` and `PANELLOCK_S3_BUCKET_US_WEST`: private versioned regional buckets with quarantine and clean prefixes, lifecycle rules, object lock, and malware scanning. An organization cannot upload unless its selected region has a configured bucket.
+- `PANELLOCK_S3_REGION_US_EAST` and `PANELLOCK_S3_REGION_US_WEST`: AWS regions corresponding to those buckets.
+- `PANELLOCK_KMS_KEY_ID`: asymmetric KMS signing key configured for `ECDSA_SHA_256`; distribute its pinned public key with the separately signed AgentLab agent.
+- `PANELLOCK_SALES_EMAIL`: proposal, follow-up, and stale-price review destination.
+- `PANELLOCK_APPROVAL_EMAIL`: recipient for browser-generated final approval requests.
+- `DJANGO_EMAIL_HOST`, `DJANGO_EMAIL_HOST_USER`, and `DJANGO_EMAIL_HOST_PASSWORD`: transactional SMTP provider used for customer invitations, follow-up confirmation, and catalog review. Keep `DJANGO_EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend` and TLS enabled in production.
+- `PANELLOCK_STRIPE_WEBHOOK_SECRET`: Stripe webhook secret once reviewed quotes are converted to checkout or invoices.
+- Standard AWS workload credentials with least-privilege access to the configured bucket, scanner status, and KMS signing operation.
+
+The monthly `panellock-catalog-review` cron job emails staff when an external OnLogic or Inductive Automation price has not been confirmed within 30 days. Hardware rows retain the exact vendor configuration URL and recompute customer price using the configured markup: 30% for PCs and 15% for panel displays. Historical proposal lines remain unchanged.
+
+The `panellock-plan-expiry` cron runs every 15 minutes. It cancels expired draft/approved plans and queued jobs, updates the associated request, and releases a reserved spare so abandoned replacement work cannot block inventory indefinitely.
+
+The current prototype `Device` identity predates the AgentLab boundary and still conflates panel-PC inventory with the execution endpoint. Before production job delivery, split that model into the target panel PC, reusable AgentLab identity, and temporary service session.
+
+Do not enable AgentLab job delivery until that model split is complete and staging has verified enrollment, revocation, replay rejection, KMS manifest signatures, artifact hashes, interface isolation, preflight, rollback, and emergency stop. See `PANELLOCK_OPERATIONS.md`.

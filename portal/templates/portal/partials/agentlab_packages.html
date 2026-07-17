@@ -1,0 +1,33 @@
+<div class="ailab-package-stack">
+    <article class="ailab-package-card" data-package="omarchy">
+        <div class="ailab-package-copy"><div><h3>Linux AgentLab with Omarchy</h3><p>Dell XPS 16-inch lab machine configured for Omarchy, OpenCode, virtualization, and container workflows.</p></div></div>
+        <div class="ailab-package-controls">
+            <span class="ailab-unit-price">$4,800 each</span>
+            <div class="ailab-stepper" aria-label="Linux AgentLab with Omarchy quantity"><button type="button" data-action="decrement" aria-label="Remove one Linux AgentLab with Omarchy">-</button><input type="number" min="0" max="5" inputmode="numeric" value="1" data-quantity data-label="Linux AgentLab with Omarchy" data-price="4800"><button type="button" data-action="increment" aria-label="Add one Linux AgentLab with Omarchy">+</button></div>
+        </div>
+    </article>
+
+    <article class="ailab-package-card" data-package="ubuntu">
+        <div class="ailab-package-copy"><div><h3>Linux AgentLab with Ubuntu</h3><p>The same Dell XPS 16-inch hardware configured with Ubuntu for teams standardizing on a familiar Linux desktop.</p></div></div>
+        <div class="ailab-package-controls">
+            <span class="ailab-unit-price">$4,800 each</span>
+            <div class="ailab-stepper" aria-label="Linux AgentLab with Ubuntu quantity"><button type="button" data-action="decrement" aria-label="Remove one Linux AgentLab with Ubuntu">-</button><input type="number" min="0" max="5" inputmode="numeric" value="0" data-quantity data-label="Linux AgentLab with Ubuntu" data-price="4800"><button type="button" data-action="increment" aria-label="Add one Linux AgentLab with Ubuntu">+</button></div>
+        </div>
+    </article>
+
+    {% if training %}<article class="ailab-package-card" data-package="byo">
+        <div class="ailab-package-copy"><div><h3>Bring Your Own Setup</h3><p>Setup and validation for an attendee-provided workstation that meets the AgentLab requirements.</p></div></div>
+        <div class="ailab-package-controls">
+            <span class="ailab-unit-price">$800 each</span>
+            <div class="ailab-stepper" aria-label="Bring Your Own Setup quantity"><button type="button" data-action="decrement" aria-label="Remove one Bring Your Own Setup">-</button><input type="number" min="0" max="5" inputmode="numeric" value="0" data-quantity data-label="Bring Your Own Setup" data-price="800"><button type="button" data-action="increment" aria-label="Add one Bring Your Own Setup">+</button></div>
+        </div>
+    </article>{% endif %}
+
+    <article class="ailab-package-card ailab-option-card" data-addon="licensed-windows-vm-image">
+        <div class="ailab-package-copy"><div><h3>Add a Licensed Windows VM Image</h3><p>Add a customer-provided, properly licensed Windows VM image that agents can use to assist with authorized Rockwell workflows. Windows and Rockwell software are not included.</p></div></div>
+        <div class="ailab-package-controls">
+            <span class="ailab-unit-price">$300 each</span>
+            <div class="ailab-stepper" aria-label="Licensed Windows VM Image quantity"><button type="button" data-action="decrement" aria-label="Remove one Licensed Windows VM Image">-</button><input type="number" min="0" max="5" inputmode="numeric" value="0" data-addon-quantity data-label="Licensed Windows VM Image" data-price="300" aria-label="Licensed Windows VM Images selected"><button type="button" data-action="increment" aria-label="Add one Licensed Windows VM Image">+</button></div>
+        </div>
+    </article>
+</div>

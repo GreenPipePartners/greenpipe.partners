@@ -1,0 +1,128 @@
+{% extends "portal/base.html" %}
+{% load static panellock %}
+{% block title %}PanelLock - HMI Conversion and Protected Updates{% endblock %}
+{% block meta_description %}PanelLock converts industrial HMI projects, configures panel hardware, and keeps protected panels backed up and current.{% endblock %}
+{% block og_title %}PanelLock - Open Panel Modernization{% endblock %}
+{% block og_description %}Budget industrial HMI conversion, configured hardware, and human-authorized protection workflows built on AgentLab.{% endblock %}
+{% block twitter_title %}PanelLock - Open Panel Modernization{% endblock %}
+{% block twitter_description %}Modernize industrial panels with the same inspectable AgentLab workbench used to build and test the solution.{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block extra_js %}<script src="{% static 'panellock/panellock.js' %}" defer></script>{% endblock %}
+{% block hero %}
+<section class="hero solution-hero">
+    <p class="eyebrow">PanelLock by Green Pipe Partners</p>
+    <h1>Modernize once. Stay protected.</h1>
+    <p class="hero-copy">Configure each HMI conversion and add protected backups, controlled updates, and critical vulnerability response where you need it.</p>
+    <div class="solution-hero-actions"><a class="button primary" href="#selector">Build a PanelLock quote</a><a class="button secondary" href="{% url 'organizations:login' %}">Customer portal</a></div>
+</section>
+{% endblock %}
+{% block content %}
+{% include "panellock/partials/prompt_story.html" %}
+
+<section class="ailab-builder panellock-builder" id="selector" data-panellock-builder data-max-conversions="20" data-proposal-endpoint="{% url 'panellock:builder_proposal' %}">
+    {% csrf_token %}
+    <div class="ailab-package-panel">
+        <div class="ailab-section-heading">
+            <p class="eyebrow">Quote builder</p>
+            <h2>Configure each conversion</h2>
+            <p>Add one configuration per panel, then choose its source platform, PC, screen, and Ignition licensing.</p>
+        </div>
+
+        <article class="ailab-required-card panellock-selector-shell" aria-label="Panel conversion selector">
+            <header class="panellock-selector-heading">
+                <div><h3>Panel conversions</h3><p>Add or remove complete panel configurations.</p></div>
+                <div class="ailab-package-controls">
+                    <span class="ailab-unit-price">Up to 20 conversions</span>
+                    <div class="ailab-stepper" aria-label="Number of conversions">
+                        <button type="button" data-conversion-action="decrement" aria-label="Remove the last conversion">-</button>
+                        <input type="number" min="1" max="20" value="1" readonly data-conversion-count aria-label="Conversions selected">
+                        <button type="button" data-conversion-action="increment" aria-label="Add another conversion">+</button>
+                    </div>
+                </div>
+            </header>
+            <div class="ailab-package-stack panellock-config-stack" data-conversion-stack>
+                {% include "panellock/partials/conversion_row.html" with row_index="01" %}
+            </div>
+            <template data-conversion-template>{% include "panellock/partials/conversion_row.html" with row_index="00" %}</template>
+            <section class="panellock-spare-selector" aria-labelledby="spare-pc-heading">
+                <header><div><p class="eyebrow">Final selection</p><h3 id="spare-pc-heading">Optional preconfigured spare PCs</h3></div><p>Add ready-to-stage spare hardware independently from the panel configurations above.</p></header>
+                <div class="panellock-spare-options">
+                    {% for offer in pcs %}
+                        <article class="panellock-spare-option" data-spare-pc data-code="{{ offer.code }}" data-label="{{ offer.name }}" data-price="{{ offer.amount_cents }}">
+                            <span class="panellock-spare-index">{{ forloop.counter|stringformat:"02d" }}</span>
+                            <div><h4>{{ offer.name }}</h4><p>{{ offer.description }}</p></div>
+                            <strong>{{ offer.display_price }}</strong>
+                            <div class="ailab-stepper" aria-label="{{ offer.name }} spare quantity">
+                                <button type="button" data-spare-action="decrement" aria-label="Remove {{ offer.name }} spare">-</button>
+                                <input type="number" min="0" max="20" value="0" readonly data-spare-count aria-label="{{ offer.name }} spares selected">
+                                <button type="button" data-spare-action="increment" aria-label="Add {{ offer.name }} spare">+</button>
+                            </div>
+                            <output data-spare-total>$0</output>
+                        </article>
+                    {% endfor %}
+                </div>
+            </section>
+        </article>
+    </div>
+
+    <aside class="ailab-summary-card" aria-label="PanelLock quote summary">
+        <div><p class="eyebrow">Live quote</p><h2>Proposal total</h2></div>
+        <dl>
+            <div><dt>Conversions selected</dt><dd><span data-summary-count>1</span> / 20</dd></div>
+            <div><dt>Source conversion</dt><dd>{{ ignition_source_conversion_cents|whole_money }} / {{ other_source_conversion_cents|whole_money }}</dd></div>
+        </dl>
+        <div class="ailab-line-items" data-quote-lines></div>
+        <div class="ailab-total-row"><span>Total</span><strong data-quote-total aria-live="polite">$0</strong></div>
+        <div class="panellock-protect-total"><span>PanelLock Protect</span><strong data-protect-total aria-live="polite">$0 / year</strong></div>
+        <fieldset class="panellock-proposal-details">
+            <legend>Budgetary proposal details</legend>
+            <label>Company<input type="text" maxlength="160" autocomplete="organization" required data-proposal-company></label>
+            <label>Contact name<input type="text" maxlength="120" autocomplete="name" required data-proposal-name></label>
+            <label>Email<input type="email" maxlength="254" autocomplete="email" required data-proposal-email></label>
+            <label>Project or site<input type="text" maxlength="160" required data-proposal-project></label>
+        </fieldset>
+        <label class="panellock-source-attestation">
+            <input type="checkbox" data-source-authorized>
+            <span><strong>Source authorization</strong><small>I confirm that I own or am authorized to use and provide the source projects, exports, and supporting materials required for these conversions.</small></span>
+        </label>
+        <label class="panellock-source-attestation" data-agentlab-attestation data-disabled>
+            <input type="checkbox" data-agentlab-acknowledged disabled>
+            <span><strong>AgentLab configuration</strong><small>I understand that PanelLock Protect uses source-available AgentLab infrastructure that must be configured and maintained by qualified personnel.</small></span>
+        </label>
+        <div class="panellock-proposal-actions">
+            <button class="button primary ailab-proposal-button" type="button" data-generate-proposal disabled>Generate Budgetary Proposal</button>
+            <a class="button secondary ailab-proposal-button" data-request-final-approval aria-disabled="true">View Saved Proposal</a>
+        </div>
+        <p class="panellock-proposal-status" data-proposal-status aria-live="polite"></p>
+        <p class="ailab-summary-note"><strong>Budgetary proposal:</strong> Green Pipe Partners expects to honor standard configurations as priced. Source review may revise exceptional scope, unavailable components, unsupported dependencies, taxes, shipping, or scheduling.</p>
+        <p class="ailab-summary-note"><strong>Source pricing:</strong> Ignition sources add {{ ignition_source_conversion_cents|whole_money }}. All other source platforms add {{ other_source_conversion_cents|whole_money }}.</p>
+        <p class="ailab-summary-note"><strong>PanelLock Protect:</strong> $850 per panel each year for two scheduled update reviews, protected backups, and applicable critical vulnerability response.</p>
+        <p class="ailab-summary-note"><strong>Convertibility review:</strong> Final scope is confirmed after the source project and supporting materials establish a reliable conversion path.</p>
+        <p class="ailab-summary-note"><strong>Proposal terms:</strong> Server-priced budgetary proposals remain valid for 30 days and provide the commercial starting point for source review.</p>
+    </aside>
+</section>
+
+<section class="panellock-boundary"><p class="eyebrow">Safety boundary</p><h2>Agents build the plan. Authorized staff approve. AgentLabs execute.</h2><p>The same AgentLab workbench used to build and test open industrial systems can execute a versioned, allowlisted PanelLock plan after authorization. Staff retain stop/go and cutover authority throughout the work.</p></section>
+
+<section class="panellock-specifications" aria-labelledby="hardware-specifications">
+    <header>
+        <p class="eyebrow">Hardware details</p>
+        <h2 id="hardware-specifications">Panel and PC specifications</h2>
+        <p>Review the current hardware configurations represented in the quote builder.</p>
+    </header>
+    <div class="panellock-spec-groups">
+        <article class="panellock-spec-group">
+            <div><span>01</span><h3>Industrial PCs</h3></div>
+            <div class="panellock-spec-stack">
+                {% for offer in pcs %}{% include "panellock/partials/hardware_spec.html" %}{% endfor %}
+            </div>
+        </article>
+        <article class="panellock-spec-group">
+            <div><span>02</span><h3>Panel displays</h3></div>
+            <div class="panellock-spec-stack">
+                {% for offer in screens %}{% include "panellock/partials/hardware_spec.html" %}{% endfor %}
+            </div>
+        </article>
+    </div>
+</section>
+{% endblock %}

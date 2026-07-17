@@ -1,0 +1,14 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Request Managed Update - {{ organization.name }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="account-shell">
+    <div class="account-card">
+        <p class="eyebrow">{{ organization.name }}</p>
+        <h1>Request a managed update</h1>
+        <p>The portal produces only allowlisted operations. After human approval, the connected AgentLab retrieves the signed manifest and performs the work through its direct Ethernet link to the panel PC.</p>
+        <form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="button primary" type="submit">Draft safe plan</button></form>
+    </div>
+</section>
+{% endblock %}

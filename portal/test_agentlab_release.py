@@ -3,14 +3,10 @@ from django.urls import reverse
 
 
 class AgentLabReleaseTests(SimpleTestCase):
-    def test_agentlab_release_tab_links_public_vm(self):
-        response = self.client.get(reverse("portal:agentlab"))
+    def test_agentlabs_page_links_public_vm(self):
+        response = self.client.get(reverse("portal:agentlabs"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, 'data-component="tabs"')
-        self.assertContains(response, 'data-tab="training"')
-        self.assertContains(response, 'data-tab="release"')
-        self.assertContains(response, "VM Release")
         self.assertContains(response, "Public VM release")
         self.assertContains(response, "GPP_VM-2026.07.15.qcow2")
         self.assertContains(

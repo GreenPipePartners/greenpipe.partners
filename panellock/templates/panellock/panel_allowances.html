@@ -1,0 +1,12 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}{{ panel.project.name|default:panel.name }} Allowances - PanelLock{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="account-shell panellock-allowance-page">
+    <header><p class="eyebrow">Special exceptions</p><h1>{{ panel.project.name|default:panel.name }}</h1><p>Explicit communications paths and application permissions approved for this panel.</p><a class="text-link" href="{% url 'panellock:organization_portal' organization.slug %}">Back to panel inventory</a></header>
+    <div class="panellock-allowance-list">
+        {% for allowance in allowances %}<article><span>{{ allowance.get_allowance_type_display }}</span><h2>{{ allowance.name }}</h2><p>{{ allowance.details }}</p></article>{% empty %}<article><h2>No active allowances</h2><p>This panel has no special communications or application exceptions.</p></article>{% endfor %}
+    </div>
+</section>
+{% endblock %}

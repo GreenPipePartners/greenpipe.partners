@@ -1,0 +1,54 @@
+{% extends "portal/base.html" %}
+{% load static %}
+
+{% block title %}PanelLock Protect - Controlled HMI Updates and Recovery{% endblock %}
+{% block meta_description %}PanelLock Protect provides protected backups, two scheduled update reviews each year, and critical vulnerability response for managed industrial HMI panels.{% endblock %}
+{% block og_title %}PanelLock Protect - Controlled Updates and Recovery{% endblock %}
+{% block og_description %}Protected backups, scheduled update reviews, and human-authorized panel operations using AgentLab.{% endblock %}
+{% block twitter_title %}PanelLock Protect - Controlled Updates and Recovery{% endblock %}
+{% block twitter_description %}Keep modernized panels recoverable and current while staff retain authorization and cutover control.{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+
+{% block hero %}
+<section class="hero solution-hero">
+    <p class="eyebrow">PanelLock Protect</p>
+    <h1>Keep every panel current, recoverable, and controlled.</h1>
+    <p class="hero-copy">Protect the application after conversion with verified backups, planned update cycles, critical vulnerability response, and human-authorized deployment controls.</p>
+    <div class="solution-hero-actions"><a class="button primary" href="{% url 'panellock:index' %}#selector">Configure a panel</a><a class="button secondary" href="{% url 'organizations:login' %}">Customer portal</a></div>
+</section>
+{% endblock %}
+
+{% block content %}
+<div class="panellock-protect-page">
+    <section class="panellock-protect-promise" aria-labelledby="protect-included">
+        <header class="panellock-protect-heading"><p class="eyebrow">Protection lifecycle</p><h2 id="protect-included">Protection is an operating process, not a checkbox.</h2><p>Every covered panel receives a documented baseline, recoverable artifacts, controlled maintenance, and an explicit response path when critical vulnerabilities apply.</p></header>
+        <div class="panellock-protect-grid">
+            <article><span>01</span><h3>Protected backups</h3><p>Preserve native application artifacts and supporting configuration with integrity checks, controlled access, retention, and recovery review.</p></article>
+            <article><span>02</span><h3>Two scheduled update reviews</h3><p>Review the supported software stack twice each year, test supported updates, and deploy compatible changes after authorization through preflight, backup, verification, and rollback criteria.</p></article>
+            <article><span>03</span><h3>Critical response</h3><p>Evaluate applicable critical vulnerabilities between scheduled reviews and deploy a tested vendor patch or documented mitigation when a supportable response exists.</p></article>
+        </div>
+    </section>
+
+    <section class="panellock-protect-flow" aria-labelledby="protect-flow">
+        <header class="panellock-protect-heading"><p class="eyebrow">Controlled workflow</p><h2 id="protect-flow">Every change follows the same review boundary.</h2></header>
+        <ol>
+            <li><span>01</span><div><h3>Inventory</h3><p>Record application, operating system, modules, drivers, dependencies, credentials ownership, and recovery artifacts.</p></div></li>
+            <li><span>02</span><div><h3>Plan</h3><p>Prepare a versioned update plan with impact, test evidence, maintenance-window requirements, rollback criteria, and expected results.</p></div></li>
+            <li><span>03</span><div><h3>Authorize</h3><p>A qualified person reviews and approves the exact operation before the connected AgentLab can retrieve it.</p></div></li>
+            <li><span>04</span><div><h3>Verify</h3><p>The AgentLab captures preflight and backup evidence, executes the allowlisted change, validates the outcome, and preserves the audit record.</p></div></li>
+        </ol>
+    </section>
+
+    <section class="panellock-agentlab-panel" aria-labelledby="agentlab-foundation">
+        <div><p class="eyebrow">Source-available foundation</p><h2 id="agentlab-foundation">The same AgentLab, carried into panel operations.</h2><p>PanelLock does not introduce a separate black box. It uses the same inspectable AgentLab workbench, configured and operated by qualified personnel for the covered environment.</p></div>
+        <div class="panellock-agentlab-facts"><p><strong>Customer control</strong><span>Infrastructure and source remain inspectable.</span></p><p><strong>Qualified operation</strong><span>Configuration and maintenance knowledge is required.</span></p><p><strong>Human authority</strong><span>Agents build plans; authorized people approve; AgentLabs execute.</span></p><a class="button secondary" href="{% url 'portal:agentlabs' %}">Explore AgentLabs</a></div>
+    </section>
+
+    <section class="panellock-assurance-grid">
+        <article><p class="eyebrow">Security posture</p><h2>CISA-aligned practices, precisely stated.</h2><p>PanelLock is designed to support practices aligned with applicable CISA Cybersecurity Performance Goals and vulnerability-management guidance, including inventory, protected recovery, controlled access, logging, and Known Exploited Vulnerabilities review.</p><p>PanelLock does not claim a blanket CISA certification. Stronger assurance requires a named scope, documented controls, retained evidence, and independent assessment.</p></article>
+        <article class="panellock-protect-price"><p class="eyebrow">Annual coverage</p><strong>{{ protect_offer.display_price }}</strong><span>per panel / year</span><p>Includes two scheduled update reviews, protected backups, notifications, and applicable critical vulnerability response.</p><a class="button primary" href="{% url 'panellock:index' %}#selector">Add PanelLock Protect</a></article>
+    </section>
+
+    <section class="panellock-protect-boundary"><p class="eyebrow">Service boundary</p><h2>Safe deployment depends on the supported environment.</h2><p>Coverage requires supported components, usable recovery artifacts, a qualified AgentLab operator, an approved maintenance window, and a tested patch or mitigation. PanelLock Protect does not guarantee uninterrupted operation or an unconditional repair deadline.</p></section>
+</div>
+{% endblock %}

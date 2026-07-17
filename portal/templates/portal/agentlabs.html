@@ -1,0 +1,40 @@
+{% extends "portal/base.html" %}
+
+{% block title %}AgentLabs - Configured Agent Workbenches{% endblock %}
+{% block meta_description %}Configure AgentLab hardware, Linux environments, and customer-provided licensed virtual machine images for controls workflows.{% endblock %}
+{% block og_title %}AgentLabs - Hardware and Configuration{% endblock %}
+{% block og_description %}Configured agent workbenches for controls engineering teams.{% endblock %}
+
+{% block hero %}
+<section class="hero solution-hero ailab-hero">
+    <div class="ailab-hero-copy">
+        <p class="eyebrow">AgentLabs</p>
+        <h1>Configured agent workbenches.</h1>
+        <p class="hero-copy">Select the hardware, Linux environment, and optional support for a customer-provided licensed Windows VM image. Green Pipe Partners configures the selected environment and delivers it ready for your internal workflow.</p>
+        <div class="solution-hero-actions"><a class="button primary" href="#agentlabs-builder">Configure AgentLabs</a><a class="button secondary" href="{% url 'portal:agentlab' %}">Explore AgentLab Training</a></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block content %}
+{% include "portal/partials/agentlabs_prompt_story.html" %}
+
+<section class="ailab-builder" id="agentlabs-builder" data-ailab-quote data-base-price="0" data-max-attendees="5" data-proposal-kind="configuration" data-proposal-title="AgentLabs Hardware and Configuration" data-pdf-header="AgentLabs Configuration Proposal" data-count-label="AgentLabs selected" data-pdf-filename="green-pipe-agentlabs-configuration-proposal">
+    <div class="ailab-package-panel">
+        <div class="ailab-section-heading"><p class="eyebrow">Configuration portal</p><h2>Select AgentLab environments</h2><p>Add up to five Omarchy or Ubuntu AgentLabs, with optional support for a customer-provided licensed VM image.</p></div>
+        {% include "portal/partials/agentlab_packages.html" %}
+    </div>
+    <aside class="ailab-summary-card" aria-label="AgentLabs configuration summary">
+        <div><p class="eyebrow">Live quote</p><h2>Configuration total</h2></div>
+        <dl><div><dt>AgentLabs selected</dt><dd><span data-selection-total>1</span> / 5</dd></div></dl>
+        <div class="ailab-line-items" data-line-items></div>
+        <div class="ailab-total-row"><span>Total</span><strong data-total>$4,800</strong></div>
+        <button class="button primary ailab-proposal-button" type="button" data-generate-pdf>Generate Proposal</button>
+        <p class="ailab-summary-note"><strong>Required separately:</strong> A ChatGPT Pro plan is required and is not provided. <a class="text-link" href="https://chatgpt.com/pricing">Review ChatGPT Pro pricing</a>.</p>
+        <p class="ailab-summary-note"><strong>Proposal terms:</strong> Valid for 30 days. Hardware availability, taxes, duties, and shipping are confirmed during final review.</p>
+    </aside>
+</section>
+
+{% include "portal/partials/agentlab_hardware_specs.html" %}
+{% include "portal/partials/agentlab_release.html" %}
+{% endblock %}

@@ -1,0 +1,4 @@
+{% extends "portal/base.html" %}{% load static %}
+{% block title %}Follow Up - {{ estimate.reference }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}<section class="account-shell"><div class="account-card"><p class="eyebrow">{{ estimate.reference }}</p><h1>How should we follow up?</h1><form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="button primary" type="submit">Send follow-up request</button></form></div></section>{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "portal/base.html" %}
+{% block title %}Invite Team Member - PanelLock{% endblock %}
+{% block content %}
+<section class="account-shell"><div class="account-card">
+    <p class="eyebrow">{{ organization.name }}</p>
+    <h1>Invite a team member</h1>
+    <form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="button primary" type="submit">Send invitation</button></form>
+</div></section>
+{% endblock %}

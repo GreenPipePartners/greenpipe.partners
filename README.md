@@ -50,7 +50,7 @@ The website publishes install intent and release metadata. It must not SSH into 
 - Typo route `/realease/...` redirects to `/release/...`
 - Managed install API shape is documented in `greenpipe-website-contract.md`
 
-Primary install UX is `uvx fluxup init`. The public CTA also provides a Python venv fallback for machines without `uv`.
+Primary install UX is `sudo "$(command -v uvx)" fluxup init`. The public CTA also provides a Python venv fallback for machines without `uv`.
 
 Manual fallback uses the static release manifest at `/release/flux/0.1.0/manifest.example.json`. Managed installs use `/api/flux/deployments/{id}/manifest` after the API exists.
 
@@ -110,3 +110,9 @@ The public index groups releases by topic and lists the newest release dates fir
 Render service and Postgres configuration lives in `render.yaml`. Operational notes live in `DEPLOYMENT.md`.
 
 Render deploys with Docker. The image builds Astro/Starlight docs, collects Django static files, runs migrations on startup, and serves Django with Gunicorn.
+
+## PanelLock
+
+PanelLock is mounted at `/panellock/`; invitation-only customer access starts at `/panellock/portal/`. The selector stores server-priced proposal requests with a 30% PC markup and 15% panel-display markup, and preserves each supplied OnLogic configuration URL. External hardware and Ignition list prices are cached in `CatalogOffer` and reviewed monthly with `python manage.py review_panellock_catalog`.
+
+Operational, retention, legal-topic, and threat-model recommendations live in `PANELLOCK_OPERATIONS.md`. Reusable AgentLabs authenticate with Ed25519 signatures and replay nonces, reach the portal through an independent uplink, and use a separate non-bridged Ethernet work link to harden a selected panel PC. The panel PC does not run the portal agent; MAC addresses are inventory only.

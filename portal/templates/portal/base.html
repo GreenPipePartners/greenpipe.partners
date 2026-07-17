@@ -4,15 +4,17 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Green Pipe Partners{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
+    {% with metadata_title=page_title|default:"Green Pipe Partners" metadata_description=page_description|default:"Green Pipe Partners champions open-source software development for manufacturing." %}
+    <title>{% block title %}{{ metadata_title }}{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ metadata_description }}{% endblock %}">
     <meta property="og:site_name" content="Green Pipe Partners">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="{% block og_title %}Green Pipe Partners{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}{{ metadata_title }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ metadata_description }}{% endblock %}">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="{% block twitter_title %}Green Pipe Partners{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}Flux: the Green Pipe controls workbench for SCADA teams.{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}{{ metadata_title }}{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}{{ metadata_description }}{% endblock %}">
+    {% endwith %}
     <script>
         (() => {
             let savedTheme = null;
@@ -26,13 +28,13 @@
         })();
     </script>
     <link rel="icon" href="{% static 'portal/favicon.ico' %}" sizes="any">
-    <link rel="stylesheet" href="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/styles/atom-one-dark.min.css">
     <link rel="stylesheet" href="{% static 'portal/styles.css' %}">
-    <script src="https://unpkg.com/htmx.org@2.0.4" defer></script>
-    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.11.1/highlight.min.js" defer></script>
+    {% block extra_css %}{% endblock %}
     <script src="{% static 'portal/site.js' %}" defer></script>
+    {% block extra_js %}{% endblock %}
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
     <header class="site-header">
         <nav class="nav" aria-label="Primary navigation">
             <a class="brand" href="{% url 'portal:home' %}" aria-label="Green Pipe Partners home">
@@ -40,12 +42,39 @@
                 <span>Green Pipe Partners</span>
             </a>
             <div class="nav-links">
-                <a class="nav-link" href="https://github.com/GreenPipePartners/Flux">GitHub</a>
-                <a class="nav-link" href="{% url 'portal:agentlab' %}">AgentLab</a>
-                <a class="nav-link" href="{% url 'portal:fluxy' %}">Fluxy</a>
+                <details class="nav-topic">
+                    <summary class="nav-link">AgentLab</summary>
+                    <div class="nav-topic-menu">
+                        <p class="nav-topic-intro">The configured open-source workbench and training foundation.</p>
+                        <a href="{% url 'portal:agentlabs' %}"><strong>Configure AgentLab</strong><small>Configured hardware, Linux environments, and VM workflows.</small></a>
+                        <a href="{% url 'portal:agentlab' %}"><strong>AgentLab Training</strong><small>Onsite instruction built around the same workbench.</small></a>
+                    </div>
+                </details>
+                <details class="nav-topic">
+                    <summary class="nav-link">PanelLock</summary>
+                    <div class="nav-topic-menu">
+                        <p class="nav-topic-intro">Controlled panel modernization using the same AgentLab.</p>
+                        <a href="{% url 'panellock:index' %}"><strong>Modernize a panel</strong><small>Plan and price a controlled HMI modernization.</small></a>
+                        <a href="{% url 'panellock:protect' %}"><strong>Protect panel operations</strong><small>Protected backups, approved updates, and vulnerability response.</small></a>
+                    </div>
+                </details>
+                <details class="nav-topic">
+                    <summary class="nav-link">Flux</summary>
+                    <div class="nav-topic-menu">
+                        <p class="nav-topic-intro">The open software foundation beneath AgentLab and PanelLock.</p>
+                        <a href="https://github.com/GreenPipePartners/Flux"><strong>Flux source</strong><small>Explore the public controls workbench repository.</small></a>
+                        <a href="{% url 'portal:flux_docs_latest' %}"><strong>Flux documentation</strong><small>Install, operate, and extend the open foundation.</small></a>
+                        <a href="{% url 'portal:fluxy' %}"><strong>Fluxy</strong><small>Open Ignition tooling within the Flux foundation.</small></a>
+                    </div>
+                </details>
                 <a class="nav-link" href="{% url 'portal:release_index' %}">Releases</a>
-                <a class="nav-link" href="{% url 'portal:flux_docs_latest' %}">Docs</a>
                 <a class="nav-link" href="{% url 'portal:about' %}">About</a>
+                {% if request.user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'panellock:portal' %}">Portal</a>
+                    <form class="nav-auth-form" method="post" action="{% url 'organizations:logout' %}">{% csrf_token %}<button class="nav-link nav-button" type="submit">Sign out</button></form>
+                {% else %}
+                    <a class="nav-link" href="{% url 'organizations:login' %}">Sign in</a>
+                {% endif %}
                 <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
                     <span data-theme-toggle-label>🌙</span>
                 </button>
@@ -54,7 +83,12 @@
         {% block hero %}{% endblock %}
     </header>
 
-    <main>
+    <main id="main-content" tabindex="-1">
+        {% if messages %}
+        <div class="message-stack" aria-live="polite">
+            {% for message in messages %}<p class="message {{ message.tags }}">{{ message }}</p>{% endfor %}
+        </div>
+        {% endif %}
         {% block content %}{% endblock %}
     </main>
 

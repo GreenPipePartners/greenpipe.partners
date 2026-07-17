@@ -7,16 +7,16 @@ Flux is the open-source manufacturing development platform from Green Pipe Partn
 
 ## Install
 
-Run Fluxup with UV:
+Run Fluxup with UV on the target Linux host. The installer requires sudo because it creates system users, writes `/opt/flux` and `/etc/flux`, configures Postgres, and installs systemd units.
 
 ```bash
-uvx fluxup init
+sudo "$(command -v uvx)" fluxup init
 ```
 
 Python fallback:
 
 ```bash
-python3 -m venv /tmp/fluxup && /tmp/fluxup/bin/python -m pip install --upgrade fluxup && /tmp/fluxup/bin/fluxup init
+python3 -m venv /tmp/fluxup && /tmp/fluxup/bin/python -m pip install --upgrade fluxup && sudo /tmp/fluxup/bin/fluxup init
 ```
 
 ## Projects

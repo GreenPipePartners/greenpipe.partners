@@ -1,0 +1,88 @@
+{% load static %}
+<section class="oc-demo-section" aria-labelledby="panellock-story-heading">
+    <div class="oc-demo-intro"><h2 id="panellock-story-heading">Prompt the spare-PC build in OpenCode.</h2><p>An illustrative PanelLock session showing the prompt, agent response, authorized execution, and evidence-backed handoff.</p></div>
+    <figure class="oc-story-player" aria-label="PanelLock Fluxolot spare PC build demonstration" data-prompt-story data-story-durations="7500,12000,12000,13000,13000,16000">
+        <div class="oc-terminal">
+            <div class="oc-terminal__bar" aria-hidden="true"><span class="oc-terminal__title">opencode@agentlab: fluxolot-spare-pc</span></div>
+            <div class="oc-terminal__screen" aria-live="polite">
+                <section class="oc-terminal__story" data-story-panel aria-hidden="false">
+                    <div class="oc-terminal__story-body oc-landing-body"><div class="oc-landing-workspace"><div class="oc-landing"><img class="oc-landing__logo" src="{% static 'portal/opencode-wordmark-dark.svg' %}" alt="OpenCode" width="641" height="115" loading="lazy" decoding="async" draggable="false"><div class="oc-composer oc-landing-prompt"><div class="oc-composer__input"><span data-typewriter data-text="I have connected a spare PC to build it out as the new Fluxolot PC. Please build this and update it for me."></span></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div></div></div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-message oc-user-message">I have connected a spare PC to build it out as the new Fluxolot PC. Please build this and update it for me.</div>
+                        <div class="oc-message oc-assistant-message" data-model-typewriter><p>I'm on it. I'll use the connected AgentLab to inventory the spare, preserve the production PC, apply the approved Ubuntu and Ignition baseline, restore Fluxolot, and return a validated cutover candidate.</p><p>Mutating work will remain behind the staff authorization hold point.</p></div>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · PanelLock</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · PanelLock</div>
+                        <div class="oc-message oc-user-message">I have connected a spare PC to build it out as the new Fluxolot PC. Please build this and update it for me.</div>
+                        <div class="oc-thought" data-model-typewriter>I need to verify the AgentLab and spare-PC identities, capture the current Fluxolot recovery point, generate only allowlisted operations, hold for staff approval, build the spare through the direct Ethernet link, and leave production untouched until cutover.</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <pre class="oc-code oc-code--diff" data-model-typewriter><span class="oc-code__add">+ target: fluxolot-spare-pc</span>
+<span class="oc-code__add">+ executor: connected-agentlab</span>
+<span class="oc-code__add">+ production_policy: do-not-modify</span>
+<span class="oc-code__add">+ preflight: [identity, backup, safe-state, rollback]</span>
+<span class="oc-code__add">+ baseline:</span>
+<span class="oc-code__add">+   ubuntu: 24.04.4-lts</span>
+<span class="oc-code__add">+   ignition: 8.3.8</span>
+<span class="oc-code__add">+ restore: fluxolot-approved.gwbk</span>
+<span class="oc-code__add">+ verify: [gateway, database, tags, history]</span>
+<span class="oc-code__add">+ hold_point: staff-cutover-approval</span></pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Wrote</strong> · plans/fluxolot-spare-pc.yaml · +10</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <pre class="oc-log" data-model-typewriter>panellock.preflight [PASS] AgentLab and spare-PC identities verified
+panellock.backup [PASS] Fluxolot recovery point captured and hashed
+panellock.approval [PASS] signed plan authorized by staff
+agentlab.link [PASS] direct Ethernet work link; interface bridging disabled
+agentlab.build [DONE] Ubuntu 24.04.4 LTS hardened baseline
+agentlab.build [DONE] Ignition 8.3.8 and approved modules
+agentlab.restore [DONE] Fluxolot gateway and database settings
+panellock.verify [RUN ] gateway, tags, history, and rollback evidence...</pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · PanelLock · executing</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+                <section class="oc-terminal__story" data-story-panel aria-hidden="true" hidden>
+                    <div class="oc-terminal__story-body">
+                        <div class="oc-success" data-model-typewriter><p><span class="oc-success__pass">PASS.</span> The spare Fluxolot PC build is complete.</p><p>Gateway, database, tags, history, and rollback checks pass. The production PC remains unchanged.</p><p>Evidence: <span class="oc-path">panellock://greenpipe/fluxolot/builds/001</span></p></div>
+                        <div class="oc-thought" data-model-typewriter data-reveal-on-type>Staff acceptance and physical cutover are still required.</div>
+                        <pre class="oc-log" data-model-typewriter data-reveal-on-type>STATUS ready-for-acceptance
+PRODUCTION unchanged
+CUTOVER blocked-pending-staff</pre>
+                        <div class="oc-run"><span class="oc-run__square"></span><strong>Build</strong> · completed</div>
+                    </div>
+                    <div class="oc-composer"><div class="oc-composer__input"></div><div class="oc-composer__meta"><strong>Build</strong> · PanelLock · greenpipe</div></div>
+                    <span class="oc-story-path">~/panellock/fluxolot-spare-pc/</span><span class="oc-story-version">1.0.0</span>
+                </section>
+            </div>
+        </div>
+        <figcaption class="oc-terminal__captions" aria-live="polite">
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="false"><strong>prompt in OpenCode:</strong> describe the desired spare-PC outcome.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>agent response:</strong> the prompt moves into the transcript and the agent explains the execution boundary.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>reason about risk:</strong> production isolation, recovery, authorization, and rollback shape the plan.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>write the plan:</strong> exact versions, operations, checks, and hold points become reviewable.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>execute after approval:</strong> the AgentLab streams every authorized operation against the spare.</span>
+            <span class="oc-terminal__caption" data-story-caption aria-hidden="true" hidden><strong>return evidence:</strong> PanelLock reports a validated candidate while staff retain cutover authority.</span>
+        </figcaption>
+        <div class="oc-terminal__controls" role="group" aria-label="PanelLock story playback controls"><div class="oc-terminal__controls-group"><div class="oc-terminal__stories" aria-label="PanelLock story progress">
+            <button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show prompt typing"><span>Prompt</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show agent response"><span>Response</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show reasoning"><span>Reason</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show generated plan"><span>Write</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show execution"><span>Execute</span></button><button class="oc-terminal__story-trigger" type="button" data-story-trigger aria-label="Show result"><span>Result</span></button>
+        </div><button class="oc-terminal__playback" type="button" data-story-playback aria-label="Play story playback" aria-pressed="false"><span class="oc-terminal__replay" aria-hidden="true">&#8634; <span>play again</span></span></button></div></div>
+    </figure>
+</section>

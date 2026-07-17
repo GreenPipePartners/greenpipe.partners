@@ -1,0 +1,18 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Enroll AgentLab - {{ organization.name }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="account-shell">
+    <div class="account-card">
+        <p class="eyebrow">{{ organization.name }}</p>
+        <h1>Enroll a reusable AgentLab</h1>
+        <p>The AgentLab, not the panel PC, holds the PanelLock identity. Its agent generates an Ed25519 key and uses outbound HTTPS to receive approved work.</p>
+        {% if token %}
+            <div class="proposal-alert"><strong>Copy this token now:</strong><code>{{ token }}</code><p>It expires in one hour and cannot be recovered.</p></div>
+        {% else %}
+            <form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="button primary" type="submit">Create one-use AgentLab token</button></form>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

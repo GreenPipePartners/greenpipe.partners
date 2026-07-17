@@ -1,10 +1,12 @@
 <section class="command-tabs" data-component="tabs" data-active="uv" aria-label="Fluxup install options">
     <div class="tab-list" role="tablist" aria-label="Fluxup install method">
-        <button class="tab-label" type="button" role="tab" aria-selected="true" data-tab="uv" data-selected>Run by UV</button>
-        <button class="tab-label" type="button" role="tab" aria-selected="false" data-tab="python">Run by Python</button>
+        <button class="tab-label" type="button" role="tab" aria-selected="true" data-tab="uv" data-selected>Install with UV</button>
+        <button class="tab-label" type="button" role="tab" aria-selected="false" data-tab="python">Install with Python</button>
     </div>
 
-    <pre class="command-block tab-panel" role="tabpanel" data-panel="uv" data-selected><button class="command-copy" type="button" data-copy><code data-slot="command-script">uvx <span data-slot="highlight">fluxup init</span></code><span class="copy-status" data-component="copy-status" aria-hidden="true"><span data-slot="copy">Copy</span><span data-slot="check">Copied</span></span></button></pre>
+    <p class="command-note">Requires sudo on the target Linux host.</p>
 
-    <pre class="command-block tab-panel" role="tabpanel" data-panel="python" hidden><button class="command-copy" type="button" data-copy><code data-slot="command-script">python3 -m venv /tmp/fluxup &amp;&amp; /tmp/fluxup/bin/python -m pip install --upgrade fluxup &amp;&amp; /tmp/fluxup/bin/fluxup init</code><span class="copy-status" data-component="copy-status" aria-hidden="true"><span data-slot="copy">Copy</span><span data-slot="check">Copied</span></span></button></pre>
+    <pre class="command-block tab-panel" role="tabpanel" data-panel="uv" data-selected><button class="command-copy" type="button" data-copy><code data-slot="command-script">sudo &quot;$(command -v uvx)&quot; <span data-slot="highlight">fluxup init</span></code><span class="copy-status" data-component="copy-status" aria-hidden="true"><span data-slot="copy">Copy</span><span data-slot="check">Copied</span></span></button></pre>
+
+    <pre class="command-block tab-panel" role="tabpanel" data-panel="python" hidden><button class="command-copy" type="button" data-copy><code data-slot="command-script">python3 -m venv /tmp/fluxup &amp;&amp; /tmp/fluxup/bin/python -m pip install --upgrade fluxup &amp;&amp; sudo /tmp/fluxup/bin/fluxup init</code><span class="copy-status" data-component="copy-status" aria-hidden="true"><span data-slot="copy">Copy</span><span data-slot="check">Copied</span></span></button></pre>
 </section>

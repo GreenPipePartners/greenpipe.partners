@@ -168,7 +168,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/GreenPipePartners/Flux" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -214,7 +214,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/GreenPipePartners/Flux" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -1525,29 +1525,29 @@
 <li>Target host: Ubuntu/RHEL execution plane running the native installer locally.</li>
 </ul>
 <p>The website should publish install intent and immutable artifacts. It should not act as a remote root shell for arbitrary commands.</p>
-<h2 id="bootstrap-entrypoint">Bootstrap Entrypoint</h2>
-<p>The public install entrypoint is:</p>
-<div class="highlight"><pre><span></span><code>https://greenpipe.partners/install
+<h2 id="bootstrap-entrypoint">Public Release Manifest</h2>
+<p>The public no-account deployment handoff is:</p>
+<div class="highlight"><pre><span></span><code>https://greenpipe.partners/release/flux/0.1.1/manifest.example.json
 </code></pre></div>
-<p>This endpoint is the human/operator bootstrap surface. It may return a short install page, a deploy runner download, or a one-line command, but the command must resolve to a typed Flux deployment flow.</p>
+<p>This versioned JSON manifest points to the immutable release artifact, checksum, signature, and public key used by the deploy runner.</p>
 <p>Recommended operator command shape:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>flux-deploy.py<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--manifest-url<span class="w"> </span>https://greenpipe.partners/api/flux/deployments/dep_123/manifest<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--claim-token<span class="w"> </span>&lt;one-time-token&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--json
 </code></pre></div>
-<p>For a simple no-account public install path, <code>https://greenpipe.partners/install</code> may emit a manifest that points at the current release artifact.</p>
+<p>For a no-account public install, pass the versioned release manifest above to the deploy runner.</p>
 <h2 id="release-artifact-urls">Release Artifact URLs</h2>
 <p>The current Flux release artifact root is:</p>
-<div class="highlight"><pre><span></span><code>https://greenpipe.partners/release/flux/0.1.0/
+<div class="highlight"><pre><span></span><code>https://greenpipe.partners/release/flux/0.1.1/
 </code></pre></div>
-<p>Required files for the <code>0.1.0</code> release:</p>
-<div class="highlight"><pre><span></span><code>https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py
-https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py.sha256
-https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py.sig
-https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst
-https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sha256
-https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
+<p>Required files for the <code>0.1.1</code> release:</p>
+<div class="highlight"><pre><span></span><code>https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py
+https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py.sha256
+https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py.sig
+https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst
+https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sha256
+https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sig
 </code></pre></div>
 <p>The canonical path is <code>/release/...</code>. If <code>/realease/...</code> is ever exposed by mistake, it should redirect to <code>/release/...</code> rather than become part of the contract.</p>
 <h2 id="manifest-contract">Manifest Contract</h2>
@@ -1558,11 +1558,11 @@ https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
 <span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;deployment_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dep_123&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;site&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;customer-a&quot;</span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;release&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;artifact_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;artifact_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;sha256&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;hex-digest&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;checksum_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sha256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;signature_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig&quot;</span>
+<span class="w">      </span><span class="nt">&quot;checksum_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sha256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;signature_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sig&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;allowed_hosts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost,127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;web_bind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0:8000&quot;</span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="p">},</span>
@@ -1573,7 +1573,7 @@ https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
 <p>For external Postgres, <code>database.mode</code> should be <code>external</code> and the deploy runner should resolve the database URL from a secret value, not from a logged plain-text manifest.</p>
 <h2 id="release-bundle-shape">Release Bundle Shape</h2>
 <p>The source release bundle should unpack to a complete Flux source tree with the installer and lockfile present:</p>
-<div class="highlight"><pre><span></span><code>flux-0.1.0/
+<div class="highlight"><pre><span></span><code>flux-0.1.1/
   pyproject.toml
   uv.lock
   install/

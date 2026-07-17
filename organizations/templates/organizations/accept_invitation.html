@@ -1,0 +1,10 @@
+{% extends "portal/base.html" %}
+{% block title %}Accept PanelLock Invitation{% endblock %}
+{% block content %}
+<section class="account-shell"><div class="account-card">
+    <p class="eyebrow">Invitation to {{ invitation.organization.name }}</p>
+    <h1>Create your account</h1>
+    <p>Your account email will be <strong>{{ invitation.email }}</strong>.</p>
+    <form method="post" class="stack-form">{% csrf_token %}{{ form.as_p }}<button class="button primary" type="submit">Accept invitation</button></form>
+</div></section>
+{% endblock %}

@@ -168,7 +168,7 @@
     
     
       <div class="md-header__source">
-        <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+        <a href="https://github.com/GreenPipePartners/Flux" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -214,7 +214,7 @@
   </label>
   
     <div class="md-nav__source">
-      <a href="https://github.com/local/flux" title="Go to repository" class="md-source" data-md-component="source">
+      <a href="https://github.com/GreenPipePartners/Flux" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
@@ -1498,14 +1498,14 @@
 <h1 id="greenpipe-website-contract">GreenPipe Website Contract</h1>
 <p>This contract lets <code>greenpipe.partners</code> publish Flux installs and Flux MkDocs documentation without becoming a remote shell or Flux runtime host.</p>
 <h2 id="deployment-interface">Deployment Interface</h2>
-<p>Public bootstrap route:</p>
-<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/install
+<p>Public release manifest:</p>
+<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.1/manifest.example.json
 </code></pre></div>
-<p>The install page should show a typed deploy command, not arbitrary shell generated per request. Do not show placeholder deployment IDs or tokens in the primary CTA.</p>
+<p>The versioned release manifest is the public no-account deployment handoff. Managed deployment pages should show typed deploy commands, not arbitrary shell generated per request, and must not show placeholder deployment IDs or tokens in the primary CTA.</p>
 <p>First, the page must provide the deploy runner:</p>
-<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py
-GET https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py.sha256
-GET https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py.sig
+<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py
+GET https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py.sha256
+GET https://greenpipe.partners/release/flux/0.1.1/flux-deploy.py.sig
 </code></pre></div>
 <p>Then a managed install command can be generated from a real deployment record:</p>
 <div class="highlight"><pre><span></span><code>sudo<span class="w"> </span>python3<span class="w"> </span>flux-deploy.py<span class="w"> </span>apply<span class="w"> </span><span class="se">\</span>
@@ -1514,9 +1514,9 @@ GET https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py.sig
 <span class="w">  </span>--json
 </code></pre></div>
 <p>Required release files:</p>
-<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst
-GET https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sha256
-GET https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
+<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst
+GET https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sha256
+GET https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sig
 </code></pre></div>
 <p>Canonical path is <code>/release/...</code>. If <code>/realease/...</code> appears, redirect it to <code>/release/...</code>.</p>
 <p>Manifest shape. The deploy runner consumes JSON; YAML may be shown as documentation only.</p>
@@ -1526,11 +1526,11 @@ GET https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig
 <span class="w">  </span><span class="nt">&quot;metadata&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;deployment_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dep_123&quot;</span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;spec&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;release&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.0&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;artifact_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.1.1&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;artifact_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst&quot;</span><span class="p">,</span>
 <span class="w">      </span><span class="nt">&quot;sha256&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;hex-digest&gt;&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;checksum_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sha256&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;signature_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.0/flux-0.1.0.tar.zst.sig&quot;</span>
+<span class="w">      </span><span class="nt">&quot;checksum_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sha256&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;signature_url&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://greenpipe.partners/release/flux/0.1.1/flux-0.1.1.tar.zst.sig&quot;</span>
 <span class="w">    </span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;allowed_hosts&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;localhost,127.0.0.1&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;web_bind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.0.0.0:8000&quot;</span><span class="p">},</span>
 <span class="w">    </span><span class="nt">&quot;database&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;mode&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;local&quot;</span><span class="p">},</span>
@@ -1561,7 +1561,7 @@ POST /api/flux/deployments/{id}/complete
 <p>Flux publishes unsigned handoff artifacts through <code>.github/workflows/greenpipe-handoff.yml</code>.</p>
 <div class="highlight"><pre><span></span><code>Workflow name: Build GreenPipe handoff
 Artifact name: greenpipe-handoff
-Default version: 0.1.0
+Default version: 0.1.1
 </code></pre></div>
 <p>The website signing workflow should use this Flux workflow run ID as <code>source_run_id</code>, download artifact <code>greenpipe-handoff</code>, verify <code>.sha256</code> files, sign each checksummed release file, and publish the signed bundle.</p>
 <h2 id="mkdocs-interface">MkDocs Interface</h2>
@@ -1577,16 +1577,16 @@ docs/
 <div class="highlight"><pre><span></span><code>.runtime/site/
 </code></pre></div>
 <p>Recommended published docs routes:</p>
-<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/docs/flux/0.1.0/
-GET https://greenpipe.partners/docs/flux/latest/ -&gt; redirect to /docs/flux/0.1.0/
+<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/docs/flux/0.1.1/
+GET https://greenpipe.partners/docs/flux/latest/ -&gt; redirect to /docs/flux/0.1.1/
 </code></pre></div>
 <p>Optional docs artifact files:</p>
-<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.0/flux-docs-0.1.0.tar.zst
-GET https://greenpipe.partners/release/flux/0.1.0/flux-docs-0.1.0.tar.zst.sha256
-GET https://greenpipe.partners/release/flux/0.1.0/flux-docs-0.1.0.tar.zst.sig
+<div class="highlight"><pre><span></span><code>GET https://greenpipe.partners/release/flux/0.1.1/flux-docs-0.1.1.tar.zst
+GET https://greenpipe.partners/release/flux/0.1.1/flux-docs-0.1.1.tar.zst.sha256
+GET https://greenpipe.partners/release/flux/0.1.1/flux-docs-0.1.1.tar.zst.sig
 </code></pre></div>
 <p>For production docs builds, set MkDocs <code>site_url</code> to the mounted docs URL before build:</p>
-<div class="highlight"><pre><span></span><code>https://greenpipe.partners/docs/flux/0.1.0/
+<div class="highlight"><pre><span></span><code>https://greenpipe.partners/docs/flux/0.1.1/
 </code></pre></div>
 <h2 id="security-rules">Security Rules</h2>
 <ul>

@@ -1,0 +1,33 @@
+<article class="ailab-package-card panellock-config-card" data-conversion>
+    <header class="panellock-config-heading">
+        <div><span>Conversion <strong data-conversion-number>{{ row_index }}</strong></span><h3>Panel configuration</h3></div>
+        <strong data-conversion-price>$0</strong>
+    </header>
+    <div class="panellock-config-grid">
+        <label>Source platform type
+            <select data-source-platform>
+                {% for vendor, platforms in source_platform_groups %}<optgroup label="{{ vendor }}">{% for code, name in platforms %}<option value="{{ code }}" data-label="{{ name }}" data-price="{% if code == 'ignition' %}{{ ignition_source_conversion_cents }}{% else %}{{ other_source_conversion_cents }}{% endif %}"{% if code == 'ignition' %} selected{% endif %}>{{ name }}</option>{% endfor %}</optgroup>{% endfor %}
+            </select>
+        </label>
+        <label>PC type
+            <select data-pc-type>
+                {% for offer in pcs %}<option value="{{ offer.code }}" data-label="{{ offer.name }}" data-price="{{ offer.amount_cents }}">{{ offer.name }} - {{ offer.display_price }}</option>{% endfor %}
+            </select>
+        </label>
+        <label>Screen type
+            <select data-screen-type>
+                {% for offer in screens %}<option value="{{ offer.code }}" data-label="{{ offer.name }}" data-price="{{ offer.amount_cents }}">{{ offer.name }} - {{ offer.display_price }}</option>{% endfor %}
+            </select>
+        </label>
+        <label>Ignition license
+            <select data-ignition-license>
+                {% for offer in panel_licenses %}<option value="{{ offer.code }}" data-label="{{ offer.name }}" data-price="{{ offer.amount_cents }}"{% if offer.code == "license-existing" %} selected{% endif %}>{% if offer.code == "license-existing" %}{{ offer.name }}{% else %}{{ offer.name }} - {{ offer.display_price }} USD{% endif %}</option>{% endfor %}
+            </select>
+        </label>
+    </div>
+    <label class="panellock-protect-option">
+        <input type="checkbox" data-panel-protect data-price="{{ protect_offer.amount_cents }}">
+        <span><strong>PanelLock Protect</strong><small>Two scheduled update reviews each year, protected backups, and applicable critical vulnerability response.</small></span>
+        <strong>{{ protect_offer.display_price }} / year</strong>
+    </label>
+</article>

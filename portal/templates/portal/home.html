@@ -1,23 +1,82 @@
 {% extends "portal/base.html" %}
 
-{% block title %}Flux - Green Pipe Partners{% endblock %}
+{% block title %}Open-Source Manufacturing Software - Green Pipe Partners{% endblock %}
+{% block meta_description %}Green Pipe Partners champions open-source software development for manufacturing through AgentLab, PanelLock, and Flux.{% endblock %}
+{% block og_title %}Open-Source Manufacturing Software - Green Pipe Partners{% endblock %}
+{% block og_description %}Configured AgentLab workbenches, controlled PanelLock modernization, and the open Flux software foundation.{% endblock %}
+{% block twitter_title %}Open-Source Manufacturing Software - Green Pipe Partners{% endblock %}
+{% block twitter_description %}Making open-source software the default choice for manufacturing.{% endblock %}
 
 {% block hero %}
-<section class="hero">
-    <p class="eyebrow product-eyebrow">Introducing Flux: A Green Pipe Solution</p>
-    <h1 class="product-title">The open-source manufacturing development platform.</h1>
-    <p class="hero-copy">Start running the controls workbench in Linux.</p>
-    <div class="hero-command">
-        {% include "portal/partials/fluxup_tabs.html" %}
-    </div>
-    <div class="hero-actions">
-        <a class="button primary" href="{% url 'portal:flux_docs_latest' %}">Read docs</a>
-    </div>
+<section class="hero home-hero">
+    <h1 class="visually-hidden">Make open source the default choice for manufacturing.</h1>
+    {% include "portal/partials/home_open_dialog.html" %}
 </section>
 {% endblock %}
 
 {% block content %}
-<section class="dev-warning" aria-label="Development status warning">
-    <p>WARNING: Flux is <strong><em>VERY MUCH</em></strong> in development at this time. Please explore, but do be careful!</p>
+<section class="company-section home-system" aria-labelledby="system-heading">
+    <div class="company-section-heading">
+        <p class="eyebrow">One connected system</p>
+        <h2 id="system-heading">Start with the workbench. Carry the foundation into the plant.</h2>
+        <p>AgentLab is where teams build capability. PanelLock applies that same environment to controlled panel modernization. Flux keeps the software foundation open.</p>
+    </div>
+
+    <div class="company-hierarchy">
+        <article class="company-tier company-tier-agentlab">
+            <span class="company-tier-marker">01 / Starting point</span>
+            <h3>AgentLab</h3>
+            <p class="company-tier-lede">The configured open-source workbench.</p>
+            <p>AgentLab combines a reproducible Linux environment, open tooling, and practical training so controls teams can inspect, adapt, and own the way they work.</p>
+            <div class="company-tier-links">
+                <a class="text-link" href="{% url 'portal:agentlabs' %}">Configure AgentLab</a>
+                <a class="text-link" href="{% url 'portal:agentlab' %}">Explore training</a>
+            </div>
+        </article>
+
+        <article class="company-tier">
+            <span class="company-tier-marker">02 / Application</span>
+            <h3>PanelLock</h3>
+            <p class="company-tier-lede">A future-facing proof of controlled modernization.</p>
+            <p>PanelLock applies the same AgentLab to panel planning, conversion, protected backups, and approved updates. It is not a separate black-box platform; people retain authority over the work.</p>
+            <div class="company-tier-links">
+                <a class="text-link" href="{% url 'panellock:index' %}">Plan a modernization</a>
+                <a class="text-link" href="{% url 'panellock:protect' %}">Protect panel operations</a>
+            </div>
+        </article>
+
+        <article class="company-tier">
+            <span class="company-tier-marker">03 / Foundation</span>
+            <h3>Flux</h3>
+            <p class="company-tier-lede">The open software beneath the work.</p>
+            <p>Flux provides the open controls development foundation. Fluxy lives within that foundation, extending it with open tooling for Ignition workflows.</p>
+            <div class="company-tier-links">
+                <a class="text-link" href="https://github.com/GreenPipePartners/Flux">Explore Flux source</a>
+                <a class="text-link" href="{% url 'portal:fluxy' %}">Meet Fluxy</a>
+                <a class="text-link" href="{% url 'portal:flux_docs_latest' %}">Read the docs</a>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="home-belief" id="why-open" aria-labelledby="why-open-heading">
+    <div>
+        <p class="eyebrow">Why open source</p>
+        <h2 id="why-open-heading">Manufacturing teams should be able to understand and shape their own tools.</h2>
+    </div>
+    <div class="home-belief-copy">
+        <p>Open-source software gives engineers a foundation they can inspect, learn from, adapt, and maintain. Green Pipe Partners makes that choice practical by pairing open software with configured environments, hands-on training, and disciplined applications for real manufacturing work.</p>
+        <p>Our aim is not to add another opaque layer. It is to help teams build durable internal capability on software they can see.</p>
+        <a class="text-link" href="{% url 'portal:about' %}">About Green Pipe Partners</a>
+    </div>
+</section>
+
+<section class="home-next" aria-labelledby="next-heading">
+    <div><p class="eyebrow">Build from open</p><h2 id="next-heading">Begin with AgentLab.</h2></div>
+    <p>Configure the workbench for your team, use it as the foundation for training, and carry the same approach into a PanelLock modernization.</p>
+    <div class="hero-actions">
+        <a class="button primary" href="{% url 'portal:agentlabs' %}">Configure an AgentLab</a>
+        <a class="button secondary" href="{% url 'portal:agentlab' %}">Build a training proposal</a>
+    </div>
 </section>
 {% endblock %}

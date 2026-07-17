@@ -39,55 +39,86 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Green Pipe Partners")
+        self.assertContains(response, "AgentLab")
+        self.assertContains(response, "PanelLock")
+        self.assertContains(response, "Flux")
+        self.assertContains(response, "The configured open-source workbench and training foundation")
+        self.assertContains(response, "Controlled panel modernization using the same AgentLab")
+        self.assertContains(response, "The open software foundation beneath AgentLab and PanelLock")
+        self.assertContains(response, "AgentLab Training")
+        self.assertContains(response, "Configure AgentLab")
+        self.assertContains(response, "Modernize a panel")
+        self.assertContains(response, "Protect panel operations")
+        self.assertContains(response, "Fluxy")
+        self.assertContains(response, 'href="/agentlab/"')
+        self.assertContains(response, 'href="/agentlabs/"')
+        self.assertContains(response, 'href="/fluxy/"')
+        self.assertContains(response, 'href="https://github.com/GreenPipePartners/Flux"')
+        self.assertContains(response, 'href="/panellock/"')
+        self.assertContains(response, 'href="/panellock/protect/"')
         self.assertContains(response, "/logo_hollow.png")
         self.assertContains(response, "/static/portal/favicon.ico")
-        self.assertContains(response, "Introducing Flux: A Green Pipe Solution")
-        self.assertContains(response, "The open-source manufacturing development platform")
-        self.assertContains(response, "Start running the controls workbench in Linux")
-        self.assertContains(response, "WARNING: Flux is")
-        self.assertContains(response, "VERY MUCH")
-        self.assertContains(response, "Please explore, but do be careful")
-        self.assertContains(response, 'data-component="tabs"')
-        self.assertContains(response, "data-copy")
-        self.assertContains(response, 'data-component="copy-status"')
-        self.assertContains(response, "Run by UV")
-        self.assertContains(response, "Run by Python")
-        self.assertContains(response, "uvx ")
-        self.assertContains(response, "fluxup init")
-        self.assertContains(response, "python3 -m venv /tmp/fluxup")
-        self.assertContains(response, "/tmp/fluxup/bin/fluxup init")
+        self.assertContains(response, "<title>Open-Source Manufacturing Software - Green Pipe Partners</title>", html=True)
+        self.assertContains(response, "Green Pipe Partners champions open-source software development for manufacturing through AgentLab, PanelLock, and Flux")
+        self.assertContains(response, "Make open source the default choice")
+        self.assertContains(response, "opencode@agentlab: open-manufacturing")
+        self.assertContains(response, "We need to harden the plant and keep operations in control of their equipment. How can we do this?", count=2)
+        self.assertContains(response, "OK, but controls people all really want to know what's actually going on in their plant. They despise black boxes. How can we solve this?", count=2)
+        self.assertContains(response, "But can we make this secure?", count=2)
+        self.assertContains(response, "Open platforms can be more secure than proprietary platforms")
+        self.assertContains(response, "Proprietary systems ask you to trust the security claim. Open systems let you verify it.")
+        self.assertContains(response, "Flux</span> keeps the software foundation open, inspectable, and adaptable.")
+        self.assertContains(response, "data-prompt-story", count=1)
+        self.assertContains(response, "data-story-panel", count=5)
+        self.assertContains(response, "data-story-trigger", count=5)
+        self.assertContains(response, "data-story-caption", count=5)
+        self.assertNotContains(response, "home-hero-copy")
+        self.assertNotContains(response, "home-hero-path")
+        self.assertContains(response, "One connected system")
+        self.assertContains(response, "The configured open-source workbench")
+        self.assertContains(response, "A future-facing proof of controlled modernization")
+        self.assertContains(response, "It is not a separate black-box platform")
+        self.assertContains(response, "Fluxy lives within that foundation")
+        self.assertContains(response, "Manufacturing teams should be able to understand and shape their own tools")
+        self.assertContains(response, "Begin with AgentLab")
         self.assertContains(response, "https://github.com/GreenPipePartners/Flux")
-        self.assertContains(response, "controls workbench")
         self.assertContains(response, "/docs/flux/latest/")
         self.assertContains(response, "/about/")
-        self.assertNotContains(response, "Fluxup GitHub")
-        self.assertNotContains(response, "Flux GitHub")
-        self.assertNotContains(response, "Install details")
-        self.assertNotContains(response, "/install")
-        self.assertNotContains(response, "curl -fsSLO https://greenpipe.partners/release/flux/0.1.0/flux-deploy.py")
-        self.assertNotContains(response, "PyPI Trusted Publishing")
-        self.assertNotContains(response, "/api/flux/deployments/dep_123/manifest")
-        self.assertNotContains(response, "--claim-token")
-        self.assertContains(response, "Flux")
-        self.assertContains(response, "/about/")
-        self.assertNotContains(response, "Services")
-        self.assertNotContains(response, "We get Flux running in your world")
-        self.assertNotContains(response, "ESXi-compatible environments")
-        self.assertNotContains(response, "Time-series data consolidation")
-        self.assertNotContains(response, "LLM subscription management")
-        self.assertNotContains(response, "Remote Hub")
-        self.assertNotContains(response, "Reports")
+        self.assertNotContains(response, "WARNING")
+        self.assertNotContains(response, "certified")
+
+        content = response.content.decode("utf-8")
+        self.assertLess(content.index(">AgentLab</summary>"), content.index(">PanelLock</summary>"))
+        self.assertLess(content.index(">PanelLock</summary>"), content.index(">Flux</summary>"))
 
     def test_about_page_renders(self):
         response = self.client.get(reverse("portal:about"))
 
         self.assertEqual(response.status_code, 200)
-        self.assertContains(response, "Green Pipe Partners is a software company")
-        self.assertContains(response, "open-source industrial and manufacturing development tools")
+        self.assertContains(response, "<title>About - Green Pipe Partners</title>", html=True)
+        self.assertContains(response, "We champion open source for manufacturing")
+        self.assertContains(response, "make open-source software the default choice")
+        self.assertContains(response, "Open software that reaches the work")
+        self.assertContains(response, "AgentLab is the configured open-source workbench and training foundation")
+        self.assertContains(response, "PanelLock is the future-facing proof and application of AgentLab")
+        self.assertContains(response, "rather than becoming a separate product stack")
+        self.assertContains(response, "Flux is the open software foundation beneath this work")
+        self.assertContains(response, "Fluxy sits under Flux")
+        self.assertContains(response, "People retain authority")
         self.assertContains(response, "https://github.com/GreenPipePartners/Flux")
-        self.assertContains(response, "https://github.com/GreenPipePartners/Fluxy")
-        self.assertContains(response, "Flux")
-        self.assertContains(response, "Fluxy")
+        self.assertContains(response, reverse("panellock:index"))
+        self.assertContains(response, reverse("panellock:protect"))
+        self.assertContains(response, reverse("portal:agentlabs"))
+        self.assertContains(response, reverse("portal:agentlab"))
+        self.assertContains(response, reverse("portal:fluxy"))
+        self.assertNotContains(response, "certified")
+
+    def test_about_page_has_page_specific_social_metadata(self):
+        response = self.client.get(reverse("portal:about"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<meta property="og:title" content="About Green Pipe Partners">')
+        self.assertContains(response, "Green Pipe Partners champions open-source software development for manufacturing and works to make open source the default choice")
 
     def test_fluxy_page_renders_signed_downloads(self):
         response = self.client.get(reverse("portal:fluxy"))
@@ -113,6 +144,14 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "/docs/flux/0.1.0/fluxy/#authentication")
         self.assertContains(response, "/docs/flux/0.1.0/fluxy/#install-the-gateway-module", count=2)
         self.assertContains(response, "not certified, approved, supported, or endorsed")
+        self.assertContains(
+            response,
+            '<meta property="og:title" content="Fluxy Free Ignition Module - Green Pipe Partners">',
+        )
+        self.assertContains(
+            response,
+            '<meta name="twitter:description" content="Signed free Fluxy Gateway modules for Ignition 8.1 and 8.3.">',
+        )
         self.assertNotContains(response, "backed by public MPL-2.0 source")
         self.assertNotContains(response, ".unsigned.modl")
 
@@ -155,28 +194,31 @@ class PortalSmokeTests(SimpleTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "AgentLab Training for Controls Engineers")
+        self.assertContains(response, 'class="hero solution-hero ailab-hero"')
+        self.assertContains(response, "Build a training proposal")
         self.assertContains(response, "Three-Day Agent Workbench Deep Dive")
         self.assertContains(response, "practical Linux-based agent workbench")
         self.assertContains(response, "applies AI workflows to real controls engineering work")
         self.assertContains(response, "Set up the engineering workstations")
         self.assertContains(response, "Build each attendee's Ubuntu VM lab")
         self.assertContains(response, "Apply the lab to your site")
-        self.assertContains(response, "Day 4 (Optional)")
-        self.assertContains(response, "Build a Rockwell Windows VM with AI agents")
         self.assertContains(response, "Onsite Training")
         self.assertContains(response, "$6,900")
         self.assertContains(response, "Base Training Price")
         self.assertContains(response, "Linux AgentLab with Omarchy")
         self.assertContains(response, "Linux AgentLab with Ubuntu")
         self.assertContains(response, "Bring Your Own Setup")
-        self.assertContains(response, "Build out Rockwell Controls VM")
-        self.assertContains(response, "$2,200 one time")
-        self.assertContains(response, "Includes 1 controls VM license")
-        self.assertContains(response, "Additional Controls VM Licenses")
-        self.assertContains(response, 'max="4"')
-        self.assertContains(response, "$250 each")
+        self.assertContains(response, "$4,800 each", count=2)
+        self.assertContains(response, "$800 each")
+        self.assertContains(response, "Add a Licensed Windows VM Image")
+        self.assertContains(response, "$300 each")
+        self.assertContains(response, 'data-addon="licensed-windows-vm-image"', count=1)
+        self.assertContains(response, "data-addon-quantity", count=1)
+        self.assertContains(response, 'aria-label="Licensed Windows VM Images selected"', count=1)
+        self.assertContains(response, "agents can use to assist with authorized Rockwell workflows")
+        self.assertContains(response, "Windows and Rockwell software are not included")
         self.assertContains(response, "A ChatGPT Pro plan is required and is not provided")
-        self.assertContains(response, "https://chatgpt.com/?ifpazk=1k0d2&amp;default_tab=personal&amp;highlight_plan=pro#pricing")
+        self.assertContains(response, "https://chatgpt.com/pricing")
         self.assertContains(response, "Valid for 30 days")
         self.assertContains(response, "Travel and onsite expenses may add cost")
         self.assertContains(response, "Generate Proposal")
@@ -187,6 +229,44 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertNotContains(response, "Mandatory package")
         self.assertNotContains(response, "AILab Training")
         self.assertContains(response, "data-ailab-quote")
+        self.assertNotContains(response, "Public VM release")
+        self.assertNotContains(response, "GPP_VM-2026.07.15.qcow2")
+
+    def test_agentlabs_page_is_hardware_and_configuration_only(self):
+        response = self.client.get(reverse("portal:agentlabs"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "AgentLabs")
+        self.assertContains(response, "Configured agent workbenches")
+        self.assertContains(response, "Configuration portal")
+        self.assertContains(response, "Linux AgentLab with Omarchy")
+        self.assertContains(response, "Linux AgentLab with Ubuntu")
+        self.assertContains(response, "Add a Licensed Windows VM Image")
+        self.assertContains(response, "$300 each")
+        self.assertContains(response, 'data-addon="licensed-windows-vm-image"', count=1)
+        self.assertContains(response, "data-addon-quantity", count=1)
+        self.assertContains(response, 'aria-label="Licensed Windows VM Images selected"', count=1)
+        self.assertContains(response, "AgentLabs selected")
+        self.assertContains(response, "$4,800")
+        self.assertContains(response, "Public VM release")
+        self.assertContains(response, "GPP_VM-2026.07.15.qcow2")
+        self.assertContains(response, "Ask for the lab. Watch the agent build it.")
+        self.assertContains(response, "An illustrative OpenCode session")
+        self.assertContains(response, "Replicate the base VM and load up a new VM lab with our Fluxolot Ignition project containerized, and build the Ignition database with it.")
+        self.assertContains(response, "Fluxolot VM lab is ready.")
+        self.assertContains(response, "BASE VM UNCHANGED")
+        self.assertContains(response, "data-prompt-story", count=1)
+        self.assertContains(response, "data-story-panel", count=6)
+        self.assertContains(response, "data-story-trigger", count=6)
+        self.assertContains(response, "data-story-caption", count=6)
+        self.assertContains(response, "data-story-playback", count=1)
+        self.assertContains(response, "/static/portal/opencode-wordmark-dark.svg", count=1)
+        self.assertContains(response, 'class="oc-landing__logo"', count=1)
+        self.assertNotContains(response, "Onsite Training")
+        self.assertNotContains(response, "Base Training Price")
+        self.assertNotContains(response, "Training flow")
+        self.assertNotContains(response, "Bring Your Own Setup")
+        self.assertNotContains(response, "$800 each")
 
     def test_old_ailab_url_is_removed(self):
         response = self.client.get("/ailab/")
@@ -251,7 +331,41 @@ class PortalSmokeTests(SimpleTestCase):
         response = self.client.get(reverse("portal:flux_docs_latest"))
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response["Location"], "/docs/flux/0.1.0/")
+        self.assertEqual(response["Location"], "/docs/flux/0.1.1/")
+
+    def test_bundled_current_flux_docs_and_release_manifest_are_served(self):
+        docs_response = self.client.get("/docs/flux/0.1.1/")
+
+        self.assertEqual(docs_response.status_code, 200)
+        self.assertIn(
+            b'<link rel="canonical" href="https://greenpipe.partners/docs/flux/0.1.1/">',
+            b"".join(docs_response.streaming_content),
+        )
+
+        manifest_response = self.client.get("/release/flux/0.1.1/manifest.example.json")
+        self.assertEqual(manifest_response.status_code, 200)
+        manifest = json.loads(b"".join(manifest_response.streaming_content))
+        self.assertEqual(manifest["spec"]["release"]["version"], "0.1.1")
+
+    def test_bundled_current_flux_docs_use_published_repository_and_release_urls(self):
+        docs_root = (
+            Path(__file__).resolve().parents[1]
+            / "published"
+            / "greenpipe-handoff"
+            / "docs"
+            / "flux"
+            / "0.1.1"
+        )
+        generated_html = "\n".join(path.read_text() for path in docs_root.rglob("*.html"))
+
+        self.assertIn("https://github.com/GreenPipePartners/Flux", generated_html)
+        self.assertNotIn("https://github.com/local/flux", generated_html)
+        self.assertNotIn("0.1.0", generated_html)
+        self.assertNotIn("https://greenpipe.partners/install", generated_html)
+        self.assertIn(
+            "https://greenpipe.partners/release/flux/0.1.1/manifest.example.json",
+            generated_html,
+        )
 
     def test_fluxy_docs_source_contains_current_installation_guide(self):
         docs_source = (
@@ -355,12 +469,12 @@ class PortalSmokeTests(SimpleTestCase):
     def test_flux_docs_serve_from_publish_root(self):
         with TemporaryDirectory() as temp_dir:
             publish_root = Path(temp_dir)
-            docs_dir = publish_root / "docs" / "flux" / "0.1.0"
+            docs_dir = publish_root / "docs" / "flux" / "0.1.1"
             docs_dir.mkdir(parents=True)
             (docs_dir / "index.html").write_text("<h1>Flux docs</h1>")
 
             with override_settings(GREENPIPE_PUBLISH_ROOT=publish_root):
-                response = self.client.get("/docs/flux/0.1.0/")
+                response = self.client.get("/docs/flux/0.1.1/")
 
             self.assertEqual(response.status_code, 200)
             self.assertEqual(b"".join(response.streaming_content), b"<h1>Flux docs</h1>")
@@ -384,12 +498,35 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json(), {"status": "ok"})
 
+    def test_base_template_has_skip_link(self):
+        response = self.client.get(reverse("portal:home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, '<a class="skip-link" href="#main-content">Skip to main content</a>')
+        self.assertContains(response, '<main id="main-content" tabindex="-1">')
+
     def test_logo_asset_is_served(self):
         response = self.client.get(reverse("portal:logo"))
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response["Content-Type"], "image/png")
 
+
+class FrontendAssetTests(SimpleTestCase):
+    def test_prompt_stories_disable_autoplay_and_typing_for_reduced_motion(self):
+        source = (Path(__file__).resolve().parent / "static" / "portal" / "site.js").read_text()
+
+        self.assertIn("showStory(0, reduceMotion)", source)
+        self.assertIn("selectStoryWithoutMotion", source)
+        self.assertIn('if (!reduceMotion && "IntersectionObserver" in window)', source)
+
+    def test_fluxy_quickstart_and_story_controls_have_bounded_mobile_layouts(self):
+        source = (Path(__file__).resolve().parent / "static" / "portal" / "styles.css").read_text()
+
+        self.assertIn(".fluxy-quickstart-step .report-code-block", source)
+        self.assertIn("max-width: 100%;", source)
+        self.assertIn("min-width: 2rem;", source)
+        self.assertIn("height: 2rem;", source)
 
 
 class ReportMarkdownTests(SimpleTestCase):
@@ -897,6 +1034,7 @@ class ReleaseTests(TestCase):
         response = self.client.get("/release/")
 
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "<h1>Software releases</h1>", html=True)
         self.assertContains(response, 'href="/release/agent%20lab/2026-07-01"')
         self.assertContains(response, 'href="/release/flux/2026-07-14"')
         self.assertContains(response, 'href="/release/flux/2026-06-01"')

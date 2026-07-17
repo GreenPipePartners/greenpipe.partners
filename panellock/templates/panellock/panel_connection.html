@@ -1,0 +1,40 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}Connect AgentLab - {{ panel.name }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="account-shell panel-connection-shell">
+    <div class="account-card">
+        <p class="eyebrow">Update due</p>
+        <h1>Connect an AgentLab to {{ panel.name }}</h1>
+        <p>The AgentLab is the portal-controlled service appliance. It reaches PanelLock through an independent uplink and hardens {{ panel.project.name|default:panel.name }} through a separate direct Ethernet work link.</p>
+
+        <div class="connection-boundary" aria-label="AgentLab connection boundary">
+            <div><strong>PanelLock portal</strong><span>Signed, allowlisted instructions</span></div>
+            <b aria-hidden="true">&rarr;</b>
+            <div class="agentlab"><strong>AgentLab</strong><span>Independent HTTPS uplink</span></div>
+            <b aria-hidden="true">&rarr;</b>
+            <div><strong>Panel PC</strong><span>Direct Ethernet work link</span></div>
+        </div>
+
+        <ol class="connection-steps">
+            <li><strong>Prepare the independent uplink.</strong><span>Connect the AgentLab to the portal using Wi-Fi or a second Ethernet adapter. Do not use the panel-facing interface for internet access.</span></li>
+            <li><strong>Connect the Ethernet work link.</strong><span>Connect the AgentLab work interface directly to the panel PC. Do not bridge, route, or NAT traffic between the uplink and panel interfaces.</span></li>
+            <li><strong>Put the panel in an approved maintenance state.</strong><span>Confirm local authorization, backups, safe-state procedures, and a person with stop/go authority before making changes.</span></li>
+            <li><strong>Open a terminal on the AgentLab.</strong><span>Run the generated command on the AgentLab. Nothing is installed on the panel PC by this portal.</span></li>
+        </ol>
+
+        {% if assignment %}
+            <div class="proposal-alert"><strong>AgentLab session already active</strong><p>{{ assignment.device.name }} is connected to this panel. End that service session before connecting another AgentLab.</p></div>
+        {% elif connection_command %}
+            <div class="connection-command"><span>Run on the AgentLab</span><code>{{ connection_command }}</code><p>This panel-bound token expires in one hour and cannot be recovered after leaving this page.</p></div>
+        {% else %}
+            <div class="connection-command preview"><span>AgentLab prompt</span><code>sudo panellock-agent connect --portal {{ portal_url }} --token &lt;one-use-token&gt;</code></div>
+            <form method="post" class="connection-command-form">{% csrf_token %}<button class="button primary" type="submit">Generate AgentLab command</button></form>
+        {% endif %}
+
+        <p class="form-note">The separately signed PanelLock agent belongs on the reusable AgentLab, not the panel PC. The companion AgentLab software is still a required implementation and security-review item.</p>
+        <a class="text-link" href="{% url 'panellock:organization_portal' organization.slug %}">Back to panel inventory</a>
+    </div>
+</section>
+{% endblock %}

@@ -17,12 +17,22 @@ from .gists import (
 from .models import Release, Report
 
 
+CURRENT_FLUX_DOCS_VERSION = "0.1.1"
+
+
 def home(request):
     return render(request, "portal/home.html")
 
 
 def fluxy(request):
-    return render(request, "portal/fluxy.html")
+    return render(
+        request,
+        "portal/fluxy.html",
+        {
+            "page_title": "Fluxy Free Ignition Module - Green Pipe Partners",
+            "page_description": "Signed free Fluxy Gateway modules for Ignition 8.1 and 8.3.",
+        },
+    )
 
 
 def logo(request):
@@ -48,8 +58,19 @@ def agentlab(request):
     return render(request, "portal/agentlab.html")
 
 
+def agentlabs(request):
+    return render(
+        request,
+        "portal/agentlabs.html",
+        {
+            "page_title": "AgentLabs - Configured Agent Workbenches",
+            "page_description": "Configured agent workbenches for controls engineering teams.",
+        },
+    )
+
+
 def flux_docs_latest(request):
-    return redirect("/docs/flux/0.1.0/", permanent=False)
+    return redirect(f"/docs/flux/{CURRENT_FLUX_DOCS_VERSION}/", permanent=False)
 
 
 def flux_docs_file(request, version, docs_path=""):
@@ -79,7 +100,15 @@ def release_index(request):
         {"topic": topic, "releases": list(topic_releases)}
         for topic, topic_releases in groupby(releases, key=lambda release: release.topic)
     ]
-    return render(request, "portal/release_list.html", {"release_groups": release_groups})
+    return render(
+        request,
+        "portal/release_list.html",
+        {
+            "release_groups": release_groups,
+            "page_title": "Software Releases - Green Pipe Partners",
+            "page_description": "Public software release notices from Green Pipe Partners.",
+        },
+    )
 
 
 def release_detail(request, topic, release_date):

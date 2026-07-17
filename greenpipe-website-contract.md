@@ -7,19 +7,19 @@ This contract lets `greenpipe.partners` publish Flux installs and Flux Astro/Sta
 Primary install UX:
 
 ```bash
-uvx fluxup init
+sudo "$(command -v uvx)" fluxup init
 ```
 
 Python fallback UX:
 
 ```bash
-python3 -m venv /tmp/fluxup && /tmp/fluxup/bin/python -m pip install --upgrade fluxup && /tmp/fluxup/bin/fluxup init
+python3 -m venv /tmp/fluxup && /tmp/fluxup/bin/python -m pip install --upgrade fluxup && sudo /tmp/fluxup/bin/fluxup init
 ```
 
 Managed install UX:
 
 ```bash
-uvx fluxup init \
+sudo "$(command -v uvx)" fluxup init \
   --manifest-url https://greenpipe.partners/api/flux/deployments/{id}/manifest \
   --claim-token <one-time-token> \
   --json

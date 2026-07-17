@@ -1,0 +1,4 @@
+{% extends "portal/base.html" %}{% load static %}
+{% block title %}Follow Up Requested - {{ estimate.reference }}{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}<section class="account-shell"><div class="account-card"><p class="eyebrow">{{ estimate.reference }}</p><h1>Follow-up requested.</h1><p>Green Pipe Partners received your details and will contact you using your preferred method.</p><a class="button secondary" href="{% url 'panellock:proposal' estimate.id proposal_token %}">Return to proposal</a></div></section>{% endblock %}

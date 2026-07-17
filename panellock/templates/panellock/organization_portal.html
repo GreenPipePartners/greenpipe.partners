@@ -1,0 +1,43 @@
+{% extends "portal/base.html" %}
+{% load static %}
+{% block title %}{{ organization.name }} - PanelLock{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="portal-shell">
+    <header class="portal-heading">
+        <div><p class="eyebrow">{{ membership.get_role_display }} access</p><h1>{{ organization.name }}</h1></div>
+        <div class="proposal-actions">
+            {% if membership.role == "owner" %}<a class="button secondary" href="{% url 'organizations:invite_member' organization.slug %}">Invite team member</a>{% endif %}
+            {% if membership.role == "owner" or membership.role == "maintainer" %}<a class="button secondary" href="{% url 'panellock:create_enrollment' organization.slug %}">Enroll AgentLab</a><a class="button primary" href="{% url 'panellock:managed_update' organization.slug %}">Request update</a>{% endif %}
+        </div>
+    </header>
+
+    <div class="portal-metrics"><article><strong>{{ panels|length }}</strong><span>Panels</span></article><article><strong>{{ devices|length }}</strong><span>Enrolled AgentLabs</span></article><article><strong>{{ due_count }}</strong><span>Updates due</span></article></div>
+
+    <section class="portal-panel portal-inventory" aria-labelledby="panel-inventory-heading">
+        <div class="portal-inventory-heading"><div><p class="eyebrow">Managed inventory</p><h2 id="panel-inventory-heading">Panel projects</h2></div><p>Release condition, maintenance timing, approved exceptions, and recovery entry points.</p></div>
+        <div class="portal-table-wrap">
+            <table class="portal-table">
+                <thead><tr><th>Panel Project</th><th>Ignition Version</th><th>Ubuntu Version</th><th>Scheduled Update date</th><th>Last Updated</th><th>Update Status</th><th>Special Exceptions</th><th>Certifications</th></tr></thead>
+                <tbody>
+                {% for panel in panels %}
+                    <tr>
+                        <td class="portal-project-cell"><strong>{{ panel.project.name|default:panel.name }}{% if panel.needs_update_attention %} <span class="portal-update-warning" title="Update due" aria-label="Update due">&#9888;&#65039;</span>{% endif %}</strong><small>{{ panel.name }}</small>{% if panel.project and membership.role != "viewer" and membership.role != "billing" %}<a class="portal-table-action" href="{% url 'panellock:gateway_upload' organization.slug panel.project.id %}">Gateway Upload</a>{% endif %}</td>
+                        <td>{{ panel.ignition_version|default:"Pending" }}</td>
+                        <td>{{ panel.ubuntu_version|default:"Pending" }}</td>
+                        <td>{% if panel.scheduled_update_on %}{{ panel.scheduled_update_on|date:"M j, Y" }}{% else %}Not scheduled{% endif %}</td>
+                        <td>{% if panel.last_updated_on %}{{ panel.last_updated_on|date:"M j, Y" }}{% else %}Not recorded{% endif %}</td>
+                        <td>{% if panel.is_update_due %}{% if membership.role == "owner" or membership.role == "maintainer" %}<a class="portal-release-flag due" href="{% url 'panellock:panel_connection' organization.slug panel.id %}">Due</a>{% else %}<span class="portal-release-flag due">Due</span>{% endif %}{% else %}<span class="portal-release-flag clean"><i aria-hidden="true"></i> Clean</span>{% endif %}</td>
+                        <td><a class="portal-table-link" href="{% url 'panellock:panel_allowances' organization.slug panel.id %}">{{ panel.allowances.all|length }} allowance{{ panel.allowances.all|length|pluralize }}</a></td>
+                        <td><div class="portal-certifications">{% for certification in panel.certifications %}<span>{{ certification }}</span>{% empty %}<span class="empty">None recorded</span>{% endfor %}</div></td>
+                    </tr>
+                {% empty %}
+                    <tr><td colspan="8">No panels have been added yet.</td></tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</section>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "portal/base.html" %}
+{% load static panellock %}
+{% block title %}{{ estimate.reference }} - PanelLock Proposal{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'panellock/panellock.css' %}">{% endblock %}
+{% block content %}
+<section class="proposal-shell">
+    <header class="proposal-header"><div><p class="eyebrow">PanelLock proposal {{ estimate.reference }}</p><h1>{{ estimate.company }}</h1><p>Prepared for {{ estimate.contact_name }} on {{ estimate.created_at|date:"F j, Y" }}{% if estimate.configuration.project %} for {{ estimate.configuration.project }}{% endif %}.</p></div><span class="proposal-status">Budgetary pricing</span></header>
+    <div class="proposal-alert"><strong>This server-priced budgetary proposal is valid through {{ estimate.valid_until|date:"F j, Y" }}.</strong> Green Pipe Partners expects to honor standard configurations as listed. Source review may revise exceptional scope, unavailable components, unsupported dependencies, taxes, shipping, or scheduling before written confirmation.</div>
+    <div class="proposal-grid">
+        <section><h2>Configuration</h2><dl class="proposal-facts"><div><dt>Work</dt><dd>{{ estimate.get_project_type_display }}</dd></div><div><dt>Source</dt><dd>{{ estimate.source_platform }} {{ estimate.source_version }}</dd></div><div><dt>Panels</dt><dd>{{ estimate.panel_quantity }}</dd></div><div><dt>Source backup</dt><dd>{{ estimate.backup_available|yesno:"Available,Not yet available" }}</dd></div></dl></section>
+        <section><h2>Budgetary proposal</h2><div class="proposal-lines">{% for line in estimate.lines.all %}<div><span>{{ line.description }} × {{ line.quantity }}{% if line.external_url %} <a href="{{ line.external_url }}" target="_blank" rel="noopener">configuration</a>{% endif %}</span><strong>{% if line.cadence == "custom" %}Custom{% else %}{{ line.line_total_cents|money }}{% if line.cadence == "annual" %}/yr{% endif %}{% endif %}</strong></div>{% endfor %}</div><div class="proposal-total"><span>One-time total</span><strong>{{ estimate.one_time_total_cents|money }}</strong></div>{% if estimate.annual_total_cents %}<div class="proposal-total annual"><span>Annual PanelLock Protect</span><strong>{{ estimate.annual_total_cents|money }}</strong></div>{% endif %}</section>
+    </div>
+    <div class="proposal-actions"><a class="button primary" href="{% url 'panellock:follow_up' estimate.id proposal_token %}">{% if estimate.follow_up_requested %}Complete follow-up details{% else %}Request follow-up{% endif %}</a><a class="button secondary" href="{% url 'panellock:index' %}#selector">Build another</a></div>
+    <p class="proposal-exclusions"><strong>Excluded unless confirmed in writing:</strong> shipping, taxes, travel, custom drivers, PLC changes, historian/database migration, production downtime, third-party modules, and work beyond the accepted source-project scope.</p>
+</section>
+{% endblock %}
