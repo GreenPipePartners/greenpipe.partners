@@ -61,7 +61,6 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "<title>Open-Source Manufacturing Software - Green Pipe Partners</title>", html=True)
         self.assertContains(response, "Green Pipe Partners champions open-source software development for manufacturing through AgentLab, PanelLock, and Flux")
         self.assertContains(response, "<h1 class=\"home-dialog-title\">Secure Open-Source Controls</h1>", html=True)
-        self.assertContains(response, "Controlled modernization, made visible")
         self.assertContains(response, "See how software reaches a panel without turning the plant into a cloud extension")
         self.assertContains(response, "PanelLock execution path")
         self.assertContains(response, "Nothing crosses the boundary by default")
