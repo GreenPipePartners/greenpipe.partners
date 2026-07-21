@@ -93,6 +93,8 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, "Begin with AgentLab")
         self.assertContains(response, "https://github.com/GreenPipePartners/Flux")
         self.assertContains(response, "/docs/flux/latest/")
+        self.assertNotContains(response, "<strong>Flux source</strong>", html=True)
+        self.assertNotContains(response, "<strong>Flux documentation</strong>", html=True)
         self.assertContains(response, "/about/")
         self.assertNotContains(response, "WARNING")
         self.assertNotContains(response, "certified")
