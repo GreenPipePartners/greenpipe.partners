@@ -78,7 +78,7 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     schedule: "0 14 1 * *"
-    dockerCommand: uv run python manage.py review_panellock_catalog --days 30
+    dockerCommand: python manage.py review_panellock_catalog --days 30
     envVars:
       - key: DJANGO_DEBUG
         value: "False"
@@ -119,7 +119,7 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     schedule: "*/15 * * * *"
-    dockerCommand: uv run python manage.py expire_panellock_plans
+    dockerCommand: python manage.py expire_panellock_plans
     envVars:
       - key: DJANGO_DEBUG
         value: "False"
