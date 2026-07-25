@@ -1379,6 +1379,15 @@ h3 {
     position: relative;
 }
 
+.report-code-actions {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1;
+    display: flex;
+    gap: 6px;
+}
+
 .report-markdown .report-code-block {
     margin: 1.35rem 0;
 }
@@ -1390,13 +1399,13 @@ h3 {
 }
 
 .report-code-copy {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    z-index: 1;
+    display: inline-grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
     border: 1px solid var(--code-button-border);
     border-radius: 999px;
-    padding: 6px 10px;
+    padding: 7px;
     background: var(--code-button-bg);
     color: var(--code-ink);
     font: inherit;
@@ -1405,6 +1414,16 @@ h3 {
     letter-spacing: 0.04em;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.report-code-copy svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .report-code-copy:hover,

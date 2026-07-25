@@ -66,8 +66,14 @@
     const showCopiedState = (button, label = null) => {
         button.dataset.copied = "true";
         if (label) {
-            button.dataset.copyLabel = button.dataset.copyLabel || button.textContent;
-            button.textContent = label;
+            if (button.hasAttribute("data-icon-button")) {
+                button.dataset.copyAriaLabel = button.dataset.copyAriaLabel || button.getAttribute("aria-label");
+                button.setAttribute("aria-label", label);
+                button.title = label;
+            } else {
+                button.dataset.copyLabel = button.dataset.copyLabel || button.textContent;
+                button.textContent = label;
+            }
         }
 
         window.clearTimeout(copyResetTimers.get(button));
@@ -76,6 +82,11 @@
             if (button.dataset.copyLabel) {
                 button.textContent = button.dataset.copyLabel;
                 delete button.dataset.copyLabel;
+            }
+            if (button.dataset.copyAriaLabel) {
+                button.setAttribute("aria-label", button.dataset.copyAriaLabel);
+                button.title = button.dataset.copyAriaLabel;
+                delete button.dataset.copyAriaLabel;
             }
         }, 1400));
     };
@@ -189,16 +200,42 @@
         wrapper.appendChild(pre);
         pre.dataset.copyReady = "true";
 
+        const actions = document.createElement("div");
+        actions.className = "report-code-actions";
+
         const button = document.createElement("button");
         button.type = "button";
         button.className = "report-code-copy";
-        button.textContent = "Copy";
+        button.dataset.iconButton = "";
         button.setAttribute("aria-label", "Copy code");
+        button.title = "Copy code";
+        button.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect width="14" height="14" x="8" y="8" rx="2"></rect><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path></svg>';
         button.addEventListener("click", async () => {
             await copyText(code.textContent);
-            showCopiedState(button, "Copied");
+            showCopiedState(button, "Code copied");
         });
-        wrapper.appendChild(button);
+        actions.appendChild(button);
+
+        const section = pre.closest("[data-report-code-section]");
+        if (section) {
+            const linkButton = document.createElement("button");
+            linkButton.type = "button";
+            linkButton.className = "report-code-copy report-code-link-copy";
+            linkButton.dataset.iconButton = "";
+            linkButton.setAttribute("aria-label", "Copy link to this section");
+            linkButton.title = "Copy link to this section";
+            linkButton.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>';
+            linkButton.addEventListener("click", async () => {
+                const directLink = new URL(window.location.href);
+                directLink.search = "";
+                directLink.hash = section.id;
+                await copyText(directLink.href);
+                showCopiedState(linkButton, "Link copied");
+            });
+            actions.appendChild(linkButton);
+        }
+
+        wrapper.appendChild(actions);
     });
 
     document.querySelectorAll("[data-ailab-quote]").forEach((root) => {
