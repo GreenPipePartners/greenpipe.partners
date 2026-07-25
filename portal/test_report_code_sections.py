@@ -49,6 +49,9 @@ class ReportCodeSectionUnitTests(SimpleTestCase):
         self.assertIn('linkButton.setAttribute("aria-label", "Copy link to this section")', script)
         self.assertIn('directLink.hash = section.id', script)
         self.assertNotIn("document.querySelector(window.location.hash)", script)
+        self.assertIn("--report-code-bg: #1d2021", styles)
+        self.assertIn(".report-shell .hljs-comment", styles)
+        self.assertIn(".report-shell .hljs-keyword", styles)
         self.assertIn(".report-code-section:target", styles)
         self.assertIn(".report-code-disclosure[open]", styles)
         self.assertIn(".report-code-disclosure:not([open]) > :not(summary)", styles)
@@ -82,6 +85,7 @@ class ReportCodeSectionIntegrationTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Code and queries")
+        self.assertContains(response, "highlight.js/11.11.1/highlight.min.js")
         self.assertContains(response, "data-report-code-section", count=2)
         self.assertContains(response, 'class="report-code-disclosure" data-report-code-block', count=2)
         self.assertContains(response, f'id="{first_anchor}"')
@@ -113,6 +117,7 @@ class ReportCodeSectionIntegrationTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "upgrade.py")
+        self.assertContains(response, "highlight.js/11.11.1/highlight.min.js")
         self.assertContains(response, "language-python")
         self.assertNotContains(response, "Code and queries")
         self.assertNotContains(response, "data-report-code-section")
