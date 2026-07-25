@@ -53,7 +53,7 @@ class ReportCodeSectionUnitTests(SimpleTestCase):
 
 class ReportCodeSectionIntegrationTests(TestCase):
     @patch("portal.gists.urlopen")
-    def test_report_renders_appendable_collapsed_code_list(self, mock_urlopen):
+    def test_report_renders_appendable_collapsed_code_accordions(self, mock_urlopen):
         mock_urlopen.return_value = FakeResponse(
             json.dumps(
                 {
@@ -79,15 +79,14 @@ class ReportCodeSectionIntegrationTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Code and queries")
-        self.assertContains(response, "Attached report files")
         self.assertContains(response, "data-report-code-section", count=2)
         self.assertContains(response, 'class="report-code-disclosure" data-report-code-block', count=2)
         self.assertContains(response, f'id="{first_anchor}"')
         self.assertContains(response, f'id="{second_anchor}"')
-        self.assertContains(response, f'href="#{first_anchor}"', count=2)
-        self.assertContains(response, f'href="#{second_anchor}"', count=2)
         self.assertLess(response_html.index(f'id="{first_anchor}"'), response_html.index(f'id="{second_anchor}"'))
         self.assertNotIn("data-report-code-block open", response_html)
+        self.assertNotContains(response, "report-code-index")
+        self.assertNotContains(response, "report-code-permalink")
 
     @patch("portal.gists.urlopen")
     def test_release_source_files_keep_expanded_layout(self, mock_urlopen):

@@ -156,9 +156,6 @@
         return true;
     };
 
-    document.querySelectorAll("[data-report-code-link]").forEach((link) => {
-        link.addEventListener("click", () => revealReportCodeSection(link.hash));
-    });
     revealReportCodeSection();
     window.addEventListener("hashchange", () => revealReportCodeSection());
 
