@@ -1,4 +1,5 @@
 import csv
+import hashlib
 import json
 import os
 import re
@@ -10,6 +11,7 @@ from urllib.request import Request, urlopen
 from uuid import uuid4
 
 import markdown
+from django.utils.text import slugify
 from django.utils.safestring import mark_safe
 
 
@@ -120,6 +122,7 @@ def _load_gist_document(gist_id, document_filename, document_label):
                 "filename": filename,
                 "language": _language_for(filename, file_info),
                 "content": _file_content(file_info),
+                "anchor_id": _snippet_anchor_id(filename),
             }
         )
 
@@ -143,6 +146,12 @@ def load_gist_csv(gist_id, filename):
 
 def load_report_csv(gist_id, filename):
     return load_gist_csv(gist_id, filename)
+
+
+def _snippet_anchor_id(filename):
+    filename_slug = slugify(filename.replace(".", "-")) or "file"
+    filename_digest = hashlib.sha256(filename.encode("utf-8")).hexdigest()[:10]
+    return f"report-code-{filename_slug}-{filename_digest}"
 
 
 def _gist_document_filename(files, expected_filename):

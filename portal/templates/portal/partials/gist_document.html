@@ -16,6 +16,49 @@
 
 {% if gist_document.snippets %}
 <section class="report-snippets" aria-label="{{ document_label }} files">
+    {% if collapsible_snippets %}
+    <header class="report-code-index-header">
+        <div>
+            <p class="eyebrow">Attached report files</p>
+            <h2>Code and queries</h2>
+        </div>
+        <p>Select a file below. Direct links open the matching block automatically.</p>
+    </header>
+    <nav class="report-code-index" aria-label="Code and query sections">
+        <ul>
+            {% for snippet in gist_document.snippets %}
+            <li>
+                <a href="#{{ snippet.anchor_id }}" data-report-code-link>
+                    <span>{{ snippet.filename }}</span>
+                    <span class="report-code-language">{{ snippet.language }}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    <div class="report-code-sections">
+        {% for snippet in gist_document.snippets %}
+        <article class="source-snippet report-code-section" id="{{ snippet.anchor_id }}" data-report-code-section aria-labelledby="{{ snippet.anchor_id }}-title">
+            <header class="report-code-section-header">
+                <div>
+                    <p class="report-code-language">{{ snippet.language }}</p>
+                    <h3 id="{{ snippet.anchor_id }}-title">{{ snippet.filename }}</h3>
+                </div>
+                <a class="report-code-permalink" href="#{{ snippet.anchor_id }}" data-report-code-link>Link to this block</a>
+            </header>
+            <details class="report-code-disclosure" data-report-code-block>
+                <summary>
+                    <span>View {{ snippet.filename }}</span>
+                    <span class="report-code-disclosure-state" aria-hidden="true"></span>
+                </summary>
+                <div class="report-code-content">
+                    <pre><code class="language-{{ snippet.language }}">{{ snippet.content }}</code></pre>
+                </div>
+            </details>
+        </article>
+        {% endfor %}
+    </div>
+    {% else %}
     <h2>Files</h2>
     {% for snippet in gist_document.snippets %}
     <article class="source-snippet">
@@ -23,6 +66,7 @@
         <pre><code class="language-{{ snippet.language }}">{{ snippet.content }}</code></pre>
     </article>
     {% endfor %}
+    {% endif %}
 </section>
 {% endif %}
 

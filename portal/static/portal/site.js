@@ -128,6 +128,54 @@
         });
     });
 
+    const revealReportCodeSection = (hash = window.location.hash) => {
+        if (!hash || !hash.startsWith("#")) {
+            return false;
+        }
+
+        let targetId;
+        try {
+            targetId = decodeURIComponent(hash.slice(1));
+        } catch {
+            return false;
+        }
+
+        const section = document.getElementById(targetId);
+        if (!section || !section.matches("[data-report-code-section]")) {
+            return false;
+        }
+
+        const disclosure = section.querySelector("[data-report-code-block]");
+        if (disclosure) {
+            disclosure.open = true;
+        }
+
+        window.requestAnimationFrame(() => {
+            section.scrollIntoView({ block: "start" });
+        });
+        return true;
+    };
+
+    document.querySelectorAll("[data-report-code-link]").forEach((link) => {
+        link.addEventListener("click", () => revealReportCodeSection(link.hash));
+    });
+    revealReportCodeSection();
+    window.addEventListener("hashchange", () => revealReportCodeSection());
+
+    const printOpenedReportCodeBlocks = new Set();
+    window.addEventListener("beforeprint", () => {
+        document.querySelectorAll("[data-report-code-block]:not([open])").forEach((disclosure) => {
+            printOpenedReportCodeBlocks.add(disclosure);
+            disclosure.open = true;
+        });
+    });
+    window.addEventListener("afterprint", () => {
+        printOpenedReportCodeBlocks.forEach((disclosure) => {
+            disclosure.open = false;
+        });
+        printOpenedReportCodeBlocks.clear();
+    });
+
     document.querySelectorAll(".report-markdown pre, .source-snippet pre").forEach((pre) => {
         const code = pre.querySelector("code");
         if (!code || pre.dataset.copyReady) {
