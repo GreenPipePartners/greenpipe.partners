@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 from django.test import SimpleTestCase, TestCase
 
-from .gists import _snippet_anchor_id
+from .gists import _render_report_markdown, _snippet_anchor_id
 from .models import Release, Report
 
 
@@ -57,6 +57,22 @@ class ReportCodeSectionUnitTests(SimpleTestCase):
         self.assertIn(".report-code-section:target", styles)
         self.assertIn(".report-code-disclosure[open]", styles)
         self.assertIn(".report-code-disclosure:not([open]) > :not(summary)", styles)
+
+    def test_excalidraw_embeds_follow_the_website_theme(self):
+        report_html = _render_report_markdown(
+            '<iframe src="https://link.excalidraw.com/readonly/example?darkMode=true&amp;ref=report"></iframe>'
+        )
+        generic_html = _render_report_markdown(
+            '<iframe src="https://example.com/embed"></iframe>'
+        )
+        script = (Path(__file__).resolve().parent / "static" / "portal" / "site.js").read_text()
+
+        self.assertIn("data-excalidraw-embed", report_html)
+        self.assertIn("darkMode=true&amp;ref=report", report_html)
+        self.assertNotIn("data-excalidraw-embed", generic_html)
+        self.assertIn('document.querySelectorAll("[data-excalidraw-embed]")', script)
+        self.assertIn('source.searchParams.set("darkMode", darkMode)', script)
+        self.assertIn("syncThemeEmbeds(normalizedTheme)", script)
 
 
 class ReportCodeSectionIntegrationTests(TestCase):

@@ -17,10 +17,24 @@
         }
     };
 
+    const syncThemeEmbeds = (theme) => {
+        const darkMode = theme === "dark" ? "true" : "false";
+        document.querySelectorAll("[data-excalidraw-embed]").forEach((iframe) => {
+            const source = new URL(iframe.src);
+            if (source.searchParams.get("darkMode") === darkMode) {
+                return;
+            }
+
+            source.searchParams.set("darkMode", darkMode);
+            iframe.src = source.href;
+        });
+    };
+
     const applyTheme = (theme) => {
         const normalizedTheme = theme === "dark" ? "dark" : "light";
         const nextTheme = normalizedTheme === "dark" ? "light" : "dark";
         document.documentElement.dataset.theme = normalizedTheme;
+        syncThemeEmbeds(normalizedTheme);
 
         document.querySelectorAll("[data-theme-toggle]").forEach((button) => {
             button.setAttribute("aria-pressed", normalizedTheme === "dark" ? "true" : "false");

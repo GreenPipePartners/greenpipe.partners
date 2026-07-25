@@ -34,6 +34,7 @@ CALLOUT_LINE_RE = re.compile(r"^\s{0,3}>\s?(?P<body>.*)$")
 YOUTUBE_LINK_RE = re.compile(r"^\s*\[(?P<label>[^\n\]]+)\]\((?P<url>https://[^\s)]+)\)\s*$", re.IGNORECASE)
 YOUTUBE_VIDEO_ID_RE = re.compile(r"^[A-Za-z0-9_-]{11}$")
 YOUTUBE_HOSTS = {"m.youtube.com", "music.youtube.com", "www.youtube.com", "youtube.com"}
+EXCALIDRAW_EMBED_HOST = "link.excalidraw.com"
 GIST_FILE_LANGUAGES = {
     ".bash": "bash",
     ".css": "css",
@@ -393,10 +394,11 @@ def _embedded_iframe_html(attrs_text):
     title = unescape(attrs.get("title", "")).strip() or f"Embedded content from {hostname}"
     safe_source_url = escape(source_url)
     safe_title = escape(title)
+    theme_attribute = " data-excalidraw-embed" if hostname.lower() == EXCALIDRAW_EMBED_HOST else ""
     return (
         '<figure class="report-embed">'
         '<div class="report-embed-frame">'
-        f'<iframe src="{safe_source_url}" title="{safe_title}" loading="lazy" '
+        f'<iframe src="{safe_source_url}" title="{safe_title}" loading="lazy"{theme_attribute} '
         'referrerpolicy="strict-origin-when-cross-origin" '
         'sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts" '
         "allowfullscreen></iframe>"
