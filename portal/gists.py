@@ -2,7 +2,7 @@ import csv
 import json
 import os
 import re
-from html import escape
+from html import escape, unescape
 from io import StringIO
 from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlparse
@@ -15,7 +15,15 @@ from django.utils.safestring import mark_safe
 
 GIST_ID_RE = re.compile(r"^[A-Fa-f0-9]{20,64}$")
 IMG_TAG_RE = re.compile(r"<img\b(?P<attrs>[^>]*)>", re.IGNORECASE)
-IMG_ATTR_RE = re.compile(r"(?P<name>[A-Za-z_:][-A-Za-z0-9_:.]*)\s*=\s*(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)')")
+HTML_ATTR_RE = re.compile(
+    r"(?P<name>[A-Za-z_:][-A-Za-z0-9_:.]*)\s*=\s*(?:\"(?P<double>[^\"]*)\"|'(?P<single>[^']*)')"
+)
+IFRAME_START_RE = re.compile(r"^\s{0,3}<iframe\b", re.IGNORECASE)
+IFRAME_BLOCK_RE = re.compile(
+    r"^\s{0,3}<iframe\b(?P<attrs>.*?)>\s*</iframe>\s*$",
+    re.IGNORECASE | re.DOTALL,
+)
+FENCED_CODE_START_RE = re.compile(r"^\s{0,3}(?P<fence>`{3,}|~{3,})")
 CALLOUT_RE = re.compile(
     r"^\s{0,3}>\s*\[!(?P<type>success|recommendation|quote)\](?:[+-])?(?:\s+(?P<title>.+?))?\s*$",
     re.IGNORECASE,
@@ -186,7 +194,7 @@ def _file_content(file_info):
 
 def _normalize_report_images(markdown_text):
     def replace(match):
-        attrs = _image_attrs(match.group("attrs"))
+        attrs = _html_attrs(match.group("attrs"))
         src = attrs.get("src", "")
         if not _is_allowed_inline_image(src):
             return match.group(0)
@@ -210,8 +218,32 @@ def _extract_report_blocks(markdown_text):
     normalized_lines = []
     replacements = {}
     index = 0
+    code_fence = ""
 
     while index < len(lines):
+        fence_match = FENCED_CODE_START_RE.match(lines[index])
+        if code_fence:
+            normalized_lines.append(lines[index])
+            if _closes_code_fence(lines[index], code_fence):
+                code_fence = ""
+            index += 1
+            continue
+        if fence_match:
+            code_fence = fence_match.group("fence")
+            normalized_lines.append(lines[index])
+            index += 1
+            continue
+
+        iframe_match, iframe_end = _iframe_block(lines, index)
+        if iframe_match:
+            iframe_html = _embedded_iframe_html(iframe_match.group("attrs"))
+            if iframe_html:
+                token = _report_block_token()
+                replacements[token] = iframe_html
+                normalized_lines.extend(("", token, ""))
+                index = iframe_end + 1
+                continue
+
         callout_match = CALLOUT_RE.match(lines[index])
         if callout_match:
             body_lines = []
@@ -250,6 +282,29 @@ def _extract_report_blocks(markdown_text):
         index += 1
 
     return "\n".join(normalized_lines), replacements
+
+
+def _closes_code_fence(line, opening_fence):
+    stripped = line.lstrip(" ")
+    closing_fence = stripped.rstrip()
+    return (
+        len(line) - len(stripped) <= 3
+        and len(closing_fence) >= len(opening_fence)
+        and not closing_fence.strip(opening_fence[0])
+    )
+
+
+def _iframe_block(lines, start):
+    if not IFRAME_START_RE.match(lines[start]):
+        return None, start
+
+    for end in range(start, len(lines)):
+        if "</iframe>" not in lines[end].lower():
+            continue
+        match = IFRAME_BLOCK_RE.fullmatch("\n".join(lines[start : end + 1]))
+        return match, end
+
+    return None, start
 
 
 def _report_block_token():
@@ -309,9 +364,42 @@ def _youtube_html(video_id, label, source_url):
     )
 
 
-def _image_attrs(attrs_text):
+def _embedded_iframe_html(attrs_text):
+    attrs = _html_attrs(attrs_text)
+    source_url = unescape(attrs.get("src", "")).strip()
+    try:
+        parsed = urlparse(source_url)
+        hostname = parsed.hostname
+    except ValueError:
+        return ""
+    if (
+        parsed.scheme.lower() != "https"
+        or not hostname
+        or parsed.username
+        or parsed.password
+        or any(character.isspace() for character in source_url)
+    ):
+        return ""
+
+    title = unescape(attrs.get("title", "")).strip() or f"Embedded content from {hostname}"
+    safe_source_url = escape(source_url)
+    safe_title = escape(title)
+    return (
+        '<figure class="report-embed">'
+        '<div class="report-embed-frame">'
+        f'<iframe src="{safe_source_url}" title="{safe_title}" loading="lazy" '
+        'referrerpolicy="strict-origin-when-cross-origin" '
+        'sandbox="allow-downloads allow-forms allow-modals allow-popups allow-same-origin allow-scripts" '
+        "allowfullscreen></iframe>"
+        "</div>"
+        f'<figcaption><a href="{safe_source_url}">{safe_title}</a></figcaption>'
+        "</figure>"
+    )
+
+
+def _html_attrs(attrs_text):
     attrs = {}
-    for match in IMG_ATTR_RE.finditer(attrs_text):
+    for match in HTML_ATTR_RE.finditer(attrs_text):
         attrs[match.group("name").lower()] = match.group("double") or match.group("single") or ""
     return attrs
 

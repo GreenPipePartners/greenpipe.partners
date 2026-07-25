@@ -92,7 +92,7 @@ The public URL shape is hidden/direct only:
 /reports/{customer}/{gist_id}
 ```
 
-The Gist must contain `report.md` or `Report.md`. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
+The Gist must contain `report.md` or `Report.md`. HTTPS iframe tags in the report are rendered as sandboxed, responsive embeds. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
 
 ## Public Releases
 

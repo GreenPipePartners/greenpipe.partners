@@ -103,6 +103,11 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertLess(content.index(">AgentLab</summary>"), content.index(">PanelLock</summary>"))
         self.assertLess(content.index(">PanelLock</summary>"), content.index(">Flux</summary>"))
 
+    def test_security_policy_allows_https_report_embeds(self):
+        response = self.client.get(reverse("portal:home"))
+
+        self.assertIn("frame-src https:;", response["Content-Security-Policy"])
+
     def test_about_page_renders(self):
         response = self.client.get(reverse("portal:about"))
 
@@ -594,6 +599,36 @@ class ReportMarkdownTests(SimpleTestCase):
         self.assertIn('loading="lazy"', report_html)
         self.assertIn('<a href="https://example.com/demo">Supporting material</a>', report_html)
         self.assertEqual(report_html.count('class="report-video"'), 1)
+
+    def test_renders_sanitized_https_iframe_embeds(self):
+        report_html = _render_report_markdown(
+            '<iframe src="https://link.excalidraw.com/readonly/9Pp5Z14Fc6HeKcPHksDR" '
+            'width="100%" height="100%" style="border: none;" onload="alert(1)"></iframe>'
+        )
+
+        self.assertIn('class="report-embed"', report_html)
+        self.assertIn(
+            'src="https://link.excalidraw.com/readonly/9Pp5Z14Fc6HeKcPHksDR"',
+            report_html,
+        )
+        self.assertIn('title="Embedded content from link.excalidraw.com"', report_html)
+        self.assertIn('loading="lazy"', report_html)
+        self.assertIn('sandbox="', report_html)
+        self.assertNotIn('style=', report_html)
+        self.assertNotIn('onload=', report_html)
+
+    def test_does_not_embed_unsafe_or_fenced_iframes(self):
+        unsafe_html = _render_report_markdown('<iframe src="javascript:alert(1)"></iframe>')
+        fenced_html = _render_report_markdown(
+            "```html\n"
+            '<iframe src="https://link.excalidraw.com/readonly/example"></iframe>\n'
+            "```"
+        )
+
+        self.assertNotIn("<iframe", unsafe_html)
+        self.assertNotIn('class="report-embed"', unsafe_html)
+        self.assertNotIn("<iframe", fenced_html)
+        self.assertIn("iframe src=", fenced_html)
 
 
 class ReportTests(TestCase):

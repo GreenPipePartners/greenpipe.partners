@@ -1236,33 +1236,42 @@ h3 {
     content: "\201C";
 }
 
-.report-video {
+.report-video,
+.report-embed {
     margin: 1.5rem 0;
 }
 
-.report-video-frame {
+.report-video-frame,
+.report-embed-frame {
     overflow: hidden;
     aspect-ratio: 16 / 9;
     border: 1px solid var(--line);
     border-radius: 18px;
-    background: #000000;
+    background: var(--surface-strong);
     box-shadow: var(--image-shadow);
 }
 
-.report-video iframe {
+.report-video-frame {
+    background: #000000;
+}
+
+.report-video iframe,
+.report-embed iframe {
     display: block;
     width: 100%;
     height: 100%;
     border: 0;
 }
 
-.report-video figcaption {
+.report-video figcaption,
+.report-embed figcaption {
     margin-top: 8px;
     color: var(--muted);
     font-size: 0.92rem;
 }
 
-.report-video figcaption a {
+.report-video figcaption a,
+.report-embed figcaption a {
     color: var(--green);
     font-weight: 800;
 }
@@ -3149,6 +3158,7 @@ h3 {
     .report-actions,
     .report-code-copy,
     .report-video-frame,
+    .report-embed-frame,
     .print-button {
         display: none;
     }
