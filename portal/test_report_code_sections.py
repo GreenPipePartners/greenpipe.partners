@@ -84,6 +84,10 @@ class ReportCodeSectionIntegrationTests(TestCase):
         response_html = response.content.decode("utf-8")
 
         self.assertEqual(response.status_code, 200)
+        self.assertIn(
+            "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;",
+            response["Content-Security-Policy"],
+        )
         self.assertContains(response, "Code and queries")
         self.assertContains(response, "highlight.js/11.11.1/highlight.min.js")
         self.assertContains(response, "data-report-code-section", count=2)

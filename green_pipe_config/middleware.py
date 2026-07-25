@@ -7,7 +7,8 @@ class SecurityHeadersMiddleware:
         response.setdefault(
             "Content-Security-Policy",
             "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; "
-            "form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
+            "form-action 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; "
+            "style-src 'self' 'unsafe-inline'; "
             "img-src 'self' data: https:; frame-src https:; "
             "connect-src 'self'",
         )
