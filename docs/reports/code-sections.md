@@ -17,5 +17,6 @@ fragment expands that block and scrolls it into view:
 
 External links can use the stable section fragment directly. Each expanded code
 block provides separate icon buttons to copy its code or stable section link.
-Report and release code uses syntax highlighting with the Gruvbox Dark Hard
-palette. Release-notice attachments retain their existing expanded presentation.
+Report and release code uses syntax highlighting with the Gruvbox Light Hard or
+Dark Hard palette selected by the website theme. Release-notice attachments
+retain their existing expanded presentation.

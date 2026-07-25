@@ -17,12 +17,23 @@
     --code-ink: #ffffff;
     --code-button-border: rgba(255, 255, 255, 0.22);
     --code-button-bg: rgba(255, 255, 255, 0.1);
-    --report-code-bg: #1d2021;
-    --report-code-ink: #d5c4a1;
-    --report-code-button-border: #665c54;
-    --report-code-button-bg: #282828;
-    --report-code-button-hover: #3c3836;
-    --report-code-accent: #b8bb26;
+    --report-code-bg: #f9f5d7;
+    --report-code-ink: #504945;
+    --report-code-button-border: #bdae93;
+    --report-code-button-bg: #ebdbb2;
+    --report-code-button-hover: #d5c4a1;
+    --report-code-accent: #79740e;
+    --report-code-selection: #d5c4a1;
+    --report-code-comment: #bdae93;
+    --report-code-tag: #665c54;
+    --report-code-red: #9d0006;
+    --report-code-orange: #af3a03;
+    --report-code-yellow: #b57614;
+    --report-code-green: #79740e;
+    --report-code-aqua: #427b58;
+    --report-code-blue: #076678;
+    --report-code-purple: #8f3f71;
+    --report-code-meta: #d65d0e;
     --warning-bg: #fff4d8;
     --accent-text: #9be3ba;
     --recommendation-bg: #edf8f1;
@@ -57,6 +68,23 @@
     --code-ink: #dff1e8;
     --code-button-border: rgba(223, 241, 232, 0.22);
     --code-button-bg: rgba(223, 241, 232, 0.1);
+    --report-code-bg: #1d2021;
+    --report-code-ink: #d5c4a1;
+    --report-code-button-border: #665c54;
+    --report-code-button-bg: #282828;
+    --report-code-button-hover: #3c3836;
+    --report-code-accent: #b8bb26;
+    --report-code-selection: #504945;
+    --report-code-comment: #665c54;
+    --report-code-tag: #bdae93;
+    --report-code-red: #fb4934;
+    --report-code-orange: #fe8019;
+    --report-code-yellow: #fabd2f;
+    --report-code-green: #b8bb26;
+    --report-code-aqua: #8ec07c;
+    --report-code-blue: #83a598;
+    --report-code-purple: #d3869b;
+    --report-code-meta: #d65d0e;
     --warning-bg: rgba(154, 113, 16, 0.24);
     --accent-text: #9be3ba;
     --recommendation-bg: rgba(67, 166, 111, 0.14);
@@ -2967,29 +2995,29 @@ h3 {
     background: transparent;
 }
 
-/* Gruvbox Dark Hard syntax palette. */
+/* Gruvbox Light Hard and Dark Hard syntax palettes. */
 .report-shell .hljs {
-    color: #d5c4a1;
+    color: var(--report-code-ink);
 }
 
 .report-shell .hljs::selection,
 .report-shell .hljs ::selection {
-    background-color: #504945;
-    color: #d5c4a1;
+    background-color: var(--report-code-selection);
+    color: var(--report-code-ink);
 }
 
 .report-shell .hljs-comment {
-    color: #665c54;
+    color: var(--report-code-comment);
 }
 
 .report-shell .hljs-tag {
-    color: #bdae93;
+    color: var(--report-code-tag);
 }
 
 .report-shell .hljs-operator,
 .report-shell .hljs-punctuation,
 .report-shell .hljs-subst {
-    color: #d5c4a1;
+    color: var(--report-code-ink);
 }
 
 .report-shell .hljs-operator {
@@ -3002,7 +3030,7 @@ h3 {
 .report-shell .hljs-selector-tag,
 .report-shell .hljs-template-variable,
 .report-shell .hljs-variable {
-    color: #fb4934;
+    color: var(--report-code-red);
 }
 
 .report-shell .hljs-attr,
@@ -3011,17 +3039,17 @@ h3 {
 .report-shell .hljs-number,
 .report-shell .hljs-symbol,
 .report-shell .hljs-variable.constant_ {
-    color: #fe8019;
+    color: var(--report-code-orange);
 }
 
 .report-shell .hljs-class .hljs-title,
 .report-shell .hljs-title,
 .report-shell .hljs-title.class_ {
-    color: #fabd2f;
+    color: var(--report-code-yellow);
 }
 
 .report-shell .hljs-strong {
-    color: #fabd2f;
+    color: var(--report-code-yellow);
     font-weight: 700;
 }
 
@@ -3029,7 +3057,7 @@ h3 {
 .report-shell .hljs-code,
 .report-shell .hljs-string,
 .report-shell .hljs-title.class_.inherited__ {
-    color: #b8bb26;
+    color: var(--report-code-green);
 }
 
 .report-shell .hljs-built_in,
@@ -3037,7 +3065,7 @@ h3 {
 .report-shell .hljs-keyword.hljs-atrule,
 .report-shell .hljs-quote,
 .report-shell .hljs-regexp {
-    color: #8ec07c;
+    color: var(--report-code-aqua);
 }
 
 .report-shell .hljs-attribute,
@@ -3045,25 +3073,25 @@ h3 {
 .report-shell .hljs-section,
 .report-shell .hljs-title.function_,
 .report-shell .ruby .hljs-property {
-    color: #83a598;
+    color: var(--report-code-blue);
 }
 
 .report-shell .diff .hljs-meta,
 .report-shell .hljs-keyword,
 .report-shell .hljs-template-tag,
 .report-shell .hljs-type {
-    color: #d3869b;
+    color: var(--report-code-purple);
 }
 
 .report-shell .hljs-emphasis {
-    color: #d3869b;
+    color: var(--report-code-purple);
     font-style: italic;
 }
 
 .report-shell .hljs-meta,
 .report-shell .hljs-meta .hljs-keyword,
 .report-shell .hljs-meta .hljs-string {
-    color: #d65d0e;
+    color: var(--report-code-meta);
 }
 
 .report-shell .hljs-meta .hljs-keyword,
