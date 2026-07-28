@@ -1190,6 +1190,7 @@ h3 {
 .report-markdown table,
 .csv-preview table {
     width: 100%;
+    max-width: 100%;
     min-width: 100%;
     margin: 1.35rem 0;
     border: 1px solid var(--line);
@@ -1215,14 +1216,9 @@ h3 {
     vertical-align: top;
 }
 
-.report-markdown th:nth-child(2),
-.report-markdown td:nth-child(2) {
-    width: 100%;
-}
-
-.report-markdown th:not(:nth-child(2)),
-.report-markdown td:not(:nth-child(2)) {
-    white-space: nowrap;
+.report-markdown th,
+.report-markdown td {
+    overflow-wrap: anywhere;
 }
 
 .report-markdown th:last-child,
