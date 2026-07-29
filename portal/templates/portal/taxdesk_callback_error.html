@@ -1,0 +1,17 @@
+{% extends "portal/base.html" %}
+
+{% block hero %}
+<section class="hero compact legal-hero">
+    <p class="eyebrow">TaxDesk / QuickBooks</p>
+    <h1>Authorization response could not be verified.</h1>
+    <p class="hero-copy">The callback was missing the security state or authorization result expected by TaxDesk.</p>
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="taxdesk-public-panel">
+    <h2>Restart authorization from the local application.</h2>
+    <p>Do not retry a copied callback URL. Open TaxDesk locally and begin a new QuickBooks connection so a fresh security state is generated.</p>
+    <a class="button primary" href="http://localhost:3000/#integrations">Open TaxDesk integrations</a>
+</section>
+{% endblock %}

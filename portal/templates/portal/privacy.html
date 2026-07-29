@@ -1,0 +1,57 @@
+{% extends "portal/base.html" %}
+
+{% block hero %}
+<section class="hero compact legal-hero">
+    <p class="eyebrow">Legal / Privacy</p>
+    <h1>Privacy Policy</h1>
+    <p class="hero-copy">How Green Pipe Partners handles information across this website and its private TaxDesk accounting application.</p>
+</section>
+{% endblock %}
+
+{% block content %}
+<article class="legal-document">
+    <p class="legal-effective">Effective July 29, 2026</p>
+
+    <section>
+        <h2>1. Scope and operator</h2>
+        <p>This policy applies to websites and software operated by Green Pipe Partners LLC, a Texas limited liability company, including the private TaxDesk application. TaxDesk supports internal accounting reconciliation, payroll review, and tax-planning operations for Green Pipe Partners.</p>
+    </section>
+
+    <section>
+        <h2>2. Information processed</h2>
+        <p>When an authorized user connects QuickBooks Online, TaxDesk may process company information, account and category names, financial reports, balances, and transaction or ledger details. TaxDesk may also process bank-budget transaction data supplied through YNAB and structured payroll totals imported from reports.</p>
+        <p>The public QuickBooks callback on this website receives a short-lived OAuth authorization response and redirects the browser to TaxDesk on the authorized user's local computer. The website does not exchange the code for tokens or intentionally persist the code in its application database. Hosting infrastructure may retain limited access and security logs.</p>
+    </section>
+
+    <section>
+        <h2>3. Use of information</h2>
+        <p>Information is used only to operate, secure, reconcile, troubleshoot, and improve the authorized internal accounting workflow. Green Pipe Partners does not sell financial information or use QuickBooks data for advertising, profiling, or unrelated commercial purposes.</p>
+    </section>
+
+    <section>
+        <h2>4. Storage and security</h2>
+        <p>TaxDesk is local-first. Synced financial data is stored on an authorized Green Pipe Partners computer. OAuth tokens are encrypted at rest, and provider credentials remain in local server-side configuration. The public website does not host the TaxDesk financial database.</p>
+        <p>Green Pipe Partners uses reasonable administrative and technical safeguards, including access restrictions, encrypted transport, token encryption, source separation, and least-necessary provider access. No security control can guarantee absolute protection.</p>
+    </section>
+
+    <section>
+        <h2>5. Service providers and disclosure</h2>
+        <p>Information may be processed by providers needed to deliver the requested service, including Intuit, YNAB, website hosting and infrastructure providers. Information may also be disclosed when required by law, to protect rights or security, or in connection with a lawful business reorganization. Green Pipe Partners does not grant these providers permission to use QuickBooks data for their own advertising.</p>
+    </section>
+
+    <section>
+        <h2>6. Retention and deletion</h2>
+        <p>Local accounting records are retained while needed for reconciliation, tax support, security, or legal recordkeeping. An authorized user can revoke QuickBooks access and remove locally stored connection data. Provider-side records remain subject to each provider's retention practices.</p>
+    </section>
+
+    <section>
+        <h2>7. Choices and rights</h2>
+        <p>Authorized users may request access, correction, deletion, or an explanation of information controlled by Green Pipe Partners, subject to accounting, tax, security, and legal retention requirements. QuickBooks authorization can be revoked through Intuit or TaxDesk.</p>
+    </section>
+
+    <section>
+        <h2>8. Changes and contact</h2>
+        <p>This policy may be updated as the application or legal requirements change. The effective date above identifies the current version. Questions or privacy requests may be sent to <a href="mailto:info@greenpipe.partners">info@greenpipe.partners</a>.</p>
+    </section>
+</article>
+{% endblock %}

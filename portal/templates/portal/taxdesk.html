@@ -1,0 +1,39 @@
+{% extends "portal/base.html" %}
+
+{% block hero %}
+<section class="hero compact taxdesk-public-hero">
+    <p class="eyebrow">Private business operations</p>
+    {% if taxdesk_page == "connect" %}
+    <h1>Connect TaxDesk</h1>
+    <p class="hero-copy">Start or renew the authorized QuickBooks Online connection from the local TaxDesk application.</p>
+    {% elif taxdesk_page == "disconnected" %}
+    <h1>QuickBooks connection closeout</h1>
+    <p class="hero-copy">Confirm local connection status and retained records from the authorized TaxDesk workstation.</p>
+    {% else %}
+    <h1>TaxDesk</h1>
+    <p class="hero-copy">The private, local-first accounting reconciliation and tax-planning workspace for Green Pipe Partners.</p>
+    {% endif %}
+</section>
+{% endblock %}
+
+{% block content %}
+<section class="taxdesk-public-panel">
+    {% if taxdesk_page == "disconnected" %}
+    <p class="eyebrow">Connection status</p>
+    <h2>Return to the authorized workstation.</h2>
+    <p>If Intuit sent you here after disconnecting, QuickBooks access is no longer available through that grant. Locally imported records may remain for accounting retention until an authorized user removes them.</p>
+    <a class="button primary" href="http://localhost:3000/#integrations">Open local connection status</a>
+    {% elif taxdesk_page == "connect" %}
+    <p class="eyebrow">Authorization</p>
+    <h2>QuickBooks access begins locally.</h2>
+    <p>The local application creates and verifies the OAuth security state, encrypts resulting credentials, and restricts the connection to the authorized Green Pipe Partners company.</p>
+    <a class="button primary" href="http://localhost:3000/api/integrations/quickbooks/connect">Open local QuickBooks authorization</a>
+    {% else %}
+    <p class="eyebrow">Local-first by design</p>
+    <h2>Financial records remain on the authorized computer.</h2>
+    <p>This public page provides application identity, legal information, and the secure QuickBooks callback. It does not expose the private dashboard or host the local financial database.</p>
+    <a class="button primary" href="http://localhost:3000/">Open TaxDesk locally</a>
+    {% endif %}
+    <div class="taxdesk-legal-links"><a href="{% url 'portal:privacy' %}">Privacy Policy</a><a href="{% url 'portal:terms' %}">Terms and EULA</a></div>
+</section>
+{% endblock %}

@@ -1,5 +1,6 @@
 from datetime import date
 from itertools import groupby
+from urllib.parse import urlencode
 
 from django.conf import settings
 from django.http import FileResponse, Http404, HttpResponse, JsonResponse
@@ -52,6 +53,87 @@ def docs(request):
 
 def about(request):
     return render(request, "portal/about.html")
+
+
+def privacy(request):
+    return render(
+        request,
+        "portal/privacy.html",
+        {
+            "page_title": "Privacy Policy - Green Pipe Partners",
+            "page_description": "Privacy practices for Green Pipe Partners websites and the private TaxDesk application.",
+        },
+    )
+
+
+def terms(request):
+    return render(
+        request,
+        "portal/terms.html",
+        {
+            "page_title": "Terms and End User License Agreement - Green Pipe Partners",
+            "page_description": "Terms and end user license agreement for Green Pipe Partners services and TaxDesk.",
+        },
+    )
+
+
+def taxdesk(request):
+    return render(
+        request,
+        "portal/taxdesk.html",
+        {
+            "page_title": "TaxDesk - Green Pipe Partners",
+            "page_description": "Private accounting reconciliation and tax-planning operations for Green Pipe Partners.",
+            "taxdesk_page": "launch",
+        },
+    )
+
+
+def taxdesk_connect(request):
+    return render(
+        request,
+        "portal/taxdesk.html",
+        {
+            "page_title": "Connect TaxDesk - Green Pipe Partners",
+            "page_description": "Connect or reconnect the private TaxDesk application to QuickBooks Online.",
+            "taxdesk_page": "connect",
+        },
+    )
+
+
+def taxdesk_disconnected(request):
+    response = render(
+        request,
+        "portal/taxdesk.html",
+        {
+            "page_title": "TaxDesk Connection Status - Green Pipe Partners",
+            "page_description": "QuickBooks connection closeout information for the private TaxDesk application.",
+            "taxdesk_page": "disconnected",
+        },
+    )
+    response["Cache-Control"] = "no-store"
+    return response
+
+
+def taxdesk_quickbooks_callback(request):
+    allowed_parameters = ("code", "state", "realmId", "error", "error_description")
+    parameters = {
+        key: request.GET[key]
+        for key in allowed_parameters
+        if request.GET.get(key)
+    }
+    if "state" not in parameters or not ({"code", "error"} & parameters.keys()):
+        return render(
+            request,
+            "portal/taxdesk_callback_error.html",
+            status=400,
+        )
+
+    local_callback = "http://localhost:3000/api/integrations/quickbooks/callback"
+    response = redirect(f"{local_callback}?{urlencode(parameters)}")
+    response["Cache-Control"] = "no-store"
+    response["Referrer-Policy"] = "no-referrer"
+    return response
 
 
 def raft(request):

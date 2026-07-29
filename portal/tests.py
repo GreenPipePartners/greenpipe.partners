@@ -137,6 +137,54 @@ class PortalSmokeTests(SimpleTestCase):
         self.assertContains(response, '<meta property="og:title" content="About Green Pipe Partners">')
         self.assertContains(response, "Green Pipe Partners champions open-source software development for manufacturing and works to make open source the default choice")
 
+    def test_public_legal_pages_render(self):
+        privacy_response = self.client.get(reverse("portal:privacy"))
+        terms_response = self.client.get(reverse("portal:terms"))
+
+        self.assertEqual(privacy_response.status_code, 200)
+        self.assertContains(privacy_response, "Privacy Policy")
+        self.assertContains(privacy_response, "QuickBooks Online")
+        self.assertContains(privacy_response, "local-first")
+        self.assertEqual(terms_response.status_code, 200)
+        self.assertContains(terms_response, "Terms and End User License Agreement")
+        self.assertContains(terms_response, "Accounting and tax limitations")
+
+    def test_taxdesk_public_routes_render(self):
+        for route in ("portal:taxdesk", "portal:taxdesk_connect", "portal:taxdesk_disconnected"):
+            response = self.client.get(reverse(route))
+            self.assertEqual(response.status_code, 200)
+            self.assertContains(response, "TaxDesk")
+            self.assertContains(response, "http://localhost:3000")
+
+    def test_taxdesk_callback_relays_only_allowed_oauth_parameters(self):
+        response = self.client.get(
+            reverse("portal:taxdesk_quickbooks_callback"),
+            {
+                "code": "one-time-code",
+                "state": "csrf-state",
+                "realmId": "12345",
+                "redirect_uri": "https://attacker.example/callback",
+            },
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response["Location"],
+            "http://localhost:3000/api/integrations/quickbooks/callback?code=one-time-code&state=csrf-state&realmId=12345",
+        )
+        self.assertEqual(response["Cache-Control"], "no-store")
+        self.assertEqual(response["Referrer-Policy"], "no-referrer")
+        self.assertNotIn("attacker.example", response["Location"])
+
+    def test_taxdesk_callback_rejects_incomplete_response(self):
+        response = self.client.get(
+            reverse("portal:taxdesk_quickbooks_callback"),
+            {"code": "one-time-code"},
+        )
+
+        self.assertEqual(response.status_code, 400)
+        self.assertContains(response, "Authorization response could not be verified", status_code=400)
+
     def test_raft_trial_page_renders_live_panellock_flow(self):
         response = self.client.get(reverse("portal:raft"))
 
