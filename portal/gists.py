@@ -9,11 +9,13 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, urlopen
 from uuid import uuid4
+from xml.etree.ElementTree import Element
 
 import markdown
-from django.utils.text import slugify
 from django.utils.safestring import mark_safe
-
+from django.utils.text import slugify
+from markdown.extensions import Extension
+from markdown.treeprocessors import Treeprocessor
 
 GIST_ID_RE = re.compile(r"^[A-Fa-f0-9]{20,64}$")
 IMG_TAG_RE = re.compile(r"<img\b(?P<attrs>[^>]*)>", re.IGNORECASE)
@@ -26,6 +28,7 @@ IFRAME_BLOCK_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 FENCED_CODE_START_RE = re.compile(r"^\s{0,3}(?P<fence>`{3,}|~{3,})")
+TASK_LIST_ITEM_RE = re.compile(r"^\[([ xX])\](?:[ \t]+|$)")
 CALLOUT_RE = re.compile(
     r"^\s{0,3}>\s*\[!(?P<type>success|recommendation|quote)\](?:[+-])?(?:\s+(?P<title>.+?))?\s*$",
     re.IGNORECASE,
@@ -59,6 +62,43 @@ RELEASE_FILENAME = "release.md"
 
 class GistError(Exception):
     pass
+
+
+class _ReportTaskListTreeprocessor(Treeprocessor):
+    def run(self, root):
+        for list_element in root.iter():
+            if list_element.tag not in {"ul", "ol"}:
+                continue
+
+            contains_task = False
+            for item in list_element:
+                if item.tag != "li":
+                    continue
+
+                content_element = item
+                if item.text is None and len(item) and item[0].tag == "p":
+                    content_element = item[0]
+
+                match = TASK_LIST_ITEM_RE.match(content_element.text or "")
+                if not match:
+                    continue
+
+                contains_task = True
+                item.set("class", f'{item.get("class", "")} report-task-list-item'.strip())
+                checkbox = Element("input", {"type": "checkbox", "disabled": "disabled"})
+                if match.group(1).lower() == "x":
+                    checkbox.set("checked", "checked")
+                checkbox.tail = content_element.text[match.end() :]
+                content_element.text = None
+                content_element.insert(0, checkbox)
+
+            if contains_task:
+                list_element.set("class", f'{list_element.get("class", "")} report-task-list'.strip())
+
+
+class _ReportTaskListExtension(Extension):
+    def extendMarkdown(self, md):
+        md.treeprocessors.register(_ReportTaskListTreeprocessor(md), "report_task_list", 25)
 
 
 def parse_gist_id(gist_url):
@@ -324,7 +364,7 @@ def _report_block_token():
 def _render_safe_markdown(markdown_text):
     return markdown.markdown(
         escape(markdown_text),
-        extensions=["fenced_code", "tables"],
+        extensions=["fenced_code", "tables", _ReportTaskListExtension()],
     )
 
 

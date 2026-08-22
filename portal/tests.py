@@ -627,6 +627,22 @@ class FrontendAssetTests(SimpleTestCase):
 
 
 class ReportMarkdownTests(SimpleTestCase):
+    def test_renders_checklist_items_as_disabled_checkboxes(self):
+        report_html = _render_report_markdown(
+            "- [ ] Review the **draft**\n"
+            "- [x] Approved\n"
+            "- Ordinary list item"
+        )
+
+        self.assertIn('<ul class="report-task-list">', report_html)
+        self.assertEqual(report_html.count('class="report-task-list-item"'), 2)
+        self.assertEqual(report_html.count('type="checkbox"'), 2)
+        self.assertEqual(report_html.count('disabled="disabled"'), 2)
+        self.assertEqual(report_html.count('checked="checked"'), 1)
+        self.assertIn("Review the <strong>draft</strong>", report_html)
+        self.assertIn("<li>Ordinary list item</li>", report_html)
+        self.assertNotIn("[ ]", report_html)
+
     def test_renders_obsidian_callouts_and_youtube_links(self):
         report_html = _render_report_markdown(
             "> [!success] Recommendation\n"
