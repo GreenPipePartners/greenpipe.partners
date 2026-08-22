@@ -2,6 +2,13 @@
     {{ gist_document.document_html }}
 </section>
 
+{% for document in gist_document.documents %}
+<section class="report-markdown report-attached-document" id="{{ document.anchor_id }}" data-report-document aria-labelledby="{{ document.anchor_id }}-filename">
+    <p class="report-attached-document-label">Attached document <strong id="{{ document.anchor_id }}-filename">{{ document.filename }}</strong></p>
+    {{ document.html }}
+</section>
+{% endfor %}
+
 {% if gist_document.images %}
 <section class="report-images" aria-label="{{ document_label }} images">
     <h2>Images</h2>

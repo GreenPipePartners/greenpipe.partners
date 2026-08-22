@@ -6,7 +6,7 @@ import re
 from html import escape, unescape
 from io import StringIO
 from urllib.error import HTTPError, URLError
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 from urllib.request import Request, urlopen
 from uuid import uuid4
 from xml.etree.ElementTree import Element
@@ -101,6 +101,46 @@ class _ReportTaskListExtension(Extension):
         md.treeprocessors.register(_ReportTaskListTreeprocessor(md), "report_task_list", 25)
 
 
+class _ReportAttachmentLinkTreeprocessor(Treeprocessor):
+    def __init__(self, md, attachment_anchors):
+        super().__init__(md)
+        self.attachment_anchors = attachment_anchors
+
+    def run(self, root):
+        for link in root.iter("a"):
+            href = unescape(link.get("href", ""))
+            if not href or "?" in href or "#" in href:
+                continue
+
+            try:
+                parsed = urlparse(href)
+            except ValueError:
+                continue
+            if parsed.scheme or parsed.netloc or parsed.params or parsed.query or parsed.fragment:
+                continue
+
+            filename = unquote(parsed.path).removeprefix("./")
+            if not filename or "/" in filename or "\\" in filename:
+                continue
+
+            anchor_id = self.attachment_anchors.get(filename)
+            if anchor_id:
+                link.set("href", f"#{anchor_id}")
+
+
+class _ReportAttachmentLinkExtension(Extension):
+    def __init__(self, attachment_anchors):
+        super().__init__()
+        self.attachment_anchors = attachment_anchors
+
+    def extendMarkdown(self, md):
+        md.treeprocessors.register(
+            _ReportAttachmentLinkTreeprocessor(md, self.attachment_anchors),
+            "report_attachment_links",
+            15,
+        )
+
+
 def parse_gist_id(gist_url):
     parsed = urlparse(gist_url.strip())
     path_parts = [part for part in parsed.path.split("/") if part]
@@ -115,7 +155,12 @@ def parse_gist_id(gist_url):
 
 
 def load_report_gist(gist_id):
-    gist_document = _load_gist_document(gist_id, REPORT_FILENAME, "Report")
+    gist_document = _load_gist_document(
+        gist_id,
+        REPORT_FILENAME,
+        "Report",
+        render_markdown_attachments=True,
+    )
     gist_document["report_markdown"] = gist_document["document_markdown"]
     gist_document["report_html"] = gist_document["document_html"]
     return gist_document
@@ -125,7 +170,12 @@ def load_release_gist(gist_id):
     return _load_gist_document(gist_id, RELEASE_FILENAME, "Release")
 
 
-def _load_gist_document(gist_id, document_filename, document_label):
+def _load_gist_document(
+    gist_id,
+    document_filename,
+    document_label,
+    render_markdown_attachments=False,
+):
     gist = _fetch_json(f"https://api.github.com/gists/{gist_id}")
     files = gist.get("files") or {}
     gist_document_filename = _gist_document_filename(files, document_filename)
@@ -134,7 +184,15 @@ def _load_gist_document(gist_id, document_filename, document_label):
 
     document_file = files[gist_document_filename]
     document_markdown = _normalize_report_images(_file_content(document_file))
+    attachment_anchors = {
+        filename: _document_anchor_id(filename)
+        for filename in sorted(files)
+        if render_markdown_attachments
+        and filename != gist_document_filename
+        and _is_markdown_file(filename)
+    }
     csvs = []
+    documents = []
     images = []
     snippets = []
     for filename in sorted(files):
@@ -146,6 +204,18 @@ def _load_gist_document(gist_id, document_filename, document_label):
                 {
                     "filename": filename,
                     "url": file_info.get("raw_url"),
+                }
+            )
+            continue
+        if filename in attachment_anchors:
+            attachment_markdown = _normalize_report_images(_file_content(file_info))
+            documents.append(
+                {
+                    "filename": filename,
+                    "anchor_id": attachment_anchors[filename],
+                    "html": mark_safe(
+                        _render_report_markdown(attachment_markdown, attachment_anchors)
+                    ),
                 }
             )
             continue
@@ -170,8 +240,11 @@ def _load_gist_document(gist_id, document_filename, document_label):
     return {
         "description": gist.get("description") or "",
         "document_markdown": document_markdown,
-        "document_html": mark_safe(_render_report_markdown(document_markdown)),
+        "document_html": mark_safe(
+            _render_report_markdown(document_markdown, attachment_anchors)
+        ),
         "csvs": csvs,
+        "documents": documents,
         "images": [image for image in images if image["url"]],
         "snippets": snippets,
     }
@@ -193,6 +266,12 @@ def _snippet_anchor_id(filename):
     filename_slug = slugify(filename.replace(".", "-")) or "file"
     filename_digest = hashlib.sha256(filename.encode("utf-8")).hexdigest()[:10]
     return f"report-code-{filename_slug}-{filename_digest}"
+
+
+def _document_anchor_id(filename):
+    filename_slug = slugify(filename.replace(".", "-")) or "file"
+    filename_digest = hashlib.sha256(filename.encode("utf-8")).hexdigest()[:10]
+    return f"report-document-{filename_slug}-{filename_digest}"
 
 
 def _gist_document_filename(files, expected_filename):
@@ -255,15 +334,19 @@ def _normalize_report_images(markdown_text):
     return IMG_TAG_RE.sub(replace, markdown_text)
 
 
-def _render_report_markdown(markdown_text):
-    normalized_markdown, replacements = _extract_report_blocks(markdown_text)
-    report_html = _render_safe_markdown(normalized_markdown)
+def _render_report_markdown(markdown_text, attachment_anchors=None):
+    attachment_anchors = attachment_anchors or {}
+    normalized_markdown, replacements = _extract_report_blocks(
+        markdown_text,
+        attachment_anchors,
+    )
+    report_html = _render_safe_markdown(normalized_markdown, attachment_anchors)
     for token, block_html in replacements.items():
         report_html = report_html.replace(f"<p>{token}</p>", block_html)
     return report_html
 
 
-def _extract_report_blocks(markdown_text):
+def _extract_report_blocks(markdown_text, attachment_anchors=None):
     lines = markdown_text.splitlines()
     normalized_lines = []
     replacements = {}
@@ -310,7 +393,12 @@ def _extract_report_blocks(markdown_text):
             default_title = "Recommendation" if callout_kind == "recommendation" else "Quote"
             title = callout_match.group("title") or default_title
             token = _report_block_token()
-            replacements[token] = _callout_html(callout_kind, title, body_lines)
+            replacements[token] = _callout_html(
+                callout_kind,
+                title,
+                body_lines,
+                attachment_anchors,
+            )
             normalized_lines.extend(("", token, ""))
             continue
 
@@ -361,15 +449,18 @@ def _report_block_token():
     return f"GPPREPORTBLOCK{uuid4().hex.upper()}"
 
 
-def _render_safe_markdown(markdown_text):
+def _render_safe_markdown(markdown_text, attachment_anchors=None):
+    extensions = ["fenced_code", "tables", _ReportTaskListExtension()]
+    if attachment_anchors:
+        extensions.append(_ReportAttachmentLinkExtension(attachment_anchors))
     return markdown.markdown(
         escape(markdown_text),
-        extensions=["fenced_code", "tables", _ReportTaskListExtension()],
+        extensions=extensions,
     )
 
 
-def _callout_html(callout_kind, title, body_lines):
-    body_html = _render_safe_markdown("\n".join(body_lines))
+def _callout_html(callout_kind, title, body_lines, attachment_anchors=None):
+    body_html = _render_safe_markdown("\n".join(body_lines), attachment_anchors)
     return (
         f'<aside class="report-callout report-callout-{callout_kind}">'
         '<span class="report-callout-icon" aria-hidden="true"></span>'
@@ -460,6 +551,10 @@ def _is_allowed_inline_image(src):
     return parsed.scheme == "https" and parsed.netloc.lower() == "gist.github.com" and parsed.path.startswith(
         "/user-attachments/assets/"
     )
+
+
+def _is_markdown_file(filename):
+    return filename.lower().endswith((".md", ".markdown"))
 
 
 def _markdown_label(label):

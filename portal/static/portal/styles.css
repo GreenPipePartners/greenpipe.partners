@@ -1105,6 +1105,32 @@ h3 {
     opacity: 1;
 }
 
+.report-attached-document {
+    scroll-margin-top: 28px;
+}
+
+.report-attached-document:target {
+    box-shadow: inset 4px 0 0 var(--green);
+}
+
+.report-markdown .report-attached-document-label {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-bottom: 1.5rem;
+    color: var(--green);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.report-attached-document-label strong {
+    color: var(--ink);
+    letter-spacing: 0;
+    text-transform: none;
+}
+
 .report-code-language {
     color: var(--green);
     font-size: 0.72rem;

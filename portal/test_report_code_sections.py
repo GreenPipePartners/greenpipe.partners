@@ -5,9 +5,8 @@ from unittest.mock import patch
 
 from django.test import SimpleTestCase, TestCase
 
-from .gists import _render_report_markdown, _snippet_anchor_id
+from .gists import _document_anchor_id, _render_report_markdown, _snippet_anchor_id
 from .models import Release, Report
-
 
 GIST_ID = "9a946f178f4b6df48b30ef12e500ccd3"
 
@@ -27,6 +26,37 @@ class FakeResponse:
 
 
 class ReportCodeSectionUnitTests(SimpleTestCase):
+    def test_document_anchor_ids_are_stable_and_collision_resistant(self):
+        anchor = _document_anchor_id("HIST01_QUICK_CHECKLIST.md")
+
+        self.assertEqual(anchor, _document_anchor_id("HIST01_QUICK_CHECKLIST.md"))
+        self.assertNotEqual(anchor, _document_anchor_id("HIST01-QUICK-CHECKLIST.md"))
+        self.assertTrue(anchor.startswith("report-document-hist01_quick_checklist-md-"))
+
+    def test_only_known_safe_attachment_links_are_reconciled(self):
+        anchor = _document_anchor_id("Guide.md")
+        report_html = _render_report_markdown(
+            "[valid](./Guide.md)\n\n"
+            "[bare](Guide.md)\n\n"
+            "[wrong case](guide.md)\n\n"
+            "[query](Guide.md?download=1)\n\n"
+            "[fragment](Guide.md#part)\n\n"
+            "[traversal](../Guide.md)\n\n"
+            "[encoded traversal](%2e%2e%2fGuide.md)\n\n"
+            "[absolute](/Guide.md)\n\n"
+            "[external](https://example.com/Guide.md)",
+            {"Guide.md": anchor},
+        )
+
+        self.assertEqual(report_html.count(f'href="#{anchor}"'), 2)
+        self.assertIn('href="guide.md"', report_html)
+        self.assertIn('href="Guide.md?download=1"', report_html)
+        self.assertIn('href="Guide.md#part"', report_html)
+        self.assertIn('href="../Guide.md"', report_html)
+        self.assertIn('href="%2e%2e%2fGuide.md"', report_html)
+        self.assertIn('href="/Guide.md"', report_html)
+        self.assertIn('href="https://example.com/Guide.md"', report_html)
+
     def test_snippet_anchor_ids_are_stable_and_collision_resistant(self):
         anchor = _snippet_anchor_id("query one.sql")
 
@@ -77,6 +107,44 @@ class ReportCodeSectionUnitTests(SimpleTestCase):
 
 class ReportCodeSectionIntegrationTests(TestCase):
     @patch("portal.gists.urlopen")
+    def test_report_links_to_rendered_markdown_attachments(self, mock_urlopen):
+        filename = "HIST01_QUICK_CHECKLIST.md"
+        mock_urlopen.return_value = FakeResponse(
+            json.dumps(
+                {
+                    "files": {
+                        "Report.md": {
+                            "content": f"[Hist01 Upgrade](./{filename})",
+                            "truncated": False,
+                        },
+                        filename: {
+                            "content": "# HIST01 Quick Checklist\n\n- [ ] Verify the **backup**.",
+                            "truncated": False,
+                        },
+                    }
+                }
+            ).encode("utf-8")
+        )
+        Report.objects.create(
+            customer="PureWest",
+            report_type=Report.ReportType.ENGINEERING,
+            title="Hist01 upgrade",
+            gist_url=f"https://gist.github.com/Bobby-Miller/{GIST_ID}",
+        )
+
+        response = self.client.get(f"/reports/PureWest/{GIST_ID}")
+        anchor = _document_anchor_id(filename)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, f'href="#{anchor}"')
+        self.assertContains(response, f'id="{anchor}"')
+        self.assertContains(response, "data-report-document", count=1)
+        self.assertContains(response, 'type="checkbox"', count=1)
+        self.assertContains(response, "Verify the <strong>backup</strong>.")
+        self.assertNotContains(response, "language-markdown")
+        self.assertNotContains(response, "Code and queries")
+
+    @patch("portal.gists.urlopen")
     def test_report_renders_appendable_collapsed_code_accordions(self, mock_urlopen):
         mock_urlopen.return_value = FakeResponse(
             json.dumps(
@@ -124,6 +192,7 @@ class ReportCodeSectionIntegrationTests(TestCase):
                 {
                     "files": {
                         "release.md": {"content": "# Release", "truncated": False},
+                        "notes.md": {"content": "# Notes", "truncated": False},
                         "upgrade.py": {"content": "print('upgrade')", "truncated": False},
                     }
                 }
@@ -140,7 +209,9 @@ class ReportCodeSectionIntegrationTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "upgrade.py")
         self.assertContains(response, "highlight.js/11.11.1/highlight.min.js")
+        self.assertContains(response, "language-markdown")
         self.assertContains(response, "language-python")
+        self.assertNotContains(response, "data-report-document")
         self.assertNotContains(response, "Code and queries")
         self.assertNotContains(response, "data-report-code-section")
         self.assertNotContains(response, "data-report-code-block")
