@@ -87,6 +87,23 @@ class ReportCodeSectionUnitTests(SimpleTestCase):
         self.assertIn(".report-code-section:target", styles)
         self.assertIn(".report-code-disclosure[open]", styles)
         self.assertIn(".report-code-disclosure:not([open]) > :not(summary)", styles)
+        self.assertIn("grid-template-columns: minmax(0, 1fr)", styles)
+        self.assertIn(
+            ".report-code-disclosure,\n"
+            ".report-code-content,\n"
+            ".source-snippet .report-code-block {\n"
+            "    width: 100%;\n"
+            "    max-width: 100%;\n"
+            "    min-width: 0;",
+            styles,
+        )
+        self.assertIn(
+            ".source-snippet pre {\n"
+            "    width: 100%;\n"
+            "    max-width: 100%;\n"
+            "    overflow-x: auto;",
+            styles,
+        )
 
     def test_excalidraw_embeds_follow_the_website_theme(self):
         report_html = _render_report_markdown(

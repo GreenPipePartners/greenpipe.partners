@@ -1141,13 +1141,25 @@ h3 {
 
 .report-code-sections {
     display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
     margin-top: 22px;
 }
 
 .report-code-section {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
     scroll-margin-top: 28px;
     margin-top: 0;
+}
+
+.report-code-disclosure,
+.report-code-content,
+.source-snippet .report-code-block {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
 }
 
 .report-code-section:target .report-code-disclosure {
@@ -1519,6 +1531,8 @@ h3 {
 }
 
 .source-snippet pre {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     margin: 0;
     padding: 18px;
