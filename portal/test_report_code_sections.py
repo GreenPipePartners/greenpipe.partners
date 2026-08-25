@@ -109,6 +109,7 @@ class ReportCodeSectionIntegrationTests(TestCase):
     @patch("portal.gists.urlopen")
     def test_report_links_to_rendered_markdown_attachments(self, mock_urlopen):
         filename = "HIST01_QUICK_CHECKLIST.md"
+        snippet_filename = "pre_transfer_history_check.py"
         mock_urlopen.return_value = FakeResponse(
             json.dumps(
                 {
@@ -118,7 +119,15 @@ class ReportCodeSectionIntegrationTests(TestCase):
                             "truncated": False,
                         },
                         filename: {
-                            "content": "# HIST01 Quick Checklist\n\n- [ ] Verify the **backup**.",
+                            "content": (
+                                "# HIST01 Quick Checklist\n\n"
+                                "- [ ] Perform [pre-history-collection]"
+                                f"(./{snippet_filename})."
+                            ),
+                            "truncated": False,
+                        },
+                        snippet_filename: {
+                            "content": "print('collect history')",
                             "truncated": False,
                         },
                     }
@@ -134,15 +143,19 @@ class ReportCodeSectionIntegrationTests(TestCase):
 
         response = self.client.get(f"/reports/PureWest/{GIST_ID}")
         anchor = _document_anchor_id(filename)
+        snippet_anchor = _snippet_anchor_id(snippet_filename)
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, f'href="#{anchor}"')
+        self.assertContains(response, f'href="#{snippet_anchor}"')
         self.assertContains(response, f'id="{anchor}"')
+        self.assertContains(response, f'id="{snippet_anchor}"')
         self.assertContains(response, "data-report-document", count=1)
         self.assertContains(response, 'type="checkbox"', count=1)
-        self.assertContains(response, "Verify the <strong>backup</strong>.")
+        self.assertContains(response, "pre-history-collection")
         self.assertNotContains(response, "language-markdown")
-        self.assertNotContains(response, "Code and queries")
+        self.assertContains(response, "language-python")
+        self.assertContains(response, "Code and queries")
 
     @patch("portal.gists.urlopen")
     def test_report_renders_appendable_collapsed_code_accordions(self, mock_urlopen):

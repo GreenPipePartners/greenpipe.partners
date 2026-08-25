@@ -184,13 +184,25 @@ def _load_gist_document(
 
     document_file = files[gist_document_filename]
     document_markdown = _normalize_report_images(_file_content(document_file))
-    attachment_anchors = {
+    document_anchors = {
         filename: _document_anchor_id(filename)
         for filename in sorted(files)
         if render_markdown_attachments
         and filename != gist_document_filename
         and _is_markdown_file(filename)
     }
+    attachment_anchors = dict(document_anchors)
+    if render_markdown_attachments:
+        attachment_anchors.update(
+            {
+                filename: _snippet_anchor_id(filename)
+                for filename in sorted(files)
+                if filename != gist_document_filename
+                and filename not in document_anchors
+                and not _is_image_file(filename, files[filename])
+                and not _is_csv_file(filename, files[filename])
+            }
+        )
     csvs = []
     documents = []
     images = []
@@ -207,12 +219,12 @@ def _load_gist_document(
                 }
             )
             continue
-        if filename in attachment_anchors:
+        if filename in document_anchors:
             attachment_markdown = _normalize_report_images(_file_content(file_info))
             documents.append(
                 {
                     "filename": filename,
-                    "anchor_id": attachment_anchors[filename],
+                    "anchor_id": document_anchors[filename],
                     "html": mark_safe(
                         _render_report_markdown(attachment_markdown, attachment_anchors)
                     ),
@@ -233,7 +245,7 @@ def _load_gist_document(
                 "filename": filename,
                 "language": _language_for(filename, file_info),
                 "content": _file_content(file_info),
-                "anchor_id": _snippet_anchor_id(filename),
+                "anchor_id": attachment_anchors.get(filename) or _snippet_anchor_id(filename),
             }
         )
 
