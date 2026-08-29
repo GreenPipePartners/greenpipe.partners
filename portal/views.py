@@ -47,6 +47,15 @@ def health(request):
     return JsonResponse({"status": "ok"})
 
 
+def picnic_redirect(request):
+    response = redirect(settings.PICNIC_REDIRECT_URL, permanent=False)
+    response["Cache-Control"] = "no-store, max-age=0"
+    response["Pragma"] = "no-cache"
+    response["Referrer-Policy"] = "no-referrer"
+    response["X-Robots-Tag"] = "noindex"
+    return response
+
+
 def docs(request):
     return redirect("/docs/flux/latest/", permanent=False)
 
