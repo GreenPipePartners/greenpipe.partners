@@ -31,7 +31,7 @@ ALLOWED_HOSTS = env_list(
 CSRF_TRUSTED_ORIGINS = env_list("DJANGO_CSRF_TRUSTED_ORIGINS")
 PICNIC_REDIRECT_URL = os.environ.get(
     "PICNIC_REDIRECT_URL",
-    "https://script.google.com/macros/s/AKfycbw26oDn2t7M_rDXR_xxdI4PsZbv00nqHRnMV0poQd-oSho-K7M831sOSC812wvwFJw2/exec",
+    "https://script.google.com/macros/s/AKfycbw26oDn2t7M_rDXR_xxdI4PsZbv00nqHRnMV0poQd-oSho-K7M831sOSC812wvwFJw2/exec?authuser=0",
 ).strip()
 
 
