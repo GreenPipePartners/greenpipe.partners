@@ -9,8 +9,6 @@ urlpatterns = [
     path("fluxy/", views.fluxy, name="fluxy"),
     path("logo_hollow.png", views.logo, name="logo"),
     path("health/", views.health, name="health"),
-    path("picnic", views.picnic_redirect, name="picnic_redirect"),
-    path("picnic/", views.picnic_redirect),
     path("docs/", views.docs, name="docs"),
     path("about/", views.about, name="about"),
     path("legal/privacy/", views.privacy, name="privacy"),
