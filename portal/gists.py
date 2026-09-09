@@ -14,6 +14,7 @@ from xml.etree.ElementTree import Element
 import markdown
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
+from markdown.blockprocessors import OListProcessor
 from markdown.extensions import Extension
 from markdown.treeprocessors import Treeprocessor
 
@@ -62,6 +63,36 @@ RELEASE_FILENAME = "release.md"
 
 class GistError(Exception):
     pass
+
+
+class _ReportOrderedListProcessor(OListProcessor):
+    """Accept GitHub's `1)` markers without rewriting prose or code samples."""
+
+    LAZY_OL = False
+
+    def __init__(self, parser):
+        super().__init__(parser)
+        indent = self.tab_length - 1
+        self.RE = re.compile(rf"^[ ]{{0,{indent}}}\d+[.)][ ]+(.*)")
+        self.CHILD_RE = re.compile(rf"^[ ]{{0,{indent}}}((\d+[.)])|[*+-])[ ]+(.*)")
+        self.INDENT_RE = re.compile(
+            rf"^[ ]{{{self.tab_length},{self.tab_length * 2 - 1}}}((\d+[.)])|[*+-])[ ]+.*"
+        )
+
+
+class _ReportUnorderedListProcessor(_ReportOrderedListProcessor):
+    TAG = "ul"
+
+    def __init__(self, parser):
+        super().__init__(parser)
+        self.RE = re.compile(rf"^[ ]{{0,{self.tab_length - 1}}}[*+-][ ]+(.*)")
+
+
+class _ReportListExtension(Extension):
+    def extendMarkdown(self, md):
+        md.parser.blockprocessors.register(_ReportOrderedListProcessor(md.parser), "olist", 40)
+        # Bullet lists also need to recognize nested parenthesized list items.
+        md.parser.blockprocessors.register(_ReportUnorderedListProcessor(md.parser), "ulist", 30)
 
 
 class _ReportTaskListTreeprocessor(Treeprocessor):
@@ -462,7 +493,7 @@ def _report_block_token():
 
 
 def _render_safe_markdown(markdown_text, attachment_anchors=None):
-    extensions = ["fenced_code", "tables", _ReportTaskListExtension()]
+    extensions = ["fenced_code", "tables", _ReportListExtension(), _ReportTaskListExtension()]
     if attachment_anchors:
         extensions.append(_ReportAttachmentLinkExtension(attachment_anchors))
     return markdown.markdown(
