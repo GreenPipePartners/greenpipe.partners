@@ -1,0 +1,24 @@
+RUNG 000 [ADDED]
+COMMENT
+INIT constants: signed DINT maximum and maximum minus one. Ordered branches initialize the controller-wide software constants before any consumer.
+[MOVE(2147483647,MAX_INT),SUB(MAX_INT,1,MAX_INT_MINUS_ONE)];
+
+RUNG 001 [ADDED]
+COMMENT
+Saturated epoch: latch fault before the mutually exclusive increment rung.
+GE(WH_CDL_Boot,MAX_INT)[MOVE(1,WH_CDL_Fault),MOVE(900,WH_CDL_State)];
+
+RUNG 002 [ADDED]
+COMMENT
+S:FS: increment boot and arm state 10; common condition is evaluated once.
+LT(WH_CDL_Boot,MAX_INT)[ADD(WH_CDL_Boot,1,WH_CDL_Boot),MOVE(0,WH_CDL_Fault),MOVE(10,WH_CDL_State)];
+
+RUNG 003 [ADDED]
+COMMENT
+Initialize the raw observer without modifying the legacy timer.
+[MOVE(0,WH_CDL_Sequence),MOVE(0,WH_CDL_Furnace),OTU(WH_CDL_WasRunning),MOVE(0,WH_CDL_LastTimerMs)];
+
+RUNG 004 [ADDED]
+COMMENT
+Clear the new-epoch mailbox and publication coil.
+[COP(WH_CDL_Zero,WH_CDL_Event,1),OTU(WH_CDL_Publish)];

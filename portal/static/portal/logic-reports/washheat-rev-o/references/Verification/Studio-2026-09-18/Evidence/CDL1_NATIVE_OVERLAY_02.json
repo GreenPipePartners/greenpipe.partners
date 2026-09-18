@@ -1,0 +1,193 @@
+{
+  "source": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+  "source_sha256": "0e3c52ec5d01bedf6fd88b7c41c0340a518d3f49490196723f339d50a22c06f2",
+  "started_utc": "2026-09-18T10:44:36.850114+00:00",
+  "events": [
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Open project started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Open project succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Partial Import From Xml File started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Partial Import From Xml File succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Build started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <?xml version=\"1.0\" encoding=\"UTF-16\"?>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <ImportLog"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog     Version = \"RSLogix 5000 v36.00\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog     Owner = \"EWS\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog     Date = \"Fri Sep 18 06:46:05 2026\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Collision Resolution=\"Overwritten\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog RSLogix5000Content/Controller/DataTypes/DataType[@Name=\"UD_DataCollector_to_Robot\"]"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </Collision>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Collision Resolution=\"Overwritten\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog RSLogix5000Content/Controller/DataTypes/DataType[@Name=\"UD_Robot_to_DataCollector\"]"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </Collision>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Collision Resolution=\"Overwritten\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog RSLogix5000Content/Controller/Tags/Tag[@Name=\"ctrl_CDL_DC\"]"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </Collision>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Collision Resolution=\"Overwritten\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog RSLogix5000Content/Controller/Tags/Tag[@Name=\"ctrl_DC_CDL\"]"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </Collision>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Collision Resolution=\"Overwritten\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog RSLogix5000Content/Controller/Programs/Program[@Name=\"ExternalComms\"]"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </Collision>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog <Summary Warnings=\"0\" Errors=\"0\"/>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ImportLog </ImportLog>"
+    },
+    {
+      "level": "error",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Build threw OperationFailedException: Operation not supported on Logix Designer version 36.0. C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "ServiceEvent AboutToBeSaved"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Closing Logix Project"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD",
+      "message": "Logix Project was closed"
+    }
+  ],
+  "opened": true,
+  "build_ok": false,
+  "saved_acd": true,
+  "controller_download_performed": false,
+  "online_edits_performed": false,
+  "overlay_sha256": "0d3a16b26b32224feb06d4e3e2e66dc9c33d2c0636583a7903c5881e84fc574c",
+  "overlay_imported": true,
+  "build_error": "Operation not supported on Logix Designer version 36.0. (C:\\LogixAgent\\washheat-studio-20260918\\CDL1_NATIVE_SOURCE.ACD)",
+  "acd_sha256": "2a10f9c59c240f65cfece6fde3669b3f424da90cea5b092feb0780790eead19e",
+  "export_sha256": "5ed70a9f5520f7743f73d3f533dbb08e5b2105f96f5d44a0b138ccbb213ce69f",
+  "finished_utc": "2026-09-18T10:46:28.158196+00:00"
+}

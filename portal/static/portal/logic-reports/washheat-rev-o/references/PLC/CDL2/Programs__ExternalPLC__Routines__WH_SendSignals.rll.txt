@@ -1,0 +1,79 @@
+RUNG 000 [ADDED]
+COMMENT
+Initialize new source epoch; source edges present at startup are not replayed.
+XIC(S:FS)[MOVE(0,WH_LinkLive.EventSequence),MOVE(0,WH_LinkLive.SampleSequence),MOVE(0,WH_LinkLive.Fault)];
+
+RUNG 001 [ADDED]
+COMMENT
+Increment sender boot epoch once.
+XIC(S:FS)LT(WH_LinkLive.Boot,MAX_INT_MINUS_ONE)ADD(WH_LinkLive.Boot,1,WH_LinkLive.Boot);
+
+RUNG 002 [ADDED]
+COMMENT
+Epoch exhaustion requires a new installation.
+GE(WH_LinkLive.Boot,MAX_INT_MINUS_ONE)MOVE(1,WH_LinkLive.Fault);
+
+RUNG 003 [ADDED]
+COMMENT
+Capture the actual source rising edge; keep its timestamp until the next edge.
+XIC(WH_AdapterStart)ONS(WH_SourceONS)XIO(S:FS)OTE(WH_SourceEdge);
+
+RUNG 004 [ADDED]
+COMMENT
+Do not wrap event identities.
+XIC(WH_SourceEdge)GE(WH_LinkLive.EventSequence,MAX_INT_MINUS_ONE)MOVE(2,WH_LinkLive.Fault);
+
+RUNG 005 [ADDED]
+COMMENT
+Timestamp in this source controller before any network delay; event counter commits last.
+XIC(WH_SourceEdge)EQ(WH_LinkLive.Fault,0)[GSV(WALLCLOCKTIME,,DateTime,WH_LinkLive.EventUTC[0]),ADD(WH_LinkLive.EventSequence,1,WH_LinkLive.EventSequence)];
+
+RUNG 006 [ADDED]
+COMMENT
+Set the independent cycle-start stopwatch range from the controller constant.
+MOVE(MAX_INT,WH_TransferElapsed.PRE);
+
+RUNG 007 [ADDED]
+COMMENT
+Initialize the separate cycle-start stopwatch.
+XIC(S:FS)[RES(WH_TransferElapsed),OTU(WH_TransferStarted)];
+
+RUNG 008 [ADDED]
+COMMENT
+Actual CDL transfer start resets the new cycle-start stopwatch.
+XIC(WH_SourceEdge)[RES(WH_TransferElapsed),OTL(WH_TransferStarted)];
+
+RUNG 009 [ADDED]
+COMMENT
+Continue timing after legacy gripper release; FDC ends the handled-part display on Cycle Start or return.
+XIC(WH_TransferStarted)RTO(WH_TransferElapsed,2147483647,0);
+
+RUNG 010 [ADDED]
+COMMENT
+Transport the source-measured elapsed value, not a receiver-clock subtraction.
+MOVE(WH_TransferElapsed.ACC,WH_LinkLive.TransferElapsedMs);
+
+RUNG 011 [ADDED]
+COMMENT
+Exhausted source timer invalidates the live warning.
+XIC(WH_TransferElapsed.DN)MOVE(5,WH_LinkLive.Fault);
+
+RUNG 012 [ADDED]
+COMMENT
+Source furnace was latched by WH_CDL_Begin from original removal selection.
+XIC(WH_SourceEdge)MOVE(WH_CDL_Furnace,WH_LinkLive.Furnace);
+
+RUNG 013 [ADDED]
+COMMENT
+Retain the actual legacy in-air transfer time, including its original release stop.
+[MOVE(WH_RawTransferTimer.ACC,WH_LinkLive.TimerMs),MOVE(0,WH_LinkLive.Running)];
+
+RUNG 014 [ADDED]
+COMMENT
+Transport the raw legacy running flag.
+XIC(WH_AdapterRunning)MOVE(1,WH_LinkLive.Running);
+
+RUNG 015 [ADDED]
+COMMENT
+Clock validation is a commissioning setting, not a fabricated good-quality signal.
+MOVE(WH_ClockValidated,WH_LinkLive.ClockValidated);

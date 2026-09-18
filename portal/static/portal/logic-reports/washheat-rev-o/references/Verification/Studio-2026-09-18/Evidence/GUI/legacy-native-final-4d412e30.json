@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "started_utc": "2026-09-18T11:31:04.059066+00:00",
+  "actions": [
+    {
+      "op": "start",
+      "pid": 2748
+    },
+    {
+      "op": "wait_project",
+      "window": {
+        "handle": 395344,
+        "title": "Logix Designer - PA166_FIRTH_RIXSON in legacy-CDL_NATIVE_OVERLAY_v37.ACD [1756-L71 37.11]",
+        "class": "Afx:00DE0000:8:00010003:00000000:00020E57",
+        "control_id": 0,
+        "pid": 2748,
+        "visible": true,
+        "enabled": true
+      },
+      "import_log": ""
+    },
+    {
+      "op": "verify_controller",
+      "ui_command_id": 32049,
+      "window": {
+        "handle": 395344,
+        "title": "Logix Designer - PA166_FIRTH_RIXSON in legacy-CDL_NATIVE_OVERLAY_v37.ACD [1756-L71 37.11]*",
+        "class": "Afx:00DE0000:8:00010003:00000000:00020E57",
+        "control_id": 0,
+        "pid": 2748,
+        "visible": true,
+        "enabled": true
+      },
+      "verification_log": "Verifying Controller...\r\nWarning: Tag 'Receive_MSG': Connection path not specified for message.\r\nWarning: Tag 'Local:1:I': Force detected.\r\nWarning: Auto_Startup_Position: Routine cannot be reached by the main routine: 'Auto_Startup_Position of Program Automatic_Cycle'\r\nWarning: Rung 33: Shorted branch detected.\r\nWarning: Rung 34: Shorted branch detected.\r\nWarning: Rung 35: Shorted branch detected.\r\nWarning: Rung 8: AFI detected.\r\nWarning: Rung 0: AFI detected.\r\nWarning: Rung 0: Shorted branch detected.\r\nWarning: Rung 31: AFI detected.\r\nWarning: Rung 5: AFI detected.\r\nWarning: Rung 6: AFI detected.\r\nWarning: Rung 7: AFI detected.\r\nWarning: Rung 8: AFI detected.\r\nWarning: Rung 9: AFI detected.\r\nWarning: Fault_Flag: Program doesn't have associated main routine.\r\nWarning: Rung 0: Shorted branch detected.\r\nWarning: Rung 0: AFI detected.\r\nWarning: Rung 1: AFI detected.\r\nWarning: Rung 2: AFI detected.\r\nWarning: Rung 9: AFI detected.\r\nWarning: Rung 9: AFI detected.\r\nWarning: Rung 10: AFI detected.\r\nVerifying program connections\r\nWarning: Component no longer supported: 'ASCII'. Component removed.\r\nWarning: Component no longer supported: 'DF1'. Component removed.\r\nWarning: Component no longer supported: 'SerialPort'. Component removed.\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - WH_CDL_Publish'\r\n    Automatic_Cycle - WH_CDL_Stop, Rung 2, OTE\r\n    Automatic_Cycle - WH_CDL_Init, Rung 4, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - Semi_Unload_Bypass'\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 11, OTL\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 10, OTU\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 7, OTU\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 6, OTU\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 8, OTE\r\n    Automatic_Cycle - Semi_Auto_Chain, Rung 9, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - PSNR_Longtravel_Enabled'\r\n    Automatic_Cycle - Longtravel_Positioner, Rung 5, OTE\r\n    Automatic_Cycle - Longtravel_Positioner, Rung 9, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Aux_Positioning_Bits.8'\r\n    Automatic_Cycle - Aux_Positioning, Rung 0, OTE\r\n    Automatic_Cycle - Aux_Positioning, Rung 1, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Aux_Positioning_Bits.26'\r\n    Automatic_Cycle - Aux_Positioning, Rung 27, ONS\r\n    Automatic_Cycle - Aux_Positioning, Rung 27, OTU\r\n    Automatic_Cycle - Aux_Positioning, Rung 1, OTU\r\n    Automatic_Cycle - Aux_Positioning, Rung 20, OTU\r\n    Automatic_Cycle - Aux_Positioning, Rung 25, OTU\r\n    Automatic_Cycle - Aux_Positioning, Rung 32, OTU\r\n    Automatic_Cycle - Aux_Positioning, Rung 2, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - Teach_Bits.11'\r\n    Automatic_Cycle - Teach_Position_Indexer, Rung 1, OTU\r\n    Automatic_Cycle - Teach_Position_Indexer, Rung 0, OTE\r\nWarning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - WH_CDL_WasRunning'\r\n    Automatic_Cycle - WH_CDL_Init, Rung 3, OTU\r\n    Automatic_Cycle - Transfer_Timer, Rung 21, OTE\r\nWarning: Duplicate Destructive Bit Reference Detected: 'MainProgram - SideShift_Storage.0'\r\n    MainProgram - Side_Shift_Control, Rung 0, OTE\r\n    MainProgram - Side_Shift_Control, Rung 8, OTU\r\nComplete - 0 error(s), 34 warning(s)\r\n"
+    },
+    {
+      "op": "keys"
+    },
+    {
+      "op": "wait"
+    },
+    {
+      "op": "close"
+    }
+  ],
+  "finished_utc": "2026-09-18T11:32:19.134809+00:00"
+}

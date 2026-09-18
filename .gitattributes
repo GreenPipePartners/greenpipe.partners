@@ -1,1 +1,5 @@
 *.pem binary
+
+# Source-backed report evidence retains original bytes, including Windows EOLs.
+portal/static/portal/logic-reports/washheat-rev-o/source/** -text -whitespace
+portal/static/portal/logic-reports/washheat-rev-o/references/** -text -whitespace

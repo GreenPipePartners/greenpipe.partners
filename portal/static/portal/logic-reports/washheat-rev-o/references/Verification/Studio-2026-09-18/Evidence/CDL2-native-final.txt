@@ -1,0 +1,25 @@
+Verifying Controller...
+Verifying program connections
+Warning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - RMCMove0914'
+    AutoCycles - R10_FurnaceToPress, Rung 11
+    AutoCycles - R09_TableToFurnace, Rung 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - FurnaceGripperOffset'
+    AutoCycles - FurnaceLoadSetpoints, Rung 1
+    AutoCycles - PressLoadSetpoints, Rung 1
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset1'
+    HMI - StationSetup, Rung 3
+    HMI - StationSetup, Rung 16
+    HMI - StationSetup, Rung 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - RMCMove0916'
+    AutoCycles - R10_FurnaceToPress, Rung 27
+    AutoCycles - R09_TableToFurnace, Rung 22
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset4'
+    HMI - StationSetup, Rung 13
+    HMI - StationSetup, Rung 8
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset3'
+    HMI - StationSetup, Rung 7
+    HMI - StationSetup, Rung 12
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset2'
+    HMI - StationSetup, Rung 11
+    HMI - StationSetup, Rung 6
+Complete - 0 error(s), 7 warning(s)

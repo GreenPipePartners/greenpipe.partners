@@ -1,0 +1,209 @@
+RUNG 000 [ADDED]
+COMMENT
+Changing CDL while handling a part is rejected; selection is an idle operation.
+NE(WH_ActiveCDL,WH_SelectedCDL)EQ(WH_Site.Active,1)MOVE(36,WH_Site.Fault);
+
+RUNG 001 [ADDED]
+COMMENT
+Select one CDL adapter and establish a fresh baseline. No cross-CDL event replay.
+NE(WH_ActiveCDL,WH_SelectedCDL)EQ(WH_Site.Active,0)[MOVE(WH_ActiveCDL,WH_SelectedCDL),MOVE(0,WH_LinkState[0].Boot),MOVE(0,WH_LinkState[0].EventSequence),MOVE(0,WH_LinkState[0].Fault)];
+
+RUNG 002 [ADDED]
+COMMENT
+Set the source-age TIMER preset explicitly.
+MOVE(3000,WH_LinkState[0].Freshness.PRE);
+
+RUNG 003 [ADDED]
+COMMENT
+CDL 1: freeze the existing ctrl_CDL_DC appended member.
+EQ(WH_SelectedCDL,1)CPS(ctrl_CDL_DC.WashHeat,WH_Link[0],1);
+
+RUNG 004 [ADDED]
+COMMENT
+CDL 2: normalize its separate existing ctrl_CDL2_DC mailbox.
+EQ(WH_SelectedCDL,2)CPS(ctrl_CDL2_DC.WashHeat,WH_Link[0],1);
+
+RUNG 005 [ADDED]
+COMMENT
+Freshness advances only when a new source snapshot arrives.
+EQ(WH_Link[0].SourceId,WH_SelectedCDL)GT(WH_SelectedCDL,0)NE(WH_Link[0].SampleSequence,WH_LinkState[0].SampleSequence)[RES(WH_LinkState[0].Freshness),MOVE(WH_Link[0].SampleSequence,WH_LinkState[0].SampleSequence)];
+
+RUNG 006 [ADDED]
+COMMENT
+Three-second source age limit; no repeated-packet freshness refresh.
+[TON(WH_LinkState[0].Freshness,3000,0),MOVE(0,WH_LinkState[0].Valid)];
+
+RUNG 007 [ADDED]
+COMMENT
+Sender restarted after binding: expose the changed epoch instead of replaying it.
+EQ(WH_Link[0].SourceId,WH_SelectedCDL)GT(WH_SelectedCDL,0)NE(WH_Link[0].Boot,WH_LinkState[0].Boot)NE(WH_LinkState[0].Boot,0)MOVE(3,WH_LinkState[0].Fault);
+
+RUNG 008 [ADDED]
+COMMENT
+Initial connection establishes an event baseline. Start observing before a part transfer.
+EQ(WH_Link[0].SourceId,WH_SelectedCDL)GT(WH_SelectedCDL,0)EQ(WH_LinkState[0].Boot,0)GT(WH_Link[0].Boot,0)[MOVE(WH_Link[0].Boot,WH_LinkState[0].Boot),MOVE(WH_Link[0].EventSequence,WH_LinkState[0].EventSequence)];
+
+RUNG 009 [ADDED]
+COMMENT
+Accept only a current, clock-validated, fault-free source.
+GT(WH_Link[0].Boot,0)GT(WH_Link[0].SampleSequence,0)EQ(WH_Link[0].ClockValidated,1)EQ(WH_Link[0].SourceId,WH_SelectedCDL)EQ(WH_Link[0].Fault,0)EQ(WH_LinkState[0].Fault,0)XIO(WH_LinkState[0].Freshness.DN)MOVE(1,WH_LinkState[0].Valid);
+
+RUNG 010 [ADDED]
+COMMENT
+Expected next event count is bounded.
+LT(WH_LinkState[0].EventSequence,MAX_INT_MINUS_ONE)ADD(WH_LinkState[0].EventSequence,1,WH_LinkState[0].ExpectedEvent);
+
+RUNG 011 [ADDED]
+COMMENT
+Skipped/regressed source event count is a visible capture fault.
+EQ(WH_LinkState[0].Valid,1)NE(WH_Link[0].EventSequence,WH_LinkState[0].EventSequence)NE(WH_Link[0].EventSequence,WH_LinkState[0].ExpectedEvent)[MOVE(4,WH_LinkState[0].Fault),MOVE(0,WH_LinkState[0].Valid)];
+
+RUNG 012 [ADDED]
+COMMENT
+One local edge for each new source event, independent of MSG retry count.
+EQ(WH_LinkState[0].Valid,1)LT(WH_LinkState[0].EventSequence,MAX_INT_MINUS_ONE)EQ(WH_Link[0].EventSequence,WH_LinkState[0].ExpectedEvent)OTE(WH_NewLinkEvent[0]);
+
+RUNG 013 [ADDED]
+COMMENT
+Consume the transport identity once; source payload remains available.
+XIC(WH_NewLinkEvent[0])MOVE(WH_Link[0].EventSequence,WH_LinkState[0].EventSequence);
+
+RUNG 014 [ADDED]
+COMMENT
+Receive the unchanged two-DINT legacy status transfer; freshness follows the existing heartbeat bit.
+[MOVE(3000,WH_LinkState[1].Freshness.PRE),MOVE(0,WH_LinkState[1].Valid)];
+
+RUNG 015 [ADDED]
+COMMENT
+Observe BOTH transitions of the existing press status handshake, not a static good-quality bit.
+[XIC(P5000DataCtrlWord[2].0)EQ(WH_LinkState[1].Heartbeat,0),XIO(P5000DataCtrlWord[2].0)EQ(WH_LinkState[1].Heartbeat,1)]OTE(WH_PressHeartbeatEdge[1]);
+
+RUNG 016 [ADDED]
+COMMENT
+New received heartbeat advances link freshness.
+XIC(WH_PressHeartbeatEdge[1])RES(WH_LinkState[1].Freshness);
+
+RUNG 017 [ADDED]
+COMMENT
+Snapshot handshake bit.
+MOVE(0,WH_LinkState[1].Heartbeat);
+
+RUNG 018 [ADDED]
+COMMENT
+Snapshot handshake bit.
+XIC(P5000DataCtrlWord[2].0)MOVE(1,WH_LinkState[1].Heartbeat);
+
+RUNG 019 [ADDED]
+COMMENT
+Communication loss is data quality, not a timed Cycle Start.
+TON(WH_LinkState[1].Freshness,3000,0);
+
+RUNG 020 [ADDED]
+COMMENT
+Require a new heartbeat and counter baseline after communication loss; do not replay delayed events.
+XIC(WH_LinkState[1].Freshness.DN)MOVE(0,WH_LinkState[1].Boot);
+
+RUNG 021 [ADDED]
+COMMENT
+Establish the current counter as baseline on initial connection/reconnection, without publishing an event.
+EQ(WH_LinkState[1].Boot,0)XIC(WH_PressHeartbeatEdge[1])[MOVE(P5000DataCtrlWord[3],WH_LinkState[1].EventSequence),MOVE(1,WH_LinkState[1].Boot)];
+
+RUNG 022 [ADDED]
+COMMENT
+Press validity needs no source clock or added heartbeat packet.
+EQ(WH_LinkState[1].Boot,1)XIO(WH_LinkState[1].Freshness.DN)EQ(WH_LinkState[1].Fault,0)MOVE(1,WH_LinkState[1].Valid);
+
+RUNG 023 [ADDED]
+COMMENT
+Expected next counter.
+LT(WH_LinkState[1].EventSequence,MAX_INT_MINUS_ONE)ADD(WH_LinkState[1].EventSequence,1,WH_LinkState[1].ExpectedEvent);
+
+RUNG 024 [ADDED]
+COMMENT
+Counter rollover is explicit.
+GE(WH_LinkState[1].EventSequence,MAX_INT_MINUS_ONE)MOVE(1,WH_LinkState[1].ExpectedEvent);
+
+RUNG 025 [ADDED]
+COMMENT
+A skipped or reset counter is not a Cycle Start; expose the discontinuity for re-baselining.
+EQ(WH_LinkState[1].Valid,1)NE(P5000DataCtrlWord[3],WH_LinkState[1].EventSequence)NE(P5000DataCtrlWord[3],WH_LinkState[1].ExpectedEvent)[MOVE(4,WH_LinkState[1].Fault),MOVE(0,WH_LinkState[1].Valid)];
+
+RUNG 026 [ADDED]
+COMMENT
+Consume a persistent counter change once.
+EQ(WH_LinkState[1].Valid,1)EQ(P5000DataCtrlWord[3],WH_LinkState[1].ExpectedEvent)OTE(WH_NewLinkEvent[1]);
+
+RUNG 027 [ADDED]
+COMMENT
+FDC arrival timestamp: advisory +/-1 s under normal communications; not a source timestamp.
+XIC(WH_NewLinkEvent[1])[MOVE(P5000DataCtrlWord[3],WH_LinkState[1].EventSequence),GSV(WALLCLOCKTIME,,DateTime,WH_Link[1].EventUTC[0])];
+
+RUNG 028 [ADDED]
+COMMENT
+Receive the unchanged two-DINT legacy status transfer; freshness follows the existing heartbeat bit.
+[MOVE(3000,WH_LinkState[2].Freshness.PRE),MOVE(0,WH_LinkState[2].Valid)];
+
+RUNG 029 [ADDED]
+COMMENT
+Observe BOTH transitions of the existing press status handshake, not a static good-quality bit.
+[XIC(PressDataCtrlWrd[2].0)EQ(WH_LinkState[2].Heartbeat,0),XIO(PressDataCtrlWrd[2].0)EQ(WH_LinkState[2].Heartbeat,1)]OTE(WH_PressHeartbeatEdge[2]);
+
+RUNG 030 [ADDED]
+COMMENT
+New received heartbeat advances link freshness.
+XIC(WH_PressHeartbeatEdge[2])RES(WH_LinkState[2].Freshness);
+
+RUNG 031 [ADDED]
+COMMENT
+Snapshot handshake bit.
+MOVE(0,WH_LinkState[2].Heartbeat);
+
+RUNG 032 [ADDED]
+COMMENT
+Snapshot handshake bit.
+XIC(PressDataCtrlWrd[2].0)MOVE(1,WH_LinkState[2].Heartbeat);
+
+RUNG 033 [ADDED]
+COMMENT
+Communication loss is data quality, not a timed Cycle Start.
+TON(WH_LinkState[2].Freshness,3000,0);
+
+RUNG 034 [ADDED]
+COMMENT
+Require a new heartbeat and counter baseline after communication loss; do not replay delayed events.
+XIC(WH_LinkState[2].Freshness.DN)MOVE(0,WH_LinkState[2].Boot);
+
+RUNG 035 [ADDED]
+COMMENT
+Establish the current counter as baseline on initial connection/reconnection, without publishing an event.
+EQ(WH_LinkState[2].Boot,0)XIC(WH_PressHeartbeatEdge[2])[MOVE(PressDataCtrlWrd[3],WH_LinkState[2].EventSequence),MOVE(1,WH_LinkState[2].Boot)];
+
+RUNG 036 [ADDED]
+COMMENT
+Press validity needs no source clock or added heartbeat packet.
+EQ(WH_LinkState[2].Boot,1)XIO(WH_LinkState[2].Freshness.DN)EQ(WH_LinkState[2].Fault,0)MOVE(1,WH_LinkState[2].Valid);
+
+RUNG 037 [ADDED]
+COMMENT
+Expected next counter.
+LT(WH_LinkState[2].EventSequence,MAX_INT_MINUS_ONE)ADD(WH_LinkState[2].EventSequence,1,WH_LinkState[2].ExpectedEvent);
+
+RUNG 038 [ADDED]
+COMMENT
+Counter rollover is explicit.
+GE(WH_LinkState[2].EventSequence,MAX_INT_MINUS_ONE)MOVE(1,WH_LinkState[2].ExpectedEvent);
+
+RUNG 039 [ADDED]
+COMMENT
+A skipped or reset counter is not a Cycle Start; expose the discontinuity for re-baselining.
+EQ(WH_LinkState[2].Valid,1)NE(PressDataCtrlWrd[3],WH_LinkState[2].EventSequence)NE(PressDataCtrlWrd[3],WH_LinkState[2].ExpectedEvent)[MOVE(4,WH_LinkState[2].Fault),MOVE(0,WH_LinkState[2].Valid)];
+
+RUNG 040 [ADDED]
+COMMENT
+Consume a persistent counter change once.
+EQ(WH_LinkState[2].Valid,1)EQ(PressDataCtrlWrd[3],WH_LinkState[2].ExpectedEvent)OTE(WH_NewLinkEvent[2]);
+
+RUNG 041 [ADDED]
+COMMENT
+FDC arrival timestamp: advisory +/-1 s under normal communications; not a source timestamp.
+XIC(WH_NewLinkEvent[2])[MOVE(PressDataCtrlWrd[3],WH_LinkState[2].EventSequence),GSV(WALLCLOCKTIME,,DateTime,WH_Link[2].EventUTC[0])];

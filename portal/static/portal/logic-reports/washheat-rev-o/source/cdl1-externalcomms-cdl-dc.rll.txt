@@ -1,0 +1,88 @@
+RUNG 000 [ADDED]
+COMMENT
+Append the common adapter snapshot immediately before the existing write.
+JSR(WH_PackMessage,0);
+
+RUNG 001 [EXISTING]
+COMMENT
+
+Mostly Imported from Old CDL1 Program
+
+
+NOP();
+
+
+RUNG 002 [EXISTING]
+
+[XIO(CDL_ctrl_msg.EN) TON(CDL_ctrl_msg_dly,?,?) ,XIC(CDL_ctrl_msg_dly.DN) MSG(CDL_ctrl_msg) ];
+
+
+RUNG 003 [EXISTING]
+
+[XIO(DC_ctrl_msg.EN) TON(DC_ctrl_msg_dly,?,?) ,XIC(DC_ctrl_msg_dly.DN) MSG(DC_ctrl_msg) ];
+
+
+RUNG 004 [EXISTING]
+
+[XIO(CDL_Read_FGDC.EN) TON(CDL_Read_msg_dly,?,?) ,XIC(CDL_Read_msg_dly.DN) MSG(CDL_Read_FGDC) ,XIC(CDL_Read_FGDC.DN) CTU(CDL_Read_FGDC_MSG_CTU,?,?) ,XIC(CDL_Read_FGDC.ER) CTU(CDL_Read_FGDC_MSG_Err_CTU,?,?) ];
+
+
+RUNG 005 [EXISTING]
+
+[XIC(ctrl_DC_CDL.Heatbeat) OTU(ctrl_CDL_DC.Heatbeat) ,XIO(ctrl_DC_CDL.Heatbeat) OTL(ctrl_CDL_DC.Heatbeat) ];
+
+
+RUNG 006 [EXISTING]
+
+OTE(ctrl_CDL_DC.Robot_Ready);
+
+
+RUNG 007 [EXISTING]
+
+AFI()OTE(ctrl_CDL_DC.Part_In_Transit);
+
+
+RUNG 008 [EXISTING]
+
+AFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegD) ];
+
+
+RUNG 009 [EXISTING]
+
+AFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegD) ];
+
+
+RUNG 010 [EXISTING]
+
+AFI()[OTE(ctrl_CDL_DC.Gripper_Open) ,OTE(ctrl_CDL_DC.Gripper_Closed) ,OTE(ctrl_CDL_DC.Gripper_PartClamped) ];
+
+
+RUNG 011 [EXISTING]
+
+AFI()[MOVE(0,ctrl_CDL_DC.Robot_Destination) ,MOVE(1,ctrl_CDL_DC.Robot_Destination) ,MOVE(2,ctrl_CDL_DC.Robot_Destination) ,MOVE(3,ctrl_CDL_DC.Robot_Destination) ];
+
+
+RUNG 012 [EXISTING]
+
+[XIO(CDL_at_RF01) XIO(CDL_at_RF02) XIO(CDL_at_BF03) MOVE(0,ctrl_CDL_DC.Robot_At) ,XIC(CDLDataCtrlWord[0].30) MOVE(1,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_BF03) MOVE(3,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF01) MOVE(4,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF02) MOVE(5,ctrl_CDL_DC.Robot_At) ];
+
+
+RUNG 013 [EXISTING]
+
+[XIO(CDL_Inside_BF03) XIO(CDL_Inside_RF01) XIO(CDL_Inside_RF02) XIO(Robot_At_300Mn) XIO(Robot_At_50Mn) MOVE(0,ctrl_CDL_DC.Robot_In) ,XIC(CDLDataCtrlWord[0].9) MOVE(1,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_BF03) MOVE(3,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF01) MOVE(4,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF02) MOVE(5,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_300Mn) MOVE(10,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_50Mn) MOVE(11,ctrl_CDL_DC.Robot_In) ];
+
+
+RUNG 014 [EXISTING]
+
+MOVE(\Longtravel.Status.Encoder.Position,ctrl_CDL_DC.Robot_PSN);
+
+
+RUNG 015 [EXISTING]
+
+NOP();
+
+
+RUNG 016 [EXISTING]
+
+[XIC(ctrl_DC_CDL.RF01.Door_Fully_Open) ,XIC(ctrl_DC_CDL.RF02.Door_Fully_Open) ,XIC(ctrl_DC_CDL.BF03.Door_Fully_Open) ]NOP();
+

@@ -1,0 +1,177 @@
+{
+  "checked_utc": "2026-09-18T12:01:47.976632+00:00",
+  "method": "Studio/RSLogix GUI Verify Controller, UI command 32049",
+  "sdk_build_is_not_controller_verification": true,
+  "controller_downloads": 0,
+  "online_edits": 0,
+  "controllers": [
+    {
+      "controller": "FDC",
+      "acd": "Controllers/FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "l5x": "L5X/FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "verification": {
+        "errors": 0,
+        "warnings": 209
+      },
+      "baseline": {
+        "errors": 0,
+        "warnings": 17
+      },
+      "controller_name": "FGGW01CLX",
+      "processor": "1756-L75",
+      "controller_revision": "37.11",
+      "acd_sha256": "a3b8278ec6fdb3b407bcf8d1bf86325adc6b0dde71cbb1194a809e3ad089c58a",
+      "l5x_sha256": "fee45b2ce87fe76babd977a5facec7c258b00083a98c9bebd10f613ab92af2f0",
+      "gui_receipt": "Evidence/GUI/FDC20206_V20_03_07_26_WH_DEV_v37-command-verify-303aff89.json",
+      "gui_window_title": "Logix Designer - FGGW01CLX in FDC20206_V20_03_07_26_WH_DEV_v37.ACD [1756-L75 37.11]",
+      "gui_started_utc": "2026-09-18T10:53:32.771936+00:00",
+      "gui_finished_utc": "2026-09-18T10:54:21.300429+00:00",
+      "new_errors": 0,
+      "status": "verified-with-warnings",
+      "added_warnings": 192,
+      "log": "Evidence/FDC20206_V20_03_07_26_WH_DEV_v37-command-verification.txt",
+      "baseline_log": "Evidence/FDC-baseline.txt",
+      "screenshot": "Evidence/FDC20206_V20_03_07_26_WH_DEV_v37-command-verify.png"
+    },
+    {
+      "controller": "CDL 1",
+      "acd": "Controllers/PA166_Howmett_C4010_260723_WH_DEV_v36.ACD",
+      "l5x": "L5X/PA166_Howmett_C4010_260723_WH_DEV_v36.L5X",
+      "verification": {
+        "errors": 0,
+        "warnings": 7
+      },
+      "baseline": {
+        "errors": 0,
+        "warnings": 5
+      },
+      "controller_name": "EN01_80A3_CPU",
+      "processor": "5069-L310ERMS3",
+      "controller_revision": "36.14",
+      "acd_sha256": "cb0f4cb9d54a0439ba6df1ede92b9d827addffe0664a01d918056d2bfa6658e9",
+      "l5x_sha256": "73fc33d0cb4fdee2cc0a4bb44b9431fc0324a98cec18de7a46cd6a48b9200990",
+      "gui_receipt": "Evidence/GUI/CDL1-actual-verify-20bccc74.json",
+      "gui_window_title": "Logix Designer - EN01_80A3_CPU in CDL1_NATIVE_OVERLAY_02.ACD [5069-L310ERMS3 36.14]",
+      "gui_started_utc": "2026-09-18T11:06:30.007036+00:00",
+      "gui_finished_utc": "2026-09-18T11:06:47.667618+00:00",
+      "new_errors": 0,
+      "status": "verified-with-warnings",
+      "added_warnings": 2,
+      "log": "Evidence/CDL1-final-verification.txt",
+      "baseline_log": "Evidence/CDL1-baseline.txt",
+      "screenshot": "Evidence/CDL1-final-verify.png"
+    },
+    {
+      "controller": "CDL 2",
+      "acd": "Controllers/CDL2_180912_WH_DEV_v37.ACD",
+      "l5x": "L5X/CDL2_180912_WH_DEV_v37.L5X",
+      "verification": {
+        "errors": 0,
+        "warnings": 7
+      },
+      "baseline": {
+        "errors": 0,
+        "warnings": 7
+      },
+      "controller_name": "Firth_Rixson_PA209",
+      "processor": "1756-L71",
+      "controller_revision": "37.11",
+      "acd_sha256": "384382c98fcf08883778089c8287ee6b5ad67749d48d2f1932c9d2c00207f386",
+      "l5x_sha256": "f69f710e0dc33d29b7368509093911aa69b1a1ae3274c0ee60d3f5dbc7ee20b5",
+      "gui_receipt": "Evidence/GUI/CDL2-native-final-completed-0a3c8b43.json",
+      "gui_window_title": "Logix Designer - Firth_Rixson_PA209 in CDL2_NATIVE_OVERLAY_v37_02.ACD [1756-L71 37.11]*",
+      "gui_started_utc": "2026-09-18T11:46:22.692134+00:00",
+      "gui_finished_utc": "2026-09-18T11:47:36.342624+00:00",
+      "new_errors": 0,
+      "status": "verified-with-warnings",
+      "added_warnings": 0,
+      "log": "Evidence/CDL2-native-final.txt",
+      "baseline_log": "Evidence/CDL2-native-baseline.txt",
+      "screenshot": "Evidence/CDL2-native-final.png"
+    },
+    {
+      "controller": "300 MN",
+      "acd": "Controllers/P300MN_L84E_030726_WH_DEV_v37.ACD",
+      "l5x": "L5X/P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "verification": {
+        "errors": 0,
+        "warnings": 79
+      },
+      "baseline": {
+        "errors": 0,
+        "warnings": 79
+      },
+      "controller_name": "P33000_Controller",
+      "processor": "1756-L84E",
+      "controller_revision": "37.11",
+      "acd_sha256": "3df3ad5836d4295fc6666df979f315b4a6e91f773b75b3a85e1d3fb602f76d81",
+      "l5x_sha256": "2c2f72b2c55b512e159c7e53ce5a51d15b121386a7cab23f85aa3ade0dfed97c",
+      "gui_receipt": "Evidence/GUI/P300-final-completed-59c9d28d.json",
+      "gui_window_title": "Logix Designer - P33000_Controller in P300MN_L84E_030726_WH_DEV_v37.ACD [1756-L84E 37.11]",
+      "gui_started_utc": "2026-09-18T11:45:17.514838+00:00",
+      "gui_finished_utc": "2026-09-18T11:45:54.026514+00:00",
+      "new_errors": 0,
+      "status": "verified-with-warnings",
+      "added_warnings": 0,
+      "log": "Evidence/P300-final.txt",
+      "baseline_log": "Evidence/P300-baseline.txt",
+      "screenshot": "Evidence/P300-final.png"
+    },
+    {
+      "controller": "50 MN \u2014 native SoftLogix",
+      "acd": "Controllers/P5000_10_09_2025_WH_DEV_v19.ACD",
+      "l5x": "L5X/P5000_10_09_2025_WH_DEV_v19.L5X",
+      "verification": {
+        "errors": 17,
+        "warnings": 22
+      },
+      "baseline": {
+        "errors": 17,
+        "warnings": 22
+      },
+      "controller_name": "P5000",
+      "processor": "1789-L60",
+      "controller_revision": "19.11",
+      "acd_sha256": "08960faee2f11aaf9851a6660ab29df282ba64836ff91e42f92d8800dae42342",
+      "l5x_sha256": "bba1831c3d735dfbf1c290fca425b606fb29e1da035d83377fd36ba016de30f2",
+      "gui_receipt": "Evidence/GUI/P50-native-v19-patched-f01074cf.json",
+      "gui_window_title": "RSLogix 5000 - P5000 in P50_WH_NATIVE_v19.ACD [1789-L60 19.11]",
+      "gui_started_utc": "2026-09-18T11:27:22.001625+00:00",
+      "gui_finished_utc": "2026-09-18T11:28:29.119679+00:00",
+      "new_errors": 0,
+      "status": "source-dependency-blocked",
+      "added_warnings": 0,
+      "log": "Evidence/P50-native-v19-patched-verification_log.txt",
+      "baseline_log": "Evidence/P50-native-v19-baseline.txt",
+      "screenshot": "Evidence/P50-native-v19-patched.png"
+    },
+    {
+      "controller": "Optional legacy CDL",
+      "acd": "Controllers/PA166_20422RDN_WH_DEV_v37.ACD",
+      "l5x": "L5X/PA166_20422RDN_WH_DEV_v37.L5X",
+      "verification": {
+        "errors": 0,
+        "warnings": 34
+      },
+      "baseline": {
+        "errors": 0,
+        "warnings": 32
+      },
+      "controller_name": "PA166_FIRTH_RIXSON",
+      "processor": "1756-L71",
+      "controller_revision": "37.11",
+      "acd_sha256": "6dee6229a406eee287ae538c639b3e8fde9ce8ea2b4cee240bea387007b1e747",
+      "l5x_sha256": "81801c72b2da67b8a186866c6b80c41a423cc66c526dec358c8389932c65f06d",
+      "gui_receipt": "Evidence/GUI/legacy-native-final-4d412e30.json",
+      "gui_window_title": "Logix Designer - PA166_FIRTH_RIXSON in legacy-CDL_NATIVE_OVERLAY_v37.ACD [1756-L71 37.11]*",
+      "gui_started_utc": "2026-09-18T11:31:04.059066+00:00",
+      "gui_finished_utc": "2026-09-18T11:32:19.134809+00:00",
+      "new_errors": 0,
+      "status": "verified-with-warnings",
+      "added_warnings": 2,
+      "log": "Evidence/legacy-native-final.txt",
+      "baseline_log": "Evidence/legacy-native-baseline.txt",
+      "screenshot": "Evidence/legacy-native-final.png"
+    }
+  ]
+}

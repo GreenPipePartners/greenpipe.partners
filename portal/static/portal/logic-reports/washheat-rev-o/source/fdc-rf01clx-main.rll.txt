@@ -1,0 +1,105 @@
+RUNG 000 [EXISTING]
+COMMENT
+
+#######################################################################################################
+RF01CLX Main Routine Logic
+#######################################################################################################
+
+
+NOP();
+
+
+RUNG 001 [EXISTING]
+
+JSR(CheckDateTime,0);
+
+
+RUNG 002 [EXISTING]
+
+JSR(ProcessBarCodeInfo,0);
+
+
+RUNG 003 [EXISTING]
+
+JSR(Triggers,0);
+
+
+RUNG 004 [ADDED]
+COMMENT
+Capture commands/identity before legacy clear/copy rungs.
+JSR(WH_CapturePre,0);
+
+RUNG 005 [EXISTING]
+
+JSR(ProcessFurnaceItemInfo,0);
+
+
+RUNG 006 [ADDED]
+COMMENT
+Publish frozen observations and sample physical elapsed time.
+JSR(WH_CapturePost,0);
+
+RUNG 007 [EXISTING]
+
+JSR(RotaryDetail01_CDL2,0);
+
+
+RUNG 008 [EXISTING]
+
+JSR(RotaryDetail01_iFix,0);
+
+
+RUNG 009 [EXISTING]
+
+JSR(RotaryDetail02_iFix,0);
+
+
+RUNG 010 [EXISTING]
+
+JSR(RotaryDetail01_RedLion,0);
+
+
+RUNG 011 [EXISTING]
+
+JSR(RotaryDetail02_RedLion,0);
+
+
+RUNG 012 [EXISTING]
+
+JSR(Flags,0);
+
+
+RUNG 013 [EXISTING]
+
+JSR(RecipeCompare,0);
+
+
+RUNG 014 [EXISTING]
+
+JSR(PressData,0);
+
+
+RUNG 015 [EXISTING]
+
+JSR(P5000Data,0);
+
+
+RUNG 016 [EXISTING]
+
+JSR(GroupAlarms,0);
+
+
+RUNG 017 [EXISTING]
+
+JSR(External_Door_Ctrl,0);
+
+
+RUNG 018 [EXISTING]
+
+JSR(LEDdisplay,0);
+
+
+RUNG 019 [EXISTING]
+
+JSR(GetSoakTime,0);
+

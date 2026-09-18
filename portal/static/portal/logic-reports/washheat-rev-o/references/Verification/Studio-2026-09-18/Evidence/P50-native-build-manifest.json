@@ -1,0 +1,24 @@
+{
+  "source": "solution/plc/evidence/2026-09-18-studio-verify/P50_ORIGINAL_NATIVE_v19.L5X",
+  "source_sha256": "e2d1a72987539cdcdc392af54be9bb7ec779de32ed108ae395ad56c63b19279c",
+  "original_acd_sha256": "ddcd81af65e8620fefd450fb9ea8179f47286a4dd654bd8f00248795801d8364",
+  "output": "P5000_10_09_2025_WH_DEV_v19.L5X",
+  "sha256": "bba1831c3d735dfbf1c290fca425b606fb29e1da035d83377fd36ba016de30f2",
+  "rung_listing": "P50_v19__WH_SendSignals.rll.txt",
+  "rung_listing_sha256": "ce49412e50a51332013106786046880c79467f49a91229b39511bc1f991c6e13",
+  "processor": "1789-L60",
+  "revision": "19.11",
+  "native_source_preserved": true,
+  "counter_semantics_match_tested_v37_adapter": true,
+  "new_global_tags": [
+    "MAX_INT",
+    "MAX_INT_MINUS_ONE",
+    "WH_SourceONS",
+    "WH_SourceEdge"
+  ],
+  "new_program": "WH_Signals",
+  "new_rungs": 5,
+  "schedule": "P5000 / 10 ms / immediately after ITSLX",
+  "original_modules": 11,
+  "original_external_routines": 7
+}

@@ -1,0 +1,395 @@
+Verifying Controller...
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 4, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 4, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 4, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 4, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 4, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 5, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 5, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 6, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 7, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 12, XIC, Operand 0: Referenced tag is undefined.
+Error: Line 3, 'Local:2:I': Referenced tag is undefined.
+Error: Line 10, 'Local:2:I': Referenced tag is undefined.
+Error: Line 17, 'Local:2:I': Referenced tag is undefined.
+Error: Line 23, 'Local:2:I': Referenced tag is undefined.
+Error: Line 33, 'Local:2:I': Referenced tag is undefined.
+Error: Line 35, 'Local:2:I': Referenced tag is undefined.
+Error: Line 40, 'Local:2:I': Referenced tag is undefined.
+Error: Line 42, 'Local:2:I': Referenced tag is undefined.
+Error: Line 43, 'Local:2:I': Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Warning: Rung 3: Shorted branch detected.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Warning: Rung 1: AFI detected.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Warning: Rung 2: AFI detected.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Warning: Rung 3: Shorted branch detected.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 8: Shorted branch detected.
+Warning: Rung 9: Shorted branch detected.
+Warning: Rung 10: Shorted branch detected.
+Warning: Rung 11: Shorted branch detected.
+Error: Rung 12, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 12, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 9, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 9, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 10: Shorted branch detected.
+Error: Rung 11, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 12, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 12, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 12, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Warning: Rung 0: Shorted branch detected.
+Error: Rung 1, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 8, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 8, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 12, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 13, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 0, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 1, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 1, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 3, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 15, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 15, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 15, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 16, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 17, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 17, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 18, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 18, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 20, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 20, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 20, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTU, Operand 0: Referenced tag is undefined.
+Warning: Rung 2: AFI detected.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 6, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 8, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 8, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 14, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 14, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 14, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 14, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 14, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 14, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 15, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 15, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 17, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 22, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 23, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 24, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 25, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 26, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 26, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 26, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 27, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 27, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 27, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 27, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 27, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 28, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 28, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 28, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 29, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 29, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 29, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 30, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 30, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 30, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 30, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 30, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 31, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 31, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 31, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 31, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 31, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 31, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 31, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 4: AFI detected.
+Warning: Rung 7: AFI detected.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 11, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Warning: Rung 0: AFI detected.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 1, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 5, OTU, Operand 0: Referenced tag is undefined.
+Warning: Rung 5: Shorted branch detected.
+Error: Rung 10, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 10, OTU, Operand 0: Referenced tag is undefined.
+Warning: Rung 12: AFI detected.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 0: Shorted branch detected.
+Error: Rung 1, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 2, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 8, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 18, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 19, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 19, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 19, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 20, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 20, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 0, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 2: Shorted branch detected.
+Error: Rung 0, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 1, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Warning: Rung 13: AFI detected.
+Error: Rung 9, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 0, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 1, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 2, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 3, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 4, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 5, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 6, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 7, BTD, Operand 0: Referenced tag is undefined.
+Error: Rung 8, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 8, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 9, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 9, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 10, JXR: Invalid instruction reference. Instruction not allowed in add-on instruction or for this controller type.
+Error: Rung 10, JXR, Operand 0: Invalid reference to unknown routine.
+Error: Rung 0, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 2, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 3, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTL, Operand 0: Referenced tag is undefined.
+Error: Rung 3, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 4, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 4, OTE, Operand 0: Referenced tag is undefined.
+Error: Rung 5, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 6, XIC, Operand 0: Referenced tag is undefined.
+Error: Rung 7, XIO, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTU, Operand 0: Referenced tag is undefined.
+Error: Rung 7, OTU, Operand 0: Referenced tag is undefined.
+Verifying program connections
+Complete - 373 error(s), 19 warning(s)

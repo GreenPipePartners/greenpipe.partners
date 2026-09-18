@@ -1,0 +1,9 @@
+RUNG 000 [ADDED]
+COMMENT
+New transfer while not armed is an overrun; preserve prior evidence.
+[EQ(WH_CDL_Furnace,1),EQ(WH_CDL_Furnace,2)]NE(WH_CDL_State,10)[MOVE(2,WH_CDL_Fault),MOVE(900,WH_CDL_State)];
+
+RUNG 001 [ADDED]
+COMMENT
+10 -> 20: freeze source furnace/start timestamp from the legacy running edge.
+[EQ(WH_CDL_Furnace,1),EQ(WH_CDL_Furnace,2)]EQ(WH_CDL_State,10)EQ(WH_CDL_Fault,0)[MOVE(20,WH_CDL_State),MOVE(0,WH_CDL_LastTimerMs),MOVE(WH_CDL_Furnace,WH_CDL_StartedFurnace),GSV(WALLCLOCKTIME,,DateTime,WH_CDL_StartedUTC[0])];

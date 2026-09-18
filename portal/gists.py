@@ -569,8 +569,14 @@ def _embedded_iframe_html(attrs_text):
     safe_source_url = escape(source_url)
     safe_title = escape(title)
     theme_attribute = " data-excalidraw-embed" if hostname.lower() == EXCALIDRAW_EMBED_HOST else ""
+    is_logic_report = (
+        hostname.lower() in {"greenpipe.partners", "www.greenpipe.partners"}
+        and parsed.path.startswith("/static/portal/logic-reports/")
+        and parsed.path.endswith(("/index.html", "/logic.html", "/resources.html", "/screens.html"))
+    )
+    figure_class = "report-embed report-logic-embed" if is_logic_report else "report-embed"
     return (
-        '<figure class="report-embed">'
+        f'<figure class="{figure_class}">'
         '<div class="report-embed-frame">'
         f'<iframe src="{safe_source_url}" title="{safe_title}" loading="lazy"{theme_attribute} '
         'referrerpolicy="strict-origin-when-cross-origin" '

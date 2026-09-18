@@ -1,0 +1,139 @@
+RUNG 000 [EXISTING]
+
+NOP();
+
+
+RUNG 001 [EXISTING]
+
+XIC(MODE.Auto)XIO(MODE.AutoRunning)OTE(ctrl_CDL2_DC.Robot_Ready);
+
+
+RUNG 002 [EXISTING]
+
+[XIC(MODE.Auto) XIC(AUTO.ClampGripper) XIC(AUTO.GripperClamped) ,XIC(MODE.Manual) XIC(ctrl_DC_CDL2.RF01.Door_Close_RE) ]OTE(ctrl_CDL2_DC.Part_In_Transit);
+
+
+RUNG 003 [EXISTING]
+
+XIC(MODE.AutoRunning)EQ(AUTO.RoutineType,9)[EQ(HMI.Inputs.Auto.LoadFurnace.Station,1) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegB) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,2) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegC) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,3) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegD) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,4) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegB) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,5) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegC) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,6) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegD) ];
+
+
+RUNG 004 [EXISTING]
+
+[LT(GRIPPER.ActualPosition,50) OTE(ctrl_CDL2_DC.Gripper_Closed) ,GE(GRIPPER.ActualPosition,50) XIO(AUTO.GripperClamped) OTE(ctrl_CDL2_DC.Gripper_Open) ,XIO(ctrl_CDL2_DC.Gripper_Closed) XIC(AUTO.GripperClamped) OTE(ctrl_CDL2_DC.Gripper_PartClamped) ];
+
+
+RUNG 005 [EXISTING]
+
+[XIC(STATIONS.Furnace1.RequestEntry) XIC(HMI.Inputs.Auto.Furnace1DoorClose) OTU(STATIONS.Furnace1.RequestEntry) ,XIC(STATIONS.Furnace2.RequestEntry) XIC(HMI.Inputs.Auto.Furnace2DoorClose) OTU(STATIONS.Furnace2.RequestEntry) ];
+
+
+RUNG 006 [EXISTING]
+
+NOP();
+
+
+RUNG 007 [EXISTING]
+
+XIC(ctrl_DC_CDL2.RF01.Door_Open_RE)XIC(STATIONS.Furnace1.RequestEntry)[MOVE(1,ctrl_CDL2_DC.RF01_Door_Request) ,OTE(Furnace1Open) ];
+
+
+RUNG 008 [EXISTING]
+
+XIC(STATIONS.Furnace1.RequestClose)XIC(ctrl_DC_CDL2.RF01.Door_Close_RE)XIO(STATIONS.Furnace1.RequestEntry)XIO(ROBOT_IN.Furnace1)[MOVE(2,ctrl_CDL2_DC.RF01_Door_Request) ,EQ(ctrl_DC_CDL2.RF01.Door_Status,4) OTU(STATIONS.Furnace1.RequestClose) ,OTE(Furnace1Close) ];
+
+
+RUNG 009 [EXISTING]
+
+XIO(Furnace1Open)XIO(Furnace1Close)MOVE(0,ctrl_CDL2_DC.RF01_Door_Request);
+
+
+RUNG 010 [EXISTING]
+
+NOP();
+
+
+RUNG 011 [EXISTING]
+
+XIC(ctrl_DC_CDL2.RF02.Door_Open_RE)XIC(STATIONS.Furnace2.RequestEntry)[MOVE(1,ctrl_CDL2_DC.RF02_Door_Request) ,OTE(Furnace2Open) ];
+
+
+RUNG 012 [EXISTING]
+
+XIC(STATIONS.Furnace2.RequestClose)XIC(ctrl_DC_CDL2.RF02.Door_Close_RE)XIO(STATIONS.Furnace2.RequestEntry)XIO(ROBOT_IN.Furnace2)[MOVE(2,ctrl_CDL2_DC.RF02_Door_Request) ,EQ(ctrl_DC_CDL2.RF02.Door_Status,4) OTU(STATIONS.Furnace2.RequestClose) ,OTE(Furnace2Close) ];
+
+
+RUNG 013 [EXISTING]
+
+XIO(Furnace2Open)XIO(Furnace2Close)MOVE(0,ctrl_CDL2_DC.RF02_Door_Request);
+
+
+RUNG 014 [EXISTING]
+
+NOP();
+
+
+RUNG 015 [EXISTING]
+
+XIC(MODE.AutoRunning)EQ(AUTO.RoutineType,10)[EQ(HMI.Inputs.Auto.LoadPress.LoadStation,1) MOVE(2,ctrl_CDL2_DC.Robot_Destination) ,EQ(HMI.Inputs.Auto.LoadPress.LoadStation,2) MOVE(1,ctrl_CDL2_DC.Robot_Destination) ]OTE(RobotToPress);
+
+
+RUNG 016 [EXISTING]
+
+XIO(RobotToPress)MOVE(0,ctrl_CDL2_DC.Robot_Destination);
+
+
+RUNG 017 [EXISTING]
+
+NOP();
+
+
+RUNG 018 [EXISTING]
+
+LIMIT(STATIONS.LoadingTable.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.LoadingTable.Longtravel.Limits.High)LIMIT(STATIONS.LoadingTable.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.LoadingTable.Slew.Limits.High)[OTE(ROBOT_AT.LoadingTable) ,GT(AXES.Extension.Position,2000) OTE(ROBOT_IN.LoadingTable) ];
+
+
+RUNG 019 [EXISTING]
+
+LIMIT(STATIONS.Furnace1.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.Furnace1.Longtravel.Limits.High)LIMIT(STATIONS.Furnace1.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.Furnace1.Slew.Limits.High)[MOVE(4,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.Furnace1) ,GT(AXES.Extension.Position,2000) MOVE(4,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.Furnace1) ];
+
+
+RUNG 020 [EXISTING]
+
+LIMIT(STATIONS.Furnace2.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.Furnace2.Longtravel.Limits.High)LIMIT(STATIONS.Furnace2.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.Furnace2.Slew.Limits.High)[MOVE(5,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.Furnace2) ,GT(AXES.Extension.Position,2000) MOVE(5,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.Furnace2) ];
+
+
+RUNG 021 [EXISTING]
+
+LIMIT(STATIONS.BigPress.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.BigPress.Longtravel.Limits.High)LIMIT(STATIONS.BigPress.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.BigPress.Slew.Limits.High)[MOVE(11,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.BigPress) ,GT(AXES.Extension.Position,2000) MOVE(11,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.BigPress) ];
+
+
+RUNG 022 [EXISTING]
+
+LIMIT(STATIONS.SmallPress.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.SmallPress.Longtravel.Limits.High)LIMIT(STATIONS.SmallPress.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.SmallPress.Slew.Limits.High)[MOVE(10,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.SmallPress) ,GT(AXES.Extension.Position,2000) MOVE(10,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.SmallPress) ];
+
+
+RUNG 023 [EXISTING]
+
+XIO(ROBOT_AT.Furnace1)XIO(ROBOT_AT.Furnace2)XIO(ROBOT_AT.BigPress)XIO(ROBOT_AT.SmallPress)MOVE(0,ctrl_CDL2_DC.Robot_At);
+
+
+RUNG 024 [EXISTING]
+
+XIO(ROBOT_IN.Furnace1)XIO(ROBOT_IN.Furnace2)XIO(ROBOT_IN.BigPress)XIO(ROBOT_IN.SmallPress)MOVE(0,ctrl_CDL2_DC.Robot_In);
+
+
+RUNG 025 [EXISTING]
+
+MOVE(AXES.Trolley.ActPos,ctrl_CDL2_DC.Robot_PSN);
+
+
+RUNG 026 [ADDED]
+COMMENT
+Observe after original station/gripper mapping and before existing MSG.
+JSR(WH_Adapter,0);
+
+RUNG 027 [EXISTING]
+
+[XIO(CDL2_ctrl_msg.EN) TON(CDL2_ctrl_msg_dly,?,?) ,XIC(CDL2_ctrl_msg_dly.DN) MSG(CDL2_ctrl_msg) ];
+

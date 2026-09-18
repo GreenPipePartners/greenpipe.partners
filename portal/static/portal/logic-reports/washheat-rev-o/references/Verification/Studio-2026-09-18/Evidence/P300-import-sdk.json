@@ -1,0 +1,110 @@
+{
+  "source": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+  "source_sha256": "2c2f72b2c55b512e159c7e53ce5a51d15b121386a7cab23f85aa3ade0dfed97c",
+  "started_utc": "2026-09-18T11:00:54.660554+00:00",
+  "events": [
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Open project started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Open project succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Build started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog <?xml version=\"1.0\" encoding=\"UTF-16\"?>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog <ImportLog"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog     Version = \"RSLogix 5000 v37.00\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog     Owner = \"EWS\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog     Date = \"Fri Sep 18 07:02:42 2026\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog <Summary Warnings=\"0\" Errors=\"0\"/>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ImportLog </ImportLog>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ServiceEvent StatusChanged: Verifying program connections"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Build succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "ServiceEvent AboutToBeSaved"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Closing Logix Project"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\vendor-restored-sdk\\P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "message": "Logix Project was closed"
+    }
+  ],
+  "opened": true,
+  "build_ok": true,
+  "saved_acd": true,
+  "controller_download_performed": false,
+  "online_edits_performed": false,
+  "acd_sha256": "bd9dd588c7a73e085d301a7b0d754455eee8bed6c8811970a13079f4d446c978",
+  "export_sha256": "21df7585f63db79285144b7b6848de1f4914bd0e586de8b487be3bad6e65dcfb",
+  "finished_utc": "2026-09-18T11:09:39.684447+00:00"
+}

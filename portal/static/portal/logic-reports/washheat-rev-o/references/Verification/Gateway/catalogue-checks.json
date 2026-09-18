@@ -1,0 +1,48 @@
+{
+  "checks": [
+    {
+      "check": "Jython decodes photographed process barcode",
+      "passed": true
+    },
+    {
+      "check": "SQL catalogue create and exact resolution",
+      "passed": true
+    },
+    {
+      "check": "Leading zeros and separate heat/press quality retained",
+      "passed": true
+    },
+    {
+      "check": "Atomic current row and immutable revision history",
+      "passed": true
+    },
+    {
+      "check": "Stale edit rolls back without extra history",
+      "passed": true
+    },
+    {
+      "check": "Exact lookup distinguishes 00213 from 213",
+      "passed": true
+    },
+    {
+      "check": "Same part and QA can have distinct press operation",
+      "passed": true
+    },
+    {
+      "check": "Inactive dimensions unavailable to new enrollments",
+      "passed": true
+    },
+    {
+      "check": "Search retains inactive rows for review",
+      "passed": true
+    },
+    {
+      "check": "Runtime cannot rewrite catalogue history",
+      "passed": true
+    }
+  ],
+  "count": 10,
+  "prefix": "SIM-CATALOG-7908c52f",
+  "status": "PASSED",
+  "synthetic_browser_rows_deactivated": 2
+}

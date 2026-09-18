@@ -1,0 +1,54 @@
+RUNG 000 [ADDED]
+COMMENT
+INIT constants: signed DINT maximum and maximum minus one. Ordered branches initialize the controller-wide software constants before any consumer.
+XIC(S:FS)[MOVE(2147483647,MAX_INT),SUB(MAX_INT,1,MAX_INT_MINUS_ONE)];
+
+RUNG 001 [ADDED]
+COMMENT
+Initialize the PA209 observation adapter, not the original auto sequence.
+XIC(S:FS)[MOVE(0,WH_CDL_Furnace),OTU(WH_CDL_Armed),OTU(WH_AdapterRunning),RES(WH_RawTransferTimer)];
+
+RUNG 002 [ADDED]
+COMMENT
+Latch source furnace only while inside it with a clamped part.
+XIC(ROBOT_IN.Furnace1)XIO(ROBOT_IN.Furnace2)XIC(ctrl_CDL2_DC.Gripper_PartClamped)[MOVE(1,WH_CDL_Furnace),OTL(WH_CDL_Armed)];
+
+RUNG 003 [ADDED]
+COMMENT
+Latch source furnace only while inside it with a clamped part.
+XIC(ROBOT_IN.Furnace2)XIO(ROBOT_IN.Furnace1)XIC(ctrl_CDL2_DC.Gripper_PartClamped)[MOVE(2,WH_CDL_Furnace),OTL(WH_CDL_Armed)];
+
+RUNG 004 [ADDED]
+COMMENT
+An empty-arm departure cannot create a removal observation.
+XIO(ctrl_CDL2_DC.Gripper_PartClamped)OTU(WH_CDL_Armed);
+
+RUNG 005 [ADDED]
+COMMENT
+Actual occupied withdrawal crosses the original 2000 extension boundary; re-arm only inside a furnace.
+XIO(S:FS)XIC(WH_CDL_Armed)XIO(ROBOT_IN.Furnace1)XIO(ROBOT_IN.Furnace2)XIC(ctrl_CDL2_DC.Gripper_PartClamped)OTE(WH_AdapterStart);
+
+RUNG 006 [ADDED]
+COMMENT
+Begin raw gripper-release stopwatch once for this withdrawal.
+XIC(WH_AdapterStart)[RES(WH_RawTransferTimer),OTL(WH_AdapterRunning),OTU(WH_CDL_Armed)];
+
+RUNG 007 [ADDED]
+COMMENT
+Native timer range in milliseconds.
+MOVE(MAX_INT,WH_RawTransferTimer.PRE);
+
+RUNG 008 [ADDED]
+COMMENT
+Measure actual elapsed time on PA209.
+XIC(WH_AdapterRunning)RTO(WH_RawTransferTimer,2147483647,0);
+
+RUNG 009 [ADDED]
+COMMENT
+Freeze raw timer on gripper release at either press; the independent cycle-start timer continues.
+XIC(WH_AdapterRunning)XIC(ctrl_CDL2_DC.Gripper_Open)[XIC(ROBOT_AT.BigPress),XIC(ROBOT_AT.SmallPress)]OTU(WH_AdapterRunning);
+
+RUNG 010 [ADDED]
+COMMENT
+Normalize facts, append the existing status message and consume the existing display read.
+[JSR(WH_SendSignals,0),JSR(WH_PackMessage,0),JSR(WH_ReceiveDisplay,0)];

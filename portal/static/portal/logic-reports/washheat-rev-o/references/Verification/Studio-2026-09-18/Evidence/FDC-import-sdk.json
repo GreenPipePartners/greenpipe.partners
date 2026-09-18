@@ -1,0 +1,99 @@
+{
+  "source": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+  "source_sha256": "fee45b2ce87fe76babd977a5facec7c258b00083a98c9bebd10f613ab92af2f0",
+  "started_utc": "2026-09-18T10:28:05.829252+00:00",
+  "events": [
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Open project started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Open project succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Build started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ServiceEvent SystemTaskBandwidthChange: 45"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog <?xml version=\"1.0\" encoding=\"UTF-16\"?>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog <ImportLog"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog     Version = \"RSLogix 5000 v37.00\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog     Owner = \"EWS\""
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog     Date = \"Fri Sep 18 06:29:46 2026\">"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog <Summary Warnings=\"0\" Errors=\"0\"/>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ImportLog </ImportLog>"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Build succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "ServiceEvent AboutToBeSaved"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Closing Logix Project"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "message": "Logix Project was closed"
+    }
+  ],
+  "opened": true,
+  "build_ok": true,
+  "saved_acd": true,
+  "controller_download_performed": false,
+  "online_edits_performed": false,
+  "acd_sha256": "ad0a4cd6b43e7e1a0a7eacd5398aee4854a844b223d9870c3d336d5b1eeb8081",
+  "finished_utc": "2026-09-18T10:31:55.929591+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "profile": "gpp.logic-viewer.light/1",
+  "dark_to_light": {
+    "#07110e": "#ffffff",
+    "#0d241d": "#eaf1ec",
+    "#17231f": "#f3f7f4",
+    "#edf8f1": "#193b2d",
+    "#8da69b": "#52685c",
+    "#69e69d": "#236940",
+    "#71b7ff": "#1764a6",
+    "#ffc35a": "#806000",
+    "#ff7d72": "#b42332",
+    "#9be3ba": "#286951",
+    "#c4a7ff": "#7043a5"
+  },
+  "backgrounds": {
+    "dark": "#07110e",
+    "light": "#ffffff"
+  },
+  "minimum_ink_contrast_across_light_surfaces": 5.09,
+  "contrast_by_source_color": {
+    "#edf8f1": 10.73,
+    "#8da69b": 5.24,
+    "#69e69d": 5.78,
+    "#71b7ff": 5.36,
+    "#ffc35a": 5.09,
+    "#ff7d72": 5.67,
+    "#9be3ba": 5.66,
+    "#c4a7ff": 6.03
+  },
+  "construction": "Prebuilt paint-only variants; text, geometry, rung coordinates and source links preserved."
+}

@@ -1,0 +1,614 @@
+Verifying Controller...
+Warning: Rung 9: Shorted branch detected.
+Warning: Rung 0: Shorted branch detected.
+Warning: Rung 1: AFI detected.
+Warning: Rung 0: AFI detected.
+Warning: Rung 4: AFI detected.
+Warning: Rung 8: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 1: Shorted branch detected.
+Warning: BF03Detail01_iFix: Routine cannot be reached by the main routine: 'BF03Detail01_iFix of Program BF03CLX'
+Warning: Rung 5: AFI detected.
+Warning: Rung 7: AFI detected.
+Warning: CDL_Load_Status: Routine cannot be reached by the main routine: 'CDL_Load_Status of Program RF01CLX'
+Verifying program connections
+Warning: Duplicate Destructive Bit Reference Detected: 'timer2Done'
+    MainProgram - ScreenNav, Line 109
+    MainProgram - HMI_Control, Rung 2, OTE
+Warning: Duplicate Destructive Bit Reference Detected: 'BF01_To_P5000_Select'
+    BF01CLX - P5000Data, Rung 0, OTE
+    BF01CLX - P5000Data, Rung 1, OTE
+Warning: Duplicate Destructive Bit Reference Detected: 'Forge_Alarms:O.Data[0].0'
+    MainProgram - Alarm_Horn, Rung 8, OTE
+    MainProgram - Alarm_Horn, Rung 9, OTU
+Warning: Duplicate AOI Backing Tag Reference Detected: 'funcProcessFurnaceItem - SoakTimeConvert'
+    funcProcessFurnaceItem - Logic, Rung 6
+    funcProcessFurnaceItem - Logic, Rung 6
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_05A'
+    RF02CLX - WH_CapturePost, Rung 16
+    RF02CLX - WH_CapturePre, Rung 16
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_01B'
+    RF01CLX - WH_CapturePost, Rung 1
+    RF01CLX - WH_CapturePre, Rung 1
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_19A'
+    RF02CLX - WH_CapturePost, Rung 72
+    RF02CLX - WH_CapturePre, Rung 72
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_13D'
+    RF01CLX - WH_CapturePost, Rung 51
+    RF01CLX - WH_CapturePre, Rung 51
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_20A'
+    RF01CLX - WH_CapturePost, Rung 76
+    RF01CLX - WH_CapturePre, Rung 76
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_14C'
+    RF02CLX - WH_CapturePost, Rung 54
+    RF02CLX - WH_CapturePre, Rung 54
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_20B'
+    RF02CLX - WH_CapturePost, Rung 77
+    RF02CLX - WH_CapturePre, Rung 77
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_11C'
+    RF02CLX - WH_CapturePost, Rung 42
+    RF02CLX - WH_CapturePre, Rung 42
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_17D'
+    RF01CLX - WH_CapturePost, Rung 67
+    RF01CLX - WH_CapturePre, Rung 67
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_06D'
+    RF01CLX - WH_CapturePost, Rung 23
+    RF01CLX - WH_CapturePre, Rung 23
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_08D'
+    RF02CLX - WH_CapturePost, Rung 31
+    RF02CLX - WH_CapturePre, Rung 31
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_11A'
+    RF01CLX - WH_CapturePost, Rung 40
+    RF01CLX - WH_CapturePre, Rung 40
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_18B'
+    RF02CLX - WH_CapturePost, Rung 69
+    RF02CLX - WH_CapturePre, Rung 69
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_23B'
+    RF01CLX - WH_CapturePost, Rung 89
+    RF01CLX - WH_CapturePre, Rung 89
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_16A'
+    RF01CLX - WH_CapturePost, Rung 60
+    RF01CLX - WH_CapturePre, Rung 60
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_05D'
+    RF01CLX - WH_CapturePost, Rung 19
+    RF01CLX - WH_CapturePre, Rung 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_18A'
+    RF02CLX - WH_CapturePost, Rung 68
+    RF02CLX - WH_CapturePre, Rung 68
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_18B'
+    RF01CLX - WH_CapturePost, Rung 69
+    RF01CLX - WH_CapturePre, Rung 69
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_07B'
+    RF01CLX - WH_CapturePost, Rung 25
+    RF01CLX - WH_CapturePre, Rung 25
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_10A'
+    RF01CLX - WH_CapturePost, Rung 36
+    RF01CLX - WH_CapturePre, Rung 36
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_13B'
+    RF01CLX - WH_CapturePost, Rung 49
+    RF01CLX - WH_CapturePre, Rung 49
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_23D'
+    RF02CLX - WH_CapturePost, Rung 91
+    RF02CLX - WH_CapturePre, Rung 91
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_09C'
+    RF01CLX - WH_CapturePost, Rung 34
+    RF01CLX - WH_CapturePre, Rung 34
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_16C'
+    RF01CLX - WH_CapturePost, Rung 62
+    RF01CLX - WH_CapturePre, Rung 62
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_20D'
+    RF02CLX - WH_CapturePost, Rung 79
+    RF02CLX - WH_CapturePre, Rung 79
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_03C'
+    RF01CLX - WH_CapturePost, Rung 10
+    RF01CLX - WH_CapturePre, Rung 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_08C'
+    RF02CLX - WH_CapturePost, Rung 30
+    RF02CLX - WH_CapturePre, Rung 30
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_21D'
+    RF02CLX - WH_CapturePost, Rung 83
+    RF02CLX - WH_CapturePre, Rung 83
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_09B'
+    RF02CLX - WH_CapturePost, Rung 33
+    RF02CLX - WH_CapturePre, Rung 33
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_05D'
+    RF02CLX - WH_CapturePost, Rung 19
+    RF02CLX - WH_CapturePre, Rung 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_03B'
+    RF02CLX - WH_CapturePost, Rung 9
+    RF02CLX - WH_CapturePre, Rung 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_06C'
+    RF01CLX - WH_CapturePost, Rung 22
+    RF01CLX - WH_CapturePre, Rung 22
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_23D'
+    RF01CLX - WH_CapturePost, Rung 91
+    RF01CLX - WH_CapturePre, Rung 91
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_05B'
+    RF02CLX - WH_CapturePost, Rung 17
+    RF02CLX - WH_CapturePre, Rung 17
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_16C'
+    RF02CLX - WH_CapturePost, Rung 62
+    RF02CLX - WH_CapturePre, Rung 62
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_24C'
+    RF01CLX - WH_CapturePost, Rung 94
+    RF01CLX - WH_CapturePre, Rung 94
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_08D'
+    RF01CLX - WH_CapturePost, Rung 31
+    RF01CLX - WH_CapturePre, Rung 31
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_19B'
+    RF02CLX - WH_CapturePost, Rung 73
+    RF02CLX - WH_CapturePre, Rung 73
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_19C'
+    RF01CLX - WH_CapturePost, Rung 74
+    RF01CLX - WH_CapturePre, Rung 74
+Warning: Duplicate AOI Backing Tag Reference Detected: 'FGGW01CLX_DateTime'
+    MainProgram - MainRoutine, Rung 4
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_08B'
+    RF02CLX - WH_CapturePost, Rung 29
+    RF02CLX - WH_CapturePre, Rung 29
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_13C'
+    RF01CLX - WH_CapturePost, Rung 50
+    RF01CLX - WH_CapturePre, Rung 50
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_21B'
+    RF01CLX - WH_CapturePost, Rung 81
+    RF01CLX - WH_CapturePre, Rung 81
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_09D'
+    RF02CLX - WH_CapturePost, Rung 35
+    RF02CLX - WH_CapturePre, Rung 35
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_02B'
+    RF02CLX - WH_CapturePost, Rung 5
+    RF02CLX - WH_CapturePre, Rung 5
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_04B'
+    RF02CLX - WH_CapturePost, Rung 13
+    RF02CLX - WH_CapturePre, Rung 13
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_01D'
+    RF01CLX - WH_CapturePost, Rung 3
+    RF01CLX - WH_CapturePre, Rung 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_04A'
+    RF02CLX - WH_CapturePost, Rung 12
+    RF02CLX - WH_CapturePre, Rung 12
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_14D'
+    RF02CLX - WH_CapturePost, Rung 55
+    RF02CLX - WH_CapturePre, Rung 55
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_20A'
+    RF02CLX - WH_CapturePost, Rung 76
+    RF02CLX - WH_CapturePre, Rung 76
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_12B'
+    RF02CLX - WH_CapturePost, Rung 45
+    RF02CLX - WH_CapturePre, Rung 45
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_23A'
+    RF01CLX - WH_CapturePost, Rung 88
+    RF01CLX - WH_CapturePre, Rung 88
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_15C'
+    RF01CLX - WH_CapturePost, Rung 58
+    RF01CLX - WH_CapturePre, Rung 58
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_11D'
+    RF01CLX - WH_CapturePost, Rung 43
+    RF01CLX - WH_CapturePre, Rung 43
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_17B'
+    RF01CLX - WH_CapturePost, Rung 65
+    RF01CLX - WH_CapturePre, Rung 65
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_07C'
+    RF02CLX - WH_CapturePost, Rung 26
+    RF02CLX - WH_CapturePre, Rung 26
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_07A'
+    RF02CLX - WH_CapturePost, Rung 24
+    RF02CLX - WH_CapturePre, Rung 24
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_23A'
+    RF02CLX - WH_CapturePost, Rung 88
+    RF02CLX - WH_CapturePre, Rung 88
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_14D'
+    RF01CLX - WH_CapturePost, Rung 55
+    RF01CLX - WH_CapturePre, Rung 55
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_10D'
+    RF02CLX - WH_CapturePost, Rung 39
+    RF02CLX - WH_CapturePre, Rung 39
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_17B'
+    RF02CLX - WH_CapturePost, Rung 65
+    RF02CLX - WH_CapturePre, Rung 65
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_13C'
+    RF02CLX - WH_CapturePost, Rung 50
+    RF02CLX - WH_CapturePre, Rung 50
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_02A'
+    RF01CLX - WH_CapturePost, Rung 4
+    RF01CLX - WH_CapturePre, Rung 4
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_18C'
+    RF02CLX - WH_CapturePost, Rung 70
+    RF02CLX - WH_CapturePre, Rung 70
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_09D'
+    RF01CLX - WH_CapturePost, Rung 35
+    RF01CLX - WH_CapturePre, Rung 35
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_01D'
+    RF02CLX - WH_CapturePost, Rung 3
+    RF02CLX - WH_CapturePre, Rung 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_17C'
+    RF02CLX - WH_CapturePost, Rung 66
+    RF02CLX - WH_CapturePre, Rung 66
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_12A'
+    RF02CLX - WH_CapturePost, Rung 44
+    RF02CLX - WH_CapturePre, Rung 44
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_05C'
+    RF01CLX - WH_CapturePost, Rung 18
+    RF01CLX - WH_CapturePre, Rung 18
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_03B'
+    RF01CLX - WH_CapturePost, Rung 9
+    RF01CLX - WH_CapturePre, Rung 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_01A'
+    RF02CLX - WH_CapturePost, Rung 0
+    RF02CLX - WH_CapturePre, Rung 0
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_18D'
+    RF01CLX - WH_CapturePost, Rung 71
+    RF01CLX - WH_CapturePre, Rung 71
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_07D'
+    RF01CLX - WH_CapturePost, Rung 27
+    RF01CLX - WH_CapturePre, Rung 27
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_22C'
+    RF01CLX - WH_CapturePost, Rung 86
+    RF01CLX - WH_CapturePre, Rung 86
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_18A'
+    RF01CLX - WH_CapturePost, Rung 68
+    RF01CLX - WH_CapturePre, Rung 68
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_04B'
+    RF01CLX - WH_CapturePost, Rung 13
+    RF01CLX - WH_CapturePre, Rung 13
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_13A'
+    RF02CLX - WH_CapturePost, Rung 48
+    RF02CLX - WH_CapturePre, Rung 48
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_15B'
+    RF01CLX - WH_CapturePost, Rung 57
+    RF01CLX - WH_CapturePre, Rung 57
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_03A'
+    RF02CLX - WH_CapturePost, Rung 8
+    RF02CLX - WH_CapturePre, Rung 8
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_21A'
+    RF02CLX - WH_CapturePost, Rung 80
+    RF02CLX - WH_CapturePre, Rung 80
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_03C'
+    RF02CLX - WH_CapturePost, Rung 10
+    RF02CLX - WH_CapturePre, Rung 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_11A'
+    RF02CLX - WH_CapturePost, Rung 40
+    RF02CLX - WH_CapturePre, Rung 40
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_19B'
+    RF01CLX - WH_CapturePost, Rung 73
+    RF01CLX - WH_CapturePre, Rung 73
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_10B'
+    RF02CLX - WH_CapturePost, Rung 37
+    RF02CLX - WH_CapturePre, Rung 37
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_13A'
+    RF01CLX - WH_CapturePost, Rung 48
+    RF01CLX - WH_CapturePre, Rung 48
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_16D'
+    RF01CLX - WH_CapturePost, Rung 63
+    RF01CLX - WH_CapturePre, Rung 63
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_10C'
+    RF01CLX - WH_CapturePost, Rung 38
+    RF01CLX - WH_CapturePre, Rung 38
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_15B'
+    RF02CLX - WH_CapturePost, Rung 57
+    RF02CLX - WH_CapturePre, Rung 57
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_24B'
+    RF02CLX - WH_CapturePost, Rung 93
+    RF02CLX - WH_CapturePre, Rung 93
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_16A'
+    RF02CLX - WH_CapturePost, Rung 60
+    RF02CLX - WH_CapturePre, Rung 60
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_14C'
+    RF01CLX - WH_CapturePost, Rung 54
+    RF01CLX - WH_CapturePre, Rung 54
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_12D'
+    RF01CLX - WH_CapturePost, Rung 47
+    RF01CLX - WH_CapturePre, Rung 47
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_11D'
+    RF02CLX - WH_CapturePost, Rung 43
+    RF02CLX - WH_CapturePre, Rung 43
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_21C'
+    RF02CLX - WH_CapturePost, Rung 82
+    RF02CLX - WH_CapturePre, Rung 82
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_12D'
+    RF02CLX - WH_CapturePost, Rung 47
+    RF02CLX - WH_CapturePre, Rung 47
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_23C'
+    RF01CLX - WH_CapturePost, Rung 90
+    RF01CLX - WH_CapturePre, Rung 90
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_02B'
+    RF01CLX - WH_CapturePost, Rung 5
+    RF01CLX - WH_CapturePre, Rung 5
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_11B'
+    RF02CLX - WH_CapturePost, Rung 41
+    RF02CLX - WH_CapturePre, Rung 41
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_08A'
+    RF02CLX - WH_CapturePost, Rung 28
+    RF02CLX - WH_CapturePre, Rung 28
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_06C'
+    RF02CLX - WH_CapturePost, Rung 22
+    RF02CLX - WH_CapturePre, Rung 22
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_01C'
+    RF02CLX - WH_CapturePost, Rung 2
+    RF02CLX - WH_CapturePre, Rung 2
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_10D'
+    RF01CLX - WH_CapturePost, Rung 39
+    RF01CLX - WH_CapturePre, Rung 39
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_15D'
+    RF02CLX - WH_CapturePost, Rung 59
+    RF02CLX - WH_CapturePre, Rung 59
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_03D'
+    RF01CLX - WH_CapturePost, Rung 11
+    RF01CLX - WH_CapturePre, Rung 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_16B'
+    RF02CLX - WH_CapturePost, Rung 61
+    RF02CLX - WH_CapturePre, Rung 61
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_09C'
+    RF02CLX - WH_CapturePost, Rung 34
+    RF02CLX - WH_CapturePre, Rung 34
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_21A'
+    RF01CLX - WH_CapturePost, Rung 80
+    RF01CLX - WH_CapturePre, Rung 80
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_20C'
+    RF01CLX - WH_CapturePost, Rung 78
+    RF01CLX - WH_CapturePre, Rung 78
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_01B'
+    RF02CLX - WH_CapturePost, Rung 1
+    RF02CLX - WH_CapturePre, Rung 1
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_10B'
+    RF01CLX - WH_CapturePost, Rung 37
+    RF01CLX - WH_CapturePre, Rung 37
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_09A'
+    RF01CLX - WH_CapturePost, Rung 32
+    RF01CLX - WH_CapturePre, Rung 32
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_11B'
+    RF01CLX - WH_CapturePost, Rung 41
+    RF01CLX - WH_CapturePre, Rung 41
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_06B'
+    RF01CLX - WH_CapturePost, Rung 21
+    RF01CLX - WH_CapturePre, Rung 21
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_07C'
+    RF01CLX - WH_CapturePost, Rung 26
+    RF01CLX - WH_CapturePre, Rung 26
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_21B'
+    RF02CLX - WH_CapturePost, Rung 81
+    RF02CLX - WH_CapturePre, Rung 81
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_07B'
+    RF02CLX - WH_CapturePost, Rung 25
+    RF02CLX - WH_CapturePre, Rung 25
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_06D'
+    RF02CLX - WH_CapturePost, Rung 23
+    RF02CLX - WH_CapturePre, Rung 23
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_12C'
+    RF02CLX - WH_CapturePost, Rung 46
+    RF02CLX - WH_CapturePre, Rung 46
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_20C'
+    RF02CLX - WH_CapturePost, Rung 78
+    RF02CLX - WH_CapturePre, Rung 78
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_07D'
+    RF02CLX - WH_CapturePost, Rung 27
+    RF02CLX - WH_CapturePre, Rung 27
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_24A'
+    RF01CLX - WH_CapturePost, Rung 92
+    RF01CLX - WH_CapturePre, Rung 92
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_01A'
+    RF01CLX - WH_CapturePost, Rung 0
+    RF01CLX - WH_CapturePre, Rung 0
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_19D'
+    RF02CLX - WH_CapturePost, Rung 75
+    RF02CLX - WH_CapturePre, Rung 75
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_17D'
+    RF02CLX - WH_CapturePost, Rung 67
+    RF02CLX - WH_CapturePre, Rung 67
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_10C'
+    RF02CLX - WH_CapturePost, Rung 38
+    RF02CLX - WH_CapturePre, Rung 38
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_05C'
+    RF02CLX - WH_CapturePost, Rung 18
+    RF02CLX - WH_CapturePre, Rung 18
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_17A'
+    RF01CLX - WH_CapturePost, Rung 64
+    RF01CLX - WH_CapturePre, Rung 64
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_19C'
+    RF02CLX - WH_CapturePost, Rung 74
+    RF02CLX - WH_CapturePre, Rung 74
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_20B'
+    RF01CLX - WH_CapturePost, Rung 77
+    RF01CLX - WH_CapturePre, Rung 77
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_24C'
+    RF02CLX - WH_CapturePost, Rung 94
+    RF02CLX - WH_CapturePre, Rung 94
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_10A'
+    RF02CLX - WH_CapturePost, Rung 36
+    RF02CLX - WH_CapturePre, Rung 36
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_23C'
+    RF02CLX - WH_CapturePost, Rung 90
+    RF02CLX - WH_CapturePre, Rung 90
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_08B'
+    RF01CLX - WH_CapturePost, Rung 29
+    RF01CLX - WH_CapturePre, Rung 29
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_06A'
+    RF02CLX - WH_CapturePost, Rung 20
+    RF02CLX - WH_CapturePre, Rung 20
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_11C'
+    RF01CLX - WH_CapturePost, Rung 42
+    RF01CLX - WH_CapturePre, Rung 42
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_03D'
+    RF02CLX - WH_CapturePost, Rung 11
+    RF02CLX - WH_CapturePre, Rung 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_14B'
+    RF01CLX - WH_CapturePost, Rung 53
+    RF01CLX - WH_CapturePre, Rung 53
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_17C'
+    RF01CLX - WH_CapturePost, Rung 66
+    RF01CLX - WH_CapturePre, Rung 66
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_06A'
+    RF01CLX - WH_CapturePost, Rung 20
+    RF01CLX - WH_CapturePre, Rung 20
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_15C'
+    RF02CLX - WH_CapturePost, Rung 58
+    RF02CLX - WH_CapturePre, Rung 58
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_13B'
+    RF02CLX - WH_CapturePost, Rung 49
+    RF02CLX - WH_CapturePre, Rung 49
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_02D'
+    RF02CLX - WH_CapturePost, Rung 7
+    RF02CLX - WH_CapturePre, Rung 7
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_03A'
+    RF01CLX - WH_CapturePost, Rung 8
+    RF01CLX - WH_CapturePre, Rung 8
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_15A'
+    RF01CLX - WH_CapturePost, Rung 56
+    RF01CLX - WH_CapturePre, Rung 56
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_22B'
+    RF02CLX - WH_CapturePost, Rung 85
+    RF02CLX - WH_CapturePre, Rung 85
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_02A'
+    RF02CLX - WH_CapturePost, Rung 4
+    RF02CLX - WH_CapturePre, Rung 4
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_05B'
+    RF01CLX - WH_CapturePost, Rung 17
+    RF01CLX - WH_CapturePre, Rung 17
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_12C'
+    RF01CLX - WH_CapturePost, Rung 46
+    RF01CLX - WH_CapturePre, Rung 46
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_09A'
+    RF02CLX - WH_CapturePost, Rung 32
+    RF02CLX - WH_CapturePre, Rung 32
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_09B'
+    RF01CLX - WH_CapturePost, Rung 33
+    RF01CLX - WH_CapturePre, Rung 33
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_24A'
+    RF02CLX - WH_CapturePost, Rung 92
+    RF02CLX - WH_CapturePre, Rung 92
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_14A'
+    RF01CLX - WH_CapturePost, Rung 52
+    RF01CLX - WH_CapturePre, Rung 52
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_13D'
+    RF02CLX - WH_CapturePost, Rung 51
+    RF02CLX - WH_CapturePre, Rung 51
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_18C'
+    RF01CLX - WH_CapturePost, Rung 70
+    RF01CLX - WH_CapturePre, Rung 70
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_07A'
+    RF01CLX - WH_CapturePost, Rung 24
+    RF01CLX - WH_CapturePre, Rung 24
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_04C'
+    RF01CLX - WH_CapturePost, Rung 14
+    RF01CLX - WH_CapturePre, Rung 14
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_22A'
+    RF02CLX - WH_CapturePost, Rung 84
+    RF02CLX - WH_CapturePre, Rung 84
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_21C'
+    RF01CLX - WH_CapturePost, Rung 82
+    RF01CLX - WH_CapturePre, Rung 82
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_04A'
+    RF01CLX - WH_CapturePost, Rung 12
+    RF01CLX - WH_CapturePre, Rung 12
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_01C'
+    RF01CLX - WH_CapturePost, Rung 2
+    RF01CLX - WH_CapturePre, Rung 2
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_04D'
+    RF01CLX - WH_CapturePost, Rung 15
+    RF01CLX - WH_CapturePre, Rung 15
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_02C'
+    RF01CLX - WH_CapturePost, Rung 6
+    RF01CLX - WH_CapturePre, Rung 6
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_19A'
+    RF01CLX - WH_CapturePost, Rung 72
+    RF01CLX - WH_CapturePre, Rung 72
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_05A'
+    RF01CLX - WH_CapturePost, Rung 16
+    RF01CLX - WH_CapturePre, Rung 16
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_08A'
+    RF01CLX - WH_CapturePost, Rung 28
+    RF01CLX - WH_CapturePre, Rung 28
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_14A'
+    RF02CLX - WH_CapturePost, Rung 52
+    RF02CLX - WH_CapturePre, Rung 52
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_04C'
+    RF02CLX - WH_CapturePost, Rung 14
+    RF02CLX - WH_CapturePre, Rung 14
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_12A'
+    RF01CLX - WH_CapturePost, Rung 44
+    RF01CLX - WH_CapturePre, Rung 44
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_22A'
+    RF01CLX - WH_CapturePost, Rung 84
+    RF01CLX - WH_CapturePre, Rung 84
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_15A'
+    RF02CLX - WH_CapturePost, Rung 56
+    RF02CLX - WH_CapturePre, Rung 56
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_12B'
+    RF01CLX - WH_CapturePost, Rung 45
+    RF01CLX - WH_CapturePre, Rung 45
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_24D'
+    RF02CLX - WH_CapturePost, Rung 95
+    RF02CLX - WH_CapturePre, Rung 95
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_17A'
+    RF02CLX - WH_CapturePost, Rung 64
+    RF02CLX - WH_CapturePre, Rung 64
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_20D'
+    RF01CLX - WH_CapturePost, Rung 79
+    RF01CLX - WH_CapturePre, Rung 79
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_21D'
+    RF01CLX - WH_CapturePost, Rung 83
+    RF01CLX - WH_CapturePre, Rung 83
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_23B'
+    RF02CLX - WH_CapturePost, Rung 89
+    RF02CLX - WH_CapturePre, Rung 89
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_22B'
+    RF01CLX - WH_CapturePost, Rung 85
+    RF01CLX - WH_CapturePre, Rung 85
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_19D'
+    RF01CLX - WH_CapturePost, Rung 75
+    RF01CLX - WH_CapturePre, Rung 75
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_16B'
+    RF01CLX - WH_CapturePost, Rung 61
+    RF01CLX - WH_CapturePre, Rung 61
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_04D'
+    RF02CLX - WH_CapturePost, Rung 15
+    RF02CLX - WH_CapturePre, Rung 15
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_16D'
+    RF02CLX - WH_CapturePost, Rung 63
+    RF02CLX - WH_CapturePre, Rung 63
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_08C'
+    RF01CLX - WH_CapturePost, Rung 30
+    RF01CLX - WH_CapturePre, Rung 30
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_22D'
+    RF02CLX - WH_CapturePost, Rung 87
+    RF02CLX - WH_CapturePre, Rung 87
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_18D'
+    RF02CLX - WH_CapturePost, Rung 71
+    RF02CLX - WH_CapturePre, Rung 71
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_22C'
+    RF02CLX - WH_CapturePost, Rung 86
+    RF02CLX - WH_CapturePre, Rung 86
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_15D'
+    RF01CLX - WH_CapturePost, Rung 59
+    RF01CLX - WH_CapturePre, Rung 59
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_14B'
+    RF02CLX - WH_CapturePost, Rung 53
+    RF02CLX - WH_CapturePre, Rung 53
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_02C'
+    RF02CLX - WH_CapturePost, Rung 6
+    RF02CLX - WH_CapturePre, Rung 6
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_24B'
+    RF01CLX - WH_CapturePost, Rung 93
+    RF01CLX - WH_CapturePre, Rung 93
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_02D'
+    RF01CLX - WH_CapturePost, Rung 7
+    RF01CLX - WH_CapturePre, Rung 7
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_22D'
+    RF01CLX - WH_CapturePost, Rung 87
+    RF01CLX - WH_CapturePre, Rung 87
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF02CLX - WH_Node_06B'
+    RF02CLX - WH_CapturePost, Rung 21
+    RF02CLX - WH_CapturePre, Rung 21
+Warning: Duplicate AOI Backing Tag Reference Detected: 'RF01CLX - WH_Node_24D'
+    RF01CLX - WH_CapturePost, Rung 95
+    RF01CLX - WH_CapturePre, Rung 95
+Complete - 0 error(s), 209 warning(s)

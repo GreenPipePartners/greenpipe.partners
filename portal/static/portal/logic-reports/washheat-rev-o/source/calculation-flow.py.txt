@@ -1,0 +1,317 @@
+"""Wash-heat domain rules; CPython 3 and Ignition Jython 2.7 compatible.
+
+No Ignition, network, database, PLC or filesystem side effects. Decimal results
+are serialized as strings. Timestamps are UTC epoch milliseconds.
+"""
+from copy import deepcopy
+from datetime import datetime, timedelta
+from decimal import Decimal, InvalidOperation
+import json
+
+PROFILE = "FM497R5-D16-CUM-PHYSICAL-QUALIFYING-v1"
+FURNACES = ("RF01", "RF02")
+HANDLING_STATES = ("TRANSFERRING", "TRANSFER_ACCEPTED", "WASH_REQUESTED")
+STATE_NAMES = {10: "SOAKING", 20: "TRANSFERRING", 30: "TRANSFER_ACCEPTED",
+               40: "WASH_REQUESTED", 50: "REHEATING", 60: "READY",
+               70: "FULL_REHEAT_REQUIRED", 80: "FORGED", 90: "SET_OUT",
+               900: "REVIEW", 910: "DATA_INVALID", 920: "OVERSOAK"}
+STATE_CODES = dict((name, code) for code, name in STATE_NAMES.items())
+HANDLING_CODES = (20, 30, 40)
+SAMPLE_MAX_AGE_MS = 5000
+try:
+    STRING_TYPES = (basestring,)
+except NameError:
+    STRING_TYPES = (str,)
+
+
+class RuleError(ValueError):
+    pass
+
+
+def state_number(state):
+    """Numeric state is authoritative; migrate old persisted phase-only snapshots."""
+    code = state.get("state_code", STATE_CODES.get(state.get("phase")))
+    if code not in STATE_NAMES or STATE_NAMES[code] != state.get("phase"):
+        raise RuleError("State number/name mismatch")
+    return code
+
+
+def set_state(state, code):
+    state["state_code"] = code
+    state["phase"] = STATE_NAMES[code]  # SQL/display projection, never a jump target.
+
+
+def number(value, name, positive=False):
+    if value is None or isinstance(value, bool):
+        raise RuleError(name + " must be numeric")
+    if len(str(value)) > 64:
+        raise RuleError(name + " exceeds the numeric input limit")
+    try:
+        result = Decimal(str(value))
+    except (InvalidOperation, ValueError):
+        raise RuleError(name + " must be numeric")
+    if not result.is_finite() or result < 0 or result > Decimal("1e18") or (positive and result == 0):
+        raise RuleError(name + " is outside its allowed range")
+    return result
+
+
+def millis(value):
+    result = number(value, "timestamp")
+    if result != result.to_integral_value() or result > Decimal("253402300799000"):
+        raise RuleError("timestamp must be integral UTC epoch milliseconds")
+    return int(result)
+
+
+def text(value, name, maximum=128):
+    if not isinstance(value, STRING_TYPES):
+        raise RuleError(name + " is required")
+    result = value.strip()
+    if not result or len(result) > maximum or any(ord(c) < 32 for c in result):
+        raise RuleError(name + " is invalid")
+    return result
+
+
+def segment(value):
+    value = text(value, "segment", 3).upper()
+    if len(value) != 3 or not value[:2].isdigit() or not 1 <= int(value[:2]) <= 24 or value[2] not in "ABCD":
+        raise RuleError("segment must be 01A through 24D")
+    return value
+
+
+def utc(value):
+    return (datetime(1970, 1, 1) + timedelta(milliseconds=millis(value))).isoformat() + "Z"
+
+
+def canonical(value):
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True, allow_nan=False)
+
+
+def calculate_reheat(od, height, circle, cumulative_out_seconds):
+    d = number(od, "billet/blocker OD", True)
+    h = number(height, "blocker height D16", True)
+    c = None if circle is None or circle == "" else number(circle, "large inscribed circle", True)
+    t = number(cumulative_out_seconds, "cumulative out-of-furnace seconds")
+    inputs = {"od_in": str(d), "height_in": str(h), "circle_in": None if c is None else str(c), "cumulative_out_seconds": str(t)}
+    if t > 300:
+        return {"profile": PROFILE, "status": "FULL_REHEAT_REQUIRED", "inputs": inputs, "minutes": None, "seconds": None, "candidates": {}}
+    candidates = {
+        "od": Decimal(12) + Decimal("2.99") * d - Decimal("5.01") * 2 + Decimal("0.16") * t,
+        "height": Decimal(12) + Decimal("2.99") * h - Decimal("5.01") + Decimal("0.16") * t,
+    }
+    if c is not None:
+        candidates["circle"] = Decimal(12) + Decimal("2.99") * c - Decimal("5.01") + Decimal("0.16") * t
+    result = max(Decimal(45), min(candidates.values()))
+    return {"profile": PROFILE, "status": "CALCULATED", "inputs": inputs, "minutes": str(result), "seconds": str(result * 60), "candidates": dict((k, str(v)) for k, v in candidates.items())}
+
+
+def calculate_transfer_limit(inputs):
+    """FM20 Rev 57: all three inputs are elapsed seconds, including DH Tonnage."""
+    fields = ("max_transfer_seconds", "dh_cycle_start_seconds", "dh_tonnage_seconds")
+    missing = [name for name in fields if inputs.get(name) in (None, "")]
+    if missing:
+        return {"status": "MISSING_INPUTS", "seconds": None, "inputs": deepcopy(inputs), "missing": missing}
+    values = dict((name, number(inputs[name], name)) for name in fields)
+    seconds = values[fields[0]] + values[fields[1]] - values[fields[2]] - 3
+    milliseconds = seconds * 1000
+    if milliseconds != milliseconds.to_integral_value() or not 0 < milliseconds <= 2147483646:
+        raise RuleError("Cycle-start limit must be positive, bounded and exactly representable in milliseconds")
+    return {"status": "CALCULATED", "profile": "FM20R57-CYCLE-START-v1", "seconds": str(seconds),
+            "milliseconds": int(milliseconds), "inputs": dict((k, str(v)) for k, v in values.items())}
+
+
+def new_run(run_id, identity, furnace, location, at_ms, dimensions, max_soak_seconds, mode="SIMULATED"):
+    if furnace not in FURNACES:
+        raise RuleError("Only RF01/RF02 are in scope")
+    if mode not in ("SIMULATED", "PLC_OBSERVED"):
+        raise RuleError("Run mode must be SIMULATED or PLC_OBSERVED")
+    fields = ("serial_number", "work_order", "part_number", "stage", "qa_spec")
+    fields += tuple(key for key in ('press_recipe','press_qa') if key in identity)
+    identity = dict((key, text(identity.get(key), key)) for key in fields)
+    verified = calculate_reheat(dimensions.get("od_in"), dimensions.get("height_in"), dimensions.get("circle_in"), 0)["inputs"]
+    return {
+        "schema_version": 1, "profile": PROFILE, "run_id": text(run_id, "run_id", 64), "mode": mode,
+        "identity": identity, "furnace": furnace, "initial_segment": segment(location), "segment": segment(location),
+        "loaded_at_ms": millis(at_ms), "last_event_at_ms": millis(at_ms), "state_code": 10, "phase": "SOAKING",
+        "dimensions": dict((k, verified[k]) for k in ("od_in", "height_in", "circle_in")),
+        "max_qualifying_soak_seconds": str(number(max_soak_seconds, "max qualifying soak", True)),
+        "qualifying_soak_seconds": "0", "cumulative_out_seconds": "0", "deformation_started": False,
+        "data_valid": True, "removal_at_ms": None, "episodes": [], "decisions": [], "version": 0,
+        "transfer_limit": calculate_transfer_limit({}),
+    }
+
+
+def apply_event(current, event):
+    state = deepcopy(current)
+    phase = state_number(state)
+    set_state(state, phase)
+    kind = text(event.get("type"), "event type", 40)
+    event_id = text(event.get("event_id"), "event_id", 64)
+    actor = text(event.get("actor"), "actor")
+    at = millis(event.get("at_ms"))
+    if event.get("quality") != "GOOD":
+        raise RuleError("Bad or unknown event quality; no successful transition recorded")
+    if at < state["last_event_at_ms"]:
+        raise RuleError("Out-of-order event requires review")
+    if phase in (80, 90, 900):
+        raise RuleError("Completed runs are immutable")
+
+    if kind == "TRANSFER_LIMIT":
+        if phase not in (10, 50, 70):
+            raise RuleError("Set the transfer limit before removal")
+        result = calculate_transfer_limit(event.get("inputs", {}))
+        if result["status"] != "CALCULATED":
+            raise RuleError("All three FM20 timing inputs are required")
+        state["transfer_limit"] = result
+    elif kind == "REMOVE":
+        if phase not in (10, 50, 70):
+            raise RuleError("Removal is not valid in this state")
+        state["removal_at_ms"] = at
+        if 'cdl_id' in event:
+            state['last_cdl_id'] = event['cdl_id']
+            state['selected_press'] = event['press']
+        set_state(state, 20)
+        if state["episodes"] and state["episodes"][-1].get("returned_at_ms") is not None:
+            state["episodes"][-1]["removed_after_reheat_at_ms"] = at
+            state["episodes"][-1]["end_qualifying_soak_seconds"] = state["qualifying_soak_seconds"]
+    elif kind in ("UNLOAD_NOT_OK", "UNLOAD_OK"):
+        if phase != 20:
+            raise RuleError("Decision requires an undecided transfer; conflicting decisions need review")
+        reason = text(event.get("reason"), "decision reason", 512)
+        state["decisions"].append({"event_id": event_id, "at_ms": at, "actor": actor, "decision": kind, "reason": reason})
+        if kind == "UNLOAD_OK":
+            set_state(state, 30)
+        else:
+            if state["deformation_started"]:
+                raise RuleError("Wash heat is not eligible after deformation")
+            if state["episodes"]:
+                state["episodes"][-1]["outcome"] = "WASHED_AGAIN"
+            state["episodes"].append({
+                "episode_no": len(state["episodes"]) + 1, "source_segment": state["segment"],
+                "removed_at_ms": state["removal_at_ms"], "decision_at_ms": at, "actor": actor, "reason": reason,
+                "returned_at_ms": None, "return_segment": None, "removed_after_reheat_at_ms": None,
+                "outcome": "OPEN", "calculation": None,
+            })
+            set_state(state, 40)
+    elif kind == "RETURN":
+        if phase != 40:
+            raise RuleError("Physical return requires an explicit wash decision")
+        if event.get("furnace") != state["furnace"]:
+            raise RuleError("Parts must return to the same furnace")
+        episode = state["episodes"][-1]
+        duration = Decimal(at - episode["removed_at_ms"]) / 1000
+        cumulative = number(state["cumulative_out_seconds"], "cumulative time") + duration
+        dims = state["dimensions"]
+        result = calculate_reheat(dims["od_in"], dims["height_in"], dims["circle_in"], cumulative)
+        state["cumulative_out_seconds"] = str(cumulative)
+        state["segment"] = segment(event.get("segment"))
+        episode.update({"returned_at_ms": at, "return_segment": state["segment"], "excursion_seconds": str(duration), "calculation": result})
+        if state["mode"] == "PLC_OBSERVED":
+            episode["plc_return_key"] = deepcopy(event["plc_return_key"])
+            state["plc_binding"]["slot"] = event["plc_return_key"][-2]
+        set_state(state, 50 if result["status"] == "CALCULATED" else 70)
+    elif kind == "SOAK_READING":
+        total = number(event.get("qualifying_soak_seconds"), "qualifying soak")
+        if total < number(state["qualifying_soak_seconds"], "previous qualifying soak"):
+            raise RuleError("Qualifying soak counter decreased; reconciliation required")
+        state["qualifying_soak_seconds"] = str(total)
+    elif kind == "CYCLE_START":
+        if (phase == 40 and event.get('timing_basis') == 'FDC_ARRIVAL' and event.get('uncertainty_ms') == 1000
+                and abs(event.get('observed_at_ms', at) - state['episodes'][-1]['decision_at_ms']) <= 1000):
+            state.setdefault('advisory_observations', []).append({'type':kind, 'at_ms':event.get('observed_at_ms', at),
+                'timing_basis':'FDC_ARRIVAL', 'uncertainty_ms':1000, 'interpretation':'NEAR_SIMULTANEOUS_OPERATOR_DECISION_RETAINED'})
+            state['last_event_at_ms'] = max(at, state['last_event_at_ms'])
+            state['version'] += 1
+            return state
+        if phase not in (20, 30):
+            raise RuleError("Cycle start cannot cancel a committed wash decision")
+        set_state(state, 80)
+        state["deformation_started"] = True
+        if state["episodes"]:
+            state["episodes"][-1]["outcome"] = "FORGED"
+    elif kind == "SET_OUT_REMOVAL":
+        text(event.get("reason"), "set-out reason", 512)
+        set_state(state, 90)
+        if state["episodes"]:
+            episode = state["episodes"][-1]
+            if episode.get("returned_at_ms") is not None and episode.get("removed_after_reheat_at_ms") is None:
+                episode["removed_after_reheat_at_ms"] = at
+                episode["end_qualifying_soak_seconds"] = state["qualifying_soak_seconds"]
+            episode["outcome"] = "SET_OUT"
+    else:
+        raise RuleError("Unsupported event type: " + kind)
+    state["last_event_at_ms"] = at
+    state["version"] += 1
+    return state
+
+
+def project_status(state, now_ms, sample=None):
+    """Read-only projection: no polling tick is persisted as a business event."""
+    now_ms = millis(now_ms)
+    code = state_number(state)
+    result = {"phase": state["phase"], "state_code": code, "status_code": code, "status": state["phase"], "remaining_reheat_seconds": None, "ready": False}
+    if code == 900:
+        result["reason"] = state.get("review_reason")
+        return result
+    if state["mode"] == "PLC_OBSERVED" and code not in (80, 90, 900):
+        if (not sample or not sample.get("valid") or
+                not 0 <= now_ms - sample["received_at_ms"] <= SAMPLE_MAX_AGE_MS):
+            result.update(status="DATA_INVALID", status_code=910)
+            return result
+    if not state["data_valid"] or now_ms < state["last_event_at_ms"]:
+        result["status"] = "DATA_INVALID"
+        result["status_code"] = 910
+        return result
+    if code in (80, 90, 900):
+        return result
+    qualifying = str(Decimal(sample["qualifying_ms"]) / 1000) if state["mode"] == "PLC_OBSERVED" else state["qualifying_soak_seconds"]
+    remaining_soak = number(state["max_qualifying_soak_seconds"], "max soak") - number(qualifying, "soak")
+    result["remaining_qualifying_soak_seconds"] = str(remaining_soak)
+    if remaining_soak <= 0:
+        result["status"] = "OVERSOAK"
+        result["status_code"] = 920
+        return result
+    if code == 50:
+        ep = state["episodes"][-1]
+        if state["mode"] == "PLC_OBSERVED":
+            if sample.get("return_key") != ep["plc_return_key"] or sample.get("timer_state") != 10:
+                result.update(status="DATA_INVALID", status_code=910)
+                return result
+            elapsed = Decimal(sample["elapsed_ms"]) / 1000
+        else:
+            elapsed = Decimal(now_ms - ep["returned_at_ms"]) / 1000
+        left = max(Decimal(0), number(ep["calculation"]["seconds"], "required reheat") - elapsed)
+        result["remaining_reheat_seconds"] = str(left)
+        result["status"] = "READY" if left == 0 else "REHEATING"
+        result["status_code"] = 60 if left == 0 else 50
+        result["ready"] = left == 0
+        result["near_oversoak"] = remaining_soak <= 600
+        result["reheat_exceeds_remaining_soak_budget"] = left > remaining_soak
+    return result
+
+
+def tropos_record(state, episode_no):
+    """Generate review data, NOT an assertion of Tropos acceptance or transmission."""
+    if not 1 <= episode_no <= len(state["episodes"]):
+        raise RuleError("Unknown wash episode")
+    ep = state["episodes"][episode_no - 1]
+    if ep["outcome"] == "OPEN" or ep["returned_at_ms"] is None or ep["removed_after_reheat_at_ms"] is None:
+        raise RuleError("A completed physical return/removal is required for a complete Tropos record")
+    return {
+        "record_schema": "washheat.tropos-review.v1", "profile": PROFILE, "mode": state["mode"],
+        "run_id": state["run_id"], "episode_no": episode_no, "identity": deepcopy(state["identity"]),
+        "furnace": state["furnace"], "outcome": ep["outcome"], "reason": ep["reason"],
+        "review_status": "PENDING_QUALITY_PRODUCTION", "submission_status": "NOT_SENT",
+        "format_status": "TARGET_TROPOS_CONTRACT_UNCONFIRMED",
+        "fields": {
+            "time_in_furnace": utc(state["loaded_at_ms"]),
+            "forge_furnace_location": state["initial_segment"],
+            "time_out_furnace": utc(ep["removed_after_reheat_at_ms"]),
+            "time_dropped_part_removed": utc(ep["removed_at_ms"]),
+            "dropped_parts_furnace_location_when_reentered": ep["return_segment"],
+            "time_dropped_part_reentered": utc(ep["returned_at_ms"]),
+            "forge_furnace_soak_time_minutes": str(number(ep["end_qualifying_soak_seconds"], "soak") / 60),
+        },
+        "calculation": deepcopy(ep["calculation"]),
+        "source_state_version": state["version"],
+        "notes": "Seven logical fields follow FM497 A37:C43; soak uses approved accumulated qualifying time, not wall-clock subtraction. No Tropos wire format has been approved.",
+    }

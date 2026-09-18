@@ -1,0 +1,134 @@
+RUNG 000 [ADDED]
+COMMENT
+Receive source-controller facts before furnace programs run.
+JSR(WH_ReceiveLinks,0);
+
+RUNG 001 [ADDED]
+COMMENT
+More than one selected/stamped part is ambiguous; never pick the last scanned position.
+GT(WH_Site.CandidateCount,1)MOVE(30,WH_Site.Fault);
+
+RUNG 002 [ADDED]
+COMMENT
+The selected part requires one unambiguous 50 MN or 300 MN destination.
+EQ(WH_Site.CandidateCount,1)NE(WH_Site.CandidatePress,50)NE(WH_Site.CandidatePress,300)MOVE(35,WH_Site.Fault);
+
+RUNG 003 [ADDED]
+COMMENT
+Reject multiple accepted wash returns across the two-furnace scan.
+GT(WH_Site.ReturnCount,1)MOVE(33,WH_Site.Fault);
+
+RUNG 004 [ADDED]
+COMMENT
+Release the sole accepted return only after checking both furnace passes.
+EQ(WH_Site.ReturnCount,1)EQ(WH_Site.Fault,0)MOVE(1,WH_Site.ReturnPending);
+
+RUNG 005 [ADDED]
+COMMENT
+Begin the next accepted-return scan.
+MOVE(0,WH_Site.ReturnCount);
+
+RUNG 006 [ADDED]
+COMMENT
+Commit the candidate only after both furnace Pre dispatches have been scanned.
+EQ(WH_Site.CandidateCount,1)EQ(WH_Site.Active,0)EQ(WH_Site.Fault,0)OTE(WH_BindCandidate);
+
+RUNG 007 [ADDED]
+COMMENT
+Freeze the selected part/load identity before the legacy item can be moved or cleared.
+XIC(WH_BindCandidate)[MOVE(WH_Site.CandidateIndex,WH_Site.Index),MOVE(WH_Site.CandidateFurnace,WH_Site.Furnace),MOVE(WH_Site.CandidatePress,WH_Site.Press),COP(WH_Site.CandidateItem,WH_Site.Item,1)];
+
+RUNG 008 [ADDED]
+COMMENT
+Freeze the selected part/load identity before the legacy item can be moved or cleared.
+XIC(WH_BindCandidate)[MOVE(1,WH_Site.Active),MOVE(0,WH_Site.Removed),MOVE(0,WH_Site.DecisionPending),MOVE(0,WH_Site.CyclePending)];
+
+RUNG 009 [ADDED]
+COMMENT
+Freeze the selected part/load identity before the legacy item can be moved or cleared.
+XIC(WH_BindCandidate)[MOVE(0,WH_Site.DecisionObserved),MOVE(WH_SelectedCDL,WH_Site.CdlId)];
+
+RUNG 010 [ADDED]
+COMMENT
+Begin a fresh two-furnace selection pass; capture the existing destination selections.
+[MOVE(0,WH_Site.CandidateCount),MOVE(0,WH_Site.Destination1),MOVE(0,WH_Site.Destination2)];
+
+RUNG 011 [ADDED]
+COMMENT
+Use the selected press, not an OR of both presses.
+XIC(RF01_To_P5000_Select)XIO(RF01_To_P33000_Select)MOVE(50,WH_Site.Destination1);
+
+RUNG 012 [ADDED]
+COMMENT
+Use the selected press, not an OR of both presses.
+XIC(RF01_To_P33000_Select)XIO(RF01_To_P5000_Select)MOVE(300,WH_Site.Destination1);
+
+RUNG 013 [ADDED]
+COMMENT
+Use the selected press, not an OR of both presses.
+XIC(RF02_To_P5000_Select)XIO(RF02_To_P33000_Select)MOVE(50,WH_Site.Destination2);
+
+RUNG 014 [ADDED]
+COMMENT
+Use the selected press, not an OR of both presses.
+XIC(RF02_To_P33000_Select)XIO(RF02_To_P5000_Select)MOVE(300,WH_Site.Destination2);
+
+RUNG 015 [ADDED]
+COMMENT
+A second CDL start while a part is still handled is an overrun.
+XIC(WH_NewLinkEvent[0])[EQ(WH_Site.StartPending,1),EQ(WH_Site.Removed,1)]MOVE(31,WH_Site.Fault);
+
+RUNG 016 [ADDED]
+COMMENT
+Selected CDL adapter removal/transfer-start observation, with its source timestamp.
+XIC(WH_NewLinkEvent[0])EQ(WH_Site.Fault,0)[COP(WH_Link[0].EventUTC[0],WH_Site.StartUTC[0],7),MOVE(WH_Link[0].Furnace,WH_Site.StartFurnace),MOVE(1,WH_Site.StartPending)];
+
+RUNG 017 [ADDED]
+COMMENT
+Source furnace must match the frozen identity; a start may arrive before the stamp selection pass.
+EQ(WH_Site.StartPending,1)EQ(WH_Site.Active,1)NE(WH_Site.StartFurnace,WH_Site.Furnace)MOVE(31,WH_Site.Fault);
+
+RUNG 018 [ADDED]
+COMMENT
+Do not replace an unconsumed selected-press edge.
+XIC(WH_NewLinkEvent[1])EQ(WH_Site.Active,1)EQ(WH_Site.Press,50)EQ(WH_Site.CyclePending,1)MOVE(34,WH_Site.Fault);
+
+RUNG 019 [ADDED]
+COMMENT
+Latch only the selected 50 MN press Cycle Start; unrelated press events cannot close this transfer.
+XIC(WH_NewLinkEvent[1])EQ(WH_Site.Active,1)EQ(WH_Site.Press,50)EQ(WH_Site.Fault,0)[COP(WH_Link[1].EventUTC[0],WH_Site.CycleUTC[0],7),MOVE(1,WH_Site.CyclePending)];
+
+RUNG 020 [ADDED]
+COMMENT
+Do not replace an unconsumed selected-press edge.
+XIC(WH_NewLinkEvent[2])EQ(WH_Site.Active,1)EQ(WH_Site.Press,300)EQ(WH_Site.CyclePending,1)MOVE(34,WH_Site.Fault);
+
+RUNG 021 [ADDED]
+COMMENT
+Latch only the selected 300 MN press Cycle Start; unrelated press events cannot close this transfer.
+XIC(WH_NewLinkEvent[2])EQ(WH_Site.Active,1)EQ(WH_Site.Press,300)EQ(WH_Site.Fault,0)[COP(WH_Link[2].EventUTC[0],WH_Site.CycleUTC[0],7),MOVE(1,WH_Site.CyclePending)];
+
+RUNG 022 [ADDED]
+COMMENT
+Retain the arrival timestamp while allowing a one-second operator-decision window.
+MOVE(1000,WH_Site.CycleGrace.PRE);
+
+RUNG 023 [ADDED]
+COMMENT
+Delay cycle publication for one second so a near-simultaneous HMI decision can be captured first; this does not alter the measured arrival time.
+EQ(WH_Site.CyclePending,1)TON(WH_Site.CycleGrace,1000,0);
+
+RUNG 024 [ADDED]
+COMMENT
+Qualifying time maps to the retained legacy SoakTimer.ACC; clocks retain their explicit commissioning setting.
+[MOVE(0,WH_Settings.MappingApproved),MOVE(1,WH_Settings.QualifyingSourceApproved),MOVE(WH_ClockValidated,WH_Settings.ClockValidated)];
+
+RUNG 025 [ADDED]
+COMMENT
+Require selected CDL and selected press; the unused press does not block the active route.
+EQ(WH_Site.Fault,0)EQ(WH_LinkState[0].Valid,1)[EQ(WH_Site.Active,0),EQ(WH_Site.Press,50)EQ(WH_LinkState[1].Valid,1),EQ(WH_Site.Press,300)EQ(WH_LinkState[2].Valid,1)]MOVE(1,WH_Settings.MappingApproved);
+
+RUNG 026 [ADDED]
+COMMENT
+Calculate the warning and send the display packet back to CDL.
+JSR(WH_TransferDisplay,0);

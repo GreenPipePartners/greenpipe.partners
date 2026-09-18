@@ -1,0 +1,2232 @@
+{
+  "custom": {
+    "parts": [],
+    "search": "",
+    "form": {
+      "part_number": "",
+      "stage": "",
+      "qa_spec": "",
+      "press_recipe": "",
+      "press_qa": "",
+      "od_in": "",
+      "height_in": "",
+      "circle_in": "",
+      "max_transfer_seconds": "",
+      "dh_cycle_start_seconds": "",
+      "dh_tonnage_seconds": "",
+      "notes": "",
+      "active": true
+    },
+    "recipeId": "",
+    "revision": 0,
+    "barcode": "",
+    "message": "Load the part database or scan a process ticket.",
+    "history": []
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1440,
+      "height": 960
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "wrap": "nowrap",
+      "style": {
+        "gap": 0,
+        "backgroundColor": "#0B0B0B",
+        "fontFamily": "Arial, sans-serif",
+        "color": "#F5F5F5",
+        "overflow": "hidden"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "direction": "row",
+          "wrap": "nowrap",
+          "style": {
+            "gap": 12,
+            "padding": "16px 28px",
+            "alignItems": "center",
+            "borderBottom": "1px solid #343434",
+            "backgroundColor": "#101010"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "Mark"
+            },
+            "props": {
+              "text": "\u25ef",
+              "style": {
+                "fontSize": 34,
+                "color": "#F37321",
+                "whiteSpace": "normal"
+              }
+            },
+            "position": {
+              "basis": "auto",
+              "shrink": 0
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Brand"
+            },
+            "props": {
+              "direction": "column",
+              "wrap": "nowrap",
+              "style": {
+                "gap": 4
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Eyebrow"
+                },
+                "props": {
+                  "text": "MIDWAY OPERATIONS",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "text": "Wash Heat Automation",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              }
+            ],
+            "position": {
+              "grow": 1,
+              "basis": "0px"
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "Advisory"
+            },
+            "props": {
+              "text": "OPERATOR SUPPORT  /  OFFLINE DEVELOPMENT",
+              "style": {
+                "fontSize": 12,
+                "color": "#F37321",
+                "whiteSpace": "normal"
+              }
+            },
+            "position": {
+              "basis": "auto",
+              "shrink": 0
+            }
+          }
+        ],
+        "position": {
+          "basis": "80px",
+          "shrink": 0
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "direction": "row",
+          "wrap": "nowrap",
+          "style": {
+            "gap": 0,
+            "minHeight": 0
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Navigation"
+            },
+            "props": {
+              "direction": "column",
+              "wrap": "nowrap",
+              "style": {
+                "gap": 12,
+                "backgroundColor": "#101010",
+                "padding": 16,
+                "borderRight": "1px solid #343434"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Section"
+                },
+                "props": {
+                  "text": "WASH HEAT",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Scope"
+                },
+                "props": {
+                  "text": "RF01 / RF02",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Cdl"
+                },
+                "props": {
+                  "text": "CDL 1 or CDL 2\nOne handled part",
+                  "style": {
+                    "fontSize": 13,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavMain"
+                },
+                "props": {
+                  "text": "01  PART STATUS",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavParts"
+                },
+                "props": {
+                  "text": "02  PART DATA",
+                  "style": {
+                    "backgroundColor": "#342014",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #F37321",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/parts')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavTools"
+                },
+                "props": {
+                  "text": "03  CALCULATIONS / RECORDS",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/tools')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Timing"
+                },
+                "props": {
+                  "text": "ADVISORY TIMING\nPress arrival \u00b11 second",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "SignIn"
+                },
+                "props": {
+                  "text": "SIGN IN",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.login()"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "position": {
+              "basis": "235px",
+              "shrink": 0
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Content"
+            },
+            "props": {
+              "direction": "column",
+              "wrap": "nowrap",
+              "style": {
+                "gap": 14,
+                "backgroundColor": "#0B0B0B",
+                "padding": 28,
+                "overflow": "auto",
+                "minWidth": 0
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Heading"
+                },
+                "props": {
+                  "text": "Part data / wash-heat dimensions",
+                  "style": {
+                    "fontSize": 28,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Intro"
+                },
+                "props": {
+                  "text": "Exact operation lookup \u2022 dimensions in inches \u2022 revisioned changes",
+                  "style": {
+                    "fontSize": 14,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Message"
+                },
+                "props": {
+                  "text": "",
+                  "style": {
+                    "fontSize": 14,
+                    "color": "#F37321",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.message",
+                        "bidirectional": false
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "SearchField"
+                },
+                "props": {
+                  "direction": "column",
+                  "wrap": "nowrap",
+                  "style": {
+                    "gap": 5
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "SearchLabel"
+                    },
+                    "props": {
+                      "text": "Search part, stage, recipe or specification",
+                      "style": {
+                        "fontSize": 12,
+                        "color": "#B7B7B7",
+                        "whiteSpace": "normal"
+                      }
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.input.text-field",
+                    "meta": {
+                      "name": "Search"
+                    },
+                    "props": {
+                      "text": "",
+                      "deferUpdates": false,
+                      "rejectUpdatesWhileFocused": true,
+                      "placeholder": "Search part, stage, recipe or specification",
+                      "style": {
+                        "backgroundColor": "#1C1C1C",
+                        "color": "#F5F5F5",
+                        "border": "1px solid #343434",
+                        "borderRadius": 3,
+                        "padding": 8
+                      }
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.custom.search",
+                            "bidirectional": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "basis": "auto",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "Refresh"
+                },
+                "props": {
+                  "text": "SEARCH / REFRESH",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\ttry:\n\t    self.view.custom.parts = catalog.list_parts(self.view.custom.search)\n\t    self.view.custom.message = \"Part data refreshed (up to 500 matches). Click a row to edit.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.parts = []\n\t    self.view.custom.message = \"DATABASE UNAVAILABLE: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.table",
+                "meta": {
+                  "name": "PartTable"
+                },
+                "props": {
+                  "data": [],
+                  "columns": [
+                    {
+                      "field": "part_number",
+                      "header": {
+                        "title": "Part number",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 130,
+                      "editable": false
+                    },
+                    {
+                      "field": "stage",
+                      "header": {
+                        "title": "Stage",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 80,
+                      "editable": false
+                    },
+                    {
+                      "field": "qa_spec",
+                      "header": {
+                        "title": "Heat spec",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 170,
+                      "editable": false
+                    },
+                    {
+                      "field": "press_recipe",
+                      "header": {
+                        "title": "Press recipe",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 180,
+                      "editable": false
+                    },
+                    {
+                      "field": "press_qa",
+                      "header": {
+                        "title": "Press quality",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 170,
+                      "editable": false
+                    },
+                    {
+                      "field": "od_in",
+                      "header": {
+                        "title": "D10 OD (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 100,
+                      "editable": false
+                    },
+                    {
+                      "field": "height_in",
+                      "header": {
+                        "title": "D16 height (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 120,
+                      "editable": false
+                    },
+                    {
+                      "field": "circle_in",
+                      "header": {
+                        "title": "D30 (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 95,
+                      "editable": false
+                    },
+                    {
+                      "field": "active",
+                      "header": {
+                        "title": "Active",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 80,
+                      "editable": false
+                    },
+                    {
+                      "field": "revision",
+                      "header": {
+                        "title": "Rev",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 60,
+                      "editable": false
+                    }
+                  ],
+                  "pager": {
+                    "top": false,
+                    "bottom": true,
+                    "activeOption": 10,
+                    "options": [
+                      10,
+                      25,
+                      50
+                    ],
+                    "style": {
+                      "backgroundColor": "#242424",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "rows": {
+                    "height": 38,
+                    "style": {
+                      "color": "#F5F5F5"
+                    },
+                    "highlight": {
+                      "enabled": true,
+                      "color": "#342014"
+                    },
+                    "striped": {
+                      "enabled": true,
+                      "color": {
+                        "even": "#141414",
+                        "odd": "#1C1C1C"
+                      }
+                    }
+                  },
+                  "bodyStyle": {
+                    "backgroundColor": "#141414",
+                    "color": "#F5F5F5"
+                  },
+                  "cells": {
+                    "style": {
+                      "padding": "8px",
+                      "whiteSpace": "nowrap",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "emptyMessage": {
+                    "style": {
+                      "backgroundColor": "#141414",
+                      "color": "#B7B7B7"
+                    }
+                  },
+                  "headerStyle": {
+                    "backgroundColor": "#242424",
+                    "color": "#B7B7B7"
+                  },
+                  "selection": {
+                    "style": {
+                      "backgroundColor": "rgba(243,115,33,0.18)",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "style": {
+                    "backgroundColor": "#141414",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "270px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.parts",
+                        "bidirectional": false
+                      }
+                    }
+                  }
+                },
+                "events": {
+                  "component": {
+                    "onRowClick": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\t# Event values contain displayed columns; row indexes can age during refresh.\n\t# Resolve all five displayed immutable keys to the current complete SQL record.\n\trow = catalog.resolve(event.value, active_only=False)\n\tself.view.custom.form = dict((key, row[key]) for key in catalog.FIELDS)\n\tself.view.custom.recipeId = row[\"recipe_id\"]\n\tself.view.custom.revision = row[\"revision\"]\n\tself.view.custom.message = \"Editing \" + row[\"part_number\"] + \" / \" + row[\"press_recipe\"] + \" / revision \" + str(row[\"revision\"])\n\tself.view.custom.history = []"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "New"
+                },
+                "props": {
+                  "text": "NEW ENTRY",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tself.view.custom.form = {'part_number': '', 'stage': '', 'qa_spec': '', 'press_recipe': '', 'press_qa': '', 'od_in': '', 'height_in': '', 'circle_in': '', 'max_transfer_seconds': '', 'dh_cycle_start_seconds': '', 'dh_tonnage_seconds': '', 'notes': '', 'active': True}\n\tself.view.custom.recipeId = \"\"\n\tself.view.custom.revision = 0\n\tself.view.custom.history = []\n\tself.view.custom.message = \"New part operation.\""
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "BarcodeField"
+                },
+                "props": {
+                  "direction": "column",
+                  "wrap": "nowrap",
+                  "style": {
+                    "gap": 5
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "BarcodeLabel"
+                    },
+                    "props": {
+                      "text": "Scan the larger 11-field barcode",
+                      "style": {
+                        "fontSize": 12,
+                        "color": "#B7B7B7",
+                        "whiteSpace": "normal"
+                      }
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.input.text-field",
+                    "meta": {
+                      "name": "Barcode"
+                    },
+                    "props": {
+                      "text": "",
+                      "deferUpdates": false,
+                      "rejectUpdatesWhileFocused": true,
+                      "placeholder": "Scan the larger 11-field barcode",
+                      "style": {
+                        "backgroundColor": "#1C1C1C",
+                        "color": "#F5F5F5",
+                        "border": "1px solid #343434",
+                        "borderRadius": 3,
+                        "padding": 8
+                      }
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.custom.barcode",
+                            "bidirectional": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "basis": "auto",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "Decode"
+                },
+                "props": {
+                  "text": "LOAD KEYS FROM BARCODE",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\ttry:\n\t    parsed = catalog.parse_barcode(self.view.custom.barcode)\n\t    form = {'part_number': '', 'stage': '', 'qa_spec': '', 'press_recipe': '', 'press_qa': '', 'od_in': '', 'height_in': '', 'circle_in': '', 'max_transfer_seconds': '', 'dh_cycle_start_seconds': '', 'dh_tonnage_seconds': '', 'notes': '', 'active': True}\n\t    form.update(catalog.key(parsed))\n\t    self.view.custom.form = form\n\t    self.view.custom.recipeId = \"\"\n\t    self.view.custom.revision = 0\n\t    self.view.custom.history = []\n\t    self.view.custom.message = \"Decoded \" + parsed[\"serial_number\"] + \". Enter measured dimensions; the ticket supplies none.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"SCAN NOT LOADED: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Keys"
+                },
+                "props": {
+                  "direction": "row",
+                  "wrap": "wrap",
+                  "style": {
+                    "gap": 12
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "part_numberField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "part_numberLabel"
+                        },
+                        "props": {
+                          "text": "Part number",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "part_number"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Part number",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.part_number",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "stageField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "stageLabel"
+                        },
+                        "props": {
+                          "text": "Stage (keep leading zeros)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "stage"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Stage (keep leading zeros)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.stage",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "qa_specField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "qa_specLabel"
+                        },
+                        "props": {
+                          "text": "Heat specification \u2014 strQA",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "qa_spec"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Heat specification \u2014 strQA",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.qa_spec",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "press_recipeField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "press_recipeLabel"
+                        },
+                        "props": {
+                          "text": "Press recipe \u2014 strRecipe",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "press_recipe"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Press recipe \u2014 strRecipe",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.press_recipe",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "press_qaField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "press_qaLabel"
+                        },
+                        "props": {
+                          "text": "Press quality \u2014 strPressQA",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "press_qa"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Press quality \u2014 strPressQA",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.press_qa",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  }
+                ],
+                "position": {
+                  "grow": 0,
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "DimTitle"
+                },
+                "props": {
+                  "text": "FM497 calculation inputs",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Dimensions"
+                },
+                "props": {
+                  "direction": "row",
+                  "wrap": "wrap",
+                  "style": {
+                    "gap": 12
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "od_inField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "od_inLabel"
+                        },
+                        "props": {
+                          "text": "D10 billet / blocker OD (in)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "od_in"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "D10 billet / blocker OD (in)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.od_in",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "height_inField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "height_inLabel"
+                        },
+                        "props": {
+                          "text": "D16 blocker height (in)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "height_in"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "D16 blocker height (in)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.height_in",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "circle_inField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "circle_inLabel"
+                        },
+                        "props": {
+                          "text": "D30 inscribed circle (in), optional",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "circle_in"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "D30 inscribed circle (in), optional",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.circle_in",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  }
+                ],
+                "position": {
+                  "grow": 0,
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "TimeTitle"
+                },
+                "props": {
+                  "text": "FM20 timing inputs \u2014 all three, or blank",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Timing"
+                },
+                "props": {
+                  "direction": "row",
+                  "wrap": "wrap",
+                  "style": {
+                    "gap": 12
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "max_transfer_secondsField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "max_transfer_secondsLabel"
+                        },
+                        "props": {
+                          "text": "Maximum transfer time (s)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "max_transfer_seconds"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "Maximum transfer time (s)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.max_transfer_seconds",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "dh_cycle_start_secondsField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "dh_cycle_start_secondsLabel"
+                        },
+                        "props": {
+                          "text": "DH Cycle Start elapsed (s)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "dh_cycle_start_seconds"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "DH Cycle Start elapsed (s)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.dh_cycle_start_seconds",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "dh_tonnage_secondsField"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "wrap": "nowrap",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "dh_tonnage_secondsLabel"
+                        },
+                        "props": {
+                          "text": "DH Tonnage elapsed (s)",
+                          "style": {
+                            "fontSize": 12,
+                            "color": "#B7B7B7",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "dh_tonnage_seconds"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": false,
+                          "rejectUpdatesWhileFocused": true,
+                          "placeholder": "DH Tonnage elapsed (s)",
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434",
+                            "borderRadius": 3,
+                            "padding": 8
+                          }
+                        },
+                        "position": {
+                          "basis": "40px",
+                          "shrink": 0
+                        },
+                        "propConfig": {
+                          "props.text": {
+                            "binding": {
+                              "type": "property",
+                              "config": {
+                                "path": "view.custom.form.dh_tonnage_seconds",
+                                "bidirectional": true
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1,
+                      "shrink": 0
+                    }
+                  }
+                ],
+                "position": {
+                  "grow": 0,
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "NotesField"
+                },
+                "props": {
+                  "direction": "column",
+                  "wrap": "nowrap",
+                  "style": {
+                    "gap": 5
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "NotesLabel"
+                    },
+                    "props": {
+                      "text": "Dimension source / notes",
+                      "style": {
+                        "fontSize": 12,
+                        "color": "#B7B7B7",
+                        "whiteSpace": "normal"
+                      }
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.input.text-field",
+                    "meta": {
+                      "name": "Notes"
+                    },
+                    "props": {
+                      "text": "",
+                      "deferUpdates": false,
+                      "rejectUpdatesWhileFocused": true,
+                      "placeholder": "Dimension source / notes",
+                      "style": {
+                        "backgroundColor": "#1C1C1C",
+                        "color": "#F5F5F5",
+                        "border": "1px solid #343434",
+                        "borderRadius": 3,
+                        "padding": 8
+                      }
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.text": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.custom.form.notes",
+                            "bidirectional": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "basis": "auto",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "ActiveField"
+                },
+                "props": {
+                  "direction": "column",
+                  "wrap": "nowrap",
+                  "style": {
+                    "gap": 5
+                  }
+                },
+                "children": [
+                  {
+                    "type": "ia.display.label",
+                    "meta": {
+                      "name": "ActiveLabel"
+                    },
+                    "props": {
+                      "text": "Available for new runs",
+                      "style": {
+                        "fontSize": 12,
+                        "color": "#B7B7B7",
+                        "whiteSpace": "normal"
+                      }
+                    },
+                    "position": {
+                      "basis": "auto",
+                      "shrink": 0
+                    }
+                  },
+                  {
+                    "type": "ia.input.checkbox",
+                    "meta": {
+                      "name": "Active"
+                    },
+                    "props": {
+                      "selected": true,
+                      "text": "Available for new runs",
+                      "style": {
+                        "backgroundColor": "#1C1C1C",
+                        "color": "#F5F5F5",
+                        "border": "1px solid #343434",
+                        "borderRadius": 3,
+                        "padding": 8
+                      }
+                    },
+                    "position": {
+                      "basis": "40px",
+                      "shrink": 0
+                    },
+                    "propConfig": {
+                      "props.selected": {
+                        "binding": {
+                          "type": "property",
+                          "config": {
+                            "path": "view.custom.form.active",
+                            "bidirectional": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "basis": "auto",
+                  "grow": 0,
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "Save"
+                },
+                "props": {
+                  "text": "SAVE PART DATA",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "#0B0B0B",
+                    "border": "1px solid #F37321",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\trecord = None\n\ttry:\n\t    if not self.session.props.auth.authenticated:\n\t        raise ValueError(\"Sign in to save part data.\")\n\t    record = catalog.save(dict(self.view.custom.form), self.session.props.auth.user.userName, self.view.custom.recipeId or None, self.view.custom.revision)\n\t    self.view.custom.recipeId = record[\"recipe_id\"]\n\t    self.view.custom.revision = record[\"revision\"]\n\t    self.view.custom.form = dict((key,record[key]) for key in catalog.FIELDS)\n\t    self.view.custom.message = \"Saved revision \" + str(record[\"revision\"]) + \". Existing runs retain their original dimensions.\"\n\t    self.view.custom.parts = catalog.list_parts(self.view.custom.search)\n\texcept (Exception, JavaException) as error:\n\t    if record is None:\n\t        self.view.custom.message = \"NOT SAVED: \" + str(error)\n\t    else:\n\t        self.view.custom.message = \"SAVED revision \" + str(record[\"revision\"]) + \"; table refresh failed: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "History"
+                },
+                "props": {
+                  "text": "SHOW REVISION HISTORY",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\ttry:\n\t    self.view.custom.history = catalog.history(self.view.custom.recipeId)\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.history = []\n\t    self.view.custom.message = \"HISTORY UNAVAILABLE: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.table",
+                "meta": {
+                  "name": "HistoryTable"
+                },
+                "props": {
+                  "data": [],
+                  "columns": [
+                    {
+                      "field": "revision",
+                      "header": {
+                        "title": "Rev",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 60,
+                      "editable": false
+                    },
+                    {
+                      "field": "od_in",
+                      "header": {
+                        "title": "D10 (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 110,
+                      "editable": false
+                    },
+                    {
+                      "field": "height_in",
+                      "header": {
+                        "title": "D16 (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 110,
+                      "editable": false
+                    },
+                    {
+                      "field": "circle_in",
+                      "header": {
+                        "title": "D30 (in)",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 110,
+                      "editable": false
+                    },
+                    {
+                      "field": "active",
+                      "header": {
+                        "title": "Active",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 80,
+                      "editable": false
+                    },
+                    {
+                      "field": "updated_by",
+                      "header": {
+                        "title": "Changed by",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 160,
+                      "editable": false
+                    },
+                    {
+                      "field": "notes",
+                      "header": {
+                        "title": "Source / notes",
+                        "style": {
+                          "backgroundColor": "#242424",
+                          "color": "#B7B7B7"
+                        }
+                      },
+                      "width": 300,
+                      "editable": false
+                    }
+                  ],
+                  "pager": {
+                    "top": false,
+                    "bottom": true,
+                    "activeOption": 10,
+                    "options": [
+                      10,
+                      25,
+                      50
+                    ],
+                    "style": {
+                      "backgroundColor": "#242424",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "rows": {
+                    "height": 38,
+                    "style": {
+                      "color": "#F5F5F5"
+                    },
+                    "highlight": {
+                      "enabled": true,
+                      "color": "#342014"
+                    },
+                    "striped": {
+                      "enabled": true,
+                      "color": {
+                        "even": "#141414",
+                        "odd": "#1C1C1C"
+                      }
+                    }
+                  },
+                  "bodyStyle": {
+                    "backgroundColor": "#141414",
+                    "color": "#F5F5F5"
+                  },
+                  "cells": {
+                    "style": {
+                      "padding": "8px",
+                      "whiteSpace": "nowrap",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "emptyMessage": {
+                    "style": {
+                      "backgroundColor": "#141414",
+                      "color": "#B7B7B7"
+                    }
+                  },
+                  "headerStyle": {
+                    "backgroundColor": "#242424",
+                    "color": "#B7B7B7"
+                  },
+                  "selection": {
+                    "style": {
+                      "backgroundColor": "rgba(243,115,33,0.18)",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "style": {
+                    "backgroundColor": "#141414",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "190px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.history",
+                        "bidirectional": false
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "position": {
+              "grow": 1,
+              "basis": "0px",
+              "shrink": 1
+            }
+          }
+        ],
+        "position": {
+          "grow": 1,
+          "basis": "0px",
+          "shrink": 1
+        }
+      }
+    ],
+    "position": {
+      "grow": 0,
+      "basis": "auto",
+      "shrink": 0
+    }
+  },
+  "events": {
+    "system": {
+      "onStartup": {
+        "type": "script",
+        "scope": "G",
+        "config": {
+          "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import catalog\n\ttry:\n\t    self.custom.parts = catalog.list_parts(self.custom.search)\n\t    self.custom.message = \"Part data refreshed (up to 500 matches). Click a row to edit.\"\n\texcept (Exception, JavaException) as error:\n\t    self.custom.parts = []\n\t    self.custom.message = \"DATABASE UNAVAILABLE: \" + str(error)"
+        }
+      }
+    }
+  }
+}

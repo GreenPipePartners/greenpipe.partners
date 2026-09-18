@@ -1,0 +1,571 @@
+Verifying Controller...
+Verifying program connections
+Warning: Duplicate AOI Backing Tag Reference Detected: 'SetDACOSR - initRamp'
+    SetDACOSR - Logic, Line 4
+    SetDACOSR - Logic, Line 5
+Warning: Duplicate AOI Backing Tag Reference Detected: 'InitCylinderPLimit - initRamp'
+    InitCylinderPLimit - Logic, Line 6
+    InitCylinderPLimit - Logic, Line 4
+Warning: Duplicate AOI Backing Tag Reference Detected: 'InitPLimit - initRamp'
+    InitPLimit - Logic, Line 6
+    InitPLimit - Logic, Line 4
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - getValid'
+    Logic - HPUInit, Line 3
+    Logic - UDSlideInit, Line 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - setChannelDACOSR'
+    OSR - State, Line 51
+    OSR - State, Line 69
+    OSR - State, Line 79
+    OSR - State, Line 39
+    OSR - State, Line 33
+    OSR - State, Line 63
+    OSR - State, Line 45
+    OSR - State, Line 57
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initManualUnit'
+    OSR - UDSlideOSR, Line 9
+    OSR - ILEjectOSR, Line 8
+    OSR - PressOSR, Line 50
+    OSR - LDSlideOSR, Line 14
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Press - getTilt'
+    Press - Status, Line 58
+    Press - Status, Line 49
+    Press - Status, Line 53
+    Press - Status, Line 41
+Warning: Duplicate AOI Backing Tag Reference Detected: 'PressValves - initPI'
+    PressValves - CycleInWait, Line 10
+    PressValves - CycleInWait, Line 7
+    PressValves - CycleInWait, Line 8
+    PressValves - CycleInWait, Line 9
+    PressValves - CycleSlowInWait, Line 8
+    PressValves - CycleSlowInWait, Line 5
+    PressValves - CycleSlowInWait, Line 6
+    PressValves - CycleSlowInWait, Line 7
+    PressValves - CycleOutWait, Line 8
+    PressValves - CycleOutWait, Line 7
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Enterprise - getValidState'
+    Enterprise - CycleTransferTime, Line 56
+    Enterprise - CycleTransferTime, Line 59
+    Enterprise - CycleTransferTime, Line 50
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - initVelocity'
+    Logic - ILEjectInit, Line 7
+    Logic - LDSlideInit, Line 7
+    Logic - PressInit, Line 18
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initDecompress'
+    OSR - UDSlideOSR, Line 2
+    OSR - ILEjectOSR, Line 3
+    OSR - PressOSR, Line 2
+    OSR - PressOSR, Line 5
+    OSR - PressOSR, Line 3
+    OSR - PressOSR, Line 4
+    OSR - LDSlideOSR, Line 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initVelocity'
+    OSR - UDSlideOSR, Line 8
+    OSR - ILEjectOSR, Line 16
+    OSR - LDSlideOSR, Line 13
+Warning: Duplicate AOI Backing Tag Reference Detected: 'PressValves - getValidState'
+    PressValves - CycleDecompressWait, Line 16
+    PressValves - CycleDecompressWait, Line 15
+    PressValves - CycleDecompressWait, Line 18
+    PressValves - CycleDecompressWait, Line 17
+    PressValves - CycleDecompressWait, Line 14
+    PressValves - CyclePressureWait, Line 21
+    PressValves - CyclePressureWait, Line 19
+    PressValves - CyclePressureWait, Line 17
+    PressValves - CyclePressureWait, Line 18
+    PressValves - CyclePressureWait, Line 16
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlide - getValid'
+    LDSlide - CycleAutoComplete, Line 2
+    LDSlide - CycleManualIn, Line 4
+    LDSlide - CycleManualOut, Line 5
+    LDSlide - CycleManualWait, Line 2
+    LDSlide - CycleAutoInComplete, Line 2
+    LDSlide - CycleAutoOutComplete, Line 2
+    LDSlide - CycleAutoInWait, Line 3
+    LDSlide - CycleIdleWait, Line 3
+    LDSlide - CycleAutoOut, Line 3
+    LDSlide - CycleAutoOutWait, Line 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlide - getValidState'
+    UDSlide - CycleManualOutWait, Line 24
+    UDSlide - CycleManualOutWait, Line 16
+    UDSlide - CycleManualInWait, Line 24
+    UDSlide - CycleManualInWait, Line 16
+    UDSlide - CycleAutoOut, Line 8
+    UDSlide - CycleAutoInWait, Line 11
+    UDSlide - CycleManual, Line 17
+    UDSlide - CycleManual, Line 30
+    UDSlide - CycleManual, Line 14
+    UDSlide - CycleAutoOutWait, Line 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'MachineLogic - setCyclePushButtons'
+    MachineLogic - SetMode, Line 15
+    MachineLogic - SetMode, Line 62
+    MachineLogic - SetMode, Line 48
+    MachineLogic - SetMode, Line 58
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlide - getManualUnitIn'
+    LDSlide - CycleManualIn, Line 15
+    LDSlide - CycleManualInWait, Line 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Servo - setRamp'
+    Servo - State, Line 51
+    Servo - PressServo, Line 75
+    Servo - PressServo, Line 56
+    Servo - PressServo, Line 66
+    Servo - PressServo, Line 62
+    Servo - PressServo, Line 61
+    Servo - PressServo, Line 55
+    Servo - PressServo, Line 63
+    Servo - PressServo, Line 64
+    Servo - PressServo, Line 58
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initFeedrate'
+    OSR - UDSlideOSR, Line 6
+    OSR - UDSlideOSR, Line 6
+    OSR - ILEjectOSR, Line 14
+    OSR - PressOSR, Line 17
+    OSR - PressOSR, Line 19
+    OSR - PressOSR, Line 18
+    OSR - PressOSR, Line 20
+    OSR - LDSlideOSR, Line 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlideValves - getValidState'
+    UDSlideValves - CycleDecompressWait, Line 9
+    UDSlideValves - CyclePressureWait, Line 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Pumps - setPump'
+    Pumps - State, Line 50
+    Pumps - State, Line 41
+    Pumps - State, Line 46
+    Pumps - State, Line 47
+    Pumps - State, Line 42
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - initMessage'
+    Logic - ILEjectInit, Line 10
+    Logic - ILEjectInit, Line 9
+    Logic - ILEjectInit, Line 10
+    Logic - ILEjectInit, Line 9
+    Logic - FirstScan, Line 72
+    Logic - FirstScan, Line 73
+    Logic - FirstScan, Line 73
+    Logic - FirstScan, Line 72
+    Logic - FirstScan, Line 14
+    Logic - FirstScan, Line 14
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - initPLimit'
+    Logic - ILEjectInit, Line 6
+    Logic - LDSlideInit, Line 6
+    Logic - PressInit, Line 15
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Engineering - queueAddEntry'
+    Engineering - AddEntry, Line 73
+    Engineering - AddEntry, Line 68
+    Engineering - AddEntry, Line 64
+    Engineering - AddEntry, Line 69
+    Engineering - AddEntry, Line 72
+    Engineering - AddEntry, Line 70
+    Engineering - AddEntry, Line 71
+    Engineering - AddEntry, Line 66
+    Engineering - AddEntry, Line 65
+    Engineering - AddEntry, Line 67
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ILEjectValves - getValidState'
+    ILEjectValves - CycleDecompress, Line 12
+    ILEjectValves - CycleDecompressWait, Line 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlide - getValidState'
+    LDSlide - CycleManualOutWait, Line 17
+    LDSlide - CycleManualOutWait, Line 25
+    LDSlide - CycleAutoInWait, Line 10
+    LDSlide - CycleIdleWait, Line 15
+    LDSlide - CycleAutoOut, Line 8
+    LDSlide - CycleManual, Line 23
+    LDSlide - CycleManual, Line 11
+    LDSlide - CycleManual, Line 17
+    LDSlide - CycleAutoOutWait, Line 10
+    LDSlide - CycleAuto, Line 16
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Press - getValidState'
+    Press - CyclePressureHoldComplete, Line 9
+    Press - CycleAutoOutWait, Line 9
+    Press - CycleAutoWait, Line 8
+    Press - CycleAutoOutComplete, Line 9
+    Press - CycleAutoFastInComplete, Line 11
+    Press - CycleAutoSlowInComplete, Line 10
+    Press - CycleAutoSlowInWait, Line 11
+    Press - CycleAutoFastOutComplete, Line 9
+    Press - CycleIdleWait, Line 12
+    Press - CycleIdleWait, Line 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Message - setMessage'
+    Message - State, Line 20
+    Message - State, Line 12
+    Message - State, Line 52
+    Message - State, Line 15
+    Message - State, Line 5
+    Message - State, Line 17
+    Message - State, Line 8
+    Message - State, Line 11
+    Message - State, Line 18
+    Message - State, Line 9
+Warning: Duplicate AOI Backing Tag Reference Detected: 'MachineLogic - getStringCompare'
+    MachineLogic - Status, Line 21
+    MachineLogic - Status, Line 16
+    MachineLogic - Status, Line 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - setADCOSR'
+    OSR - State, Line 74
+    OSR - State, Line 38
+    OSR - State, Line 44
+    OSR - State, Line 56
+    OSR - State, Line 32
+    OSR - State, Line 62
+    OSR - State, Line 50
+    OSR - State, Line 68
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Press - setManualUnit'
+    Press - CycleManualFastOut, Line 11
+    Press - CycleManualFastOut, Line 12
+    Press - CycleManualIn, Line 87
+    Press - CycleManualIn, Line 88
+    Press - CycleManualIn, Line 51
+    Press - CycleManualIn, Line 52
+    Press - CycleManualFastOutWait, Line 25
+    Press - CycleManualInWait, Line 17
+    Press - CycleManualOutWait, Line 24
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initRamp'
+    OSR - CylinderPE53OSR, Line 25
+    OSR - CylinderPE51OSR, Line 25
+    OSR - CylinderPE54OSR, Line 25
+    OSR - CylinderPE52OSR, Line 25
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Servo - setPI'
+    Servo - LDSlideServo, Line 10
+    Servo - ILEjectServo, Line 9
+    Servo - UDSlideServo, Line 27
+    Servo - PressServo, Line 51
+    Servo - PressServo, Line 50
+    Servo - PressServo, Line 52
+    Servo - PressServo, Line 53
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - initRamp'
+    Logic - ILEjectInit, Line 3
+    Logic - ILEjectInit, Line 4
+    Logic - ILEjectInit, Line 5
+    Logic - LDSlideInit, Line 4
+    Logic - LDSlideInit, Line 3
+    Logic - LDSlideInit, Line 5
+    Logic - HPUInit, Line 52
+    Logic - HPUInit, Line 51
+    Logic - UDSlideInit, Line 12
+    Logic - UDSlideInit, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - setADCOSR'
+    Logic - HardwareInit, Line 24
+    Logic - HardwareInit, Line 18
+    Logic - HardwareInit, Line 34
+    Logic - HardwareInit, Line 41
+    Logic - HardwareInit, Line 21
+    Logic - HardwareInit, Line 37
+    Logic - HardwareInit, Line 28
+    Logic - HardwareInit, Line 31
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initHPLimit'
+    OSR - CylinderPE53OSR, Line 24
+    OSR - CylinderPE51OSR, Line 24
+    OSR - CylinderPE54OSR, Line 24
+    OSR - CylinderPE52OSR, Line 24
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlideValves - initPI'
+    UDSlideValves - CycleOutWait, Line 5
+    UDSlideValves - CycleInWait, Line 5
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Press - getManualUnit'
+    Press - CycleManualFastOut, Line 14
+    Press - CycleManualOut, Line 10
+    Press - CycleManualFastInWait, Line 18
+    Press - CycleManualIn, Line 17
+    Press - CycleManual, Line 21
+    Press - CycleManualFastOutWait, Line 26
+    Press - CycleManualFastIn, Line 9
+    Press - CycleManualWait, Line 17
+    Press - CycleManualInWait, Line 23
+    Press - CycleManualOutWait, Line 28
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Press - getMovePushbuttons'
+    Press - CycleManualFastOut, Line 21
+    Press - CycleManualOut, Line 20
+    Press - CycleManualFastInWait, Line 36
+    Press - CycleManualIn, Line 60
+    Press - CycleManual, Line 29
+    Press - CycleManualFastOutWait, Line 39
+    Press - CycleManualWait, Line 21
+    Press - CycleManualInWait, Line 47
+    Press - CycleManualOutWait, Line 40
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HPUCycle - setPumpStart'
+    HPUCycle - State, Line 172
+    HPUCycle - State, Line 125
+    HPUCycle - State, Line 186
+    HPUCycle - State, Line 175
+    HPUCycle - State, Line 130
+    HPUCycle - State, Line 145
+    HPUCycle - State, Line 155
+    HPUCycle - State, Line 134
+    HPUCycle - State, Line 162
+    HPUCycle - State, Line 140
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - setDACOSR'
+    Logic - HardwareInit, Line 31
+    Logic - HardwareInit, Line 21
+    Logic - HardwareInit, Line 37
+    Logic - HardwareInit, Line 34
+    Logic - HardwareInit, Line 28
+    Logic - HardwareInit, Line 44
+    Logic - HardwareInit, Line 18
+    Logic - HardwareInit, Line 24
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlideValves - initPI'
+    LDSlideValves - CycleInWait, Line 16
+    LDSlideValves - CycleOutWait, Line 12
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlide - getManualUnitOut'
+    LDSlide - CycleManualOutWait, Line 14
+    LDSlide - CycleManualOut, Line 16
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Engineering - queueEmpty'
+    Engineering - CycleIdle, Line 42
+    Engineering - CycleIdle, Line 70
+Warning: Duplicate AOI Backing Tag Reference Detected: 'MachineLogic - getValidState'
+    MachineLogic - CycleAutoProfile2Complete, Line 8
+    MachineLogic - CycleAutoProfile2Complete, Line 10
+    MachineLogic - CycleAutoProfile1Wait, Line 12
+    MachineLogic - CycleAutoProfile1Wait, Line 10
+    MachineLogic - CycleAutoProfile1Wait, Line 11
+    MachineLogic - CycleAutoProfile1Wait, Line 13
+    MachineLogic - CycleAutoProfile1, Line 13
+    MachineLogic - CycleAutoProfile1, Line 20
+    MachineLogic - CycleAutoProfile2, Line 13
+    MachineLogic - CycleAutoProfile1Complete, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlide - getMovePushButtons'
+    LDSlide - CycleManualIn, Line 19
+    LDSlide - CycleManualOutWait, Line 22
+    LDSlide - CycleManualOut, Line 20
+    LDSlide - CycleManual, Line 68
+    LDSlide - CycleManualInWait, Line 27
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - queueInit'
+    Logic - FirstScan, Line 53
+    Logic - FirstScan, Line 52
+    Logic - FirstScan, Line 49
+    Logic - FirstScan, Line 50
+    Logic - FirstScan, Line 51
+    Logic - FirstScan, Line 53
+    Logic - FirstScan, Line 49
+    Logic - FirstScan, Line 52
+    Logic - FirstScan, Line 51
+    Logic - FirstScan, Line 50
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HPUCycle - getValid'
+    HPUCycle - CycleStartM5, Line 3
+    HPUCycle - CycleStartM16, Line 3
+    HPUCycle - CycleStartM19, Line 3
+    HPUCycle - CycleStartM17, Line 3
+    HPUCycle - CycleStopM0, Line 3
+    HPUCycle - CycleStopM12, Line 3
+    HPUCycle - CycleStartM15, Line 3
+    HPUCycle - CycleStartM13, Line 3
+    HPUCycle - CycleStopM16, Line 3
+    HPUCycle - CycleStartM7, Line 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Servo - getTable'
+    Servo - Test, Line 12
+    Servo - PressServo, Line 68
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Logic - initDecompress'
+    Logic - ILEjectInit, Line 8
+    Logic - LDSlideInit, Line 8
+    Logic - PressInit, Line 19
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Pumps - getValid'
+    Pumps - PumpsCycleHold, Line 3
+    Pumps - PumpsCycleIdle, Line 3
+Warning: Duplicate AOI Backing Tag Reference Detected: 'IOIn - setIOForce'
+    IOIn - State(Orig), Line 65
+    IOIn - State(Pend), Line 115
+    IOIn - State(Pend), Line 217
+    IOIn - State(Pend), Line 148
+    IOIn - State(Orig), Line 182
+    IOIn - State(Orig), Line 148
+    IOIn - State(Pend), Line 130
+    IOIn - State(Orig), Line 215
+    IOIn - State(Pend), Line 3
+    IOIn - State(Pend), Line 38
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlide - getManualUnitOut'
+    UDSlide - CycleManualOutWait, Line 13
+    UDSlide - CycleManualOut, Line 11
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlide - getManualUnitIn'
+    UDSlide - CycleManualInWait, Line 13
+    UDSlide - CycleManualIn, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'PressValves - setCylindersOverride'
+    PressValves - State, Line 67
+    PressValves - State, Line 65
+    PressValves - State, Line 69
+Warning: Duplicate AOI Backing Tag Reference Detected: 'IOOut - setIOForce'
+    IOOut - State, Line 117
+    IOOut - State, Line 244
+    IOOut - State, Line 62
+    IOOut - State, Line 23
+    IOOut - State, Line 36
+    IOOut - State, Line 143
+    IOOut - State, Line 257
+    IOOut - State, Line 104
+    IOOut - State, Line 91
+    IOOut - State, Line 76
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ADCIOIn - setADC'
+    ADCIOIn - State, Line 26
+    ADCIOIn - State, Line 4
+    ADCIOIn - State, Line 34
+    ADCIOIn - State, Line 34
+    ADCIOIn - State, Line 40
+    ADCIOIn - State, Line 38
+    ADCIOIn - State, Line 28
+    ADCIOIn - State, Line 5
+    ADCIOIn - State, Line 8
+    ADCIOIn - State, Line 42
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ILEjectValves - initPI'
+    ILEjectValves - CycleOutWait, Line 4
+    ILEjectValves - CycleInWait, Line 5
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ADC - setCylinderPressure'
+    ADC - State, Line 80
+    ADC - State, Line 78
+    ADC - State, Line 79
+    ADC - State, Line 81
+Warning: Duplicate AOI Backing Tag Reference Detected: 'HPUCycle - setMotorStart'
+    HPUCycle - State, Line 183
+    HPUCycle - State, Line 152
+    HPUCycle - State, Line 146
+    HPUCycle - State, Line 148
+    HPUCycle - State, Line 176
+    HPUCycle - State, Line 178
+    HPUCycle - State, Line 129
+    HPUCycle - State, Line 150
+    HPUCycle - State, Line 156
+    HPUCycle - State, Line 137
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Servo - setPIRamp'
+    Servo - LDSlideServo, Line 9
+    Servo - ILEjectServo, Line 8
+    Servo - UDSlideServo, Line 26
+    Servo - PressServo, Line 53
+    Servo - PressServo, Line 52
+    Servo - PressServo, Line 51
+    Servo - PressServo, Line 50
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Servo - setDAC'
+    Servo - State, Line 29
+    Servo - State, Line 61
+    Servo - State, Line 62
+    Servo - State, Line 25
+    Servo - State, Line 60
+    Servo - State, Line 30
+    Servo - State, Line 13
+    Servo - State, Line 14
+    Servo - State, Line 31
+    Servo - State, Line 63
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Engineering - queueInit'
+    Engineering - CycleToggleFault, Line 6
+    Engineering - CycleToggleFault, Line 8
+    Engineering - CycleToggleFault, Line 7
+    Engineering - CycleToggleFault, Line 7
+    Engineering - CycleToggleFault, Line 9
+    Engineering - CycleToggleFault, Line 9
+    Engineering - CycleToggleFault, Line 10
+    Engineering - CycleToggleFault, Line 6
+    Engineering - CycleToggleFault, Line 11
+    Engineering - CycleToggleFault, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initCylinderPressure'
+    OSR - CylinderPE53OSR, Line 4
+    OSR - CylinderPE51OSR, Line 4
+    OSR - CylinderPE54OSR, Line 4
+    OSR - CylinderPE52OSR, Line 4
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initCylinderInPosition'
+    OSR - UDSlideOSR, Line 5
+    OSR - ILEjectOSR, Line 13
+    OSR - PressOSR, Line 13
+    OSR - PressOSR, Line 15
+    OSR - PressOSR, Line 14
+    OSR - PressOSR, Line 12
+    OSR - LDSlideOSR, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initGain'
+    OSR - UDSlideOSR, Line 7
+    OSR - CylinderPE53OSR, Line 3
+    OSR - CylinderPE51OSR, Line 3
+    OSR - CylinderPE54OSR, Line 3
+    OSR - ILEjectOSR, Line 15
+    OSR - CylinderPE52OSR, Line 3
+    OSR - LDSlideOSR, Line 12
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Engineering - queueFull'
+    Engineering - AddEntry, Line 57
+    Engineering - AddEntry, Line 53
+    Engineering - AddEntry, Line 50
+    Engineering - AddEntry, Line 55
+    Engineering - AddEntry, Line 51
+    Engineering - AddEntry, Line 49
+    Engineering - AddEntry, Line 48
+    Engineering - AddEntry, Line 56
+    Engineering - AddEntry, Line 52
+    Engineering - AddEntry, Line 54
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ILEject - getManualUnit'
+    ILEject - CycleManual, Line 27
+    ILEject - CycleManualOutWait, Line 14
+    ILEject - CycleManualInWait, Line 16
+    ILEject - CycleManualOut, Line 11
+    ILEject - CycleManualIn, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initTable'
+    OSR - PressOSR, Line 27
+    OSR - PressOSR, Line 42
+    OSR - PressOSR, Line 28
+    OSR - PressOSR, Line 44
+    OSR - PressOSR, Line 45
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlideValves - getValid'
+    LDSlideValves - CycleOut, Line 2
+    LDSlideValves - CycleIdle, Line 3
+    LDSlideValves - CycleDecompress, Line 3
+    LDSlideValves - CycleIdleWait, Line 2
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initPressure'
+    OSR - UDSlideOSR, Line 3
+    OSR - ILEjectOSR, Line 11
+    OSR - LDSlideOSR, Line 8
+    OSR - LDSlideOSR, Line 7
+    OSR - LDSlideOSR, Line 6
+Warning: Duplicate AOI Backing Tag Reference Detected: 'Pumps - getHPLimitFeedrate'
+    Pumps - Status, Line 131
+    Pumps - Status, Line 139
+    Pumps - Status, Line 99
+    Pumps - Status, Line 127
+    Pumps - Status, Line 110
+    Pumps - Status, Line 119
+    Pumps - Status, Line 150
+    Pumps - Status, Line 169
+    Pumps - Status, Line 135
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initCylinderPLimit'
+    OSR - UDSlideOSR, Line 10
+    OSR - ILEjectOSR, Line 4
+    OSR - PressOSR, Line 23
+    OSR - PressOSR, Line 25
+    OSR - PressOSR, Line 22
+    OSR - PressOSR, Line 24
+    OSR - LDSlideOSR, Line 15
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - setIOForceOSR'
+    OSR - State, Line 18
+    OSR - State, Line 16
+    OSR - State, Line 7
+    OSR - State, Line 10
+    OSR - State, Line 21
+    OSR - State, Line 1
+    OSR - State, Line 22
+    OSR - State, Line 6
+    OSR - State, Line 29
+    OSR - State, Line 26
+Warning: Duplicate AOI Backing Tag Reference Detected: 'PressValves - setCylinderState'
+    PressValves - State, Line 70
+    PressValves - State, Line 64
+    PressValves - State, Line 66
+    PressValves - State, Line 68
+Warning: Duplicate AOI Backing Tag Reference Detected: 'ILEject - getValidState'
+    ILEject - CycleAutoIn, Line 8
+    ILEject - CycleAutoOutWait, Line 10
+    ILEject - CycleManual, Line 21
+    ILEject - CycleManual, Line 11
+    ILEject - CycleManual, Line 16
+    ILEject - CycleAuto, Line 11
+    ILEject - CycleManualOutWait, Line 17
+    ILEject - CycleManualInWait, Line 19
+    ILEject - CycleIdleWait, Line 11
+    ILEject - CycleAutoInWait, Line 10
+Warning: Duplicate AOI Backing Tag Reference Detected: 'UDSlide - getMovePushButtons'
+    UDSlide - CycleManualOutWait, Line 21
+    UDSlide - CycleManualInWait, Line 21
+    UDSlide - CycleManualIn, Line 14
+    UDSlide - CycleManual, Line 46
+    UDSlide - CycleManualOut, Line 15
+Warning: Duplicate AOI Backing Tag Reference Detected: 'LDSlideValves - getValidState'
+    LDSlideValves - CycleDecompressWait, Line 10
+    LDSlideValves - CycleDecompressWait, Line 11
+    LDSlideValves - CycleIn, Line 27
+    LDSlideValves - CycleDecompress, Line 17
+Warning: Duplicate AOI Backing Tag Reference Detected: 'OSR - initLimit'
+    OSR - UDSlideOSR, Line 4
+    OSR - ILEjectOSR, Line 12
+    OSR - PressOSR, Line 7
+    OSR - PressOSR, Line 9
+    OSR - PressOSR, Line 8
+    OSR - PressOSR, Line 10
+    OSR - LDSlideOSR, Line 9
+Complete - 0 error(s), 79 warning(s)

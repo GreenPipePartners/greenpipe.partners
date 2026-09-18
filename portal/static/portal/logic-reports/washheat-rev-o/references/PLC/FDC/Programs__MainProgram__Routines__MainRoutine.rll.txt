@@ -1,0 +1,109 @@
+RUNG 000 [ADDED]
+COMMENT
+WH development epoch only; no event recovery/replay.
+XIC(S:FS)JSR(WH_Startup,0);
+
+RUNG 001 [ADDED]
+COMMENT
+Receive CDL/press messages; bind the preceding two-furnace selection pass and update CDL warning.
+JSR(WH_SiteBindings,0);
+
+RUNG 002 [EXISTING]
+
+XIO(heartbeat.DN)TON(heartbeat,?,?);
+
+
+RUNG 003 [EXISTING]
+
+OTU(AlwaysOff);
+
+
+RUNG 004 [EXISTING]
+
+funcGetDateTime(FGGW01CLX_DateTime,SystemDT);
+
+
+RUNG 005 [EXISTING]
+
+funcPulse(HMIStrobe);
+
+
+RUNG 006 [EXISTING]
+
+JSR(Press_Interface,0);
+
+
+RUNG 007 [EXISTING]
+
+JSR(P5000_Interface,0);
+
+
+RUNG 008 [EXISTING]
+
+[JSR(CDL_Interface,0) ,JSR(CDL2_Interface,0) ];
+
+
+RUNG 009 [EXISTING]
+
+JSR(SPOT_Interface,0);
+
+
+RUNG 010 [EXISTING]
+
+JSR(Set_PLC_DateTime,0);
+
+
+RUNG 011 [EXISTING]
+
+JSR(ClearWashDataBits,0);
+
+
+RUNG 012 [EXISTING]
+
+JSR(PumpRoom_Interface,0);
+
+
+RUNG 013 [EXISTING]
+
+[XIC(RF01_CheckScan) ONS(ons1) ,XIC(RF02_CheckScan) ONS(ons2) ]JSR(CheckPN_Scanned,0);
+
+
+RUNG 014 [EXISTING]
+
+[XIC(RF01_CheckPN) ONS(ons3) ,XIC(RF02_CheckPN) ONS(ons4) ]JSR(CheckPN_Staged,0);
+
+
+RUNG 015 [EXISTING]
+
+XIC(AlwaysOff)JSR(InitSegments,0);
+
+
+RUNG 016 [EXISTING]
+
+JSR(Alarm_Horn,0);
+
+
+RUNG 017 [EXISTING]
+
+JSR(Module_Status,0);
+
+
+RUNG 018 [EXISTING]
+
+JSR(P50MN_OEE,0);
+
+
+RUNG 019 [EXISTING]
+
+JSR(P300MN_OEE,0);
+
+
+RUNG 020 [EXISTING]
+
+XIO(hmiOpen)MOVE(0,ManualChange);
+
+
+RUNG 021 [EXISTING]
+
+XIC(hmiOpen)[JSR(ScreenNav,0) ,JSR(HMI_Control,0) ,TON(hmiOpenDelay,?,?) ];
+

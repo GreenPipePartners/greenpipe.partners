@@ -1,0 +1,56 @@
+Verifying Controller...
+Warning: Tag 'Receive_MSG': Connection path not specified for message.
+Warning: Tag 'Local:1:I': Force detected.
+Warning: Auto_Startup_Position: Routine cannot be reached by the main routine: 'Auto_Startup_Position of Program Automatic_Cycle'
+Warning: Rung 33: Shorted branch detected.
+Warning: Rung 34: Shorted branch detected.
+Warning: Rung 35: Shorted branch detected.
+Warning: Rung 8: AFI detected.
+Warning: Rung 0: AFI detected.
+Warning: Rung 0: Shorted branch detected.
+Warning: Rung 31: AFI detected.
+Warning: Rung 4: AFI detected.
+Warning: Rung 5: AFI detected.
+Warning: Rung 6: AFI detected.
+Warning: Rung 7: AFI detected.
+Warning: Rung 8: AFI detected.
+Warning: Fault_Flag: Program doesn't have associated main routine.
+Warning: Rung 0: Shorted branch detected.
+Warning: Rung 0: AFI detected.
+Warning: Rung 1: AFI detected.
+Warning: Rung 2: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 10: AFI detected.
+Verifying program connections
+Warning: Component no longer supported: 'ASCII'. Component removed.
+Warning: Component no longer supported: 'DF1'. Component removed.
+Warning: Component no longer supported: 'SerialPort'. Component removed.
+Warning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - Teach_Bits.11'
+    Automatic_Cycle - Teach_Position_Indexer, Rung 0, OTE
+    Automatic_Cycle - Teach_Position_Indexer, Rung 1, OTU
+Warning: Duplicate Destructive Bit Reference Detected: 'Aux_Positioning_Bits.8'
+    Automatic_Cycle - Aux_Positioning, Rung 1, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 0, OTE
+Warning: Duplicate Destructive Bit Reference Detected: 'Aux_Positioning_Bits.26'
+    Automatic_Cycle - Aux_Positioning, Rung 32, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 1, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 2, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 25, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 27, ONS
+    Automatic_Cycle - Aux_Positioning, Rung 27, OTU
+    Automatic_Cycle - Aux_Positioning, Rung 20, OTU
+Warning: Duplicate Destructive Bit Reference Detected: 'MainProgram - SideShift_Storage.0'
+    MainProgram - Side_Shift_Control, Rung 0, OTE
+    MainProgram - Side_Shift_Control, Rung 8, OTU
+Warning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - PSNR_Longtravel_Enabled'
+    Automatic_Cycle - Longtravel_Positioner, Rung 5, OTE
+    Automatic_Cycle - Longtravel_Positioner, Rung 9, OTU
+Warning: Duplicate Destructive Bit Reference Detected: 'Automatic_Cycle - Semi_Unload_Bypass'
+    Automatic_Cycle - Semi_Auto_Chain, Rung 11, OTL
+    Automatic_Cycle - Semi_Auto_Chain, Rung 7, OTU
+    Automatic_Cycle - Semi_Auto_Chain, Rung 10, OTU
+    Automatic_Cycle - Semi_Auto_Chain, Rung 9, OTU
+    Automatic_Cycle - Semi_Auto_Chain, Rung 8, OTE
+    Automatic_Cycle - Semi_Auto_Chain, Rung 6, OTU
+Complete - 0 error(s), 32 warning(s)

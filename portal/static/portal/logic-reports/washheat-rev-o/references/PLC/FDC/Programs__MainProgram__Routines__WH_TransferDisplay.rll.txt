@@ -1,0 +1,54 @@
+RUNG 000 [ADDED]
+COMMENT
+Use the selected CDL independent elapsed stopwatch for the advisory warning.
+[MOVE(0,WH_DisplayLive.Exceeded),MOVE(0,WH_DisplayLive.DataValid)];
+
+RUNG 001 [ADDED]
+COMMENT
+Source-measured elapsed continues after gripper release; warning resolution includes the existing roughly 500 ms message cadence.
+EQ(WH_Site.Active,1)EQ(WH_Site.Removed,1)MOVE(WH_Link[0].TransferElapsedMs,WH_Site.TransferMs);
+
+RUNG 002 [ADDED]
+COMMENT
+Only a fresh, bounded CDL stopwatch sample feeds the warning.
+EQ(WH_Settings.MappingApproved,1)GE(WH_Site.TransferMs,0)LT(WH_Site.TransferMs,MAX_INT)MOVE(1,WH_DisplayLive.DataValid);
+
+RUNG 003 [ADDED]
+COMMENT
+Publish only the current handled-part warning context to CDL.
+[MOVE(WH_Settings.Boot,WH_DisplayLive.Boot),MOVE(WH_Site.Furnace,WH_DisplayLive.Furnace),MOVE(WH_Site.Active,WH_DisplayLive.Active),MOVE(WH_Site.TransferMs,WH_DisplayLive.TransferMs)];
+
+RUNG 004 [ADDED]
+COMMENT
+Publish only the current handled-part warning context to CDL.
+[MOVE(WH_Site.LimitMs,WH_DisplayLive.LimitMs),MOVE(WH_Site.LimitValid,WH_DisplayLive.LimitValid),MOD(WH_Site.Index,96,WH_DisplayLive.Slot)];
+
+RUNG 005 [ADDED]
+COMMENT
+CDL slot display is one-based.
+ADD(WH_DisplayLive.Slot,1,WH_DisplayLive.Slot);
+
+RUNG 006 [ADDED]
+COMMENT
+Strictly exceeding the calculated maximum requests the CDL popup; it never issues a wash command.
+EQ(WH_Site.Active,1)EQ(WH_Site.Removed,1)EQ(WH_Site.LimitValid,1)EQ(WH_DisplayLive.DataValid,1)GT(WH_Site.TransferMs,WH_Site.LimitMs)EQ(WH_Site.DecisionObserved,0)MOVE(1,WH_DisplayLive.Exceeded);
+
+RUNG 007 [ADDED]
+COMMENT
+Target only the selected CDL.
+MOVE(WH_SelectedCDL,WH_DisplayLive.TargetCdl);
+
+RUNG 008 [ADDED]
+COMMENT
+Wrap the display sample marker.
+GE(WH_DisplayLive.Sequence,MAX_INT_MINUS_ONE)MOVE(0,WH_DisplayLive.Sequence);
+
+RUNG 009 [ADDED]
+COMMENT
+Atomic publication into the existing CDL-initiated read; no new FDC-to-CDL MSG.
+[ADD(WH_DisplayLive.Sequence,1,WH_DisplayLive.Sequence),CPS(WH_DisplayLive,ctrl_DC_CDL.WashHeat,1)];
+
+RUNG 010 [ADDED]
+COMMENT
+The existing PA209 read receives the same display contract with the selected target ID.
+CPS(WH_DisplayLive,ctrl_DC_CDL2.WashHeat,1);

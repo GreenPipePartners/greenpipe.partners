@@ -1,0 +1,59 @@
+RUNG 000 [ADDED]
+COMMENT
+Timer regression has first priority at the original stop boundary.
+EQ(WH_CDL_State,20)LT(Transfer_Timer.ACC,WH_CDL_LastTimerMs)MOVE(6,WH_CDL_Fault);
+
+RUNG 001 [ADDED]
+COMMENT
+Bound the next publication counter and reject an invalid raw timer.
+EQ(WH_CDL_State,20)GE(Transfer_Timer.ACC,WH_CDL_LastTimerMs)[EQ(WH_CDL_Sequence,MAX_INT),LT(Transfer_Timer.ACC,0)]MOVE(3,WH_CDL_Fault);
+
+RUNG 002 [ADDED]
+COMMENT
+Evaluate raw-event publication once before changing sequence/state.
+EQ(WH_CDL_State,20)GE(Transfer_Timer.ACC,WH_CDL_LastTimerMs)NE(WH_CDL_Sequence,MAX_INT)GE(Transfer_Timer.ACC,0)EQ(WH_CDL_Fault,0)OTE(WH_CDL_Publish);
+
+RUNG 003 [ADDED]
+COMMENT
+Freeze complete raw timer payload before the original stop rung; Sequence remains zero.
+XIC(WH_CDL_Publish)[MOVE(0,WH_CDL_Event.Sequence),MOVE(WH_CDL_Boot,WH_CDL_Event.Boot),MOVE(1,WH_CDL_Event.Kind),MOVE(WH_CDL_StartedFurnace,WH_CDL_Event.Furnace)];
+
+RUNG 004 [ADDED]
+COMMENT
+Freeze complete raw timer payload before the original stop rung; Sequence remains zero.
+XIC(WH_CDL_Publish)[COP(WH_CDL_StartedUTC[0],WH_CDL_Event.StartedUTC[0],7),GSV(WALLCLOCKTIME,,DateTime,WH_CDL_Event.CapturedUTC[0]),MOVE(Transfer_Timer.ACC,WH_CDL_Event.TimerMs),MOVE(0,WH_CDL_Event.At33000)];
+
+RUNG 005 [ADDED]
+COMMENT
+Freeze complete raw timer payload before the original stop rung; Sequence remains zero.
+XIC(WH_CDL_Publish)[MOVE(0,WH_CDL_Event.At5000),MOVE(0,WH_CDL_Event.Enter300MN)];
+
+RUNG 006 [ADDED]
+COMMENT
+Capture raw source status: P33000.In_Psn.
+XIC(WH_CDL_Publish)XIC(P33000.In_Psn)MOVE(1,WH_CDL_Event.At33000);
+
+RUNG 007 [ADDED]
+COMMENT
+Capture raw source status: P5000.In_Psn.
+XIC(WH_CDL_Publish)XIC(P5000.In_Psn)MOVE(1,WH_CDL_Event.At5000);
+
+RUNG 008 [ADDED]
+COMMENT
+Capture raw source status: ctrl_DC_CDL.Ok_to_Enter_300MN.
+XIC(WH_CDL_Publish)XIC(ctrl_DC_CDL.Ok_to_Enter_300MN)MOVE(1,WH_CDL_Event.Enter300MN);
+
+RUNG 009 [ADDED]
+COMMENT
+Commit sequence after all payload writes, then enter published state 30.
+XIC(WH_CDL_Publish)[ADD(WH_CDL_Sequence,1,WH_CDL_Sequence),MOVE(WH_CDL_Sequence,WH_CDL_Event.Sequence),MOVE(30,WH_CDL_State)];
+
+RUNG 010 [ADDED]
+COMMENT
+Technical fault -> state 900.
+NE(WH_CDL_Fault,0)MOVE(900,WH_CDL_State);
+
+RUNG 011 [ADDED]
+COMMENT
+Clear source-furnace selection after the stop observation.
+MOVE(0,WH_CDL_Furnace);

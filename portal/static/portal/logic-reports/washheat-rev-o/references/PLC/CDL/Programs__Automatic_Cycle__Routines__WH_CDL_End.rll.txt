@@ -1,0 +1,19 @@
+RUNG 000 [ADDED]
+COMMENT
+A disappearing legacy running bit without publication is an aborted observation.
+EQ(WH_CDL_State,20)XIO(Transfer_Timer_Running)MOVE(5,WH_CDL_Fault);
+
+RUNG 001 [ADDED]
+COMMENT
+Timer regression supersedes abort fault, preserving original later-write priority.
+EQ(WH_CDL_State,20)LT(Transfer_Timer.ACC,WH_CDL_LastTimerMs)MOVE(6,WH_CDL_Fault);
+
+RUNG 002 [ADDED]
+COMMENT
+Track the legacy timer only while observing state 20.
+EQ(WH_CDL_State,20)MOVE(Transfer_Timer.ACC,WH_CDL_LastTimerMs);
+
+RUNG 003 [ADDED]
+COMMENT
+Technical fault -> state 900.
+NE(WH_CDL_Fault,0)MOVE(900,WH_CDL_State);

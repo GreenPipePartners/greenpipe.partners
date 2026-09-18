@@ -1,0 +1,54 @@
+{
+  "source": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+  "source_sha256": "a3b8278ec6fdb3b407bcf8d1bf86325adc6b0dde71cbb1194a809e3ad089c58a",
+  "started_utc": "2026-09-18T11:53:04.795488+00:00",
+  "events": [
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Open project started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Open project succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Build started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Build succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Save As started"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Save As succeeded"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Closing Logix Project"
+    },
+    {
+      "level": "status",
+      "project": "C:\\LogixAgent\\washheat-studio-20260918\\canonical-sdk\\FDC20206_V20_03_07_26_WH_DEV_v37.ACD",
+      "message": "Logix Project was closed"
+    }
+  ],
+  "opened": true,
+  "build_ok": true,
+  "saved_acd": false,
+  "controller_download_performed": false,
+  "online_edits_performed": false,
+  "export_sha256": "2e7384867944cf0c7c010ff2fbad9bc8299daeb95089ce64d4581abc7c620db5",
+  "finished_utc": "2026-09-18T11:55:02.766545+00:00"
+}

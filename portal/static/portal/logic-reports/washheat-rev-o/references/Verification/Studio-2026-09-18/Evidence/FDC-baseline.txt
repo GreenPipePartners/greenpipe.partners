@@ -1,0 +1,38 @@
+Verifying Controller...
+Warning: Rung 9: Shorted branch detected.
+Warning: Rung 0: Shorted branch detected.
+Warning: Rung 1: AFI detected.
+Warning: Rung 0: AFI detected.
+Warning: Rung 4: AFI detected.
+Warning: Rung 8: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 1: Shorted branch detected.
+Warning: BF03Detail01_iFix: Routine cannot be reached by the main routine: 'BF03Detail01_iFix of Program BF03CLX'
+Warning: Rung 5: AFI detected.
+Warning: Rung 7: AFI detected.
+Warning: CDL_Load_Status: Routine cannot be reached by the main routine: 'CDL_Load_Status of Program RF01CLX'
+Verifying program connections
+Warning: Duplicate Destructive Bit Reference Detected: 'Forge_Alarms:O.Data[0].0'
+    MainProgram - Alarm_Horn, Rung 9, OTU
+    MainProgram - Alarm_Horn, Rung 8, OTE
+Warning: Duplicate Destructive Bit Reference Detected: 'BF01_To_P5000_Select'
+    BF01CLX - P5000Data, Rung 0, OTE
+    BF01CLX - P5000Data, Rung 1, OTE
+Warning: Duplicate Destructive Bit Reference Detected: 'timer2Done'
+    MainProgram - ScreenNav, Line 109
+    MainProgram - HMI_Control, Rung 2, OTE
+Warning: Duplicate AOI Backing Tag Reference Detected: 'funcProcessFurnaceItem - SoakTimeConvert'
+    funcProcessFurnaceItem - Logic, Rung 6
+    funcProcessFurnaceItem - Logic, Rung 6
+Warning: Duplicate AOI Backing Tag Reference Detected: 'FGGW01CLX_DateTime'
+    MainProgram - MainRoutine, Rung 2
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+    MainProgram - Press_Interface, Rung 27
+Complete - 0 error(s), 17 warning(s)

@@ -1,0 +1,479 @@
+RUNG 000 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[96].PRE),GE(WH_Elapsed[96].ACC,0)EQ(WH_State[96].TimerState,10)RTO(WH_Elapsed[96],2147483647,0),WH_Channel(WH_Node_01A,1,2,1,RF02CLX_Items.Segment01A,WH_Settings,WH_Site,WH_TransferLimit[96],WH_Source[96],WH_State[96],WH_Event[96],WH_Receipt[96],WH_Elapsed[96],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 001 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[97].PRE),GE(WH_Elapsed[97].ACC,0)EQ(WH_State[97].TimerState,10)RTO(WH_Elapsed[97],2147483647,0),WH_Channel(WH_Node_01B,1,2,2,RF02CLX_Items.Segment01B,WH_Settings,WH_Site,WH_TransferLimit[97],WH_Source[97],WH_State[97],WH_Event[97],WH_Receipt[97],WH_Elapsed[97],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 002 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[98].PRE),GE(WH_Elapsed[98].ACC,0)EQ(WH_State[98].TimerState,10)RTO(WH_Elapsed[98],2147483647,0),WH_Channel(WH_Node_01C,1,2,3,RF02CLX_Items.Segment01C,WH_Settings,WH_Site,WH_TransferLimit[98],WH_Source[98],WH_State[98],WH_Event[98],WH_Receipt[98],WH_Elapsed[98],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 003 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[99].PRE),GE(WH_Elapsed[99].ACC,0)EQ(WH_State[99].TimerState,10)RTO(WH_Elapsed[99],2147483647,0),WH_Channel(WH_Node_01D,1,2,4,RF02CLX_Items.Segment01D,WH_Settings,WH_Site,WH_TransferLimit[99],WH_Source[99],WH_State[99],WH_Event[99],WH_Receipt[99],WH_Elapsed[99],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 004 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[100].PRE),GE(WH_Elapsed[100].ACC,0)EQ(WH_State[100].TimerState,10)RTO(WH_Elapsed[100],2147483647,0),WH_Channel(WH_Node_02A,1,2,5,RF02CLX_Items.Segment02A,WH_Settings,WH_Site,WH_TransferLimit[100],WH_Source[100],WH_State[100],WH_Event[100],WH_Receipt[100],WH_Elapsed[100],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 005 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[101].PRE),GE(WH_Elapsed[101].ACC,0)EQ(WH_State[101].TimerState,10)RTO(WH_Elapsed[101],2147483647,0),WH_Channel(WH_Node_02B,1,2,6,RF02CLX_Items.Segment02B,WH_Settings,WH_Site,WH_TransferLimit[101],WH_Source[101],WH_State[101],WH_Event[101],WH_Receipt[101],WH_Elapsed[101],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 006 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[102].PRE),GE(WH_Elapsed[102].ACC,0)EQ(WH_State[102].TimerState,10)RTO(WH_Elapsed[102],2147483647,0),WH_Channel(WH_Node_02C,1,2,7,RF02CLX_Items.Segment02C,WH_Settings,WH_Site,WH_TransferLimit[102],WH_Source[102],WH_State[102],WH_Event[102],WH_Receipt[102],WH_Elapsed[102],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 007 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[103].PRE),GE(WH_Elapsed[103].ACC,0)EQ(WH_State[103].TimerState,10)RTO(WH_Elapsed[103],2147483647,0),WH_Channel(WH_Node_02D,1,2,8,RF02CLX_Items.Segment02D,WH_Settings,WH_Site,WH_TransferLimit[103],WH_Source[103],WH_State[103],WH_Event[103],WH_Receipt[103],WH_Elapsed[103],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 008 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[104].PRE),GE(WH_Elapsed[104].ACC,0)EQ(WH_State[104].TimerState,10)RTO(WH_Elapsed[104],2147483647,0),WH_Channel(WH_Node_03A,1,2,9,RF02CLX_Items.Segment03A,WH_Settings,WH_Site,WH_TransferLimit[104],WH_Source[104],WH_State[104],WH_Event[104],WH_Receipt[104],WH_Elapsed[104],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 009 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[105].PRE),GE(WH_Elapsed[105].ACC,0)EQ(WH_State[105].TimerState,10)RTO(WH_Elapsed[105],2147483647,0),WH_Channel(WH_Node_03B,1,2,10,RF02CLX_Items.Segment03B,WH_Settings,WH_Site,WH_TransferLimit[105],WH_Source[105],WH_State[105],WH_Event[105],WH_Receipt[105],WH_Elapsed[105],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 010 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[106].PRE),GE(WH_Elapsed[106].ACC,0)EQ(WH_State[106].TimerState,10)RTO(WH_Elapsed[106],2147483647,0),WH_Channel(WH_Node_03C,1,2,11,RF02CLX_Items.Segment03C,WH_Settings,WH_Site,WH_TransferLimit[106],WH_Source[106],WH_State[106],WH_Event[106],WH_Receipt[106],WH_Elapsed[106],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 011 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[107].PRE),GE(WH_Elapsed[107].ACC,0)EQ(WH_State[107].TimerState,10)RTO(WH_Elapsed[107],2147483647,0),WH_Channel(WH_Node_03D,1,2,12,RF02CLX_Items.Segment03D,WH_Settings,WH_Site,WH_TransferLimit[107],WH_Source[107],WH_State[107],WH_Event[107],WH_Receipt[107],WH_Elapsed[107],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 012 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[108].PRE),GE(WH_Elapsed[108].ACC,0)EQ(WH_State[108].TimerState,10)RTO(WH_Elapsed[108],2147483647,0),WH_Channel(WH_Node_04A,1,2,13,RF02CLX_Items.Segment04A,WH_Settings,WH_Site,WH_TransferLimit[108],WH_Source[108],WH_State[108],WH_Event[108],WH_Receipt[108],WH_Elapsed[108],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 013 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[109].PRE),GE(WH_Elapsed[109].ACC,0)EQ(WH_State[109].TimerState,10)RTO(WH_Elapsed[109],2147483647,0),WH_Channel(WH_Node_04B,1,2,14,RF02CLX_Items.Segment04B,WH_Settings,WH_Site,WH_TransferLimit[109],WH_Source[109],WH_State[109],WH_Event[109],WH_Receipt[109],WH_Elapsed[109],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 014 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[110].PRE),GE(WH_Elapsed[110].ACC,0)EQ(WH_State[110].TimerState,10)RTO(WH_Elapsed[110],2147483647,0),WH_Channel(WH_Node_04C,1,2,15,RF02CLX_Items.Segment04C,WH_Settings,WH_Site,WH_TransferLimit[110],WH_Source[110],WH_State[110],WH_Event[110],WH_Receipt[110],WH_Elapsed[110],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 015 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[111].PRE),GE(WH_Elapsed[111].ACC,0)EQ(WH_State[111].TimerState,10)RTO(WH_Elapsed[111],2147483647,0),WH_Channel(WH_Node_04D,1,2,16,RF02CLX_Items.Segment04D,WH_Settings,WH_Site,WH_TransferLimit[111],WH_Source[111],WH_State[111],WH_Event[111],WH_Receipt[111],WH_Elapsed[111],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 016 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[112].PRE),GE(WH_Elapsed[112].ACC,0)EQ(WH_State[112].TimerState,10)RTO(WH_Elapsed[112],2147483647,0),WH_Channel(WH_Node_05A,1,2,17,RF02CLX_Items.Segment05A,WH_Settings,WH_Site,WH_TransferLimit[112],WH_Source[112],WH_State[112],WH_Event[112],WH_Receipt[112],WH_Elapsed[112],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 017 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[113].PRE),GE(WH_Elapsed[113].ACC,0)EQ(WH_State[113].TimerState,10)RTO(WH_Elapsed[113],2147483647,0),WH_Channel(WH_Node_05B,1,2,18,RF02CLX_Items.Segment05B,WH_Settings,WH_Site,WH_TransferLimit[113],WH_Source[113],WH_State[113],WH_Event[113],WH_Receipt[113],WH_Elapsed[113],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 018 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[114].PRE),GE(WH_Elapsed[114].ACC,0)EQ(WH_State[114].TimerState,10)RTO(WH_Elapsed[114],2147483647,0),WH_Channel(WH_Node_05C,1,2,19,RF02CLX_Items.Segment05C,WH_Settings,WH_Site,WH_TransferLimit[114],WH_Source[114],WH_State[114],WH_Event[114],WH_Receipt[114],WH_Elapsed[114],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 019 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[115].PRE),GE(WH_Elapsed[115].ACC,0)EQ(WH_State[115].TimerState,10)RTO(WH_Elapsed[115],2147483647,0),WH_Channel(WH_Node_05D,1,2,20,RF02CLX_Items.Segment05D,WH_Settings,WH_Site,WH_TransferLimit[115],WH_Source[115],WH_State[115],WH_Event[115],WH_Receipt[115],WH_Elapsed[115],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 020 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[116].PRE),GE(WH_Elapsed[116].ACC,0)EQ(WH_State[116].TimerState,10)RTO(WH_Elapsed[116],2147483647,0),WH_Channel(WH_Node_06A,1,2,21,RF02CLX_Items.Segment06A,WH_Settings,WH_Site,WH_TransferLimit[116],WH_Source[116],WH_State[116],WH_Event[116],WH_Receipt[116],WH_Elapsed[116],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 021 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[117].PRE),GE(WH_Elapsed[117].ACC,0)EQ(WH_State[117].TimerState,10)RTO(WH_Elapsed[117],2147483647,0),WH_Channel(WH_Node_06B,1,2,22,RF02CLX_Items.Segment06B,WH_Settings,WH_Site,WH_TransferLimit[117],WH_Source[117],WH_State[117],WH_Event[117],WH_Receipt[117],WH_Elapsed[117],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 022 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[118].PRE),GE(WH_Elapsed[118].ACC,0)EQ(WH_State[118].TimerState,10)RTO(WH_Elapsed[118],2147483647,0),WH_Channel(WH_Node_06C,1,2,23,RF02CLX_Items.Segment06C,WH_Settings,WH_Site,WH_TransferLimit[118],WH_Source[118],WH_State[118],WH_Event[118],WH_Receipt[118],WH_Elapsed[118],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 023 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[119].PRE),GE(WH_Elapsed[119].ACC,0)EQ(WH_State[119].TimerState,10)RTO(WH_Elapsed[119],2147483647,0),WH_Channel(WH_Node_06D,1,2,24,RF02CLX_Items.Segment06D,WH_Settings,WH_Site,WH_TransferLimit[119],WH_Source[119],WH_State[119],WH_Event[119],WH_Receipt[119],WH_Elapsed[119],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 024 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[120].PRE),GE(WH_Elapsed[120].ACC,0)EQ(WH_State[120].TimerState,10)RTO(WH_Elapsed[120],2147483647,0),WH_Channel(WH_Node_07A,1,2,25,RF02CLX_Items.Segment07A,WH_Settings,WH_Site,WH_TransferLimit[120],WH_Source[120],WH_State[120],WH_Event[120],WH_Receipt[120],WH_Elapsed[120],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 025 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[121].PRE),GE(WH_Elapsed[121].ACC,0)EQ(WH_State[121].TimerState,10)RTO(WH_Elapsed[121],2147483647,0),WH_Channel(WH_Node_07B,1,2,26,RF02CLX_Items.Segment07B,WH_Settings,WH_Site,WH_TransferLimit[121],WH_Source[121],WH_State[121],WH_Event[121],WH_Receipt[121],WH_Elapsed[121],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 026 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[122].PRE),GE(WH_Elapsed[122].ACC,0)EQ(WH_State[122].TimerState,10)RTO(WH_Elapsed[122],2147483647,0),WH_Channel(WH_Node_07C,1,2,27,RF02CLX_Items.Segment07C,WH_Settings,WH_Site,WH_TransferLimit[122],WH_Source[122],WH_State[122],WH_Event[122],WH_Receipt[122],WH_Elapsed[122],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 027 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[123].PRE),GE(WH_Elapsed[123].ACC,0)EQ(WH_State[123].TimerState,10)RTO(WH_Elapsed[123],2147483647,0),WH_Channel(WH_Node_07D,1,2,28,RF02CLX_Items.Segment07D,WH_Settings,WH_Site,WH_TransferLimit[123],WH_Source[123],WH_State[123],WH_Event[123],WH_Receipt[123],WH_Elapsed[123],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 028 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[124].PRE),GE(WH_Elapsed[124].ACC,0)EQ(WH_State[124].TimerState,10)RTO(WH_Elapsed[124],2147483647,0),WH_Channel(WH_Node_08A,1,2,29,RF02CLX_Items.Segment08A,WH_Settings,WH_Site,WH_TransferLimit[124],WH_Source[124],WH_State[124],WH_Event[124],WH_Receipt[124],WH_Elapsed[124],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 029 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[125].PRE),GE(WH_Elapsed[125].ACC,0)EQ(WH_State[125].TimerState,10)RTO(WH_Elapsed[125],2147483647,0),WH_Channel(WH_Node_08B,1,2,30,RF02CLX_Items.Segment08B,WH_Settings,WH_Site,WH_TransferLimit[125],WH_Source[125],WH_State[125],WH_Event[125],WH_Receipt[125],WH_Elapsed[125],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 030 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[126].PRE),GE(WH_Elapsed[126].ACC,0)EQ(WH_State[126].TimerState,10)RTO(WH_Elapsed[126],2147483647,0),WH_Channel(WH_Node_08C,1,2,31,RF02CLX_Items.Segment08C,WH_Settings,WH_Site,WH_TransferLimit[126],WH_Source[126],WH_State[126],WH_Event[126],WH_Receipt[126],WH_Elapsed[126],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 031 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[127].PRE),GE(WH_Elapsed[127].ACC,0)EQ(WH_State[127].TimerState,10)RTO(WH_Elapsed[127],2147483647,0),WH_Channel(WH_Node_08D,1,2,32,RF02CLX_Items.Segment08D,WH_Settings,WH_Site,WH_TransferLimit[127],WH_Source[127],WH_State[127],WH_Event[127],WH_Receipt[127],WH_Elapsed[127],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 032 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[128].PRE),GE(WH_Elapsed[128].ACC,0)EQ(WH_State[128].TimerState,10)RTO(WH_Elapsed[128],2147483647,0),WH_Channel(WH_Node_09A,1,2,33,RF02CLX_Items.Segment09A,WH_Settings,WH_Site,WH_TransferLimit[128],WH_Source[128],WH_State[128],WH_Event[128],WH_Receipt[128],WH_Elapsed[128],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 033 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[129].PRE),GE(WH_Elapsed[129].ACC,0)EQ(WH_State[129].TimerState,10)RTO(WH_Elapsed[129],2147483647,0),WH_Channel(WH_Node_09B,1,2,34,RF02CLX_Items.Segment09B,WH_Settings,WH_Site,WH_TransferLimit[129],WH_Source[129],WH_State[129],WH_Event[129],WH_Receipt[129],WH_Elapsed[129],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 034 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[130].PRE),GE(WH_Elapsed[130].ACC,0)EQ(WH_State[130].TimerState,10)RTO(WH_Elapsed[130],2147483647,0),WH_Channel(WH_Node_09C,1,2,35,RF02CLX_Items.Segment09C,WH_Settings,WH_Site,WH_TransferLimit[130],WH_Source[130],WH_State[130],WH_Event[130],WH_Receipt[130],WH_Elapsed[130],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 035 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[131].PRE),GE(WH_Elapsed[131].ACC,0)EQ(WH_State[131].TimerState,10)RTO(WH_Elapsed[131],2147483647,0),WH_Channel(WH_Node_09D,1,2,36,RF02CLX_Items.Segment09D,WH_Settings,WH_Site,WH_TransferLimit[131],WH_Source[131],WH_State[131],WH_Event[131],WH_Receipt[131],WH_Elapsed[131],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 036 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[132].PRE),GE(WH_Elapsed[132].ACC,0)EQ(WH_State[132].TimerState,10)RTO(WH_Elapsed[132],2147483647,0),WH_Channel(WH_Node_10A,1,2,37,RF02CLX_Items.Segment10A,WH_Settings,WH_Site,WH_TransferLimit[132],WH_Source[132],WH_State[132],WH_Event[132],WH_Receipt[132],WH_Elapsed[132],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 037 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[133].PRE),GE(WH_Elapsed[133].ACC,0)EQ(WH_State[133].TimerState,10)RTO(WH_Elapsed[133],2147483647,0),WH_Channel(WH_Node_10B,1,2,38,RF02CLX_Items.Segment10B,WH_Settings,WH_Site,WH_TransferLimit[133],WH_Source[133],WH_State[133],WH_Event[133],WH_Receipt[133],WH_Elapsed[133],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 038 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[134].PRE),GE(WH_Elapsed[134].ACC,0)EQ(WH_State[134].TimerState,10)RTO(WH_Elapsed[134],2147483647,0),WH_Channel(WH_Node_10C,1,2,39,RF02CLX_Items.Segment10C,WH_Settings,WH_Site,WH_TransferLimit[134],WH_Source[134],WH_State[134],WH_Event[134],WH_Receipt[134],WH_Elapsed[134],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 039 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[135].PRE),GE(WH_Elapsed[135].ACC,0)EQ(WH_State[135].TimerState,10)RTO(WH_Elapsed[135],2147483647,0),WH_Channel(WH_Node_10D,1,2,40,RF02CLX_Items.Segment10D,WH_Settings,WH_Site,WH_TransferLimit[135],WH_Source[135],WH_State[135],WH_Event[135],WH_Receipt[135],WH_Elapsed[135],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 040 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[136].PRE),GE(WH_Elapsed[136].ACC,0)EQ(WH_State[136].TimerState,10)RTO(WH_Elapsed[136],2147483647,0),WH_Channel(WH_Node_11A,1,2,41,RF02CLX_Items.Segment11A,WH_Settings,WH_Site,WH_TransferLimit[136],WH_Source[136],WH_State[136],WH_Event[136],WH_Receipt[136],WH_Elapsed[136],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 041 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[137].PRE),GE(WH_Elapsed[137].ACC,0)EQ(WH_State[137].TimerState,10)RTO(WH_Elapsed[137],2147483647,0),WH_Channel(WH_Node_11B,1,2,42,RF02CLX_Items.Segment11B,WH_Settings,WH_Site,WH_TransferLimit[137],WH_Source[137],WH_State[137],WH_Event[137],WH_Receipt[137],WH_Elapsed[137],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 042 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[138].PRE),GE(WH_Elapsed[138].ACC,0)EQ(WH_State[138].TimerState,10)RTO(WH_Elapsed[138],2147483647,0),WH_Channel(WH_Node_11C,1,2,43,RF02CLX_Items.Segment11C,WH_Settings,WH_Site,WH_TransferLimit[138],WH_Source[138],WH_State[138],WH_Event[138],WH_Receipt[138],WH_Elapsed[138],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 043 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[139].PRE),GE(WH_Elapsed[139].ACC,0)EQ(WH_State[139].TimerState,10)RTO(WH_Elapsed[139],2147483647,0),WH_Channel(WH_Node_11D,1,2,44,RF02CLX_Items.Segment11D,WH_Settings,WH_Site,WH_TransferLimit[139],WH_Source[139],WH_State[139],WH_Event[139],WH_Receipt[139],WH_Elapsed[139],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 044 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[140].PRE),GE(WH_Elapsed[140].ACC,0)EQ(WH_State[140].TimerState,10)RTO(WH_Elapsed[140],2147483647,0),WH_Channel(WH_Node_12A,1,2,45,RF02CLX_Items.Segment12A,WH_Settings,WH_Site,WH_TransferLimit[140],WH_Source[140],WH_State[140],WH_Event[140],WH_Receipt[140],WH_Elapsed[140],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 045 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[141].PRE),GE(WH_Elapsed[141].ACC,0)EQ(WH_State[141].TimerState,10)RTO(WH_Elapsed[141],2147483647,0),WH_Channel(WH_Node_12B,1,2,46,RF02CLX_Items.Segment12B,WH_Settings,WH_Site,WH_TransferLimit[141],WH_Source[141],WH_State[141],WH_Event[141],WH_Receipt[141],WH_Elapsed[141],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 046 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[142].PRE),GE(WH_Elapsed[142].ACC,0)EQ(WH_State[142].TimerState,10)RTO(WH_Elapsed[142],2147483647,0),WH_Channel(WH_Node_12C,1,2,47,RF02CLX_Items.Segment12C,WH_Settings,WH_Site,WH_TransferLimit[142],WH_Source[142],WH_State[142],WH_Event[142],WH_Receipt[142],WH_Elapsed[142],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 047 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[143].PRE),GE(WH_Elapsed[143].ACC,0)EQ(WH_State[143].TimerState,10)RTO(WH_Elapsed[143],2147483647,0),WH_Channel(WH_Node_12D,1,2,48,RF02CLX_Items.Segment12D,WH_Settings,WH_Site,WH_TransferLimit[143],WH_Source[143],WH_State[143],WH_Event[143],WH_Receipt[143],WH_Elapsed[143],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 048 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[144].PRE),GE(WH_Elapsed[144].ACC,0)EQ(WH_State[144].TimerState,10)RTO(WH_Elapsed[144],2147483647,0),WH_Channel(WH_Node_13A,1,2,49,RF02CLX_Items.Segment13A,WH_Settings,WH_Site,WH_TransferLimit[144],WH_Source[144],WH_State[144],WH_Event[144],WH_Receipt[144],WH_Elapsed[144],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 049 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[145].PRE),GE(WH_Elapsed[145].ACC,0)EQ(WH_State[145].TimerState,10)RTO(WH_Elapsed[145],2147483647,0),WH_Channel(WH_Node_13B,1,2,50,RF02CLX_Items.Segment13B,WH_Settings,WH_Site,WH_TransferLimit[145],WH_Source[145],WH_State[145],WH_Event[145],WH_Receipt[145],WH_Elapsed[145],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 050 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[146].PRE),GE(WH_Elapsed[146].ACC,0)EQ(WH_State[146].TimerState,10)RTO(WH_Elapsed[146],2147483647,0),WH_Channel(WH_Node_13C,1,2,51,RF02CLX_Items.Segment13C,WH_Settings,WH_Site,WH_TransferLimit[146],WH_Source[146],WH_State[146],WH_Event[146],WH_Receipt[146],WH_Elapsed[146],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 051 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[147].PRE),GE(WH_Elapsed[147].ACC,0)EQ(WH_State[147].TimerState,10)RTO(WH_Elapsed[147],2147483647,0),WH_Channel(WH_Node_13D,1,2,52,RF02CLX_Items.Segment13D,WH_Settings,WH_Site,WH_TransferLimit[147],WH_Source[147],WH_State[147],WH_Event[147],WH_Receipt[147],WH_Elapsed[147],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 052 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[148].PRE),GE(WH_Elapsed[148].ACC,0)EQ(WH_State[148].TimerState,10)RTO(WH_Elapsed[148],2147483647,0),WH_Channel(WH_Node_14A,1,2,53,RF02CLX_Items.Segment14A,WH_Settings,WH_Site,WH_TransferLimit[148],WH_Source[148],WH_State[148],WH_Event[148],WH_Receipt[148],WH_Elapsed[148],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 053 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[149].PRE),GE(WH_Elapsed[149].ACC,0)EQ(WH_State[149].TimerState,10)RTO(WH_Elapsed[149],2147483647,0),WH_Channel(WH_Node_14B,1,2,54,RF02CLX_Items.Segment14B,WH_Settings,WH_Site,WH_TransferLimit[149],WH_Source[149],WH_State[149],WH_Event[149],WH_Receipt[149],WH_Elapsed[149],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 054 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[150].PRE),GE(WH_Elapsed[150].ACC,0)EQ(WH_State[150].TimerState,10)RTO(WH_Elapsed[150],2147483647,0),WH_Channel(WH_Node_14C,1,2,55,RF02CLX_Items.Segment14C,WH_Settings,WH_Site,WH_TransferLimit[150],WH_Source[150],WH_State[150],WH_Event[150],WH_Receipt[150],WH_Elapsed[150],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 055 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[151].PRE),GE(WH_Elapsed[151].ACC,0)EQ(WH_State[151].TimerState,10)RTO(WH_Elapsed[151],2147483647,0),WH_Channel(WH_Node_14D,1,2,56,RF02CLX_Items.Segment14D,WH_Settings,WH_Site,WH_TransferLimit[151],WH_Source[151],WH_State[151],WH_Event[151],WH_Receipt[151],WH_Elapsed[151],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 056 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[152].PRE),GE(WH_Elapsed[152].ACC,0)EQ(WH_State[152].TimerState,10)RTO(WH_Elapsed[152],2147483647,0),WH_Channel(WH_Node_15A,1,2,57,RF02CLX_Items.Segment15A,WH_Settings,WH_Site,WH_TransferLimit[152],WH_Source[152],WH_State[152],WH_Event[152],WH_Receipt[152],WH_Elapsed[152],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 057 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[153].PRE),GE(WH_Elapsed[153].ACC,0)EQ(WH_State[153].TimerState,10)RTO(WH_Elapsed[153],2147483647,0),WH_Channel(WH_Node_15B,1,2,58,RF02CLX_Items.Segment15B,WH_Settings,WH_Site,WH_TransferLimit[153],WH_Source[153],WH_State[153],WH_Event[153],WH_Receipt[153],WH_Elapsed[153],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 058 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[154].PRE),GE(WH_Elapsed[154].ACC,0)EQ(WH_State[154].TimerState,10)RTO(WH_Elapsed[154],2147483647,0),WH_Channel(WH_Node_15C,1,2,59,RF02CLX_Items.Segment15C,WH_Settings,WH_Site,WH_TransferLimit[154],WH_Source[154],WH_State[154],WH_Event[154],WH_Receipt[154],WH_Elapsed[154],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 059 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[155].PRE),GE(WH_Elapsed[155].ACC,0)EQ(WH_State[155].TimerState,10)RTO(WH_Elapsed[155],2147483647,0),WH_Channel(WH_Node_15D,1,2,60,RF02CLX_Items.Segment15D,WH_Settings,WH_Site,WH_TransferLimit[155],WH_Source[155],WH_State[155],WH_Event[155],WH_Receipt[155],WH_Elapsed[155],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 060 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[156].PRE),GE(WH_Elapsed[156].ACC,0)EQ(WH_State[156].TimerState,10)RTO(WH_Elapsed[156],2147483647,0),WH_Channel(WH_Node_16A,1,2,61,RF02CLX_Items.Segment16A,WH_Settings,WH_Site,WH_TransferLimit[156],WH_Source[156],WH_State[156],WH_Event[156],WH_Receipt[156],WH_Elapsed[156],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 061 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[157].PRE),GE(WH_Elapsed[157].ACC,0)EQ(WH_State[157].TimerState,10)RTO(WH_Elapsed[157],2147483647,0),WH_Channel(WH_Node_16B,1,2,62,RF02CLX_Items.Segment16B,WH_Settings,WH_Site,WH_TransferLimit[157],WH_Source[157],WH_State[157],WH_Event[157],WH_Receipt[157],WH_Elapsed[157],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 062 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[158].PRE),GE(WH_Elapsed[158].ACC,0)EQ(WH_State[158].TimerState,10)RTO(WH_Elapsed[158],2147483647,0),WH_Channel(WH_Node_16C,1,2,63,RF02CLX_Items.Segment16C,WH_Settings,WH_Site,WH_TransferLimit[158],WH_Source[158],WH_State[158],WH_Event[158],WH_Receipt[158],WH_Elapsed[158],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 063 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[159].PRE),GE(WH_Elapsed[159].ACC,0)EQ(WH_State[159].TimerState,10)RTO(WH_Elapsed[159],2147483647,0),WH_Channel(WH_Node_16D,1,2,64,RF02CLX_Items.Segment16D,WH_Settings,WH_Site,WH_TransferLimit[159],WH_Source[159],WH_State[159],WH_Event[159],WH_Receipt[159],WH_Elapsed[159],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 064 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[160].PRE),GE(WH_Elapsed[160].ACC,0)EQ(WH_State[160].TimerState,10)RTO(WH_Elapsed[160],2147483647,0),WH_Channel(WH_Node_17A,1,2,65,RF02CLX_Items.Segment17A,WH_Settings,WH_Site,WH_TransferLimit[160],WH_Source[160],WH_State[160],WH_Event[160],WH_Receipt[160],WH_Elapsed[160],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 065 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[161].PRE),GE(WH_Elapsed[161].ACC,0)EQ(WH_State[161].TimerState,10)RTO(WH_Elapsed[161],2147483647,0),WH_Channel(WH_Node_17B,1,2,66,RF02CLX_Items.Segment17B,WH_Settings,WH_Site,WH_TransferLimit[161],WH_Source[161],WH_State[161],WH_Event[161],WH_Receipt[161],WH_Elapsed[161],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 066 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[162].PRE),GE(WH_Elapsed[162].ACC,0)EQ(WH_State[162].TimerState,10)RTO(WH_Elapsed[162],2147483647,0),WH_Channel(WH_Node_17C,1,2,67,RF02CLX_Items.Segment17C,WH_Settings,WH_Site,WH_TransferLimit[162],WH_Source[162],WH_State[162],WH_Event[162],WH_Receipt[162],WH_Elapsed[162],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 067 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[163].PRE),GE(WH_Elapsed[163].ACC,0)EQ(WH_State[163].TimerState,10)RTO(WH_Elapsed[163],2147483647,0),WH_Channel(WH_Node_17D,1,2,68,RF02CLX_Items.Segment17D,WH_Settings,WH_Site,WH_TransferLimit[163],WH_Source[163],WH_State[163],WH_Event[163],WH_Receipt[163],WH_Elapsed[163],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 068 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[164].PRE),GE(WH_Elapsed[164].ACC,0)EQ(WH_State[164].TimerState,10)RTO(WH_Elapsed[164],2147483647,0),WH_Channel(WH_Node_18A,1,2,69,RF02CLX_Items.Segment18A,WH_Settings,WH_Site,WH_TransferLimit[164],WH_Source[164],WH_State[164],WH_Event[164],WH_Receipt[164],WH_Elapsed[164],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 069 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[165].PRE),GE(WH_Elapsed[165].ACC,0)EQ(WH_State[165].TimerState,10)RTO(WH_Elapsed[165],2147483647,0),WH_Channel(WH_Node_18B,1,2,70,RF02CLX_Items.Segment18B,WH_Settings,WH_Site,WH_TransferLimit[165],WH_Source[165],WH_State[165],WH_Event[165],WH_Receipt[165],WH_Elapsed[165],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 070 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[166].PRE),GE(WH_Elapsed[166].ACC,0)EQ(WH_State[166].TimerState,10)RTO(WH_Elapsed[166],2147483647,0),WH_Channel(WH_Node_18C,1,2,71,RF02CLX_Items.Segment18C,WH_Settings,WH_Site,WH_TransferLimit[166],WH_Source[166],WH_State[166],WH_Event[166],WH_Receipt[166],WH_Elapsed[166],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 071 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[167].PRE),GE(WH_Elapsed[167].ACC,0)EQ(WH_State[167].TimerState,10)RTO(WH_Elapsed[167],2147483647,0),WH_Channel(WH_Node_18D,1,2,72,RF02CLX_Items.Segment18D,WH_Settings,WH_Site,WH_TransferLimit[167],WH_Source[167],WH_State[167],WH_Event[167],WH_Receipt[167],WH_Elapsed[167],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 072 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[168].PRE),GE(WH_Elapsed[168].ACC,0)EQ(WH_State[168].TimerState,10)RTO(WH_Elapsed[168],2147483647,0),WH_Channel(WH_Node_19A,1,2,73,RF02CLX_Items.Segment19A,WH_Settings,WH_Site,WH_TransferLimit[168],WH_Source[168],WH_State[168],WH_Event[168],WH_Receipt[168],WH_Elapsed[168],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 073 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[169].PRE),GE(WH_Elapsed[169].ACC,0)EQ(WH_State[169].TimerState,10)RTO(WH_Elapsed[169],2147483647,0),WH_Channel(WH_Node_19B,1,2,74,RF02CLX_Items.Segment19B,WH_Settings,WH_Site,WH_TransferLimit[169],WH_Source[169],WH_State[169],WH_Event[169],WH_Receipt[169],WH_Elapsed[169],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 074 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[170].PRE),GE(WH_Elapsed[170].ACC,0)EQ(WH_State[170].TimerState,10)RTO(WH_Elapsed[170],2147483647,0),WH_Channel(WH_Node_19C,1,2,75,RF02CLX_Items.Segment19C,WH_Settings,WH_Site,WH_TransferLimit[170],WH_Source[170],WH_State[170],WH_Event[170],WH_Receipt[170],WH_Elapsed[170],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 075 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[171].PRE),GE(WH_Elapsed[171].ACC,0)EQ(WH_State[171].TimerState,10)RTO(WH_Elapsed[171],2147483647,0),WH_Channel(WH_Node_19D,1,2,76,RF02CLX_Items.Segment19D,WH_Settings,WH_Site,WH_TransferLimit[171],WH_Source[171],WH_State[171],WH_Event[171],WH_Receipt[171],WH_Elapsed[171],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 076 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[172].PRE),GE(WH_Elapsed[172].ACC,0)EQ(WH_State[172].TimerState,10)RTO(WH_Elapsed[172],2147483647,0),WH_Channel(WH_Node_20A,1,2,77,RF02CLX_Items.Segment20A,WH_Settings,WH_Site,WH_TransferLimit[172],WH_Source[172],WH_State[172],WH_Event[172],WH_Receipt[172],WH_Elapsed[172],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 077 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[173].PRE),GE(WH_Elapsed[173].ACC,0)EQ(WH_State[173].TimerState,10)RTO(WH_Elapsed[173],2147483647,0),WH_Channel(WH_Node_20B,1,2,78,RF02CLX_Items.Segment20B,WH_Settings,WH_Site,WH_TransferLimit[173],WH_Source[173],WH_State[173],WH_Event[173],WH_Receipt[173],WH_Elapsed[173],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 078 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[174].PRE),GE(WH_Elapsed[174].ACC,0)EQ(WH_State[174].TimerState,10)RTO(WH_Elapsed[174],2147483647,0),WH_Channel(WH_Node_20C,1,2,79,RF02CLX_Items.Segment20C,WH_Settings,WH_Site,WH_TransferLimit[174],WH_Source[174],WH_State[174],WH_Event[174],WH_Receipt[174],WH_Elapsed[174],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 079 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[175].PRE),GE(WH_Elapsed[175].ACC,0)EQ(WH_State[175].TimerState,10)RTO(WH_Elapsed[175],2147483647,0),WH_Channel(WH_Node_20D,1,2,80,RF02CLX_Items.Segment20D,WH_Settings,WH_Site,WH_TransferLimit[175],WH_Source[175],WH_State[175],WH_Event[175],WH_Receipt[175],WH_Elapsed[175],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 080 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[176].PRE),GE(WH_Elapsed[176].ACC,0)EQ(WH_State[176].TimerState,10)RTO(WH_Elapsed[176],2147483647,0),WH_Channel(WH_Node_21A,1,2,81,RF02CLX_Items.Segment21A,WH_Settings,WH_Site,WH_TransferLimit[176],WH_Source[176],WH_State[176],WH_Event[176],WH_Receipt[176],WH_Elapsed[176],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 081 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[177].PRE),GE(WH_Elapsed[177].ACC,0)EQ(WH_State[177].TimerState,10)RTO(WH_Elapsed[177],2147483647,0),WH_Channel(WH_Node_21B,1,2,82,RF02CLX_Items.Segment21B,WH_Settings,WH_Site,WH_TransferLimit[177],WH_Source[177],WH_State[177],WH_Event[177],WH_Receipt[177],WH_Elapsed[177],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 082 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[178].PRE),GE(WH_Elapsed[178].ACC,0)EQ(WH_State[178].TimerState,10)RTO(WH_Elapsed[178],2147483647,0),WH_Channel(WH_Node_21C,1,2,83,RF02CLX_Items.Segment21C,WH_Settings,WH_Site,WH_TransferLimit[178],WH_Source[178],WH_State[178],WH_Event[178],WH_Receipt[178],WH_Elapsed[178],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 083 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[179].PRE),GE(WH_Elapsed[179].ACC,0)EQ(WH_State[179].TimerState,10)RTO(WH_Elapsed[179],2147483647,0),WH_Channel(WH_Node_21D,1,2,84,RF02CLX_Items.Segment21D,WH_Settings,WH_Site,WH_TransferLimit[179],WH_Source[179],WH_State[179],WH_Event[179],WH_Receipt[179],WH_Elapsed[179],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 084 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[180].PRE),GE(WH_Elapsed[180].ACC,0)EQ(WH_State[180].TimerState,10)RTO(WH_Elapsed[180],2147483647,0),WH_Channel(WH_Node_22A,1,2,85,RF02CLX_Items.Segment22A,WH_Settings,WH_Site,WH_TransferLimit[180],WH_Source[180],WH_State[180],WH_Event[180],WH_Receipt[180],WH_Elapsed[180],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 085 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[181].PRE),GE(WH_Elapsed[181].ACC,0)EQ(WH_State[181].TimerState,10)RTO(WH_Elapsed[181],2147483647,0),WH_Channel(WH_Node_22B,1,2,86,RF02CLX_Items.Segment22B,WH_Settings,WH_Site,WH_TransferLimit[181],WH_Source[181],WH_State[181],WH_Event[181],WH_Receipt[181],WH_Elapsed[181],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 086 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[182].PRE),GE(WH_Elapsed[182].ACC,0)EQ(WH_State[182].TimerState,10)RTO(WH_Elapsed[182],2147483647,0),WH_Channel(WH_Node_22C,1,2,87,RF02CLX_Items.Segment22C,WH_Settings,WH_Site,WH_TransferLimit[182],WH_Source[182],WH_State[182],WH_Event[182],WH_Receipt[182],WH_Elapsed[182],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 087 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[183].PRE),GE(WH_Elapsed[183].ACC,0)EQ(WH_State[183].TimerState,10)RTO(WH_Elapsed[183],2147483647,0),WH_Channel(WH_Node_22D,1,2,88,RF02CLX_Items.Segment22D,WH_Settings,WH_Site,WH_TransferLimit[183],WH_Source[183],WH_State[183],WH_Event[183],WH_Receipt[183],WH_Elapsed[183],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 088 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[184].PRE),GE(WH_Elapsed[184].ACC,0)EQ(WH_State[184].TimerState,10)RTO(WH_Elapsed[184],2147483647,0),WH_Channel(WH_Node_23A,1,2,89,RF02CLX_Items.Segment23A,WH_Settings,WH_Site,WH_TransferLimit[184],WH_Source[184],WH_State[184],WH_Event[184],WH_Receipt[184],WH_Elapsed[184],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 089 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[185].PRE),GE(WH_Elapsed[185].ACC,0)EQ(WH_State[185].TimerState,10)RTO(WH_Elapsed[185],2147483647,0),WH_Channel(WH_Node_23B,1,2,90,RF02CLX_Items.Segment23B,WH_Settings,WH_Site,WH_TransferLimit[185],WH_Source[185],WH_State[185],WH_Event[185],WH_Receipt[185],WH_Elapsed[185],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 090 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[186].PRE),GE(WH_Elapsed[186].ACC,0)EQ(WH_State[186].TimerState,10)RTO(WH_Elapsed[186],2147483647,0),WH_Channel(WH_Node_23C,1,2,91,RF02CLX_Items.Segment23C,WH_Settings,WH_Site,WH_TransferLimit[186],WH_Source[186],WH_State[186],WH_Event[186],WH_Receipt[186],WH_Elapsed[186],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 091 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[187].PRE),GE(WH_Elapsed[187].ACC,0)EQ(WH_State[187].TimerState,10)RTO(WH_Elapsed[187],2147483647,0),WH_Channel(WH_Node_23D,1,2,92,RF02CLX_Items.Segment23D,WH_Settings,WH_Site,WH_TransferLimit[187],WH_Source[187],WH_State[187],WH_Event[187],WH_Receipt[187],WH_Elapsed[187],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 092 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[188].PRE),GE(WH_Elapsed[188].ACC,0)EQ(WH_State[188].TimerState,10)RTO(WH_Elapsed[188],2147483647,0),WH_Channel(WH_Node_24A,1,2,93,RF02CLX_Items.Segment24A,WH_Settings,WH_Site,WH_TransferLimit[188],WH_Source[188],WH_State[188],WH_Event[188],WH_Receipt[188],WH_Elapsed[188],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 093 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[189].PRE),GE(WH_Elapsed[189].ACC,0)EQ(WH_State[189].TimerState,10)RTO(WH_Elapsed[189],2147483647,0),WH_Channel(WH_Node_24B,1,2,94,RF02CLX_Items.Segment24B,WH_Settings,WH_Site,WH_TransferLimit[189],WH_Source[189],WH_State[189],WH_Event[189],WH_Receipt[189],WH_Elapsed[189],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 094 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[190].PRE),GE(WH_Elapsed[190].ACC,0)EQ(WH_State[190].TimerState,10)RTO(WH_Elapsed[190],2147483647,0),WH_Channel(WH_Node_24C,1,2,95,RF02CLX_Items.Segment24C,WH_Settings,WH_Site,WH_TransferLimit[190],WH_Source[190],WH_State[190],WH_Event[190],WH_Receipt[190],WH_Elapsed[190],MAX_INT,MAX_INT_MINUS_ONE)];
+
+RUNG 095 [ADDED]
+COMMENT
+Ordered branches: set TIMER preset; execute one RTO; then call channel Post to freeze elapsed/event/status. Pre never scans this timer.
+[MOVE(MAX_INT,WH_Elapsed[191].PRE),GE(WH_Elapsed[191].ACC,0)EQ(WH_State[191].TimerState,10)RTO(WH_Elapsed[191],2147483647,0),WH_Channel(WH_Node_24D,1,2,96,RF02CLX_Items.Segment24D,WH_Settings,WH_Site,WH_TransferLimit[191],WH_Source[191],WH_State[191],WH_Event[191],WH_Receipt[191],WH_Elapsed[191],MAX_INT,MAX_INT_MINUS_ONE)];

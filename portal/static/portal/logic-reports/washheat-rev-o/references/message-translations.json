@@ -1,0 +1,1527 @@
+{
+  "revision": "O",
+  "messages": [
+    {
+      "controller": "P50",
+      "tag": "SLXDCMsg",
+      "scope": "P5000",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "P5000DataCtrlWord[2]",
+      "RequestedLength": "2",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "FORGE_DC",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "P5000DataCtrlWord[2]",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "P300",
+      "tag": "SLXDC_MSG",
+      "scope": "Remote",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "PressDataCtrlWrd[2]",
+      "RequestedLength": "2",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "Forge_DC_PLC",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "PressDataCtrlWrd[2]",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL1",
+      "tag": "CDL_ctrl_msg",
+      "scope": "ExternalComms",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "ctrl_CDL_DC",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "FGGW01CLX",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_CDL_DC",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL1",
+      "tag": "DC_ctrl_msg",
+      "scope": "ExternalComms",
+      "MessageType": "CIP Data Table Read",
+      "RemoteElement": "ctrl_DC_CDL",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "FGGW01CLX",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_DC_CDL",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL2",
+      "tag": "CDL2_ctrl_msg",
+      "scope": "Firth_Rixson_PA209",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "ctrl_CDL2_DC",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "Ethernet_Module, 2, 10.123.28.100, 1, 0",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_CDL2_DC",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL2",
+      "tag": "DC_ctrl_msg",
+      "scope": "Firth_Rixson_PA209",
+      "MessageType": "CIP Data Table Read",
+      "RemoteElement": "ctrl_DC_CDL2",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "Ethernet_Module, 2, 10.123.28.100, 1, 0",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_DC_CDL2",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL",
+      "tag": "CDL_ctrl_msg",
+      "scope": "PA166_FIRTH_RIXSON",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "ctrl_CDL_DC",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "FGGW01CLX",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_CDL_DC",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "CDL",
+      "tag": "DC_ctrl_msg",
+      "scope": "PA166_FIRTH_RIXSON",
+      "MessageType": "CIP Data Table Read",
+      "RemoteElement": "ctrl_DC_CDL",
+      "RequestedLength": "1",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "FGGW01CLX",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "ctrl_DC_CDL",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "FDC",
+      "tag": "P5000_MSG",
+      "scope": "FGGW01CLX",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "P5000DataCtrlWord",
+      "RequestedLength": "2",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "P5000_PLC",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "P5000DataCtrlWord[0]",
+      "CacheConnections": "TRUE"
+    },
+    {
+      "controller": "FDC",
+      "tag": "PRESS_MSG",
+      "scope": "FGGW01CLX",
+      "MessageType": "CIP Data Table Write",
+      "RemoteElement": "PressDataCtrlWrd[0]",
+      "RequestedLength": "2",
+      "ConnectedFlag": "1",
+      "ConnectionPath": "P33000_PLC",
+      "CommTypeCode": "0",
+      "LocalIndex": "0",
+      "LocalElement": "PressDataCtrlWrd[0]",
+      "CacheConnections": "TRUE"
+    }
+  ],
+  "frames": [
+    {
+      "group": "Presses",
+      "title": "P50 / SLXDCMsg",
+      "frame_id": "164e8b32",
+      "rows": [
+        [
+          "P5000DataCtrlWord[0]",
+          "Existing FDC commands / handshake",
+          "P5000DataCtrlWord[0]"
+        ],
+        [
+          "P5000DataCtrlWord[1]",
+          "Existing companion word",
+          "P5000DataCtrlWord[1]"
+        ],
+        [
+          "P5000DataCtrlWord[2]",
+          "Existing press status; bit 0 heartbeat",
+          "P5000DataCtrlWord[2]"
+        ],
+        [
+          "P5000DataCtrlWord[3]",
+          "NEW persistent Cycle Start counter",
+          "P5000DataCtrlWord[3]"
+        ],
+        [
+          "Local:2:I.Data[9].25 rising",
+          "Increment [3] once; wrap 2147483646 → 1",
+          "WH_NewLinkEvent[1]"
+        ],
+        [
+          "Counter change arrives",
+          "FDC WALLCLOCKTIME.DateTime",
+          "WH_Link[1/2].EventUTC[0..6]"
+        ],
+        [
+          "New heartbeat / reconnect",
+          "Establish counter baseline; no replay",
+          "WH_LinkState[1/2]"
+        ],
+        [
+          "Gap / reset / age > 3000 ms",
+          "Data quality fault; no fabricated event",
+          "WH_Settings.MappingApproved = 0"
+        ]
+      ],
+      "notes": [
+        "Array stays DINT[4]. Press → FDC writes [2..3]: 2 DINT / 8 bytes. FDC → press writes [0..1].",
+        "Exact MSG tags, configuration and routes are retained. Press Cycle Start time is FDC ARRIVAL, advisory ±1 second.",
+        "One-second decision grace precedes cycle publication. Original arrival timestamp is retained."
+      ]
+    },
+    {
+      "group": "Presses",
+      "title": "P300 / SLXDC_MSG",
+      "frame_id": "7d022f4b",
+      "rows": [
+        [
+          "PressDataCtrlWrd[0]",
+          "Existing FDC commands / handshake",
+          "PressDataCtrlWrd[0]"
+        ],
+        [
+          "PressDataCtrlWrd[1]",
+          "Existing companion word",
+          "PressDataCtrlWrd[1]"
+        ],
+        [
+          "PressDataCtrlWrd[2]",
+          "Existing press status; bit 0 heartbeat",
+          "PressDataCtrlWrd[2]"
+        ],
+        [
+          "PressDataCtrlWrd[3]",
+          "NEW persistent Cycle Start counter",
+          "PressDataCtrlWrd[3]"
+        ],
+        [
+          "Logic.Auto.Start.Closed rising",
+          "Increment [3] once; wrap 2147483646 → 1",
+          "WH_NewLinkEvent[2]"
+        ],
+        [
+          "Counter change arrives",
+          "FDC WALLCLOCKTIME.DateTime",
+          "WH_Link[1/2].EventUTC[0..6]"
+        ],
+        [
+          "New heartbeat / reconnect",
+          "Establish counter baseline; no replay",
+          "WH_LinkState[1/2]"
+        ],
+        [
+          "Gap / reset / age > 3000 ms",
+          "Data quality fault; no fabricated event",
+          "WH_Settings.MappingApproved = 0"
+        ]
+      ],
+      "notes": [
+        "Array stays DINT[4]. Press → FDC writes [2..3]: 2 DINT / 8 bytes. FDC → press writes [0..1].",
+        "Exact MSG tags, configuration and routes are retained. Press Cycle Start time is FDC ARRIVAL, advisory ±1 second.",
+        "One-second decision grace precedes cycle publication. Original arrival timestamp is retained."
+      ]
+    },
+    {
+      "group": "CDLs",
+      "title": "CDL1 / existing structured write + read",
+      "frame_id": "7b8eab89",
+      "rows": [
+        [
+          "ctrl_CDL_DC.Heatbeat",
+          "BIT · Legacy heartbeat (original spelling)",
+          "FDC ctrl_CDL_DC.Heatbeat"
+        ],
+        [
+          "ctrl_CDL_DC.Robot_Ready",
+          "BIT · Robot-ready status",
+          "FDC ctrl_CDL_DC.Robot_Ready"
+        ],
+        [
+          "ctrl_CDL_DC.Part_In_Transit",
+          "BIT · Legacy part-in-transit status; not the PA209 removal trigger",
+          "FDC ctrl_CDL_DC.Part_In_Transit"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF01_SegA",
+          "BIT · Automatic loading request: RF01 / SegA",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF01_SegA"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF01_SegB",
+          "BIT · Automatic loading request: RF01 / SegB",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF01_SegB"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF01_SegC",
+          "BIT · Automatic loading request: RF01 / SegC",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF01_SegC"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF01_SegD",
+          "BIT · Automatic loading request: RF01 / SegD",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF01_SegD"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF02_SegA",
+          "BIT · Automatic loading request: RF02 / SegA",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF02_SegA"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF02_SegB",
+          "BIT · Automatic loading request: RF02 / SegB",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF02_SegB"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF02_SegC",
+          "BIT · Automatic loading request: RF02 / SegC",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF02_SegC"
+        ],
+        [
+          "ctrl_CDL_DC.Auto_Loading_RF02_SegD",
+          "BIT · Automatic loading request: RF02 / SegD",
+          "FDC ctrl_CDL_DC.Auto_Loading_RF02_SegD"
+        ],
+        [
+          "ctrl_CDL_DC.Gripper_Open",
+          "BIT · Gripper open status",
+          "FDC ctrl_CDL_DC.Gripper_Open"
+        ],
+        [
+          "ctrl_CDL_DC.Gripper_Closed",
+          "BIT · Gripper closed status",
+          "FDC ctrl_CDL_DC.Gripper_Closed"
+        ],
+        [
+          "ctrl_CDL_DC.Gripper_PartClamped",
+          "BIT · Part clamped in gripper",
+          "FDC ctrl_CDL_DC.Gripper_PartClamped"
+        ],
+        [
+          "ctrl_CDL_DC.BF01_Door_Request",
+          "INT · BF01 original encoded door request",
+          "FDC ctrl_CDL_DC.BF01_Door_Request"
+        ],
+        [
+          "ctrl_CDL_DC.BF02_Door_Request",
+          "INT · BF02 original encoded door request",
+          "FDC ctrl_CDL_DC.BF02_Door_Request"
+        ],
+        [
+          "ctrl_CDL_DC.BF03_Door_Request",
+          "INT · BF03 original encoded door request",
+          "FDC ctrl_CDL_DC.BF03_Door_Request"
+        ],
+        [
+          "ctrl_CDL_DC.RF01_Door_Request",
+          "INT · RF01 original encoded door request",
+          "FDC ctrl_CDL_DC.RF01_Door_Request"
+        ],
+        [
+          "ctrl_CDL_DC.RF02_Door_Request",
+          "INT · RF02 original encoded door request",
+          "FDC ctrl_CDL_DC.RF02_Door_Request"
+        ],
+        [
+          "ctrl_CDL_DC.Robot_Destination",
+          "INT · Legacy robot destination code",
+          "FDC ctrl_CDL_DC.Robot_Destination"
+        ],
+        [
+          "ctrl_CDL_DC.Robot_At",
+          "INT · Legacy at-station code",
+          "FDC ctrl_CDL_DC.Robot_At"
+        ],
+        [
+          "ctrl_CDL_DC.Robot_In",
+          "INT · Legacy inside-station code",
+          "FDC ctrl_CDL_DC.Robot_In"
+        ],
+        [
+          "ctrl_CDL_DC.Robot_PSN",
+          "REAL · Legacy robot position",
+          "FDC ctrl_CDL_DC.Robot_PSN"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.Boot",
+          "DINT · Sender startup epoch",
+          "FDC ctrl_CDL_DC.WashHeat.Boot"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.SampleSequence",
+          "DINT · Advancing source sample; freshness, not event identity",
+          "FDC ctrl_CDL_DC.WashHeat.SampleSequence"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.EventSequence",
+          "DINT · Persistent transfer-start counter",
+          "FDC ctrl_CDL_DC.WashHeat.EventSequence"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.ClockValidated",
+          "DINT · Commissioned source clock flag",
+          "FDC ctrl_CDL_DC.WashHeat.ClockValidated"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.Fault",
+          "DINT · 0 healthy; nonzero capture/timer fault",
+          "FDC ctrl_CDL_DC.WashHeat.Fault"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.Furnace",
+          "DINT · 1 RF01 / 2 RF02",
+          "FDC ctrl_CDL_DC.WashHeat.Furnace"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.Running",
+          "DINT · Raw release-stopwatch running flag",
+          "FDC ctrl_CDL_DC.WashHeat.Running"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.TimerMs",
+          "DINT · Raw gripper-release elapsed milliseconds",
+          "FDC ctrl_CDL_DC.WashHeat.TimerMs"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.EventUTC[0..6]",
+          "DINT[7] · Source UTC: year, month, day, hour, minute, second, microsecond",
+          "FDC ctrl_CDL_DC.WashHeat.EventUTC[0..6]"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.TransferElapsedMs",
+          "DINT · Independent elapsed ms; continues past release",
+          "FDC ctrl_CDL_DC.WashHeat.TransferElapsedMs"
+        ],
+        [
+          "ctrl_CDL_DC.WashHeat.SourceId",
+          "DINT · 1 PA166 CDL 1 / 2 PA209 CDL 2",
+          "FDC ctrl_CDL_DC.WashHeat.SourceId"
+        ],
+        [
+          "FDC → CDL1",
+          "EXISTING CDL-INITIATED READ",
+          "DC_ctrl_msg"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Heatbeat",
+          "BIT · Legacy heartbeat (original spelling)",
+          "ctrl_DC_CDL.Heatbeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Data_Collector_Status",
+          "BIT · Legacy data-collector status",
+          "ctrl_DC_CDL.Data_Collector_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Ok_to_Enter_300MN",
+          "BIT · Original 300 MN entry permission",
+          "ctrl_DC_CDL.Ok_to_Enter_300MN"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Ok_to_Enter_50MN",
+          "BIT · Original 50 MN entry permission",
+          "ctrl_DC_CDL.Ok_to_Enter_50MN"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_DC_Seg",
+          "INT · RF01 selected data-collector segment",
+          "ctrl_DC_CDL.RF01_DC_Seg"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_DC_Seg",
+          "INT · RF02 selected data-collector segment",
+          "ctrl_DC_CDL.RF02_DC_Seg"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Robot_1psn",
+          "REAL · Robot 1 position",
+          "ctrl_DC_CDL.Robot_1psn"
+        ],
+        [
+          "FDC ctrl_DC_CDL.Robot_2psn",
+          "REAL · Robot 2 position",
+          "ctrl_DC_CDL.Robot_2psn"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL.RF01.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL.RF01.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL.RF01.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL.RF01.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL.RF01.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL.RF01.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL.RF01.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL.RF01.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL.RF02.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL.RF02.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL.RF02.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL.RF02.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL.RF02.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL.RF02.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL.RF02.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL.RF02.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL.BF01.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL.BF01.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL.BF01.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL.BF01.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL.BF01.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL.BF01.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL.BF01.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF01.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL.BF01.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL.BF02.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL.BF02.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL.BF02.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL.BF02.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL.BF02.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL.BF02.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL.BF02.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF02.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL.BF02.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL.BF03.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL.BF03.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL.BF03.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL.BF03.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL.BF03.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL.BF03.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL.BF03.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL.BF03.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL.BF03.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.stsSegA",
+          "BIT · Automatic-load segment A status",
+          "ctrl_DC_CDL.RF01_Load_Status.stsSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.stsSegB",
+          "BIT · Automatic-load segment B status",
+          "ctrl_DC_CDL.RF01_Load_Status.stsSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.stsSegC",
+          "BIT · Automatic-load segment C status",
+          "ctrl_DC_CDL.RF01_Load_Status.stsSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.stsSegD",
+          "BIT · Automatic-load segment D status",
+          "ctrl_DC_CDL.RF01_Load_Status.stsSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.cmdSegA",
+          "BIT · Automatic-load segment A command",
+          "ctrl_DC_CDL.RF01_Load_Status.cmdSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.cmdSegB",
+          "BIT · Automatic-load segment B command",
+          "ctrl_DC_CDL.RF01_Load_Status.cmdSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.cmdSegC",
+          "BIT · Automatic-load segment C command",
+          "ctrl_DC_CDL.RF01_Load_Status.cmdSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF01_Load_Status.cmdSegD",
+          "BIT · Automatic-load segment D command",
+          "ctrl_DC_CDL.RF01_Load_Status.cmdSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.stsSegA",
+          "BIT · Automatic-load segment A status",
+          "ctrl_DC_CDL.RF02_Load_Status.stsSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.stsSegB",
+          "BIT · Automatic-load segment B status",
+          "ctrl_DC_CDL.RF02_Load_Status.stsSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.stsSegC",
+          "BIT · Automatic-load segment C status",
+          "ctrl_DC_CDL.RF02_Load_Status.stsSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.stsSegD",
+          "BIT · Automatic-load segment D status",
+          "ctrl_DC_CDL.RF02_Load_Status.stsSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.cmdSegA",
+          "BIT · Automatic-load segment A command",
+          "ctrl_DC_CDL.RF02_Load_Status.cmdSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.cmdSegB",
+          "BIT · Automatic-load segment B command",
+          "ctrl_DC_CDL.RF02_Load_Status.cmdSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.cmdSegC",
+          "BIT · Automatic-load segment C command",
+          "ctrl_DC_CDL.RF02_Load_Status.cmdSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL.RF02_Load_Status.cmdSegD",
+          "BIT · Automatic-load segment D command",
+          "ctrl_DC_CDL.RF02_Load_Status.cmdSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Boot",
+          "DINT · Sender startup epoch",
+          "ctrl_DC_CDL.WashHeat.Boot"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Sequence",
+          "DINT · Advancing FDC display snapshot",
+          "ctrl_DC_CDL.WashHeat.Sequence"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Furnace",
+          "DINT · 1 RF01 / 2 RF02",
+          "ctrl_DC_CDL.WashHeat.Furnace"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Slot",
+          "DINT · 1–96 within furnace",
+          "ctrl_DC_CDL.WashHeat.Slot"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Active",
+          "DINT · Handled-part display active",
+          "ctrl_DC_CDL.WashHeat.Active"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.TransferMs",
+          "DINT · Selected CDL elapsed milliseconds",
+          "ctrl_DC_CDL.WashHeat.TransferMs"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.LimitMs",
+          "DINT · FM20 calculated limit in ms",
+          "ctrl_DC_CDL.WashHeat.LimitMs"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.LimitValid",
+          "DINT · Limit matches frozen load stamp and boot",
+          "ctrl_DC_CDL.WashHeat.LimitValid"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.Exceeded",
+          "DINT · Strictly elapsed > limit; warning only",
+          "ctrl_DC_CDL.WashHeat.Exceeded"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.DataValid",
+          "DINT · Selected communication/timing data valid",
+          "ctrl_DC_CDL.WashHeat.DataValid"
+        ],
+        [
+          "FDC ctrl_DC_CDL.WashHeat.TargetCdl",
+          "DINT · Only this CDL may show the popup",
+          "ctrl_DC_CDL.WashHeat.TargetCdl"
+        ]
+      ],
+      "notes": [
+        "CDL 1 v36: ExternalComms/Transfer_Timer start, original rung 006; raw release at original 011.",
+        "Append WashHeat only: outbound 17 DINT / 68 bytes; inbound 11 DINT / 44 bytes. Original UDT member order remains.",
+        "Existing requested count = 1 structure. Original ~500 ms pacing and routes remain. Hold appended write while MSG.EN.",
+        "WH_ActiveCDL = 1 or 2 at FDC. Separate mailboxes normalize to WH_Link[0]; display TargetCdl prevents an unselected popup."
+      ]
+    },
+    {
+      "group": "CDLs",
+      "title": "CDL2 / existing structured write + read",
+      "frame_id": "9110439a",
+      "rows": [
+        [
+          "ctrl_CDL2_DC.Heatbeat",
+          "BIT · Legacy heartbeat (original spelling)",
+          "FDC ctrl_CDL2_DC.Heatbeat"
+        ],
+        [
+          "ctrl_CDL2_DC.Robot_Ready",
+          "BIT · Robot-ready status",
+          "FDC ctrl_CDL2_DC.Robot_Ready"
+        ],
+        [
+          "ctrl_CDL2_DC.Part_In_Transit",
+          "BIT · Legacy part-in-transit status; not the PA209 removal trigger",
+          "FDC ctrl_CDL2_DC.Part_In_Transit"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF01_SegA",
+          "BIT · Automatic loading request: RF01 / SegA",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF01_SegA"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF01_SegB",
+          "BIT · Automatic loading request: RF01 / SegB",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF01_SegB"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF01_SegC",
+          "BIT · Automatic loading request: RF01 / SegC",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF01_SegC"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF01_SegD",
+          "BIT · Automatic loading request: RF01 / SegD",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF01_SegD"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF02_SegA",
+          "BIT · Automatic loading request: RF02 / SegA",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF02_SegA"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF02_SegB",
+          "BIT · Automatic loading request: RF02 / SegB",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF02_SegB"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF02_SegC",
+          "BIT · Automatic loading request: RF02 / SegC",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF02_SegC"
+        ],
+        [
+          "ctrl_CDL2_DC.Auto_Loading_RF02_SegD",
+          "BIT · Automatic loading request: RF02 / SegD",
+          "FDC ctrl_CDL2_DC.Auto_Loading_RF02_SegD"
+        ],
+        [
+          "ctrl_CDL2_DC.Gripper_Open",
+          "BIT · Gripper open status",
+          "FDC ctrl_CDL2_DC.Gripper_Open"
+        ],
+        [
+          "ctrl_CDL2_DC.Gripper_Closed",
+          "BIT · Gripper closed status",
+          "FDC ctrl_CDL2_DC.Gripper_Closed"
+        ],
+        [
+          "ctrl_CDL2_DC.Gripper_PartClamped",
+          "BIT · Part clamped in gripper",
+          "FDC ctrl_CDL2_DC.Gripper_PartClamped"
+        ],
+        [
+          "ctrl_CDL2_DC.BF01_Door_Request",
+          "INT · BF01 original encoded door request",
+          "FDC ctrl_CDL2_DC.BF01_Door_Request"
+        ],
+        [
+          "ctrl_CDL2_DC.BF02_Door_Request",
+          "INT · BF02 original encoded door request",
+          "FDC ctrl_CDL2_DC.BF02_Door_Request"
+        ],
+        [
+          "ctrl_CDL2_DC.BF03_Door_Request",
+          "INT · BF03 original encoded door request",
+          "FDC ctrl_CDL2_DC.BF03_Door_Request"
+        ],
+        [
+          "ctrl_CDL2_DC.RF01_Door_Request",
+          "INT · RF01 original encoded door request",
+          "FDC ctrl_CDL2_DC.RF01_Door_Request"
+        ],
+        [
+          "ctrl_CDL2_DC.RF02_Door_Request",
+          "INT · RF02 original encoded door request",
+          "FDC ctrl_CDL2_DC.RF02_Door_Request"
+        ],
+        [
+          "ctrl_CDL2_DC.Robot_Destination",
+          "INT · Legacy robot destination code",
+          "FDC ctrl_CDL2_DC.Robot_Destination"
+        ],
+        [
+          "ctrl_CDL2_DC.Robot_At",
+          "INT · Legacy at-station code",
+          "FDC ctrl_CDL2_DC.Robot_At"
+        ],
+        [
+          "ctrl_CDL2_DC.Robot_In",
+          "INT · Legacy inside-station code",
+          "FDC ctrl_CDL2_DC.Robot_In"
+        ],
+        [
+          "ctrl_CDL2_DC.Robot_PSN",
+          "REAL · Legacy robot position",
+          "FDC ctrl_CDL2_DC.Robot_PSN"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.Boot",
+          "DINT · Sender startup epoch",
+          "FDC ctrl_CDL2_DC.WashHeat.Boot"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.SampleSequence",
+          "DINT · Advancing source sample; freshness, not event identity",
+          "FDC ctrl_CDL2_DC.WashHeat.SampleSequence"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.EventSequence",
+          "DINT · Persistent transfer-start counter",
+          "FDC ctrl_CDL2_DC.WashHeat.EventSequence"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.ClockValidated",
+          "DINT · Commissioned source clock flag",
+          "FDC ctrl_CDL2_DC.WashHeat.ClockValidated"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.Fault",
+          "DINT · 0 healthy; nonzero capture/timer fault",
+          "FDC ctrl_CDL2_DC.WashHeat.Fault"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.Furnace",
+          "DINT · 1 RF01 / 2 RF02",
+          "FDC ctrl_CDL2_DC.WashHeat.Furnace"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.Running",
+          "DINT · Raw release-stopwatch running flag",
+          "FDC ctrl_CDL2_DC.WashHeat.Running"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.TimerMs",
+          "DINT · Raw gripper-release elapsed milliseconds",
+          "FDC ctrl_CDL2_DC.WashHeat.TimerMs"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.EventUTC[0..6]",
+          "DINT[7] · Source UTC: year, month, day, hour, minute, second, microsecond",
+          "FDC ctrl_CDL2_DC.WashHeat.EventUTC[0..6]"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.TransferElapsedMs",
+          "DINT · Independent elapsed ms; continues past release",
+          "FDC ctrl_CDL2_DC.WashHeat.TransferElapsedMs"
+        ],
+        [
+          "ctrl_CDL2_DC.WashHeat.SourceId",
+          "DINT · 1 PA166 CDL 1 / 2 PA209 CDL 2",
+          "FDC ctrl_CDL2_DC.WashHeat.SourceId"
+        ],
+        [
+          "FDC → CDL2",
+          "EXISTING CDL-INITIATED READ",
+          "DC_ctrl_msg"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Heatbeat",
+          "BIT · Legacy heartbeat (original spelling)",
+          "ctrl_DC_CDL2.Heatbeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Data_Collector_Status",
+          "BIT · Legacy data-collector status",
+          "ctrl_DC_CDL2.Data_Collector_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Ok_to_Enter_300MN",
+          "BIT · Original 300 MN entry permission",
+          "ctrl_DC_CDL2.Ok_to_Enter_300MN"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Ok_to_Enter_50MN",
+          "BIT · Original 50 MN entry permission",
+          "ctrl_DC_CDL2.Ok_to_Enter_50MN"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_DC_Seg",
+          "INT · RF01 selected data-collector segment",
+          "ctrl_DC_CDL2.RF01_DC_Seg"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_DC_Seg",
+          "INT · RF02 selected data-collector segment",
+          "ctrl_DC_CDL2.RF02_DC_Seg"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Robot_1psn",
+          "REAL · Robot 1 position",
+          "ctrl_DC_CDL2.Robot_1psn"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.Robot_2psn",
+          "REAL · Robot 2 position",
+          "ctrl_DC_CDL2.Robot_2psn"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL2.RF01.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL2.RF01.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL2.RF01.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL2.RF01.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL2.RF01.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL2.RF01.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL2.RF01.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL2.RF01.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL2.RF02.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL2.RF02.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL2.RF02.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL2.RF02.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL2.RF02.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL2.RF02.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL2.RF02.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL2.RF02.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL2.BF01.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL2.BF01.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL2.BF01.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL2.BF01.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL2.BF01.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL2.BF01.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL2.BF01.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF01.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL2.BF01.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL2.BF02.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL2.BF02.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL2.BF02.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL2.BF02.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL2.BF02.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL2.BF02.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL2.BF02.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF02.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL2.BF02.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.HeartBeat",
+          "BIT · Furnace heartbeat",
+          "ctrl_DC_CDL2.BF03.HeartBeat"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Furnace_OK",
+          "BIT · Original furnace-ready status",
+          "ctrl_DC_CDL2.BF03.Furnace_OK"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Fully_Closed",
+          "BIT · Door fully closed feedback",
+          "ctrl_DC_CDL2.BF03.Door_Fully_Closed"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Fully_Open",
+          "BIT · Door fully open feedback",
+          "ctrl_DC_CDL2.BF03.Door_Fully_Open"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Open_RE",
+          "BIT · Legacy door-open request/echo bit",
+          "ctrl_DC_CDL2.BF03.Door_Open_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Close_RE",
+          "BIT · Legacy door-close request/echo bit",
+          "ctrl_DC_CDL2.BF03.Door_Close_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Stop_RE",
+          "BIT · Legacy door-stop request/echo bit",
+          "ctrl_DC_CDL2.BF03.Door_Stop_RE"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.BF03.Door_Status",
+          "INT · Legacy encoded door status",
+          "ctrl_DC_CDL2.BF03.Door_Status"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.stsSegA",
+          "BIT · Automatic-load segment A status",
+          "ctrl_DC_CDL2.RF01_Load_Status.stsSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.stsSegB",
+          "BIT · Automatic-load segment B status",
+          "ctrl_DC_CDL2.RF01_Load_Status.stsSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.stsSegC",
+          "BIT · Automatic-load segment C status",
+          "ctrl_DC_CDL2.RF01_Load_Status.stsSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.stsSegD",
+          "BIT · Automatic-load segment D status",
+          "ctrl_DC_CDL2.RF01_Load_Status.stsSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.cmdSegA",
+          "BIT · Automatic-load segment A command",
+          "ctrl_DC_CDL2.RF01_Load_Status.cmdSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.cmdSegB",
+          "BIT · Automatic-load segment B command",
+          "ctrl_DC_CDL2.RF01_Load_Status.cmdSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.cmdSegC",
+          "BIT · Automatic-load segment C command",
+          "ctrl_DC_CDL2.RF01_Load_Status.cmdSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF01_Load_Status.cmdSegD",
+          "BIT · Automatic-load segment D command",
+          "ctrl_DC_CDL2.RF01_Load_Status.cmdSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.stsSegA",
+          "BIT · Automatic-load segment A status",
+          "ctrl_DC_CDL2.RF02_Load_Status.stsSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.stsSegB",
+          "BIT · Automatic-load segment B status",
+          "ctrl_DC_CDL2.RF02_Load_Status.stsSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.stsSegC",
+          "BIT · Automatic-load segment C status",
+          "ctrl_DC_CDL2.RF02_Load_Status.stsSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.stsSegD",
+          "BIT · Automatic-load segment D status",
+          "ctrl_DC_CDL2.RF02_Load_Status.stsSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.cmdSegA",
+          "BIT · Automatic-load segment A command",
+          "ctrl_DC_CDL2.RF02_Load_Status.cmdSegA"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.cmdSegB",
+          "BIT · Automatic-load segment B command",
+          "ctrl_DC_CDL2.RF02_Load_Status.cmdSegB"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.cmdSegC",
+          "BIT · Automatic-load segment C command",
+          "ctrl_DC_CDL2.RF02_Load_Status.cmdSegC"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.RF02_Load_Status.cmdSegD",
+          "BIT · Automatic-load segment D command",
+          "ctrl_DC_CDL2.RF02_Load_Status.cmdSegD"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Boot",
+          "DINT · Sender startup epoch",
+          "ctrl_DC_CDL2.WashHeat.Boot"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Sequence",
+          "DINT · Advancing FDC display snapshot",
+          "ctrl_DC_CDL2.WashHeat.Sequence"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Furnace",
+          "DINT · 1 RF01 / 2 RF02",
+          "ctrl_DC_CDL2.WashHeat.Furnace"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Slot",
+          "DINT · 1–96 within furnace",
+          "ctrl_DC_CDL2.WashHeat.Slot"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Active",
+          "DINT · Handled-part display active",
+          "ctrl_DC_CDL2.WashHeat.Active"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.TransferMs",
+          "DINT · Selected CDL elapsed milliseconds",
+          "ctrl_DC_CDL2.WashHeat.TransferMs"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.LimitMs",
+          "DINT · FM20 calculated limit in ms",
+          "ctrl_DC_CDL2.WashHeat.LimitMs"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.LimitValid",
+          "DINT · Limit matches frozen load stamp and boot",
+          "ctrl_DC_CDL2.WashHeat.LimitValid"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.Exceeded",
+          "DINT · Strictly elapsed > limit; warning only",
+          "ctrl_DC_CDL2.WashHeat.Exceeded"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.DataValid",
+          "DINT · Selected communication/timing data valid",
+          "ctrl_DC_CDL2.WashHeat.DataValid"
+        ],
+        [
+          "FDC ctrl_DC_CDL2.WashHeat.TargetCdl",
+          "DINT · Only this CDL may show the popup",
+          "ctrl_DC_CDL2.WashHeat.TargetCdl"
+        ]
+      ],
+      "notes": [
+        "CDL 2 PA209: occupied withdrawal from ROBOT_IN.Furnace1/2 (>2000 boundary); raw stop on gripper release at a press.",
+        "Append WashHeat only: outbound 17 DINT / 68 bytes; inbound 11 DINT / 44 bytes. Original UDT member order remains.",
+        "Existing requested count = 1 structure. Original ~500 ms pacing and routes remain. Hold appended write while MSG.EN.",
+        "WH_ActiveCDL = 1 or 2 at FDC. Separate mailboxes normalize to WH_Link[0]; display TargetCdl prevents an unselected popup."
+      ]
+    },
+    {
+      "group": "FDC",
+      "title": "FDC / process barcode → exact dimension lookup",
+      "frame_id": "455341ae",
+      "rows": [
+        [
+          "[00] FCBHAH05",
+          "Serial → sFurnaceItem.strSN",
+          "serial_number"
+        ],
+        [
+          "[01] P/024236",
+          "Work order → sFurnaceItem.strWO",
+          "work_order"
+        ],
+        [
+          "[02] 00213",
+          "Stage → sFurnaceItem.strStg",
+          "stage"
+        ],
+        [
+          "[03] 22G0436-01",
+          "Part number → sFurnaceItem.strPN",
+          "part_number"
+        ],
+        [
+          "[04] NCR36941-HFF2",
+          "Heat specification → sFurnaceItem.strQA",
+          "qa_spec"
+        ],
+        [
+          "[05] 1690",
+          "Barcode temperature → sFurnaceItem.strBarCodeTemperature",
+          "temperature_sp"
+        ],
+        [
+          "[06] 25",
+          "Temperature tolerance → sFurnaceItem.strTolerance",
+          "temperature_tolerance"
+        ],
+        [
+          "[07] 340",
+          "Minimum soak (minutes) → sFurnaceItem.strSoak",
+          "min_soak_minutes"
+        ],
+        [
+          "[08] 654",
+          "Maximum soak (minutes) → sFurnaceItem.strMaxSoak",
+          "max_soak_minutes"
+        ],
+        [
+          "[09] 22G0436-01-F1-02",
+          "Press recipe → sFurnaceItem.strRecipe",
+          "press_recipe"
+        ],
+        [
+          "[10] 22G0436-01-FF",
+          "Press quality → sFurnaceItem.strPressQA",
+          "press_qa"
+        ],
+        [
+          "Part / stage / heat spec",
+          "Exact five-field dimension key",
+          "part_number / stage / qa_spec"
+        ],
+        [
+          "Press recipe / press quality",
+          "Separate operation fields in same key",
+          "press_recipe / press_qa"
+        ],
+        [
+          "D10 / D16 / optional D30",
+          "Measured dimensions entered in Ignition",
+          "od_in / height_in / circle_in"
+        ],
+        [
+          "Catalogue revision",
+          "Frozen at run enrollment",
+          "run_recipe → part_recipe_revision"
+        ],
+        [
+          "Physical.CdlId / Physical.Press",
+          "Selected adapter + press retained per event",
+          "washheat.event JSON source metadata"
+        ]
+      ],
+      "notes": [
+        "Small photographed barcode: FCBHAH05 (serial only). Larger PDF417 contains 11 comma-separated fields; NO DIMENSIONS.",
+        "FDC funcParseBarCodeData → funcProcessFurnaceItem → original RF01/RF02 item. Stage 00213 stays text.",
+        "Heat QA (strQA) is not press quality (strPressQA). No broad QA-only or inferred-dimension fallback."
+      ]
+    }
+  ],
+  "barcode": "FCBHAH05,P/024236,00213,22G0436-01,NCR36941-HFF2,1690,25,340,654,22G0436-01-F1-02,22G0436-01-FF",
+  "barcode_fields": [
+    [
+      "Serial",
+      "strSN",
+      "serial_number"
+    ],
+    [
+      "Work order",
+      "strWO",
+      "work_order"
+    ],
+    [
+      "Stage",
+      "strStg",
+      "stage"
+    ],
+    [
+      "Part number",
+      "strPN",
+      "part_number"
+    ],
+    [
+      "Heat specification",
+      "strQA",
+      "qa_spec"
+    ],
+    [
+      "Barcode temperature",
+      "strBarCodeTemperature",
+      "temperature_sp"
+    ],
+    [
+      "Temperature tolerance",
+      "strTolerance",
+      "temperature_tolerance"
+    ],
+    [
+      "Minimum soak (minutes)",
+      "strSoak",
+      "min_soak_minutes"
+    ],
+    [
+      "Maximum soak (minutes)",
+      "strMaxSoak",
+      "max_soak_minutes"
+    ],
+    [
+      "Press recipe",
+      "strRecipe",
+      "press_recipe"
+    ],
+    [
+      "Press quality",
+      "strPressQA",
+      "press_qa"
+    ]
+  ]
+}

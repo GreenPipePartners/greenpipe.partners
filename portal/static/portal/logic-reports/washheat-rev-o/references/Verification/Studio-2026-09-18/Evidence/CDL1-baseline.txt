@@ -1,0 +1,8 @@
+Verifying Controller...
+Warning: Rung 6: AFI detected.
+Warning: Rung 7: AFI detected.
+Warning: Rung 8: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 10: AFI detected.
+Verifying program connections
+Complete - 0 error(s), 5 warning(s)

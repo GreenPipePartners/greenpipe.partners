@@ -1,0 +1,28 @@
+{
+  "actions": [
+    {
+      "op": "verify_controller",
+      "selector": {
+        "title_re": "Logix Designer - .* in FDC20206_V20_03_07_26_WH_DEV_v37\\.ACD .*"
+      },
+      "screenshot": "C:\\LogixAgent\\washheat-studio-20260918\\FDC20206_V20_03_07_26_WH_DEV_v37-command-verify.png"
+    },
+    {
+      "op": "keys",
+      "selector": {
+        "title_re": "Logix Designer - .* in FDC20206_V20_03_07_26_WH_DEV_v37\\.ACD .*"
+      },
+      "keys": "^s"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "close",
+      "selector": {
+        "title_re": "Logix Designer - .* in FDC20206_V20_03_07_26_WH_DEV_v37\\.ACD .*"
+      }
+    }
+  ]
+}

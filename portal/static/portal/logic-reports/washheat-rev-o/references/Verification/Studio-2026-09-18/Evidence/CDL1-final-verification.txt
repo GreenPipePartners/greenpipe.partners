@@ -1,0 +1,14 @@
+Verifying Controller...
+Warning: Rung 7: AFI detected.
+Warning: Rung 8: AFI detected.
+Warning: Rung 9: AFI detected.
+Warning: Rung 10: AFI detected.
+Warning: Rung 11: AFI detected.
+Verifying program connections
+Warning: Duplicate Destructive Bit Reference Detected: 'ExternalComms - WH_CDL_Publish'
+    ExternalComms - WH_CDL_Stop, Rung 2, OTE
+    ExternalComms - WH_CDL_Init, Rung 4, OTU
+Warning: Duplicate Destructive Bit Reference Detected: 'ExternalComms - WH_CDL_WasRunning'
+    ExternalComms - WH_CDL_Init, Rung 3, OTU
+    ExternalComms - Transfer_Timer, Rung 22, OTE
+Complete - 0 error(s), 7 warning(s)

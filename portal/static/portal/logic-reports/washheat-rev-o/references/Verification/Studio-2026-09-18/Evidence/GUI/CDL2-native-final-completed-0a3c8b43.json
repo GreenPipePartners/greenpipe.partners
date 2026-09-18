@@ -1,0 +1,47 @@
+{
+  "ok": true,
+  "started_utc": "2026-09-18T11:46:22.692134+00:00",
+  "actions": [
+    {
+      "op": "start",
+      "pid": 8564
+    },
+    {
+      "op": "wait_project",
+      "window": {
+        "handle": 854262,
+        "title": "Logix Designer - Firth_Rixson_PA209 in CDL2_NATIVE_OVERLAY_v37_02.ACD [1756-L71 37.11]",
+        "class": "Afx:00DE0000:8:00010003:00000000:00150DA1",
+        "control_id": 0,
+        "pid": 8564,
+        "visible": true,
+        "enabled": true
+      },
+      "import_log": ""
+    },
+    {
+      "op": "verify_controller",
+      "ui_command_id": 32049,
+      "window": {
+        "handle": 854262,
+        "title": "Logix Designer - Firth_Rixson_PA209 in CDL2_NATIVE_OVERLAY_v37_02.ACD [1756-L71 37.11]*",
+        "class": "Afx:00DE0000:8:00010003:00000000:00150DA1",
+        "control_id": 0,
+        "pid": 8564,
+        "visible": true,
+        "enabled": true
+      },
+      "verification_log": "Verifying Controller...\r\nVerifying program connections\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - RMCMove0914'\r\n    AutoCycles - R10_FurnaceToPress, Rung 11\r\n    AutoCycles - R09_TableToFurnace, Rung 19\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - FurnaceGripperOffset'\r\n    AutoCycles - FurnaceLoadSetpoints, Rung 1\r\n    AutoCycles - PressLoadSetpoints, Rung 1\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset1'\r\n    HMI - StationSetup, Rung 3\r\n    HMI - StationSetup, Rung 16\r\n    HMI - StationSetup, Rung 19\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'AutoCycles - RMCMove0916'\r\n    AutoCycles - R10_FurnaceToPress, Rung 27\r\n    AutoCycles - R09_TableToFurnace, Rung 22\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset4'\r\n    HMI - StationSetup, Rung 13\r\n    HMI - StationSetup, Rung 8\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset3'\r\n    HMI - StationSetup, Rung 7\r\n    HMI - StationSetup, Rung 12\r\nWarning: Duplicate AOI Backing Tag Reference Detected: 'HMI - GripperOffset2'\r\n    HMI - StationSetup, Rung 11\r\n    HMI - StationSetup, Rung 6\r\nComplete - 0 error(s), 7 warning(s)\r\n"
+    },
+    {
+      "op": "keys"
+    },
+    {
+      "op": "wait"
+    },
+    {
+      "op": "close"
+    }
+  ],
+  "finished_utc": "2026-09-18T11:47:36.342624+00:00"
+}

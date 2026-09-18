@@ -1,0 +1,24 @@
+RUNG 000 [ADDED]
+COMMENT
+INIT constants: signed DINT maximum and maximum minus one. Ordered branches initialize the controller-wide software constants before any consumer.
+XIC(S:FS)[MOVE(2147483647,MAX_INT),SUB(MAX_INT,1,MAX_INT_MINUS_ONE)];
+
+RUNG 001 [ADDED]
+COMMENT
+New startup baseline. Existing MSG carries word [3]; no array or message configuration change.
+XIC(S:FS)MOVE(0,PressDataCtrlWrd[3]);
+
+RUNG 002 [ADDED]
+COMMENT
+Retain a Cycle Start edge as a counter change even when the pulse ends before the next message.
+XIC(Logic.Auto.Start.Closed)ONS(WH_SourceONS)XIO(S:FS)OTE(WH_SourceEdge);
+
+RUNG 003 [ADDED]
+COMMENT
+Bounded counter wraps to 1 on this edge, without overflowing a DINT.
+XIC(WH_SourceEdge)GE(PressDataCtrlWrd[3],MAX_INT_MINUS_ONE)MOVE(0,PressDataCtrlWrd[3]);
+
+RUNG 004 [ADDED]
+COMMENT
+Existing press-to-FDC MSG already writes words [2..3]. FDC records approximate arrival time.
+XIC(WH_SourceEdge)ADD(PressDataCtrlWrd[3],1,PressDataCtrlWrd[3]);

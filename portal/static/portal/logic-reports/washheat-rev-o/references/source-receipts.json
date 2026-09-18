@@ -1,0 +1,3606 @@
+{
+  "revision": "O",
+  "sources": [
+    {
+      "source": "solution/src/capture.py",
+      "artifact": "References/Implementation/src/capture.py",
+      "sha256": "e7afc9fb85a465c5c7348c1e6ed7b69365bbe186f7447485c30c2d8d1d8a874f"
+    },
+    {
+      "source": "solution/src/catalog.py",
+      "artifact": "References/Implementation/src/catalog.py",
+      "sha256": "8f91c4c2b234fdf653f4fd3ef6e6593ff367ad99ca47b3c13d5d5b12efc66194"
+    },
+    {
+      "source": "solution/src/domain.py",
+      "artifact": "References/Implementation/src/domain.py",
+      "sha256": "64188466b545a0cef0c703f6f74da91169f276d931a23dc6da0ee0e478d04706"
+    },
+    {
+      "source": "solution/src/gateway.py",
+      "artifact": "References/Implementation/src/gateway.py",
+      "sha256": "f005c8d7d4328d4f2c316d736951fa402e426a0e04bc73082247e5ea642f1f0c"
+    },
+    {
+      "source": "solution/src/ingestion.py",
+      "artifact": "References/Implementation/src/ingestion.py",
+      "sha256": "49d8a6027b87245f4b9e1982eb6dd835868433246b0f0df0a08de4a445071a74"
+    },
+    {
+      "source": "solution/src/service.py",
+      "artifact": "References/Implementation/src/service.py",
+      "sha256": "6143d501f62e9572381acefed9cc0098223337fe6405cd08d2f4ea08e37cdfe0"
+    },
+    {
+      "source": "solution/sql/001_washheat.sql",
+      "artifact": "References/Implementation/sql/001_washheat.sql",
+      "sha256": "3f049aae3fe0cd6f487558f816c9580a9a14da8e57b7f76b89b64f725c09b1b4"
+    },
+    {
+      "source": "solution/sql/002_capture.sql",
+      "artifact": "References/Implementation/sql/002_capture.sql",
+      "sha256": "c50b76b981f28d2b9fad8cfda386435510e2365d137274297bf5c54ce4c793fe"
+    },
+    {
+      "source": "solution/sql/003_part_catalog.sql",
+      "artifact": "References/Implementation/sql/003_part_catalog.sql",
+      "sha256": "d33a9a11cb831de21eb371c8676933ac4cf6ddea17012f6950214cd29fdd7b28"
+    },
+    {
+      "source": "solution/plc/README.md",
+      "artifact": "References/Implementation/plc/README.md",
+      "sha256": "745c4112c67ea4e59217abfac7c9701e32d4a363283e30a0e85302718cb2489f"
+    },
+    {
+      "source": "solution/plc/STUDIO-VERIFICATION-2026-09-18.md",
+      "artifact": "References/Implementation/plc/STUDIO-VERIFICATION-2026-09-18.md",
+      "sha256": "adc8ccefece0543a59145712554f9095750a78b378c0704124721f80c044b902"
+    },
+    {
+      "source": "solution/plc/build.py",
+      "artifact": "References/Implementation/plc/build.py",
+      "sha256": "78c1529153d48bd78784500cbd767c04a766c6ccb2bc434e901a9e4d6832b1eb"
+    },
+    {
+      "source": "solution/plc/constants.py",
+      "artifact": "References/Implementation/plc/constants.py",
+      "sha256": "71071a5024d8d334bc47a69eea9e790b95857aaf8939a11192fcc793dcae1291"
+    },
+    {
+      "source": "solution/plc/interface_types.py",
+      "artifact": "References/Implementation/plc/interface_types.py",
+      "sha256": "eb04f2817931789bb4c90b5d83b54ff9f29658d672041e421ed4e7894abc8698"
+    },
+    {
+      "source": "solution/plc/ladder.py",
+      "artifact": "References/Implementation/plc/ladder.py",
+      "sha256": "eb67db8b1e6c8097a97838cb09798526d9ad2675bde59cfbda387eceec55c4f8"
+    },
+    {
+      "source": "solution/plc/legacy_transport.py",
+      "artifact": "References/Implementation/plc/legacy_transport.py",
+      "sha256": "e89f29aa844cc508f98cc456e30719675c02d1bc4304a59c09a0dc9ecc9832f2"
+    },
+    {
+      "source": "solution/plc/result_payload.py",
+      "artifact": "References/Implementation/plc/result_payload.py",
+      "sha256": "5a89be2bf9d32705078af29152c4d177dfc623ed57e9c82391c19cd9abf81398"
+    },
+    {
+      "source": "solution/plc/site_mapping.py",
+      "artifact": "References/Implementation/plc/site_mapping.py",
+      "sha256": "61559fa4aea90d6945eafbe2d8e55f58b396a2327f3041e8d12f77b2f5436524"
+    },
+    {
+      "source": "solution/plc/tests/rll_harness.py",
+      "artifact": "References/Implementation/plc/tests/rll_harness.py",
+      "sha256": "e55a1963e0d3131fb0183f6c1a79158c55b75543ee0b5e4b2978946f1350918a"
+    },
+    {
+      "source": "solution/plc/tests/test_artifacts.py",
+      "artifact": "References/Implementation/plc/tests/test_artifacts.py",
+      "sha256": "00d13d9da5ebbb646c3231db85c12079daed426a054179b0440493de53a40a3a"
+    },
+    {
+      "source": "solution/plc/tests/test_cdl.py",
+      "artifact": "References/Implementation/plc/tests/test_cdl.py",
+      "sha256": "671bbc914b6f2d039149b3b4251bb82bce21c02e26f2ec3d03c31a887c302d13"
+    },
+    {
+      "source": "solution/plc/tests/test_constants.py",
+      "artifact": "References/Implementation/plc/tests/test_constants.py",
+      "sha256": "10369936f9da349767caa15a42df62996c60ead0be16b27c7a1b21826a827152"
+    },
+    {
+      "source": "solution/plc/tests/test_mapping.py",
+      "artifact": "References/Implementation/plc/tests/test_mapping.py",
+      "sha256": "7051f785ef82c2ac32ff6d1500a35e4f6d0698d63d24a6fac08e1b10aea5f39d"
+    },
+    {
+      "source": "solution/plc/tests/test_ownership.py",
+      "artifact": "References/Implementation/plc/tests/test_ownership.py",
+      "sha256": "ca20ad5839737645c70d1c5a0d2f567d01d1af26b5ec031c90c7df7aa8755025"
+    },
+    {
+      "source": "solution/plc/tests/test_protocol.py",
+      "artifact": "References/Implementation/plc/tests/test_protocol.py",
+      "sha256": "56fb1f765957c727192270e8395fda5c155a7fb7db4bdf1d537f2ee4acd15581"
+    },
+    {
+      "source": "solution/plc/tests/test_source_links.py",
+      "artifact": "References/Implementation/plc/tests/test_source_links.py",
+      "sha256": "29be525bbe393dd65040ac5a49c9ccc63b8f69236df4ebc46e21a39de12b9123"
+    },
+    {
+      "source": "solution/plc/verify.py",
+      "artifact": "References/Implementation/plc/verify.py",
+      "sha256": "237274ec50bf38d151a98bd9d40a8ac466754cd182826e1e9f9b2f8d475be3ad"
+    },
+    {
+      "source": "solution/tests/test_build.py",
+      "artifact": "References/Implementation/tests/test_build.py",
+      "sha256": "e13adc904c43bc5740245ca241c497520ddb705f2aa210a2ee3b1244cae6ed3c"
+    },
+    {
+      "source": "solution/tests/test_capture.py",
+      "artifact": "References/Implementation/tests/test_capture.py",
+      "sha256": "0f817e91be2106e6b4b8c2100460bd8917b8c70c96a52deb51f7a71a289c6fcd"
+    },
+    {
+      "source": "solution/tests/test_catalog.py",
+      "artifact": "References/Implementation/tests/test_catalog.py",
+      "sha256": "22a66983179d2ce005c8f624dd58ebbbd486c1857d37527e03aa2b10643179f3"
+    },
+    {
+      "source": "solution/tests/test_domain.py",
+      "artifact": "References/Implementation/tests/test_domain.py",
+      "sha256": "bc9e53d658470eda860c6f1ea35b5b48e85b6b41e8cd95dc14d1e2dcd001c654"
+    },
+    {
+      "source": "solution/tests/test_service.py",
+      "artifact": "References/Implementation/tests/test_service.py",
+      "sha256": "43f0287e88972f8928dc3d2156b1ee7cc31627301e3f9ae1a763169892c59763"
+    },
+    {
+      "source": "solution/gateway/README.md",
+      "artifact": "References/Implementation/gateway/README.md",
+      "sha256": "c416706dadaeee198835cd46ec5e28830a14feb888b5563fd202802f58fed46b"
+    },
+    {
+      "source": "solution/gateway/timer.py",
+      "artifact": "References/Implementation/gateway/timer.py",
+      "sha256": "14d6885d6be64a39714e1118f58dc185d77d96549603e6023b659e4d1009ea5c"
+    },
+    {
+      "source": "solution/lab/browser.cjs",
+      "artifact": "References/Implementation/lab/browser.cjs",
+      "sha256": "ba4bf1e5ac201fa2326136af884f977112c883ea2aee84186fea731782e89b22"
+    },
+    {
+      "source": "solution/lab/browser_check.cjs",
+      "artifact": "References/Implementation/lab/browser_check.cjs",
+      "sha256": "d754492184be8a4099669edf66a640e30a8710e20e47df9a2dccd5bd6fdd6ecb"
+    },
+    {
+      "source": "solution/lab/capture_release_evidence.py",
+      "artifact": "References/Implementation/lab/capture_release_evidence.py",
+      "sha256": "960cc5cc94cce6d306f3fd8f4500a1bc6dea4345e6fdece0ae077df17edadfcb"
+    },
+    {
+      "source": "solution/lab/catalog_browser_check.cjs",
+      "artifact": "References/Implementation/lab/catalog_browser_check.cjs",
+      "sha256": "39eadc3fa2d58ac2e6ae139d4b1a99ca922a47eee62f652c7bfd592b1e8d4bff"
+    },
+    {
+      "source": "solution/lab/inspect_project.cjs",
+      "artifact": "References/Implementation/lab/inspect_project.cjs",
+      "sha256": "ca63092da84c6b0c45c9606f6260596813087e5be2ae284fbe91d58e1de2c7c7"
+    },
+    {
+      "source": "solution/lab/install_guest.py",
+      "artifact": "References/Implementation/lab/install_guest.py",
+      "sha256": "580bbfc0be1830c5553235937993191e90ebfd365906e588eb5e5e901bd3c01b"
+    },
+    {
+      "source": "solution/lab/lab_setup.py",
+      "artifact": "References/Implementation/lab/lab_setup.py",
+      "sha256": "fb9dce344dd90df785a42a328fbc61aad13ce673a5180ffc84e62beb51fd5a4f"
+    },
+    {
+      "source": "solution/lab/lab_verify.py",
+      "artifact": "References/Implementation/lab/lab_verify.py",
+      "sha256": "c81baa1f1e80e15e65b99e520ec59eafab20f70cb5d4c33f3d9d21cf52c47da6"
+    },
+    {
+      "source": "solution/lab/migrate_catalog_guest.py",
+      "artifact": "References/Implementation/lab/migrate_catalog_guest.py",
+      "sha256": "cbfecef28cc55b5e57303a1f4706cc518096b747039f3a672462e0cf1736829f"
+    },
+    {
+      "source": "solution/lab/provision_guest.py",
+      "artifact": "References/Implementation/lab/provision_guest.py",
+      "sha256": "a472e3d16b9a1944583b5fad04dddb85535e97da48eb56d7479d459602a1a3ed"
+    },
+    {
+      "source": "solution/lab/reset_trial.cjs",
+      "artifact": "References/Implementation/lab/reset_trial.cjs",
+      "sha256": "6aeea116fb530f59fc3c29b844fb959f4298bc56413c09a258521fb7b1431f35"
+    },
+    {
+      "source": "solution/lab/run_browser.py",
+      "artifact": "References/Implementation/lab/run_browser.py",
+      "sha256": "a986a19372146403bea131148bc1893496a0a0d54c0a92f9123f2ac21493c740"
+    },
+    {
+      "source": "solution/lab/scan_projects.cjs",
+      "artifact": "References/Implementation/lab/scan_projects.cjs",
+      "sha256": "276322ace2e44002d93ff465a31f914f77cbf12757be0345d6a2e12c907bf41c"
+    },
+    {
+      "source": "solution/lab/stage_project.py",
+      "artifact": "References/Implementation/lab/stage_project.py",
+      "sha256": "c78e44dc6b12924c3fe13d357747f0b735526f6e9bc24a4747f5713af11d5c1e"
+    },
+    {
+      "source": "solution/build_project.py",
+      "artifact": "References/Implementation/build_project.py",
+      "sha256": "b2b8e39ef8f7ba9dbf9341ed112015273bb795948c0b0e1275e52d1a711277b6"
+    },
+    {
+      "source": "solution/customer_views.py",
+      "artifact": "References/Implementation/customer_views.py",
+      "sha256": "4c2171be01a933623a6269b0203773c3ef5334d6e5ad7b3ae77a92d7928a205a"
+    },
+    {
+      "source": "solution/README.md",
+      "artifact": "References/Implementation/README.md",
+      "sha256": "a148f574ef3975df7bf8f9c4a46a725cc48b4ab0bc4146fef0a6ececb4577e35"
+    },
+    {
+      "source": "solution/verify.py",
+      "artifact": "References/Implementation/verify.py",
+      "sha256": "0488e35696a7918bb78858d40a79978fe618031c049ff532717bc13bd0337803"
+    },
+    {
+      "source": "tools/lab_guest.py",
+      "artifact": "References/Implementation/tools/lab_guest.py",
+      "sha256": "01e8de7fcf5757ec5c88898d9c5e81447d43f4f23a47f757d12031a5d3f2a978"
+    },
+    {
+      "source": "tools/recover_cdl1.py",
+      "artifact": "References/Implementation/tools/recover_cdl1.py",
+      "sha256": "9cc90b115a7e5308d4f4c99381fcc70a7311a1e8ca6d621f327393b75ccb4694"
+    },
+    {
+      "source": "tools/verify_native_derivatives.py",
+      "artifact": "References/Implementation/tools/verify_native_derivatives.py",
+      "sha256": "518b9b1cbe349131550fede896b4e38909a89a9d89d9907855788ba33ece4ccc"
+    },
+    {
+      "source": "solution/gateway/project-global-props.bin",
+      "artifact": "References/Implementation/gateway/project-global-props.bin",
+      "sha256": "78f936b598c61e75bd9784b277c9e23196cddd6fcd440303e2a6d5972dc5f827"
+    }
+  ],
+  "controllers": [
+    {
+      "label": "P50",
+      "controller": "P5000",
+      "source_path": "solution/plc/evidence/2026-09-18-studio-verify/P50_ORIGINAL_NATIVE_v19.L5X",
+      "source_sha256": "e2d1a72987539cdcdc392af54be9bb7ec779de32ed108ae395ad56c63b19279c",
+      "development_path": "solution/plc/build/native-v19/P5000_10_09_2025_WH_DEV_v19.L5X",
+      "development_sha256": "bba1831c3d735dfbf1c290fca425b606fb29e1da035d83377fd36ba016de30f2",
+      "new_components": [
+        {
+          "path": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "sha256_c14n": "bacc6e0c4028803edac7811ef73d127f29769fb3f7b83a87c2d6c1b39ed16077",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/WH_Signals/attributes",
+          "sha256_c14n": "5831c4630f86f7668d2d704a170f42d5d94c8db18af1b6261594851b2bbde91e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "15293552c2d9a77da9f7a614e10716fc5cdf87ddff082b0ce0075976c3847848",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "ea08f32690f76f545c219dae9b3b97fc0be45eb0dbe7edec4d8d2019eaf1df4f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceEdge",
+          "sha256_c14n": "cb29f9f9a57cd18fb1a3e180e7e894325e34c9bb9ccb49792c33e45bbbd17146",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceONS",
+          "sha256_c14n": "cd80faf4017983dd5e29ab892019d12663a6ebbdf7c804116e124e1ed9af419b",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [],
+      "modified_task_schedules": [
+        {
+          "path": "Tasks/P5000",
+          "sha256_c14n": "198cc6a67c2af4dac124ae80ceeb073f2e5efcbe805b64bcf2b3134c0eab83ea"
+        }
+      ],
+      "extended_legacy_components": []
+    },
+    {
+      "label": "P300",
+      "controller": "P33000_Controller",
+      "source_path": "applications/plc/l5x/recovered-additional/P300MN_L84E_030726.L5X",
+      "source_sha256": "d968db4bba09d573bff9618269ad671e310af181f9c66b3f6f646b07f9ba5436",
+      "development_path": "solution/plc/build/P300MN_L84E_030726_WH_DEV_v37.L5X",
+      "development_sha256": "2c2f72b2c55b512e159c7e53ce5a51d15b121386a7cab23f85aa3ade0dfed97c",
+      "new_components": [
+        {
+          "path": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "sha256_c14n": "95d48857e1847a775870aa580d8ef602b44e2e951e572f5aa4b01b2eecde7afb",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/WH_Signals/attributes",
+          "sha256_c14n": "90de7f3bf520dd1b773d796ddaa26e0e40cc4222b66ae85ffdf77c8e4a61116c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "cc30732ba9b5ea64cec2a16362174ab5e089e622ae481b5cb62f110b317c9375",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "56b7c146c337d4569f077f3e4170139ea1c09fc796921a3decf89c58f7346e0e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceEdge",
+          "sha256_c14n": "cb29f9f9a57cd18fb1a3e180e7e894325e34c9bb9ccb49792c33e45bbbd17146",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceONS",
+          "sha256_c14n": "cd80faf4017983dd5e29ab892019d12663a6ebbdf7c804116e124e1ed9af419b",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [],
+      "modified_task_schedules": [
+        {
+          "path": "Tasks/MachineLogicTask",
+          "sha256_c14n": "40cfcf394eb3c59b7ff6d14decc43de8286ad41ccd7f862d8f19785aa93dcf8b"
+        }
+      ],
+      "extended_legacy_components": []
+    },
+    {
+      "label": "CDL1",
+      "controller": "EN01_80A3_CPU",
+      "source_path": "applications/plc/l5x/recovered-additional/PA166_Howmett_C4010_260723.L5X",
+      "source_sha256": "3f46aec878aafbb37fae2ae159e63cf97900aebf3329fb7aa8bbf94f6f8705e6",
+      "development_path": "solution/plc/build/PA166_Howmett_C4010_260723_WH_DEV_v36.L5X",
+      "development_sha256": "73fc33d0cb4fdee2cc0a4bb44b9431fc0324a98cec18de7a46cd6a48b9200990",
+      "new_components": [
+        {
+          "path": "DataTypes/WH_CDL_Display",
+          "sha256_c14n": "86002be8cdf89bccd6d7dcde1d272e4627f98c8549d2e5e507451873585ba438",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_CDL_Event",
+          "sha256_c14n": "14121511b071fc05cd09d60f921771c9dff09ab1349a61897bef6d19af363cb5",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_LinkData",
+          "sha256_c14n": "e37c8bd9d151c8250219593053415fc747037ebfab8d9b1b2838a14d3c68c0ea",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "sha256_c14n": "2cb6bc3497b4513d558b73a68c414ac4fd264c6e1432bcb2f9a879f964aa3d53",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_CDL_End",
+          "sha256_c14n": "2d33df3b54ae1cfdfc6b4fb2dd5f0b52bf26ccc67726e5d422b63422aa88204e",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_CDL_Init",
+          "sha256_c14n": "0c7f6fa089672d477379a882e0e0dabac20208cffb73c307b86438476cfa2861",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_CDL_Start",
+          "sha256_c14n": "1fffea2acae396819f010cc8a2779a65f2f79653144e2944de60fba0773ceafa",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "sha256_c14n": "413f6a83fd1a75bae1d69f10761adb9c88cbe08518d9fabb72ca38047d1cd0a7",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_PackMessage",
+          "sha256_c14n": "43d52aaaabc8e9eaf0c87b97bcabfc29b0a62e0627660456f397e0c4f07c9cf7",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_ReceiveDisplay",
+          "sha256_c14n": "79d433eaf3818e1f7769e650924b246fbb5fd9dfb0c23fdfba3f48b589b74266",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "sha256_c14n": "a200dec80c06b39817c5290862dee1bad86f284be514e4358b908f8d86629f8b",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_Furnace",
+          "sha256_c14n": "54e3c51f181cb81cc325784cb3a3edc1fa2858264f0e3d08a021c8e7e126a1d6",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_LastTimerMs",
+          "sha256_c14n": "54ca805de9dc46e3fb05b080b87701c2034d614a817281046d60777316cb80a0",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_Publish",
+          "sha256_c14n": "2f219182bbd82f8c4c42121393da3d777ff1c499c1467f6e3f7b483062efe585",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_Sequence",
+          "sha256_c14n": "0628d33729a46b7bb47121a6195563a49b81b689ab99359ada130c5f8e62133f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_StartedFurnace",
+          "sha256_c14n": "19c0d777f11bf00f387fc86d5f05c4b84297f6dfd117105d346b85c57ab08262",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_StartedUTC",
+          "sha256_c14n": "13296b7fe0603d38a403452057d1b543a1d39439b3289cb4261912af5053b597",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_WasRunning",
+          "sha256_c14n": "58271c8d385ecc469df219fc8fa1ac559ec7193293e6a3ae81b153dbe851c84b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalComms/Tags/WH_CDL_Zero",
+          "sha256_c14n": "26ac1a0e4ed6b460925d9aea8ebec51c2e3cf6a5391084feb16f4b7941c972e4",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "cc30732ba9b5ea64cec2a16362174ab5e089e622ae481b5cb62f110b317c9375",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "56b7c146c337d4569f077f3e4170139ea1c09fc796921a3decf89c58f7346e0e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_AckBoot",
+          "sha256_c14n": "f43f7960466d023d7c85498eefc8709fe5ccc7d2910e9a611cbb8c72eca4a85a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_AckSequence",
+          "sha256_c14n": "05c727c44282567a4e34fdd4e4c776734952bfb62eed966c507ff8b329e59f8e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Boot",
+          "sha256_c14n": "20abd7cec918ed284a6f2df6e532d00d8f86a64662d9fed9ab00fca1de5dd89b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Event",
+          "sha256_c14n": "83b1c4a8a1aa28f6febaf0d60d5e3885a1d46714d715c562cb4ec62345e17e84",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Fault",
+          "sha256_c14n": "f0f830ace32af5535c87017201c893b82b2c5ef7e6eb88fbae83ad3ca47d3d45",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_State",
+          "sha256_c14n": "0208c3637058b7def4ff50e826f9e0fbbcfae017ded184002f4d51da2764c90a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_ClockValidated",
+          "sha256_c14n": "62453f819b7dab48f7da42595b770a4b44d1c5cfbefbe1504b69f556f32c5d71",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Display",
+          "sha256_c14n": "6fe8a25b50658c0ed7c37ca78d58e2441792cdb91a7caee746429a79a41200cc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplayAge",
+          "sha256_c14n": "5db22184fa45163dd6b7c1127df689d3dda3ebcfa3c569f10ff7371572954663",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplaySeen",
+          "sha256_c14n": "6dfb8d4aefb6060eca1ca3e5803f7993441c8521bf06b6a55adf6102970f3af8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_LinkLive",
+          "sha256_c14n": "05775cf718e3645db1083094967a2441c16761ca59e2bd2097af0cbabc20f56f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_NewSnapshot",
+          "sha256_c14n": "b0a5310a1787829fef7d6ef1ef7ac23aff81c67de36bdb213a35f144404d7109",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceEdge",
+          "sha256_c14n": "cb29f9f9a57cd18fb1a3e180e7e894325e34c9bb9ccb49792c33e45bbbd17146",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceONS",
+          "sha256_c14n": "cd80faf4017983dd5e29ab892019d12663a6ebbdf7c804116e124e1ed9af419b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferElapsed",
+          "sha256_c14n": "836988250fcc156b1ae49b4dca0eae97dc3b1a1fcd3a17584ea7e3795baa2e23",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferPopup",
+          "sha256_c14n": "277690dc93deebf9d8fe4b2c67aa731a2a2c0f420b265bff3414424fcebbc54c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferStarted",
+          "sha256_c14n": "90588f2088b8c67ae3c85d8dfe0d5d7608f27d327917a7f92d5fd965ca39b1e5",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [
+        {
+          "path": "Programs/ExternalComms/Routines/CDL_DC",
+          "sha256_c14n": "8d703efd496109a29ab72ab74913ce759b0222ecb8cfc40c6dd166275d8b2fd4",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_PackMessage,0);",
+              "comment": "Append the common adapter snapshot immediately before the existing write."
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nNOP();\n",
+              "comment": "\nMostly Imported from Old CDL1 Program\n"
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\n[XIO(CDL_ctrl_msg.EN) TON(CDL_ctrl_msg_dly,?,?) ,XIC(CDL_ctrl_msg_dly.DN) MSG(CDL_ctrl_msg) ];\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\n[XIO(DC_ctrl_msg.EN) TON(DC_ctrl_msg_dly,?,?) ,XIC(DC_ctrl_msg_dly.DN) MSG(DC_ctrl_msg) ];\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\n[XIO(CDL_Read_FGDC.EN) TON(CDL_Read_msg_dly,?,?) ,XIC(CDL_Read_msg_dly.DN) MSG(CDL_Read_FGDC) ,XIC(CDL_Read_FGDC.DN) CTU(CDL_Read_FGDC_MSG_CTU,?,?) ,XIC(CDL_Read_FGDC.ER) CTU(CDL_Read_FGDC_MSG_Err_CTU,?,?) ];\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\n[XIC(ctrl_DC_CDL.Heatbeat) OTU(ctrl_CDL_DC.Heatbeat) ,XIO(ctrl_DC_CDL.Heatbeat) OTL(ctrl_CDL_DC.Heatbeat) ];\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nOTE(ctrl_CDL_DC.Robot_Ready);\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nAFI()OTE(ctrl_CDL_DC.Part_In_Transit);\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegD) ];\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegD) ];\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Gripper_Open) ,OTE(ctrl_CDL_DC.Gripper_Closed) ,OTE(ctrl_CDL_DC.Gripper_PartClamped) ];\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nAFI()[MOVE(0,ctrl_CDL_DC.Robot_Destination) ,MOVE(1,ctrl_CDL_DC.Robot_Destination) ,MOVE(2,ctrl_CDL_DC.Robot_Destination) ,MOVE(3,ctrl_CDL_DC.Robot_Destination) ];\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\n[XIO(CDL_at_RF01) XIO(CDL_at_RF02) XIO(CDL_at_BF03) MOVE(0,ctrl_CDL_DC.Robot_At) ,XIC(CDLDataCtrlWord[0].30) MOVE(1,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_BF03) MOVE(3,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF01) MOVE(4,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF02) MOVE(5,ctrl_CDL_DC.Robot_At) ];\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\n[XIO(CDL_Inside_BF03) XIO(CDL_Inside_RF01) XIO(CDL_Inside_RF02) XIO(Robot_At_300Mn) XIO(Robot_At_50Mn) MOVE(0,ctrl_CDL_DC.Robot_In) ,XIC(CDLDataCtrlWord[0].9) MOVE(1,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_BF03) MOVE(3,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF01) MOVE(4,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF02) MOVE(5,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_300Mn) MOVE(10,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_50Mn) MOVE(11,ctrl_CDL_DC.Robot_In) ];\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nMOVE(\\Longtravel.Status.Encoder.Position,ctrl_CDL_DC.Robot_PSN);\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\n[XIC(ctrl_DC_CDL.RF01.Door_Fully_Open) ,XIC(ctrl_DC_CDL.RF02.Door_Fully_Open) ,XIC(ctrl_DC_CDL.BF03.Door_Fully_Open) ]NOP();\n",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "path": "Programs/ExternalComms/Routines/Transfer_Timer",
+          "sha256_c14n": "77006c2a20036c6241067738d767f1554ae3c2d34ce939c1bfa0b008191d5ea0",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(S:FS)JSR(WH_CDL_Init,0);",
+              "comment": "Development observer only; no physical timing claim."
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CDL_Begin,0);",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nXIC(S:FS)[OTU(Removal_In_Process) ,OTU(UngripLatch) ,OTU(Removal_In_Process) ,OTU(Transfer_Timer_Running) ,OTU(CDL_Removing_Part) ,RES(Transfer_Timer) ,OTU(Transfer_Timer_QueUp) ];\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nXIC(Transfer_Timer_QueUp)ONS(Transfer_Timer_Bits.2)[RES(Transfer_Timer) ,OTU(Transfer_Timer_Running) ];\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\nXIC(CDL_Removing_Part)XIO(CDL_Inside_RF01)XIO(CDL_Inside_RF02)XIO(CDL_Inside_BF03)[OTL(Removal_In_Process) ,OTU(CDL_Removing_Part) ];\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\n[XIC(CDLDataCtrlWord[0].24) XIC(CDL_Inside_RF01) ,XIC(CDLDataCtrlWord[0].25) XIC(CDL_Inside_RF02) ,XIC(CDLDataCtrlWord[0].26) XIC(CDL_Inside_BF03) ][OTL(Transfer_Timer_QueUp) ,OTL(CDL_Removing_Part) ];\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nMOVE(\\Manipulator.Status.Devices.Potentiometers.Position[2].AdjustedVolts,Horizontal_Feedback_Position);\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nGT(Horizontal_Feedback_Position,Arm_Fully_Retracted_Setpoint)OTE(Arm_Fully_Retracted);\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nXIC(Transfer_Timer_QueUp)XIO(Transfer_Timer_Running)XIC(UngripLatch)XIC(Gripper_Clamped_TM.DN)XIC(Mode_Manual)[XIC(Arm_Fully_Retracted) ONS(One_Shots.2) [OTL(Transfer_Timer_Running) ,OTU(Removal_In_Process) ] ,XIO(Arm_Fully_Retracted) XIO(Test_TTW) OTE(Transfer_Time_Wait) ];\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_SendSignals,0);",
+              "comment": "Freeze the timer start before any possible press-release stop; send it to FDC."
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIO(S:FS)XIC(Transfer_Timer_Running)XIO(WH_CDL_WasRunning)JSR(WH_CDL_Start,0);",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nLIMIT(-0.35,Longtravel_Joystick_Scaled,0.35)LIMIT(-0.045,Slew_Joystick_Scaled,0.045)OTE(LongTravelSlewJoysticksAtNeutral);\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nXIC(Transfer_Timer_Running)[RTO(Transfer_Timer,?,?) ,OTE(CDLDataCtrlWord[0].2) ];\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\n[DIV(Transfer_Timer.ACC,1000,TransferTimeSecs) ,MOVE(TransferTimeSecs,TransferTimeSecs_MSG) ];\n",
+              "comment": "\nCreated the tag \"TransferTimeSecs_MSG\" to temporarily allow the 300MN&50MN PLC read Transfer Time via a MSG instruction.\nThe 300MN and 50MN PLCs cannot currently use the Produced and Consumed Tags since the New CDL 1 PLC was installed in July of 2026.\n"
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nXIO(Transfer_Timer.EN)DIV(Transfer_Timer.ACC,1000,Tranfer_Time_in_Seconds);\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(Stations[3].Status.AtStation) ,XIC(Stations[4].Status.AtStation) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]JSR(WH_CDL_Stop,0);",
+              "comment": "Freeze raw timer before the ORIGINAL stop rung."
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nXIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(Stations[3].Status.AtStation) ,XIC(Stations[4].Status.AtStation) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]OTU(Transfer_Timer_Running)[OTU(Transfer_Timer_QueUp) ,OTU(Removal_In_Process) ,OTU(CDL_Removing_Part) ,OTU(UngripLatch) ];\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nMOVE(\\Manipulator.Status.Devices.Valves.Proportional[5].ControlSignal.Voltage,Gripper_Clamp_Pressure);\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nCMP(Gripper_Clamp_Pressure>100)TON(Gripper_Clamped_TM,?,?);\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nMOVE(Gripper_Clamp_Pressure,CDLDataCtrlWord[1]);\n",
+              "comment": null
+            },
+            {
+              "number": 20,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_ReceiveDisplay,0);",
+              "comment": "Freshness-qualified FDC warning drives the new CDL transfer popup."
+            },
+            {
+              "number": 21,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CDL_End,0);",
+              "comment": null
+            },
+            {
+              "number": 22,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(Transfer_Timer_Running)OTE(WH_CDL_WasRunning);",
+              "comment": null
+            },
+            {
+              "number": 23,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\nCMP(Gripper_Clamp_Pressure<80)[RES(Gripper_Clamped_TM) ,TON(Gripper_Opened_TM,?,?) ,ONS(OnsReset) [XIC(Gripper_Opened_TM.DN) RES(Gripper_Opened_TM) ,XIC(Transfer_Timer_QueUp) OTL(UngripLatch) ] ];\n",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "modified_task_schedules": [],
+      "extended_legacy_components": [
+        {
+          "path": "DataTypes/UD_DataCollector_to_Robot",
+          "sha256_c14n": "69237b492e0c85eaa6a93e7c38e391da7d69967b4944ce8388767874a2de8e2e"
+        },
+        {
+          "path": "DataTypes/UD_Robot_to_DataCollector",
+          "sha256_c14n": "f11d85a20c0c769500cb6af85818c3c1bbbde1114cc56fae37549e71be59a04a"
+        },
+        {
+          "path": "Tags/ctrl_CDL_DC",
+          "sha256_c14n": "6872a2821337d58f3ffdbdb150e53e6860e2107f841ab6d784f43aefdf568104"
+        },
+        {
+          "path": "Tags/ctrl_DC_CDL",
+          "sha256_c14n": "824ad9d7af522fd17a857dedc2bdda47391737b6edaaf6ea179fb4d1e5ed212d"
+        }
+      ]
+    },
+    {
+      "label": "CDL2",
+      "controller": "Firth_Rixson_PA209",
+      "source_path": "applications/plc/l5x/recovered-additional/CDL2_180912.L5X",
+      "source_sha256": "a1a2da8a974bcc9467d3a2f8fe2e0c8e5d7d43ecb5fdbe709c7b980591b3b047",
+      "development_path": "solution/plc/build/CDL2_180912_WH_DEV_v37.L5X",
+      "development_sha256": "f69f710e0dc33d29b7368509093911aa69b1a1ae3274c0ee60d3f5dbc7ee20b5",
+      "new_components": [
+        {
+          "path": "DataTypes/WH_CDL_Display",
+          "sha256_c14n": "86002be8cdf89bccd6d7dcde1d272e4627f98c8549d2e5e507451873585ba438",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_LinkData",
+          "sha256_c14n": "e37c8bd9d151c8250219593053415fc747037ebfab8d9b1b2838a14d3c68c0ea",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "sha256_c14n": "ecdb6e4e43037790c7f8c3f67a013dbd1a2c64afdfbc01c9321f5b2a87e35a8f",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalPLC/Routines/WH_PackMessage",
+          "sha256_c14n": "5752418efc435dc9709f8983aa96dea61a44de720764fe79974798859b56127a",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalPLC/Routines/WH_ReceiveDisplay",
+          "sha256_c14n": "f81adfb9d087b891df677dcc1798f56c9b1a9414c154a9b58a2034dbf0029833",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "sha256_c14n": "d3624337ff3f2fdb9377c12807df1791ab2953ea79e0cb4df9176b36f5ed381f",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "cc30732ba9b5ea64cec2a16362174ab5e089e622ae481b5cb62f110b317c9375",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "56b7c146c337d4569f077f3e4170139ea1c09fc796921a3decf89c58f7346e0e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_AdapterRunning",
+          "sha256_c14n": "7be513bdf3ef6634462bf8a451bc9b2f85f45c3a2b3392a3542f5635903286a2",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_AdapterStart",
+          "sha256_c14n": "82229badf5bb9b589db570c5c0a9129c1cc913e9a5ad39359fd8f56e74122661",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Armed",
+          "sha256_c14n": "5383b0b6fc142c1a8341b608d7a9ec09e9d4afe2bf77684f03a279ffdb94a480",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Furnace",
+          "sha256_c14n": "54e3c51f181cb81cc325784cb3a3edc1fa2858264f0e3d08a021c8e7e126a1d6",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_ClockValidated",
+          "sha256_c14n": "62453f819b7dab48f7da42595b770a4b44d1c5cfbefbe1504b69f556f32c5d71",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Display",
+          "sha256_c14n": "6fe8a25b50658c0ed7c37ca78d58e2441792cdb91a7caee746429a79a41200cc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplayAge",
+          "sha256_c14n": "4283daf1eadaec2d0138d1f70b013e9335026c9a4c762b46190c5e85f4c28430",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplaySeen",
+          "sha256_c14n": "b8614d0f3f60e91038046265ac7672de7f936ee66a5b3d43a14bd36589fee675",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_LinkLive",
+          "sha256_c14n": "05775cf718e3645db1083094967a2441c16761ca59e2bd2097af0cbabc20f56f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_NewSnapshot",
+          "sha256_c14n": "b0a5310a1787829fef7d6ef1ef7ac23aff81c67de36bdb213a35f144404d7109",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_RawTransferTimer",
+          "sha256_c14n": "5630742c959ad2526ff790125e722355474d3e11dda3371be248ca88f8c3c523",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceEdge",
+          "sha256_c14n": "cb29f9f9a57cd18fb1a3e180e7e894325e34c9bb9ccb49792c33e45bbbd17146",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceONS",
+          "sha256_c14n": "cd80faf4017983dd5e29ab892019d12663a6ebbdf7c804116e124e1ed9af419b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferElapsed",
+          "sha256_c14n": "836988250fcc156b1ae49b4dca0eae97dc3b1a1fcd3a17584ea7e3795baa2e23",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferPopup",
+          "sha256_c14n": "277690dc93deebf9d8fe4b2c67aa731a2a2c0f420b265bff3414424fcebbc54c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferStarted",
+          "sha256_c14n": "90588f2088b8c67ae3c85d8dfe0d5d7608f27d327917a7f92d5fd965ca39b1e5",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [
+        {
+          "path": "Programs/ExternalPLC/Routines/ToDataCollector",
+          "sha256_c14n": "9b2ff0d44a54aa762c4be625ff874bf31e04c9508fb6114740c6bd57563307a4",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nXIC(MODE.Auto)XIO(MODE.AutoRunning)OTE(ctrl_CDL2_DC.Robot_Ready);\n",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\n[XIC(MODE.Auto) XIC(AUTO.ClampGripper) XIC(AUTO.GripperClamped) ,XIC(MODE.Manual) XIC(ctrl_DC_CDL2.RF01.Door_Close_RE) ]OTE(ctrl_CDL2_DC.Part_In_Transit);\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\nXIC(MODE.AutoRunning)EQ(AUTO.RoutineType,9)[EQ(HMI.Inputs.Auto.LoadFurnace.Station,1) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegB) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,2) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegC) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,3) OTE(ctrl_CDL2_DC.Auto_Loading_RF01_SegD) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,4) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegB) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,5) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegC) ,EQ(HMI.Inputs.Auto.LoadFurnace.Station,6) OTE(ctrl_CDL2_DC.Auto_Loading_RF02_SegD) ];\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\n[LT(GRIPPER.ActualPosition,50) OTE(ctrl_CDL2_DC.Gripper_Closed) ,GE(GRIPPER.ActualPosition,50) XIO(AUTO.GripperClamped) OTE(ctrl_CDL2_DC.Gripper_Open) ,XIO(ctrl_CDL2_DC.Gripper_Closed) XIC(AUTO.GripperClamped) OTE(ctrl_CDL2_DC.Gripper_PartClamped) ];\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\n[XIC(STATIONS.Furnace1.RequestEntry) XIC(HMI.Inputs.Auto.Furnace1DoorClose) OTU(STATIONS.Furnace1.RequestEntry) ,XIC(STATIONS.Furnace2.RequestEntry) XIC(HMI.Inputs.Auto.Furnace2DoorClose) OTU(STATIONS.Furnace2.RequestEntry) ];\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nXIC(ctrl_DC_CDL2.RF01.Door_Open_RE)XIC(STATIONS.Furnace1.RequestEntry)[MOVE(1,ctrl_CDL2_DC.RF01_Door_Request) ,OTE(Furnace1Open) ];\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nXIC(STATIONS.Furnace1.RequestClose)XIC(ctrl_DC_CDL2.RF01.Door_Close_RE)XIO(STATIONS.Furnace1.RequestEntry)XIO(ROBOT_IN.Furnace1)[MOVE(2,ctrl_CDL2_DC.RF01_Door_Request) ,EQ(ctrl_DC_CDL2.RF01.Door_Status,4) OTU(STATIONS.Furnace1.RequestClose) ,OTE(Furnace1Close) ];\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nXIO(Furnace1Open)XIO(Furnace1Close)MOVE(0,ctrl_CDL2_DC.RF01_Door_Request);\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nXIC(ctrl_DC_CDL2.RF02.Door_Open_RE)XIC(STATIONS.Furnace2.RequestEntry)[MOVE(1,ctrl_CDL2_DC.RF02_Door_Request) ,OTE(Furnace2Open) ];\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nXIC(STATIONS.Furnace2.RequestClose)XIC(ctrl_DC_CDL2.RF02.Door_Close_RE)XIO(STATIONS.Furnace2.RequestEntry)XIO(ROBOT_IN.Furnace2)[MOVE(2,ctrl_CDL2_DC.RF02_Door_Request) ,EQ(ctrl_DC_CDL2.RF02.Door_Status,4) OTU(STATIONS.Furnace2.RequestClose) ,OTE(Furnace2Close) ];\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nXIO(Furnace2Open)XIO(Furnace2Close)MOVE(0,ctrl_CDL2_DC.RF02_Door_Request);\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\nXIC(MODE.AutoRunning)EQ(AUTO.RoutineType,10)[EQ(HMI.Inputs.Auto.LoadPress.LoadStation,1) MOVE(2,ctrl_CDL2_DC.Robot_Destination) ,EQ(HMI.Inputs.Auto.LoadPress.LoadStation,2) MOVE(1,ctrl_CDL2_DC.Robot_Destination) ]OTE(RobotToPress);\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 16,
+              "raw_text": "\nXIO(RobotToPress)MOVE(0,ctrl_CDL2_DC.Robot_Destination);\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 17,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 18,
+              "raw_text": "\nLIMIT(STATIONS.LoadingTable.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.LoadingTable.Longtravel.Limits.High)LIMIT(STATIONS.LoadingTable.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.LoadingTable.Slew.Limits.High)[OTE(ROBOT_AT.LoadingTable) ,GT(AXES.Extension.Position,2000) OTE(ROBOT_IN.LoadingTable) ];\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 19,
+              "raw_text": "\nLIMIT(STATIONS.Furnace1.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.Furnace1.Longtravel.Limits.High)LIMIT(STATIONS.Furnace1.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.Furnace1.Slew.Limits.High)[MOVE(4,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.Furnace1) ,GT(AXES.Extension.Position,2000) MOVE(4,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.Furnace1) ];\n",
+              "comment": null
+            },
+            {
+              "number": 20,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 20,
+              "raw_text": "\nLIMIT(STATIONS.Furnace2.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.Furnace2.Longtravel.Limits.High)LIMIT(STATIONS.Furnace2.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.Furnace2.Slew.Limits.High)[MOVE(5,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.Furnace2) ,GT(AXES.Extension.Position,2000) MOVE(5,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.Furnace2) ];\n",
+              "comment": null
+            },
+            {
+              "number": 21,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 21,
+              "raw_text": "\nLIMIT(STATIONS.BigPress.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.BigPress.Longtravel.Limits.High)LIMIT(STATIONS.BigPress.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.BigPress.Slew.Limits.High)[MOVE(11,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.BigPress) ,GT(AXES.Extension.Position,2000) MOVE(11,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.BigPress) ];\n",
+              "comment": null
+            },
+            {
+              "number": 22,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 22,
+              "raw_text": "\nLIMIT(STATIONS.SmallPress.Longtravel.Limits.Low,AXES.Trolley.ActPos,STATIONS.SmallPress.Longtravel.Limits.High)LIMIT(STATIONS.SmallPress.Slew.Limits.Low,AXES.Slew.ActPos,STATIONS.SmallPress.Slew.Limits.High)[MOVE(10,ctrl_CDL2_DC.Robot_At) OTE(ROBOT_AT.SmallPress) ,GT(AXES.Extension.Position,2000) MOVE(10,ctrl_CDL2_DC.Robot_In) OTE(ROBOT_IN.SmallPress) ];\n",
+              "comment": null
+            },
+            {
+              "number": 23,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 23,
+              "raw_text": "\nXIO(ROBOT_AT.Furnace1)XIO(ROBOT_AT.Furnace2)XIO(ROBOT_AT.BigPress)XIO(ROBOT_AT.SmallPress)MOVE(0,ctrl_CDL2_DC.Robot_At);\n",
+              "comment": null
+            },
+            {
+              "number": 24,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 24,
+              "raw_text": "\nXIO(ROBOT_IN.Furnace1)XIO(ROBOT_IN.Furnace2)XIO(ROBOT_IN.BigPress)XIO(ROBOT_IN.SmallPress)MOVE(0,ctrl_CDL2_DC.Robot_In);\n",
+              "comment": null
+            },
+            {
+              "number": 25,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 25,
+              "raw_text": "\nMOVE(AXES.Trolley.ActPos,ctrl_CDL2_DC.Robot_PSN);\n",
+              "comment": null
+            },
+            {
+              "number": 26,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_Adapter,0);",
+              "comment": "Observe after original station/gripper mapping and before existing MSG."
+            },
+            {
+              "number": 27,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 26,
+              "raw_text": "\n[XIO(CDL2_ctrl_msg.EN) TON(CDL2_ctrl_msg_dly,?,?) ,XIC(CDL2_ctrl_msg_dly.DN) MSG(CDL2_ctrl_msg) ];\n",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "modified_task_schedules": [],
+      "extended_legacy_components": [
+        {
+          "path": "DataTypes/UD_DataCollector_to_Robot",
+          "sha256_c14n": "69237b492e0c85eaa6a93e7c38e391da7d69967b4944ce8388767874a2de8e2e"
+        },
+        {
+          "path": "DataTypes/UD_Robot_to_DataCollector",
+          "sha256_c14n": "f11d85a20c0c769500cb6af85818c3c1bbbde1114cc56fae37549e71be59a04a"
+        },
+        {
+          "path": "Tags/ctrl_CDL2_DC",
+          "sha256_c14n": "1d12c5875171308795c812c1be6f425e4640c5a6b2285cc22fb25600810c7291"
+        },
+        {
+          "path": "Tags/ctrl_DC_CDL2",
+          "sha256_c14n": "187144fe51bdada4eb951f4096728f82f2a312f836e5aa3e28b668d80b5f11a2"
+        }
+      ]
+    },
+    {
+      "label": "CDL",
+      "controller": "PA166_FIRTH_RIXSON",
+      "source_path": "applications/plc/l5x/current/PA166_20422RDN.L5X",
+      "source_sha256": "ab214fc875b0fa4ecfba22a8337de846ceb0538b2b1a9e781e9aedd4f873b1cb",
+      "development_path": "solution/plc/build/PA166_20422RDN_WH_DEV_v37.L5X",
+      "development_sha256": "81801c72b2da67b8a186866c6b80c41a423cc66c526dec358c8389932c65f06d",
+      "new_components": [
+        {
+          "path": "DataTypes/WH_CDL_Display",
+          "sha256_c14n": "86002be8cdf89bccd6d7dcde1d272e4627f98c8549d2e5e507451873585ba438",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_CDL_Event",
+          "sha256_c14n": "14121511b071fc05cd09d60f921771c9dff09ab1349a61897bef6d19af363cb5",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_LinkData",
+          "sha256_c14n": "e37c8bd9d151c8250219593053415fc747037ebfab8d9b1b2838a14d3c68c0ea",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "sha256_c14n": "2cb6bc3497b4513d558b73a68c414ac4fd264c6e1432bcb2f9a879f964aa3d53",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_CDL_End",
+          "sha256_c14n": "2d33df3b54ae1cfdfc6b4fb2dd5f0b52bf26ccc67726e5d422b63422aa88204e",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_CDL_Init",
+          "sha256_c14n": "0c7f6fa089672d477379a882e0e0dabac20208cffb73c307b86438476cfa2861",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_CDL_Start",
+          "sha256_c14n": "1fffea2acae396819f010cc8a2779a65f2f79653144e2944de60fba0773ceafa",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "sha256_c14n": "3983c26f23a2fdefa20597b4737405787613f1020fb1873bc440b577665ad05a",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_ReceiveDisplay",
+          "sha256_c14n": "79d433eaf3818e1f7769e650924b246fbb5fd9dfb0c23fdfba3f48b589b74266",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "sha256_c14n": "a200dec80c06b39817c5290862dee1bad86f284be514e4358b908f8d86629f8b",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_Furnace",
+          "sha256_c14n": "54e3c51f181cb81cc325784cb3a3edc1fa2858264f0e3d08a021c8e7e126a1d6",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_LastTimerMs",
+          "sha256_c14n": "54ca805de9dc46e3fb05b080b87701c2034d614a817281046d60777316cb80a0",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_Publish",
+          "sha256_c14n": "2f219182bbd82f8c4c42121393da3d777ff1c499c1467f6e3f7b483062efe585",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_Sequence",
+          "sha256_c14n": "0628d33729a46b7bb47121a6195563a49b81b689ab99359ada130c5f8e62133f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_StartedFurnace",
+          "sha256_c14n": "19c0d777f11bf00f387fc86d5f05c4b84297f6dfd117105d346b85c57ab08262",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_StartedUTC",
+          "sha256_c14n": "13296b7fe0603d38a403452057d1b543a1d39439b3289cb4261912af5053b597",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_WasRunning",
+          "sha256_c14n": "58271c8d385ecc469df219fc8fa1ac559ec7193293e6a3ae81b153dbe851c84b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/Automatic_Cycle/Tags/WH_CDL_Zero",
+          "sha256_c14n": "26ac1a0e4ed6b460925d9aea8ebec51c2e3cf6a5391084feb16f4b7941c972e4",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/External_Communication/Routines/WH_PackMessage",
+          "sha256_c14n": "43d52aaaabc8e9eaf0c87b97bcabfc29b0a62e0627660456f397e0c4f07c9cf7",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "cc30732ba9b5ea64cec2a16362174ab5e089e622ae481b5cb62f110b317c9375",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "56b7c146c337d4569f077f3e4170139ea1c09fc796921a3decf89c58f7346e0e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_AckBoot",
+          "sha256_c14n": "f43f7960466d023d7c85498eefc8709fe5ccc7d2910e9a611cbb8c72eca4a85a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_AckSequence",
+          "sha256_c14n": "05c727c44282567a4e34fdd4e4c776734952bfb62eed966c507ff8b329e59f8e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Boot",
+          "sha256_c14n": "20abd7cec918ed284a6f2df6e532d00d8f86a64662d9fed9ab00fca1de5dd89b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Event",
+          "sha256_c14n": "83b1c4a8a1aa28f6febaf0d60d5e3885a1d46714d715c562cb4ec62345e17e84",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_Fault",
+          "sha256_c14n": "f0f830ace32af5535c87017201c893b82b2c5ef7e6eb88fbae83ad3ca47d3d45",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_CDL_State",
+          "sha256_c14n": "0208c3637058b7def4ff50e826f9e0fbbcfae017ded184002f4d51da2764c90a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_ClockValidated",
+          "sha256_c14n": "62453f819b7dab48f7da42595b770a4b44d1c5cfbefbe1504b69f556f32c5d71",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Display",
+          "sha256_c14n": "6fe8a25b50658c0ed7c37ca78d58e2441792cdb91a7caee746429a79a41200cc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplayAge",
+          "sha256_c14n": "5db22184fa45163dd6b7c1127df689d3dda3ebcfa3c569f10ff7371572954663",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplaySeen",
+          "sha256_c14n": "6dfb8d4aefb6060eca1ca3e5803f7993441c8521bf06b6a55adf6102970f3af8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_LinkLive",
+          "sha256_c14n": "05775cf718e3645db1083094967a2441c16761ca59e2bd2097af0cbabc20f56f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_NewSnapshot",
+          "sha256_c14n": "b0a5310a1787829fef7d6ef1ef7ac23aff81c67de36bdb213a35f144404d7109",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceEdge",
+          "sha256_c14n": "cb29f9f9a57cd18fb1a3e180e7e894325e34c9bb9ccb49792c33e45bbbd17146",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SourceONS",
+          "sha256_c14n": "cd80faf4017983dd5e29ab892019d12663a6ebbdf7c804116e124e1ed9af419b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferElapsed",
+          "sha256_c14n": "836988250fcc156b1ae49b4dca0eae97dc3b1a1fcd3a17584ea7e3795baa2e23",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferPopup",
+          "sha256_c14n": "277690dc93deebf9d8fe4b2c67aa731a2a2c0f420b265bff3414424fcebbc54c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferStarted",
+          "sha256_c14n": "90588f2088b8c67ae3c85d8dfe0d5d7608f27d327917a7f92d5fd965ca39b1e5",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [
+        {
+          "path": "Programs/Automatic_Cycle/Routines/Transfer_Timer",
+          "sha256_c14n": "ffbf962ba0c692cb9b7c58dda9d0e56d6ee132b2582353ebe277c1e54a8bed50",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(S:FS)JSR(WH_CDL_Init,0);",
+              "comment": "Development observer only; no physical timing claim."
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CDL_Begin,0);",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nXIC(S:FS)[OTU(Removal_In_Process) ,OTU(UngripLatch) ,OTU(Removal_In_Process) ,OTU(Transfer_Timer_Running) ,OTU(CDL_Removing_Part) ,RES(Transfer_Timer) ,OTU(Transfer_Timer_QueUp) ];\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nXIC(Transfer_Timer_QueUp)ONS(Transfer_Timer_Bits.2)[RES(Transfer_Timer) ,OTU(Transfer_Timer_Running) ];\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\nXIC(CDL_Removing_Part)XIO(CDL_Inside_RF01)XIO(CDL_Inside_RF02)XIO(CDL_Inside_BF03)[OTL(Removal_In_Process) ,OTU(CDL_Removing_Part) ];\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\n[XIC(CDLDataCtrlWord[0].24) XIC(CDL_Inside_RF01) ,XIC(CDLDataCtrlWord[0].25) XIC(CDL_Inside_RF02) ,XIC(CDLDataCtrlWord[0].26) XIC(CDL_Inside_BF03) ][OTL(Transfer_Timer_QueUp) ,OTL(CDL_Removing_Part) ];\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nGT(Horizontal_Feedbacl_Position,Arm_Fully_Retracted_Setpoint)OTE(Arm_Fully_Retracted);\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nXIC(Transfer_Timer_QueUp)XIO(Transfer_Timer_Running)XIC(UngripLatch)XIC(Gripper_Clamped_TM.DN)XIC(Mode_Manual)[XIC(Arm_Fully_Retracted) ONS(One_Shots.0) [OTL(Transfer_Timer_Running) ,OTU(Removal_In_Process) ] ,XIO(Arm_Fully_Retracted) XIO(Test_TTW) OTE(Transfer_Time_Wait) ];\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_SendSignals,0);",
+              "comment": "Freeze the timer start before any possible press-release stop; send it to FDC."
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIO(S:FS)XIC(Transfer_Timer_Running)XIO(WH_CDL_WasRunning)JSR(WH_CDL_Start,0);",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nLIMIT(-0.35,Longtravel_Joystick_Scaled,0.35)LIMIT(-0.045,Slew_Joystick_Scaled,0.045)OTE(LongTravelSlewJoysticksAtNeutral);\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nXIC(Transfer_Timer_Running)[RTO(Transfer_Timer,?,?) ,OTE(CDLDataCtrlWord[0].2) ];\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nDIV(Transfer_Timer.ACC,1000,TransferTimeSecs);\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nXIO(Transfer_Timer.EN)DIV(Transfer_Timer.ACC,1000,Tranfer_Time_in_Seconds);\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(P33000.In_Psn) ,XIC(P5000.In_Psn) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]JSR(WH_CDL_Stop,0);",
+              "comment": "Freeze raw timer before the ORIGINAL stop rung."
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nXIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(P33000.In_Psn) ,XIC(P5000.In_Psn) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]OTU(Transfer_Timer_Running)[OTU(Transfer_Timer_QueUp) ,OTU(Removal_In_Process) ,OTU(CDL_Removing_Part) ,OTU(UngripLatch) ];\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nCMP(Gripper_Clamp_Pressure>100)TON(Gripper_Clamped_TM,?,?);\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nMOVE(Gripper_Clamp_Pressure,CDLDataCtrlWord[1]);\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nCMP(Gripper_Clamp_Pressure<80)[RES(Gripper_Clamped_TM) ,TON(Gripper_Opened_TM,?,?) ,ONS(OnsReset) [XIC(Gripper_Opened_TM.DN) RES(Gripper_Opened_TM) ,XIC(Transfer_Timer_QueUp) OTL(UngripLatch) ] ];\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_ReceiveDisplay,0);",
+              "comment": "Freshness-qualified FDC warning drives the new CDL transfer popup."
+            },
+            {
+              "number": 20,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CDL_End,0);",
+              "comment": null
+            },
+            {
+              "number": 21,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(Transfer_Timer_Running)OTE(WH_CDL_WasRunning);",
+              "comment": null
+            },
+            {
+              "number": 22,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nRET();\n",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "path": "Programs/External_Communication/Routines/CDL_DC",
+          "sha256_c14n": "948ce918a5810071d690f79735e965c37482cd6fd82d01f41da0d3154b231f9a",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_PackMessage,0);",
+              "comment": "Append the common adapter snapshot immediately before the existing write."
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\n[XIO(CDL_ctrl_msg.EN) TON(CDL_ctrl_msg_dly,?,?) ,XIC(CDL_ctrl_msg_dly.DN) MSG(CDL_ctrl_msg) ];\n",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\n[XIO(DC_ctrl_msg.EN) TON(DC_ctrl_msg_dly,?,?) ,XIC(DC_ctrl_msg_dly.DN) MSG(DC_ctrl_msg) ];\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\n[XIC(ctrl_DC_CDL.Heatbeat) OTU(ctrl_CDL_DC.Heatbeat) ,XIO(ctrl_DC_CDL.Heatbeat) OTL(ctrl_CDL_DC.Heatbeat) ];\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\nOTE(ctrl_CDL_DC.Robot_Ready);\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nAFI()OTE(ctrl_CDL_DC.Part_In_Transit);\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF01_SegD) ];\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegB) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegC) ,OTE(ctrl_CDL_DC.Auto_Loading_RF02_SegD) ];\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nAFI()[OTE(ctrl_CDL_DC.Gripper_Open) ,OTE(ctrl_CDL_DC.Gripper_Closed) ,OTE(ctrl_CDL_DC.Gripper_PartClamped) ];\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nAFI()[MOVE(0,ctrl_CDL_DC.Robot_Destination) ,MOVE(1,ctrl_CDL_DC.Robot_Destination) ,MOVE(2,ctrl_CDL_DC.Robot_Destination) ,MOVE(3,ctrl_CDL_DC.Robot_Destination) ];\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\n[XIO(CDL_at_RF01) XIO(CDL_at_RF02) XIO(CDL_at_BF03) MOVE(0,ctrl_CDL_DC.Robot_At) ,XIC(CDLDataCtrlWord[0].30) MOVE(1,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_BF03) MOVE(3,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF01) MOVE(4,ctrl_CDL_DC.Robot_At) ,XIC(CDL_at_RF02) MOVE(5,ctrl_CDL_DC.Robot_At) ];\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\n[XIO(CDL_Inside_BF03) XIO(CDL_Inside_RF01) XIO(CDL_Inside_RF02) XIO(Robot_At_300Mn) XIO(Robot_At_50Mn) MOVE(0,ctrl_CDL_DC.Robot_In) ,XIC(CDLDataCtrlWord[0].9) MOVE(1,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_BF03) MOVE(3,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF01) MOVE(4,ctrl_CDL_DC.Robot_In) ,XIC(CDL_Inside_RF02) MOVE(5,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_300Mn) MOVE(10,ctrl_CDL_DC.Robot_In) ,XIC(Robot_At_50Mn) MOVE(11,ctrl_CDL_DC.Robot_In) ];\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nMOVE(LongTravel_Safety_PSN,ctrl_CDL_DC.Robot_PSN);\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nNOP();\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\n[XIC(ctrl_DC_CDL.RF01.Door_Fully_Open) ,XIC(ctrl_DC_CDL.RF02.Door_Fully_Open) ,XIC(ctrl_DC_CDL.BF03.Door_Fully_Open) ]NOP();\n",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "modified_task_schedules": [],
+      "extended_legacy_components": [
+        {
+          "path": "DataTypes/UD_DataCollector_to_Robot",
+          "sha256_c14n": "69237b492e0c85eaa6a93e7c38e391da7d69967b4944ce8388767874a2de8e2e"
+        },
+        {
+          "path": "DataTypes/UD_Robot_to_DataCollector",
+          "sha256_c14n": "f11d85a20c0c769500cb6af85818c3c1bbbde1114cc56fae37549e71be59a04a"
+        },
+        {
+          "path": "Tags/ctrl_CDL_DC",
+          "sha256_c14n": "79fc1f944d67664d80cfe73486441c0fb2178b94ac1cfd866bee49959afd42c1"
+        },
+        {
+          "path": "Tags/ctrl_DC_CDL",
+          "sha256_c14n": "0a254eb452a89e6ce7d2f2268e3ff8bc171566a69c11498e9850ee8aefd4d7f7"
+        }
+      ]
+    },
+    {
+      "label": "FDC",
+      "controller": "FGGW01CLX",
+      "source_path": "applications/plc/l5x/current/FDC20206_V20_03_07_26.L5X",
+      "source_sha256": "f4ce5049ac418c07b216e8c6ecd8c11cec5a413593a753139d2d2ec5b520bc71",
+      "development_path": "solution/plc/build/FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+      "development_sha256": "fee45b2ce87fe76babd977a5facec7c258b00083a98c9bebd10f613ab92af2f0",
+      "new_components": [
+        {
+          "path": "AddOnInstructionDefinitions/WH_Channel",
+          "sha256_c14n": "ca9f0a16c91f13005b10672c607ecb5ac12c407f8a5ad2449c69a19f8a431d6d",
+          "report_appendix": "E/H"
+        },
+        {
+          "path": "DataTypes/WH_CDL_Display",
+          "sha256_c14n": "86002be8cdf89bccd6d7dcde1d272e4627f98c8549d2e5e507451873585ba438",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_EventData",
+          "sha256_c14n": "83231183b614e6bb8f6ef6ec208c4ac0599980874a7e9bc92a97f5d996bba920",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_EventReceipt",
+          "sha256_c14n": "31075ae10f424e44a2a98491d8661c71e2ff4fe314effb82d890b2cbd5103c13",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_Identity",
+          "sha256_c14n": "ea9ec71910948baf2aca66f7279a9c460bef34536f449a94260c919c7567d07c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_LinkData",
+          "sha256_c14n": "e37c8bd9d151c8250219593053415fc747037ebfab8d9b1b2838a14d3c68c0ea",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_LinkState",
+          "sha256_c14n": "f51d340c1a7f1a757d12df4b941f60e8f5b93fd14cebf560218f4d13d6e6f29e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_Physical",
+          "sha256_c14n": "f790f49bd4aa41113a8499643296cfd8d82686ecef92f38ff3c1c2a750703b44",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_Settings",
+          "sha256_c14n": "de861fd3d9dc661aa17deb691cdc718f4fd76ae24fcbf85399890576aa9dc223",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_Site",
+          "sha256_c14n": "916ebdb52db15a6ec6eb486c493f1d6bf7db8285b3f3aad6c8e00ea49d187e0b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_State",
+          "sha256_c14n": "6f9521cca13320132947a881c4d238cd9ff24c2d4f4e6f72d43ac429fbc3fc9d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "DataTypes/WH_TransferLimit",
+          "sha256_c14n": "c11244cf8ef7435182f572f827c96a99e79f12c91af4bccbd5bb2c5caad82593",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "sha256_c14n": "b2abab6526432e22616c62de7bb85ea58288efa033f650a4536b48ba72b200aa",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "sha256_c14n": "de394be36bd7ab7aaa55bf2ca2656c2c370ffd7a5ff24af150b9b0e9ce3476b0",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/MainProgram/Routines/WH_Startup",
+          "sha256_c14n": "a7a701cfb53543e9437a34a0f2c90a76ccb85eacebded4c48a4bc74ead525a5b",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "sha256_c14n": "4571e4fbaf4a4a2bfdf8a3170e6be6c928d800f6cc14e80ef73c21e6318efbe6",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/MainProgram/Tags/WH_ZeroPhysical",
+          "sha256_c14n": "ab1c513bd1aa94b0ee28bb27a7d2d0c000e12f84b9c388730876eb05f6442c76",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "sha256_c14n": "7886a2d1863cbf70d377e9285c879fd706f3754755efbbf25a933d1cabf35a85",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/RF01CLX/Routines/WH_CapturePre",
+          "sha256_c14n": "2910b98f4440aaa00d63f9bcdd2502f6ca27efdac2978c57d2fa29fa8745f3f6",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_01A",
+          "sha256_c14n": "5ca40dc1aa024945edad57549e03fb981e33c8b347df4bc2a2bd4336f7ccda3b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_01B",
+          "sha256_c14n": "5ed4e5b04fd52d41622ac95a15649447af336967af68434eaa5ad4a595181ed7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_01C",
+          "sha256_c14n": "93bad563658f8e306a659aef72f6659b9e4dda20f9dec8246583029b3ff32b4f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_01D",
+          "sha256_c14n": "e244188ff03f2cfb7103f2f66222fa26eebdedb984e85645faa19d981869bf62",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_02A",
+          "sha256_c14n": "eaab6af3cd4f76eb53a7b67dfd54cad60ab153a23f46b77fd18d845c33c07178",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_02B",
+          "sha256_c14n": "3aeec6febad14e871435eed50591fc853dddd708112153a2cfb88e3ca58fdc2f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_02C",
+          "sha256_c14n": "edcdebe0768a78029e251b5fa50f0547ba5c9466237e8255c69b0ac0b44e01df",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_02D",
+          "sha256_c14n": "965f6f43f643ad1e8b4f172884ff821712293cb92ac9136981e99dc9c1449e05",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_03A",
+          "sha256_c14n": "74ce3180eaf6fb402dd6dfb8a3d64435b0b4bc54295d2d6004a483e86129314e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_03B",
+          "sha256_c14n": "7965fe934b2ded1fa63bf9baef1c992475b2961eb5ab7ffadd1fff01d22f4835",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_03C",
+          "sha256_c14n": "f39fb1af502e4d91ff0b5d1ac8772fb96f3c4a4c49bdfbd3015aad15d01d60f9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_03D",
+          "sha256_c14n": "631e74d7842d66febc29220b1d8d3f84595e1f09806fceccadf541a7bfccb466",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_04A",
+          "sha256_c14n": "a7a7c5ee2a0417bd62480ad48344853b02b4553a603749f2fb77ccceb1b73074",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_04B",
+          "sha256_c14n": "fbda2a29736fa7e78f42d90bc3e19ecb7b5742cc934c61a7bdce50dcb9db8623",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_04C",
+          "sha256_c14n": "dfa32d01b920873d646c5facfbde3f6f4039acf9e2a5a8943796a72721ccd3a5",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_04D",
+          "sha256_c14n": "0d35429a7098c340654cdadf73b83bab94a5d4f0c4f86c5a00367f87c7324dfd",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_05A",
+          "sha256_c14n": "905beb27c42f9ee5ca74ecd783602103f249e366aff0b9b180b5efef17caa309",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_05B",
+          "sha256_c14n": "d5548d45627ee35a285d52a6b0f6d16b08bb5d203bcc3bcd20e58b935cf4563c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_05C",
+          "sha256_c14n": "f55a71506eb9acd7a8258bd6bf81260c1af3ae98135ac6f22d18a2aa10e98633",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_05D",
+          "sha256_c14n": "47337e046f0923c23c20eb39a8376bf36786a9820f1f60fb98a22d1a1509fd7a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_06A",
+          "sha256_c14n": "b29328c57516fcce15e2ae59196a3f73bd428e60359396933a8315e76366f204",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_06B",
+          "sha256_c14n": "76dc5e774b83b9514eb7bd6a7dfce8a52088e5c6cec64ec897917e1c2a4eeb5f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_06C",
+          "sha256_c14n": "002e7d95d1592ceb06919365d0c1d62368c093f099f8d8b00f9edbea7e65be58",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_06D",
+          "sha256_c14n": "cd223665a4de4d32481bb266968f057dbbd8aa1aa547ede8678cc344893d58f8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_07A",
+          "sha256_c14n": "c717151f549e7e8bdf951459b70ffa8775549d96c9b2e6519eeddeba0a7e48dc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_07B",
+          "sha256_c14n": "e3e8da076d42a5746beed9cc7859826f9dc03e4493619c2ba77659acabbc3f75",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_07C",
+          "sha256_c14n": "0408478d35be05ea28cbd3b0d1d95bd685cb7d5051ba212e86cf7522d9287b6d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_07D",
+          "sha256_c14n": "d579dd8f61f33feb84f32fbfe129bb6928e875a1dbd5037db6f01268a630f7ac",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_08A",
+          "sha256_c14n": "7f795b86a7683912f3db30aed0bba983303ffc892d3b84a70d7d8e72f3166bec",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_08B",
+          "sha256_c14n": "02ab50c2a4eb1299bf074c5e48ba313011405ae4a00bf4a2fe2a6bd890fb71b4",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_08C",
+          "sha256_c14n": "cdfb5ba8ba128acbfcde2c69165c9308f163ad08c39d54ea7b0121c258e36bed",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_08D",
+          "sha256_c14n": "53762ef94b89d75d313b61a5f39ae18fd0effa7791c097d1826931544c0aa682",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_09A",
+          "sha256_c14n": "e464fae811c1c019fffab70c03bcd305499a3aa9b40fe9b60287e94145e381e1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_09B",
+          "sha256_c14n": "acf60749d458eb8c7f6b4c3cef7f5620ddcfa94e46333c11d011f0ad195c1f91",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_09C",
+          "sha256_c14n": "fab928084f4c7680803aea4f8978292e65ef7461ec761877404b2f58cc4cf527",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_09D",
+          "sha256_c14n": "2857e02ee0ba0358ba421bb1e04319b5779ee2c824b59c9a67c0408dc7ec9605",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_10A",
+          "sha256_c14n": "e1f783606daf0975e603908e492da8c29502b7b97dc1c19b7dc5418aa9cdf475",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_10B",
+          "sha256_c14n": "750ac1d680ce7902b660946e3f0a287118f46660eafb2f295c5a9638f5fb3a73",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_10C",
+          "sha256_c14n": "2ca0d10febce9c82868ff900e14fde2a314c171f64a8dd9fbd6f43a9b32a3625",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_10D",
+          "sha256_c14n": "8444f7883a704044a995bab0491bc8133490407685862e858b91e6e0316cfdcc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_11A",
+          "sha256_c14n": "1b586cb1ef0b4443c495b2f1bdaeb9d62ff6fcd7df2517cd6372dda07463e912",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_11B",
+          "sha256_c14n": "f0ea1164a5b548aac294f47c80c77faaea35ed57c2a4c6cac169e0350b617e4e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_11C",
+          "sha256_c14n": "5530ba135553ea5b06bc5c57a301f2e03e6cf191f2996e6225d7a791bd327155",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_11D",
+          "sha256_c14n": "b9c93c93385fb6bbb72048afac8fda6d1fa6599ab3cc30ec1bd4334885107f66",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_12A",
+          "sha256_c14n": "b0a6811a070653e1a961852669c91a750c6dee590589267ad6dcf175cd330aa7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_12B",
+          "sha256_c14n": "c1d0ed06afd90a27c2f92a58bcdd7b4c84a05c238d08e9c5e28b35abcba228f9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_12C",
+          "sha256_c14n": "5a65a9eb42cabc31bbfd0dd18edcfc2b583df700e9173e3bbc6a6063119249fa",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_12D",
+          "sha256_c14n": "2e4d84d0fc6418abc7be8d263ee5628846dfc84fa36429abbb5be7b13b7c8ec6",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_13A",
+          "sha256_c14n": "9d9c2eef410c092e03c7718e58cd315dbbcd453e8acd84d9c35330c075016353",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_13B",
+          "sha256_c14n": "3455f2046c77d80ccf84ac07a273022dbb3c81c5d7e5768cad3e6fd26b7e4ac1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_13C",
+          "sha256_c14n": "bafe51828b26b439585d88b348497eb4ea717ffd449b7c229dab05d52dfb139a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_13D",
+          "sha256_c14n": "349d415f7a222a258b20203688a38712293840b3523aca768354d2d8afd093d0",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_14A",
+          "sha256_c14n": "af32620541323199ae7430c66c346678af0e8708bf8f19d5f841e3eb390e5d6a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_14B",
+          "sha256_c14n": "5d3f87a4d214d87d2a3b1fea67f03e8af2134e858a076939fdc65ce5d8d4337b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_14C",
+          "sha256_c14n": "693fc8393cd9aae30e4d47d966185af1a46d8b24a7228925af89f8461682f53e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_14D",
+          "sha256_c14n": "2e0e09c0cdfdfcd50a9d753eac888a0c1ffe130d6167df37b8e5f159a68cc42c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_15A",
+          "sha256_c14n": "8079f1fbf48acfaf11881e50dbd466a3aa89d32ac2c5ef35f937cb3806a52ede",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_15B",
+          "sha256_c14n": "972545d3d541d2d0e0091a699d59610b7e3c8383082ea1b1ea24e8ca82df1872",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_15C",
+          "sha256_c14n": "72771e621bec25a5295c048caa0bf812337855491605ec1dfdfff1034ae51d23",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_15D",
+          "sha256_c14n": "7e25eb00470beaef64f459dd9b85b9400b8e22f811b14af70457148880a504e7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_16A",
+          "sha256_c14n": "d3f4c84e07ad7096d1015a5cf874a338ff17ccb24a994b4cd86a290a04548078",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_16B",
+          "sha256_c14n": "c02ec5ab1a674c36dbb228d6edaff18ae1a8e419e3ff19beeae936c10dd4d141",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_16C",
+          "sha256_c14n": "364b5222178fd2ffe634f54e8fe72ef3abad2f05011a735fea322c38fcdaedcf",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_16D",
+          "sha256_c14n": "973d5acd54cb00e3c49d4e6e707a7d46f095889108f41e432b4abb488641c7cf",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_17A",
+          "sha256_c14n": "229ba904e488f7e781dbe804388b209e8249d6517cce55b8c8ca6ea28123dca3",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_17B",
+          "sha256_c14n": "0f3b290a42815900045b5f162ffb0d576c7300c110569484faaa2b8d15e28c86",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_17C",
+          "sha256_c14n": "47381933603878b9ee8eb473f7f9207b1746171e43796f6d4af7d4f010c34042",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_17D",
+          "sha256_c14n": "f00f00a5be6f295067ff85820dc983b780d3015b12e57bbf2c9c43ca0d896ee2",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_18A",
+          "sha256_c14n": "a2f6aa0d3f92476ffb0f0736f2a50c29dad47a70f7ad2dce7bb1a16d104bbcef",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_18B",
+          "sha256_c14n": "17b46fc6409001a2ac8ebae2b6d2e567b2fd8cb40a65d05d653e599b8ad968d3",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_18C",
+          "sha256_c14n": "513f315e43450f3010708d2e3c94c151043dbf3a2eca4f0f2ab4fe72b36d84a1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_18D",
+          "sha256_c14n": "28d21d9a71783c11d98a73ae22ae88a346716d13684b248b68b5feae035550c7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_19A",
+          "sha256_c14n": "c340e698f742dfa3cd263dbfe915085d58045d068de9dc4e3cbacedcb5e0c276",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_19B",
+          "sha256_c14n": "327634f8b8a61da0c45c183ab6b497fb331aa589f17d84a5e602a1d26600f559",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_19C",
+          "sha256_c14n": "051c8b435905ed70396dc39f8b908fe0d5148c36e8a425e1627ee069438c0840",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_19D",
+          "sha256_c14n": "112bcf88622af63f7ac049c92da6b3a0748a06b37f23a769ee24b9ca070ed94b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_20A",
+          "sha256_c14n": "c6e06a1803feb9f05f3c26873eb3459678c4ceed50295f4bec14997ca8813a94",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_20B",
+          "sha256_c14n": "ae8a1ee937b7bc95296256641cc5aed655d10f5a15a7a4916db3c44aeb9a87c8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_20C",
+          "sha256_c14n": "86fee4650f9c1d4317794a80a545000c5862a0c179cb97b2014ce76ae853497b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_20D",
+          "sha256_c14n": "294d6bba977695b56c6c6621a0988d93cb5431e4ddf0f4f7018799deae99a518",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_21A",
+          "sha256_c14n": "97d7c74a062d2899a72ba3bbe11e8cb43d6752a71672b3d47b1c8712e592b95b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_21B",
+          "sha256_c14n": "313932738443ea8691a374afe09733f58c13eb64887c880646da0b99cbf764ae",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_21C",
+          "sha256_c14n": "8ae937f14f6a504956568f1d7213bbcb7a241f314219ad08553e38a2599c6d7c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_21D",
+          "sha256_c14n": "75692e4c155c9528f899178db396738b1be10f96c1d7754a3a2f25421022dc5f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_22A",
+          "sha256_c14n": "79fcb0cab54438bab2d90cd07611bea6e7f9252e9661874cb304c779d7591ca9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_22B",
+          "sha256_c14n": "099370cc49732db9fbb9274c82872f462124b6bb301cdafbff2f986b412d8474",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_22C",
+          "sha256_c14n": "e53f8240ba5a3910b3558f90f254cd7e3dd1f9b171e4413f16137f4f3ab2818c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_22D",
+          "sha256_c14n": "c3ee95759c3b3fe9c71a8436d124795775d0ddc2aacea98d9eea6a980ec7778f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_23A",
+          "sha256_c14n": "c5448015d3ac5fecbc4b2d86930e82d4e65ba0303ee9402acc834184b2769e49",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_23B",
+          "sha256_c14n": "b40f91cb4e70797e81e0fe40a6f214fd381b99eb8d9a4540ed5481c68141ec1d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_23C",
+          "sha256_c14n": "07436eee15e00ed989d2dbfcaf794b6ed1aec0b17ce9d5414291f7f458362644",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_23D",
+          "sha256_c14n": "6c011fa61dc227514c751063029ad223d5f3c19b66b87e947cfa21b18743e512",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_24A",
+          "sha256_c14n": "a538b2c4fe2dd877e5ad9b7751fab35d00401953d7bd2d1eb63c0a8e4dafb789",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_24B",
+          "sha256_c14n": "2475dd1739eda6eaf77243bed0d887678b2a82a3a666bc0e5086743d0017eb89",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_24C",
+          "sha256_c14n": "3c190e14a5d43f50c08f4e85fbf3cdf50f2d9e7563c7b3c926db512471f32eba",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF01CLX/Tags/WH_Node_24D",
+          "sha256_c14n": "5bc0ae988677a1aa23baa3d1d651d09d29317760bb09926efa9bc270a0ae5673",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "sha256_c14n": "1176ec1d2722692b8af3e0974376292fe48c153afacbd93579b42d97a2187828",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/RF02CLX/Routines/WH_CapturePre",
+          "sha256_c14n": "0da73fddaa0a2483c01e33d3ff1beda44785694c327afc8ef51ec39536039031",
+          "report_appendix": "G"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_01A",
+          "sha256_c14n": "5ca40dc1aa024945edad57549e03fb981e33c8b347df4bc2a2bd4336f7ccda3b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_01B",
+          "sha256_c14n": "5ed4e5b04fd52d41622ac95a15649447af336967af68434eaa5ad4a595181ed7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_01C",
+          "sha256_c14n": "93bad563658f8e306a659aef72f6659b9e4dda20f9dec8246583029b3ff32b4f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_01D",
+          "sha256_c14n": "e244188ff03f2cfb7103f2f66222fa26eebdedb984e85645faa19d981869bf62",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_02A",
+          "sha256_c14n": "eaab6af3cd4f76eb53a7b67dfd54cad60ab153a23f46b77fd18d845c33c07178",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_02B",
+          "sha256_c14n": "3aeec6febad14e871435eed50591fc853dddd708112153a2cfb88e3ca58fdc2f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_02C",
+          "sha256_c14n": "edcdebe0768a78029e251b5fa50f0547ba5c9466237e8255c69b0ac0b44e01df",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_02D",
+          "sha256_c14n": "965f6f43f643ad1e8b4f172884ff821712293cb92ac9136981e99dc9c1449e05",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_03A",
+          "sha256_c14n": "74ce3180eaf6fb402dd6dfb8a3d64435b0b4bc54295d2d6004a483e86129314e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_03B",
+          "sha256_c14n": "7965fe934b2ded1fa63bf9baef1c992475b2961eb5ab7ffadd1fff01d22f4835",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_03C",
+          "sha256_c14n": "f39fb1af502e4d91ff0b5d1ac8772fb96f3c4a4c49bdfbd3015aad15d01d60f9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_03D",
+          "sha256_c14n": "631e74d7842d66febc29220b1d8d3f84595e1f09806fceccadf541a7bfccb466",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_04A",
+          "sha256_c14n": "a7a7c5ee2a0417bd62480ad48344853b02b4553a603749f2fb77ccceb1b73074",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_04B",
+          "sha256_c14n": "fbda2a29736fa7e78f42d90bc3e19ecb7b5742cc934c61a7bdce50dcb9db8623",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_04C",
+          "sha256_c14n": "dfa32d01b920873d646c5facfbde3f6f4039acf9e2a5a8943796a72721ccd3a5",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_04D",
+          "sha256_c14n": "0d35429a7098c340654cdadf73b83bab94a5d4f0c4f86c5a00367f87c7324dfd",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_05A",
+          "sha256_c14n": "905beb27c42f9ee5ca74ecd783602103f249e366aff0b9b180b5efef17caa309",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_05B",
+          "sha256_c14n": "d5548d45627ee35a285d52a6b0f6d16b08bb5d203bcc3bcd20e58b935cf4563c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_05C",
+          "sha256_c14n": "f55a71506eb9acd7a8258bd6bf81260c1af3ae98135ac6f22d18a2aa10e98633",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_05D",
+          "sha256_c14n": "47337e046f0923c23c20eb39a8376bf36786a9820f1f60fb98a22d1a1509fd7a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_06A",
+          "sha256_c14n": "b29328c57516fcce15e2ae59196a3f73bd428e60359396933a8315e76366f204",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_06B",
+          "sha256_c14n": "76dc5e774b83b9514eb7bd6a7dfce8a52088e5c6cec64ec897917e1c2a4eeb5f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_06C",
+          "sha256_c14n": "002e7d95d1592ceb06919365d0c1d62368c093f099f8d8b00f9edbea7e65be58",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_06D",
+          "sha256_c14n": "cd223665a4de4d32481bb266968f057dbbd8aa1aa547ede8678cc344893d58f8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_07A",
+          "sha256_c14n": "c717151f549e7e8bdf951459b70ffa8775549d96c9b2e6519eeddeba0a7e48dc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_07B",
+          "sha256_c14n": "e3e8da076d42a5746beed9cc7859826f9dc03e4493619c2ba77659acabbc3f75",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_07C",
+          "sha256_c14n": "0408478d35be05ea28cbd3b0d1d95bd685cb7d5051ba212e86cf7522d9287b6d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_07D",
+          "sha256_c14n": "d579dd8f61f33feb84f32fbfe129bb6928e875a1dbd5037db6f01268a630f7ac",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_08A",
+          "sha256_c14n": "7f795b86a7683912f3db30aed0bba983303ffc892d3b84a70d7d8e72f3166bec",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_08B",
+          "sha256_c14n": "02ab50c2a4eb1299bf074c5e48ba313011405ae4a00bf4a2fe2a6bd890fb71b4",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_08C",
+          "sha256_c14n": "cdfb5ba8ba128acbfcde2c69165c9308f163ad08c39d54ea7b0121c258e36bed",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_08D",
+          "sha256_c14n": "53762ef94b89d75d313b61a5f39ae18fd0effa7791c097d1826931544c0aa682",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_09A",
+          "sha256_c14n": "e464fae811c1c019fffab70c03bcd305499a3aa9b40fe9b60287e94145e381e1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_09B",
+          "sha256_c14n": "acf60749d458eb8c7f6b4c3cef7f5620ddcfa94e46333c11d011f0ad195c1f91",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_09C",
+          "sha256_c14n": "fab928084f4c7680803aea4f8978292e65ef7461ec761877404b2f58cc4cf527",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_09D",
+          "sha256_c14n": "2857e02ee0ba0358ba421bb1e04319b5779ee2c824b59c9a67c0408dc7ec9605",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_10A",
+          "sha256_c14n": "e1f783606daf0975e603908e492da8c29502b7b97dc1c19b7dc5418aa9cdf475",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_10B",
+          "sha256_c14n": "750ac1d680ce7902b660946e3f0a287118f46660eafb2f295c5a9638f5fb3a73",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_10C",
+          "sha256_c14n": "2ca0d10febce9c82868ff900e14fde2a314c171f64a8dd9fbd6f43a9b32a3625",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_10D",
+          "sha256_c14n": "8444f7883a704044a995bab0491bc8133490407685862e858b91e6e0316cfdcc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_11A",
+          "sha256_c14n": "1b586cb1ef0b4443c495b2f1bdaeb9d62ff6fcd7df2517cd6372dda07463e912",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_11B",
+          "sha256_c14n": "f0ea1164a5b548aac294f47c80c77faaea35ed57c2a4c6cac169e0350b617e4e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_11C",
+          "sha256_c14n": "5530ba135553ea5b06bc5c57a301f2e03e6cf191f2996e6225d7a791bd327155",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_11D",
+          "sha256_c14n": "b9c93c93385fb6bbb72048afac8fda6d1fa6599ab3cc30ec1bd4334885107f66",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_12A",
+          "sha256_c14n": "b0a6811a070653e1a961852669c91a750c6dee590589267ad6dcf175cd330aa7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_12B",
+          "sha256_c14n": "c1d0ed06afd90a27c2f92a58bcdd7b4c84a05c238d08e9c5e28b35abcba228f9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_12C",
+          "sha256_c14n": "5a65a9eb42cabc31bbfd0dd18edcfc2b583df700e9173e3bbc6a6063119249fa",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_12D",
+          "sha256_c14n": "2e4d84d0fc6418abc7be8d263ee5628846dfc84fa36429abbb5be7b13b7c8ec6",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_13A",
+          "sha256_c14n": "9d9c2eef410c092e03c7718e58cd315dbbcd453e8acd84d9c35330c075016353",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_13B",
+          "sha256_c14n": "3455f2046c77d80ccf84ac07a273022dbb3c81c5d7e5768cad3e6fd26b7e4ac1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_13C",
+          "sha256_c14n": "bafe51828b26b439585d88b348497eb4ea717ffd449b7c229dab05d52dfb139a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_13D",
+          "sha256_c14n": "349d415f7a222a258b20203688a38712293840b3523aca768354d2d8afd093d0",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_14A",
+          "sha256_c14n": "af32620541323199ae7430c66c346678af0e8708bf8f19d5f841e3eb390e5d6a",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_14B",
+          "sha256_c14n": "5d3f87a4d214d87d2a3b1fea67f03e8af2134e858a076939fdc65ce5d8d4337b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_14C",
+          "sha256_c14n": "693fc8393cd9aae30e4d47d966185af1a46d8b24a7228925af89f8461682f53e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_14D",
+          "sha256_c14n": "2e0e09c0cdfdfcd50a9d753eac888a0c1ffe130d6167df37b8e5f159a68cc42c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_15A",
+          "sha256_c14n": "8079f1fbf48acfaf11881e50dbd466a3aa89d32ac2c5ef35f937cb3806a52ede",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_15B",
+          "sha256_c14n": "972545d3d541d2d0e0091a699d59610b7e3c8383082ea1b1ea24e8ca82df1872",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_15C",
+          "sha256_c14n": "72771e621bec25a5295c048caa0bf812337855491605ec1dfdfff1034ae51d23",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_15D",
+          "sha256_c14n": "7e25eb00470beaef64f459dd9b85b9400b8e22f811b14af70457148880a504e7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_16A",
+          "sha256_c14n": "d3f4c84e07ad7096d1015a5cf874a338ff17ccb24a994b4cd86a290a04548078",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_16B",
+          "sha256_c14n": "c02ec5ab1a674c36dbb228d6edaff18ae1a8e419e3ff19beeae936c10dd4d141",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_16C",
+          "sha256_c14n": "364b5222178fd2ffe634f54e8fe72ef3abad2f05011a735fea322c38fcdaedcf",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_16D",
+          "sha256_c14n": "973d5acd54cb00e3c49d4e6e707a7d46f095889108f41e432b4abb488641c7cf",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_17A",
+          "sha256_c14n": "229ba904e488f7e781dbe804388b209e8249d6517cce55b8c8ca6ea28123dca3",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_17B",
+          "sha256_c14n": "0f3b290a42815900045b5f162ffb0d576c7300c110569484faaa2b8d15e28c86",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_17C",
+          "sha256_c14n": "47381933603878b9ee8eb473f7f9207b1746171e43796f6d4af7d4f010c34042",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_17D",
+          "sha256_c14n": "f00f00a5be6f295067ff85820dc983b780d3015b12e57bbf2c9c43ca0d896ee2",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_18A",
+          "sha256_c14n": "a2f6aa0d3f92476ffb0f0736f2a50c29dad47a70f7ad2dce7bb1a16d104bbcef",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_18B",
+          "sha256_c14n": "17b46fc6409001a2ac8ebae2b6d2e567b2fd8cb40a65d05d653e599b8ad968d3",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_18C",
+          "sha256_c14n": "513f315e43450f3010708d2e3c94c151043dbf3a2eca4f0f2ab4fe72b36d84a1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_18D",
+          "sha256_c14n": "28d21d9a71783c11d98a73ae22ae88a346716d13684b248b68b5feae035550c7",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_19A",
+          "sha256_c14n": "c340e698f742dfa3cd263dbfe915085d58045d068de9dc4e3cbacedcb5e0c276",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_19B",
+          "sha256_c14n": "327634f8b8a61da0c45c183ab6b497fb331aa589f17d84a5e602a1d26600f559",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_19C",
+          "sha256_c14n": "051c8b435905ed70396dc39f8b908fe0d5148c36e8a425e1627ee069438c0840",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_19D",
+          "sha256_c14n": "112bcf88622af63f7ac049c92da6b3a0748a06b37f23a769ee24b9ca070ed94b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_20A",
+          "sha256_c14n": "c6e06a1803feb9f05f3c26873eb3459678c4ceed50295f4bec14997ca8813a94",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_20B",
+          "sha256_c14n": "ae8a1ee937b7bc95296256641cc5aed655d10f5a15a7a4916db3c44aeb9a87c8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_20C",
+          "sha256_c14n": "86fee4650f9c1d4317794a80a545000c5862a0c179cb97b2014ce76ae853497b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_20D",
+          "sha256_c14n": "294d6bba977695b56c6c6621a0988d93cb5431e4ddf0f4f7018799deae99a518",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_21A",
+          "sha256_c14n": "97d7c74a062d2899a72ba3bbe11e8cb43d6752a71672b3d47b1c8712e592b95b",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_21B",
+          "sha256_c14n": "313932738443ea8691a374afe09733f58c13eb64887c880646da0b99cbf764ae",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_21C",
+          "sha256_c14n": "8ae937f14f6a504956568f1d7213bbcb7a241f314219ad08553e38a2599c6d7c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_21D",
+          "sha256_c14n": "75692e4c155c9528f899178db396738b1be10f96c1d7754a3a2f25421022dc5f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_22A",
+          "sha256_c14n": "79fcb0cab54438bab2d90cd07611bea6e7f9252e9661874cb304c779d7591ca9",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_22B",
+          "sha256_c14n": "099370cc49732db9fbb9274c82872f462124b6bb301cdafbff2f986b412d8474",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_22C",
+          "sha256_c14n": "e53f8240ba5a3910b3558f90f254cd7e3dd1f9b171e4413f16137f4f3ab2818c",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_22D",
+          "sha256_c14n": "c3ee95759c3b3fe9c71a8436d124795775d0ddc2aacea98d9eea6a980ec7778f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_23A",
+          "sha256_c14n": "c5448015d3ac5fecbc4b2d86930e82d4e65ba0303ee9402acc834184b2769e49",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_23B",
+          "sha256_c14n": "b40f91cb4e70797e81e0fe40a6f214fd381b99eb8d9a4540ed5481c68141ec1d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_23C",
+          "sha256_c14n": "07436eee15e00ed989d2dbfcaf794b6ed1aec0b17ce9d5414291f7f458362644",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_23D",
+          "sha256_c14n": "6c011fa61dc227514c751063029ad223d5f3c19b66b87e947cfa21b18743e512",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_24A",
+          "sha256_c14n": "a538b2c4fe2dd877e5ad9b7751fab35d00401953d7bd2d1eb63c0a8e4dafb789",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_24B",
+          "sha256_c14n": "2475dd1739eda6eaf77243bed0d887678b2a82a3a666bc0e5086743d0017eb89",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_24C",
+          "sha256_c14n": "3c190e14a5d43f50c08f4e85fbf3cdf50f2d9e7563c7b3c926db512471f32eba",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Programs/RF02CLX/Tags/WH_Node_24D",
+          "sha256_c14n": "5bc0ae988677a1aa23baa3d1d651d09d29317760bb09926efa9bc270a0ae5673",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT",
+          "sha256_c14n": "cc30732ba9b5ea64cec2a16362174ab5e089e622ae481b5cb62f110b317c9375",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/MAX_INT_MINUS_ONE",
+          "sha256_c14n": "56b7c146c337d4569f077f3e4170139ea1c09fc796921a3decf89c58f7346e0e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_ActiveCDL",
+          "sha256_c14n": "e7fc731d5baf62dae88641e28281166c33580a65288092f3b27c6a4ea4c0851f",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_BindCandidate",
+          "sha256_c14n": "93de3a6cd0accb5c579c7bec82b5ab240d2675aff41a45dafbc83338bede62d8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_ClockValidated",
+          "sha256_c14n": "62453f819b7dab48f7da42595b770a4b44d1c5cfbefbe1504b69f556f32c5d71",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_DisplayLive",
+          "sha256_c14n": "89487b0d71e76a4b8c24c050524e07e74035c5666505e57ea148f3d55cc8edf8",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Elapsed",
+          "sha256_c14n": "59997fd53f433f34cac8824e8ef5093677fde72e3a3d27f171f2812852d604d3",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Event",
+          "sha256_c14n": "54df97d152b640bd2f863c8d3d2ecbeac98b35f18c68143d8488af5e19f471fc",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Link",
+          "sha256_c14n": "50a9b670fe9b46f57cd8ed78f2e282fba09c7fdea2526e2156b41f0d136a63ff",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_LinkState",
+          "sha256_c14n": "3631dd096c99e42dc4ef36c7923d85d26db36db3f1ad4449955d7bcbad8510a1",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_NewLinkEvent",
+          "sha256_c14n": "5f404e3bed896587b8fbfc312c3942be562d68ade9fefb3562f3d38d4d96b3aa",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_PressHeartbeatEdge",
+          "sha256_c14n": "48d8fa1ecdcccc4c095c73436b23352758a0502426b0bce193ec3c10f26a5301",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Receipt",
+          "sha256_c14n": "8a03ae3f71d91f8b8466e95879217924fce395c39e74657058f46031b2fc9da4",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_SelectedCDL",
+          "sha256_c14n": "a7866f1e9dca59a5448ed92e800908ec8b7ddd35f29b89e5ee58a685f5b9bb6d",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Settings",
+          "sha256_c14n": "73bf022cc25aee272bdd24912aa436ba54360d9c3548f570754f70aaad35a1ca",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Site",
+          "sha256_c14n": "472240473bf00310bb17e195767387bdc52e717defb5b6b26fd6cfb09d0eb76e",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_Source",
+          "sha256_c14n": "e1ecd8c3a5fbec1708a763b9a4747849b1c6f2ec8cf9ed2e2b23e70c3088da83",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_State",
+          "sha256_c14n": "b1f790e10d75a20e7c2fb52e8607f601701b580f83b70747d6e0b216cc5b6555",
+          "report_appendix": "H"
+        },
+        {
+          "path": "Tags/WH_TransferLimit",
+          "sha256_c14n": "3fe9dfa852c16fae05e496251ab2246adb95ac23a6b1e740ca882d8856857f3f",
+          "report_appendix": "H"
+        }
+      ],
+      "modified_routines": [
+        {
+          "path": "Programs/MainProgram/Routines/MainRoutine",
+          "sha256_c14n": "478f7c5cbfce28b290bbcd3dae9b0d9bc2de71cc8ad8a571370414dec7f77454",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "XIC(S:FS)JSR(WH_Startup,0);",
+              "comment": "WH development epoch only; no event recovery/replay."
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_SiteBindings,0);",
+              "comment": "Receive CDL/press messages; bind the preceding two-furnace selection pass and update CDL warning."
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nXIO(heartbeat.DN)TON(heartbeat,?,?);\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nOTU(AlwaysOff);\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\nfuncGetDateTime(FGGW01CLX_DateTime,SystemDT);\n",
+              "comment": null
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\nfuncPulse(HMIStrobe);\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nJSR(Press_Interface,0);\n",
+              "comment": null
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nJSR(P5000_Interface,0);\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\n[JSR(CDL_Interface,0) ,JSR(CDL2_Interface,0) ];\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nJSR(SPOT_Interface,0);\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nJSR(Set_PLC_DateTime,0);\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nJSR(ClearWashDataBits,0);\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nJSR(PumpRoom_Interface,0);\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\n[XIC(RF01_CheckScan) ONS(ons1) ,XIC(RF02_CheckScan) ONS(ons2) ]JSR(CheckPN_Scanned,0);\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\n[XIC(RF01_CheckPN) ONS(ons3) ,XIC(RF02_CheckPN) ONS(ons4) ]JSR(CheckPN_Staged,0);\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nXIC(AlwaysOff)JSR(InitSegments,0);\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nJSR(Alarm_Horn,0);\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\nJSR(Module_Status,0);\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 16,
+              "raw_text": "\nJSR(P50MN_OEE,0);\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 17,
+              "raw_text": "\nJSR(P300MN_OEE,0);\n",
+              "comment": null
+            },
+            {
+              "number": 20,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 18,
+              "raw_text": "\nXIO(hmiOpen)MOVE(0,ManualChange);\n",
+              "comment": null
+            },
+            {
+              "number": 21,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 19,
+              "raw_text": "\nXIC(hmiOpen)[JSR(ScreenNav,0) ,JSR(HMI_Control,0) ,TON(hmiOpenDelay,?,?) ];\n",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "path": "Programs/RF01CLX/Routines/Main",
+          "sha256_c14n": "a3abc747001fa24232b7932c9a0ee183bf4ec676765f6d79ad5f7fe618940aee",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nNOP();\n",
+              "comment": "\n#######################################################################################################\nRF01CLX Main Routine Logic\n#######################################################################################################\n"
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nJSR(CheckDateTime,0);\n",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\nJSR(ProcessBarCodeInfo,0);\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\nJSR(Triggers,0);\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CapturePre,0);",
+              "comment": "Capture commands/identity before legacy clear/copy rungs."
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nJSR(ProcessFurnaceItemInfo,0);\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CapturePost,0);",
+              "comment": "Publish frozen observations and sample physical elapsed time."
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nJSR(RotaryDetail01_CDL2,0);\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nJSR(RotaryDetail01_iFix,0);\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nJSR(RotaryDetail02_iFix,0);\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nJSR(RotaryDetail01_RedLion,0);\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nJSR(RotaryDetail02_RedLion,0);\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nJSR(Flags,0);\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nJSR(RecipeCompare,0);\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nJSR(PressData,0);\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nJSR(P5000Data,0);\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nJSR(GroupAlarms,0);\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\nJSR(External_Door_Ctrl,0);\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 16,
+              "raw_text": "\nJSR(LEDdisplay,0);\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 17,
+              "raw_text": "\nJSR(GetSoakTime,0);\n",
+              "comment": null
+            }
+          ]
+        },
+        {
+          "path": "Programs/RF02CLX/Routines/Main",
+          "sha256_c14n": "b778a935b5f58ad8b15d62a9377b9ae908c239de6dfc8d8897a913fe0b6707df",
+          "report_appendix": "D",
+          "rungs": [
+            {
+              "number": 0,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 0,
+              "raw_text": "\nNOP();\n",
+              "comment": "\n#######################################################################################################\nRF02CLX Main Routine Logic\n#######################################################################################################\n"
+            },
+            {
+              "number": 1,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 1,
+              "raw_text": "\nJSR(CheckDateTime,0);\n",
+              "comment": null
+            },
+            {
+              "number": 2,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 2,
+              "raw_text": "\nJSR(ProcessBarCodeInfo,0);\n",
+              "comment": null
+            },
+            {
+              "number": 3,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 3,
+              "raw_text": "\nJSR(Triggers,0);\n",
+              "comment": null
+            },
+            {
+              "number": 4,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CapturePre,0);",
+              "comment": "Capture commands/identity before legacy clear/copy rungs."
+            },
+            {
+              "number": 5,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 4,
+              "raw_text": "\nJSR(ProcessFurnaceItemInfo,0);\n",
+              "comment": null
+            },
+            {
+              "number": 6,
+              "type": "N",
+              "classification": "ADDED",
+              "original_number": null,
+              "raw_text": "JSR(WH_CapturePost,0);",
+              "comment": "Publish frozen observations and sample physical elapsed time."
+            },
+            {
+              "number": 7,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 5,
+              "raw_text": "\nJSR(RotaryDetail01_CDL2,0);\n",
+              "comment": null
+            },
+            {
+              "number": 8,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 6,
+              "raw_text": "\nJSR(RotaryDetail01_iFix,0);\n",
+              "comment": null
+            },
+            {
+              "number": 9,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 7,
+              "raw_text": "\nJSR(RotaryDetail02_iFix,0);\n",
+              "comment": null
+            },
+            {
+              "number": 10,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 8,
+              "raw_text": "\nJSR(RotaryDetail01_RedLion,0);\n",
+              "comment": null
+            },
+            {
+              "number": 11,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 9,
+              "raw_text": "\nJSR(RotaryDetail02_RedLion,0);\n",
+              "comment": null
+            },
+            {
+              "number": 12,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 10,
+              "raw_text": "\nJSR(Flags,0);\n",
+              "comment": null
+            },
+            {
+              "number": 13,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 11,
+              "raw_text": "\nJSR(RecipeCompare,0);\n",
+              "comment": null
+            },
+            {
+              "number": 14,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 12,
+              "raw_text": "\nJSR(PressData,0);\n",
+              "comment": null
+            },
+            {
+              "number": 15,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 13,
+              "raw_text": "\nJSR(P5000Data,0);\n",
+              "comment": null
+            },
+            {
+              "number": 16,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 14,
+              "raw_text": "\nJSR(GroupAlarms,0);\n",
+              "comment": null
+            },
+            {
+              "number": 17,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 15,
+              "raw_text": "\nJSR(External_Door_Ctrl,0);\n",
+              "comment": null
+            },
+            {
+              "number": 18,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 16,
+              "raw_text": "\nJSR(CDL_Load_Status,0);\n",
+              "comment": null
+            },
+            {
+              "number": 19,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 17,
+              "raw_text": "\nJSR(LEDdisplay,0);\n",
+              "comment": null
+            },
+            {
+              "number": 20,
+              "type": "N",
+              "classification": "EXISTING",
+              "original_number": 18,
+              "raw_text": "\nJSR(GetSoakTime,0);\n",
+              "comment": null
+            }
+          ]
+        }
+      ],
+      "modified_task_schedules": [],
+      "extended_legacy_components": [
+        {
+          "path": "DataTypes/UD_DataCollector_to_Robot",
+          "sha256_c14n": "9a9e75ba5eb63e4a4aa46fc5173b4944f14041f4fa7c53039b6fd1bdb30e4b38"
+        },
+        {
+          "path": "DataTypes/UD_Robot_to_DataCollector",
+          "sha256_c14n": "585883d3c7fe9c6d858d571041121af91676efc0e1644cfea503b6d14eb2598b"
+        },
+        {
+          "path": "Tags/ctrl_CDL2_DC",
+          "sha256_c14n": "f5a53b7cdb9f15d938aff6b2d1c31a162fd912cf95b0a5c3d7858bf1deb3b383"
+        },
+        {
+          "path": "Tags/ctrl_CDL_DC",
+          "sha256_c14n": "02f9fe52bf75177eae476623561be36f5d966c8be2ecf931a2d465d28f79b68f"
+        },
+        {
+          "path": "Tags/ctrl_DC_CDL",
+          "sha256_c14n": "9e2759f207f45ff3873a1ecc633f9cb5ac333a741ba8e384f89b9e76b063a026"
+        },
+        {
+          "path": "Tags/ctrl_DC_CDL2",
+          "sha256_c14n": "19ca7f6a9e17d62bf4f2f074947629a5f007898759bd07d8012450b525d9269c"
+        },
+        {
+          "path": "Tags/ctrl_DC_SPOT",
+          "sha256_c14n": "2d0b6023dd628a48035e16eade38a6d58b4a75007d177b9a2d9b5c3f4404d041"
+        },
+        {
+          "path": "Tags/ctrl_SPOT_DC",
+          "sha256_c14n": "f1db01a3e028b3829e0867ba441ccce9edb36775fa575c2ce0038d3ef0fd0725"
+        }
+      ]
+    }
+  ],
+  "guide": {
+    "path": "EngiLib/GPP_plc-display.md",
+    "profile": "gpp.plc-display@1.5.0",
+    "sha256": "577758a0a939f9f45335677a6c3d9b236bc8d42d3bbca474e07a99c8579fae6d",
+    "package": "GPP_plc-display_1.5.0.engibook",
+    "package_sha256": "e11fe747d06bec5bf5e917da71020e0bf85823a6101582ed6291f4a53d13572f"
+  }
+}

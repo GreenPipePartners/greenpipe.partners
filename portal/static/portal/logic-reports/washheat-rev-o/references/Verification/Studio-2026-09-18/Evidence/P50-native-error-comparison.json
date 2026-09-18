@@ -1,0 +1,23 @@
+{
+  "baseline_errors": 17,
+  "patched_errors": 17,
+  "new_errors": 0,
+  "error_messages_identical": true,
+  "errors": {
+    "Error: SLXITAfterForge: Invalid component specifier.": 1,
+    "Error: SLXITCSV: Invalid component specifier.": 1,
+    "Error: SLXITQuench: Invalid component specifier.": 1,
+    "Error: SLXITString: Invalid component specifier.": 1,
+    "Error: Rung 4, JXR: Too many parameters.": 3,
+    "Error: Rung 5, JXR: Too many parameters.": 1,
+    "Error: Rung 6, JXR: Too many parameters.": 1,
+    "Error: ITSLX: Invalid component specifier.": 1,
+    "Error: ITSLXString: Invalid component specifier.": 1,
+    "Error: Rung 0, JXR: Too many parameters.": 1,
+    "Error: Rung 1, JXR: Too many parameters.": 1,
+    "Error: SLXIT: Invalid component specifier.": 1,
+    "Error: Rung 8, JXR: Too many parameters.": 1,
+    "Error: Rung 9, JXR: Too many parameters.": 1,
+    "Error: Rung 10, JXR: Too many parameters.": 1
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "started_utc": "2026-09-18T11:06:30.007036+00:00",
+  "actions": [
+    {
+      "op": "verify_controller",
+      "ui_command_id": 32049,
+      "window": {
+        "handle": 200750,
+        "title": "Logix Designer - EN01_80A3_CPU in CDL1_NATIVE_OVERLAY_02.ACD [5069-L310ERMS3 36.14]",
+        "class": "Afx:00070000:8:00010003:00000000:0017074D",
+        "control_id": 0,
+        "pid": 24056,
+        "visible": true,
+        "enabled": true
+      },
+      "verification_log": "Verifying Controller...\r\nWarning: Rung 7: AFI detected.\r\nWarning: Rung 8: AFI detected.\r\nWarning: Rung 9: AFI detected.\r\nWarning: Rung 10: AFI detected.\r\nWarning: Rung 11: AFI detected.\r\nVerifying program connections\r\nWarning: Duplicate Destructive Bit Reference Detected: 'ExternalComms - WH_CDL_Publish'\r\n    ExternalComms - WH_CDL_Stop, Rung 2, OTE\r\n    ExternalComms - WH_CDL_Init, Rung 4, OTU\r\nWarning: Duplicate Destructive Bit Reference Detected: 'ExternalComms - WH_CDL_WasRunning'\r\n    ExternalComms - WH_CDL_Init, Rung 3, OTU\r\n    ExternalComms - Transfer_Timer, Rung 22, OTE\r\nComplete - 0 error(s), 7 warning(s)\r\n"
+    },
+    {
+      "op": "keys"
+    },
+    {
+      "op": "wait"
+    },
+    {
+      "op": "close"
+    }
+  ],
+  "finished_utc": "2026-09-18T11:06:47.667618+00:00"
+}

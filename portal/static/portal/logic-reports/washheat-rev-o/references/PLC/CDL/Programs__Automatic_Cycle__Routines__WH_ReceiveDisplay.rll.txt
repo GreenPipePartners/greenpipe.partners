@@ -1,0 +1,24 @@
+RUNG 000 [ADDED]
+COMMENT
+Set received-display age limit.
+MOVE(3000,WH_DisplayAge.PRE);
+
+RUNG 001 [ADDED]
+COMMENT
+Freeze the appended member received by existing DC_ctrl_msg.
+CPS(ctrl_DC_CDL.WashHeat,WH_Display,1);
+
+RUNG 002 [ADDED]
+COMMENT
+Only a new FDC snapshot refreshes warning age.
+NE(WH_Display.Sequence,WH_DisplaySeen)[RES(WH_DisplayAge),MOVE(WH_Display.Sequence,WH_DisplaySeen)];
+
+RUNG 003 [ADDED]
+COMMENT
+Age out the popup if its FDC source is stale.
+TON(WH_DisplayAge,3000,0);
+
+RUNG 004 [ADDED]
+COMMENT
+The new CDL popup visibility bit follows only a fresh, active, over-limit transfer.
+GT(WH_Display.Sequence,0)EQ(WH_Display.DataValid,1)EQ(WH_Display.Active,1)EQ(WH_Display.Exceeded,1)EQ(WH_Display.TargetCdl,1)XIO(WH_DisplayAge.DN)OTE(WH_TransferPopup);

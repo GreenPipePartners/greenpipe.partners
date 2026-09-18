@@ -3565,3 +3565,9 @@ h3 {
         box-shadow: none;
     }
 }
+
+/* Prebuilt engineering logic viewers need a taller frame than a video. */
+.report-logic-embed .report-embed-frame {
+    aspect-ratio: auto;
+    height: clamp(640px, 85vh, 1000px);
+}

@@ -1,0 +1,104 @@
+[
+  {
+    "version": "v36",
+    "file": "LogixACENU.dll",
+    "id": 210,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v36",
+    "file": "LogixACENU.dll",
+    "id": 1554,
+    "text": "Verifying for the changed controller type..."
+  },
+  {
+    "version": "v36",
+    "file": "LogixACENU.dll",
+    "id": 1762,
+    "text": "DANGER: Unexpected hazardous motion of machinery may occur.\n\nSome devices maintain independent configuration settings that are not loaded to the device during the download of the controller.\n\nVerify these devices (drives, network devices, 3rd party products) have been properly loaded before placing the controller into run mode.\n\nFailure to load proper configuration could result in misaligned data and unexpected equipment operation."
+  },
+  {
+    "version": "v36",
+    "file": "LogixACENU.dll",
+    "id": 32049,
+    "text": "Verify the entire controller\nVerify Controller"
+  },
+  {
+    "version": "v36",
+    "file": "AFLibENU.dll",
+    "id": 23354,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v37",
+    "file": "LogixACENU.dll",
+    "id": 210,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v37",
+    "file": "LogixACENU.dll",
+    "id": 1554,
+    "text": "Verifying for the changed controller type..."
+  },
+  {
+    "version": "v37",
+    "file": "LogixACENU.dll",
+    "id": 1762,
+    "text": "DANGER: Unexpected hazardous motion of machinery may occur.\n\nSome devices maintain independent configuration settings that are not loaded to the device during the download of the controller.\n\nVerify these devices (drives, network devices, 3rd party products) have been properly loaded before placing the controller into run mode.\n\nFailure to load proper configuration could result in misaligned data and unexpected equipment operation."
+  },
+  {
+    "version": "v37",
+    "file": "LogixACENU.dll",
+    "id": 32049,
+    "text": "Verify the entire controller\nVerify Controller"
+  },
+  {
+    "version": "v37",
+    "file": "AFLibENU.dll",
+    "id": 23354,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v19",
+    "file": "AFLib.dll",
+    "id": 23354,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v19",
+    "file": "RS5000.Exe",
+    "id": 210,
+    "text": "Verifying Controller"
+  },
+  {
+    "version": "v19",
+    "file": "RS5000.Exe",
+    "id": 1762,
+    "text": "DANGER: Unexpected hazardous motion of machinery may occur.\n\nSome devices maintain independent configuration settings that are not loaded to the device during the download of the controller.\n\nVerify these devices (drives, network devices, 3rd party products) have been properly loaded before placing the controller into run mode.\n\nFailure to load proper configuration could result in misaligned data and unexpected equipment operation."
+  },
+  {
+    "version": "v19",
+    "file": "RS5000.Exe",
+    "id": 32049,
+    "text": "Verify the entire controller\nVerify Controller"
+  },
+  {
+    "version": "v19",
+    "file": "RxSrvResources.DLL",
+    "id": 41075,
+    "text": "RxE_DEPENDENCY_NOT_VERIFIED - There are unverified objects. Verify the controller/program/routine for a detailed report."
+  },
+  {
+    "version": "v19",
+    "file": "RxSrvResources.DLL",
+    "id": 49158,
+    "text": "RxRSNetWorxSrv_E_FAILED_TO_CREATE_CONTROLLER - Failed to create new controller device in ControlNet project file. Verify EDS file exists: %1!s!."
+  },
+  {
+    "version": "v19",
+    "file": "RxSrvResources.DLL",
+    "id": 49178,
+    "text": "RxRSNetWorxSrv_E_FAILED_TO_CREATE_CONTROLLER_ENET - Failed to create new controller device in EtherNet/IP project file. Verify EDS file exists: %1!s!."
+  }
+]

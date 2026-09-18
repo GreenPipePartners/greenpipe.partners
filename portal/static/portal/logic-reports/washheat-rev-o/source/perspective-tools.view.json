@@ -1,0 +1,1425 @@
+{
+  "custom": {
+    "runs": [],
+    "message": "Connecting to the lab database...",
+    "calculation": "Enter dimensions and preview the approved FM497 rule.",
+    "recordPreview": "No record selected."
+  },
+  "params": {},
+  "props": {
+    "defaultSize": {
+      "width": 1440,
+      "height": 960
+    }
+  },
+  "events": {
+    "system": {
+      "onStartup": {
+        "type": "script",
+        "scope": "G",
+        "config": {
+          "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    self.custom.runs = service.list_runs()\n\t    records = service.list_records()\n\t    self.custom.recordPreview = system.util.jsonEncode(records[0], 2) if records else \"No completed wash records yet.\"\n\t    self.custom.message = \"Database snapshot refreshed. Numbered workflow state is owned by Ignition.\"\n\texcept (Exception, JavaException) as error:\n\t    self.custom.message = \"FAILED: \" + str(error)\n\t    self.custom.runs = []"
+        }
+      }
+    }
+  },
+  "root": {
+    "type": "ia.container.flex",
+    "meta": {
+      "name": "root"
+    },
+    "props": {
+      "direction": "column",
+      "wrap": "nowrap",
+      "style": {
+        "gap": 0,
+        "backgroundColor": "#0B0B0B",
+        "fontFamily": "Arial, sans-serif",
+        "color": "#F5F5F5",
+        "overflow": "hidden"
+      }
+    },
+    "children": [
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "Header"
+        },
+        "props": {
+          "direction": "row",
+          "wrap": "nowrap",
+          "style": {
+            "gap": 12,
+            "padding": "16px 28px",
+            "alignItems": "center",
+            "borderBottom": "1px solid #343434",
+            "backgroundColor": "#101010"
+          }
+        },
+        "children": [
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "Mark"
+            },
+            "props": {
+              "text": "\u25ef",
+              "style": {
+                "fontSize": 34,
+                "color": "#F37321",
+                "whiteSpace": "normal"
+              }
+            },
+            "position": {
+              "basis": "auto",
+              "shrink": 0
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Brand"
+            },
+            "props": {
+              "direction": "column",
+              "wrap": "nowrap",
+              "style": {
+                "gap": 4
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Eyebrow"
+                },
+                "props": {
+                  "text": "MIDWAY OPERATIONS",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "text": "Wash Heat Automation",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              }
+            ],
+            "position": {
+              "grow": 1,
+              "basis": "0px"
+            }
+          },
+          {
+            "type": "ia.display.label",
+            "meta": {
+              "name": "Advisory"
+            },
+            "props": {
+              "text": "OPERATOR SUPPORT  /  OFFLINE DEVELOPMENT",
+              "style": {
+                "fontSize": 12,
+                "color": "#F37321",
+                "whiteSpace": "normal"
+              }
+            },
+            "position": {
+              "basis": "auto",
+              "shrink": 0
+            }
+          }
+        ],
+        "position": {
+          "basis": "80px",
+          "shrink": 0
+        }
+      },
+      {
+        "type": "ia.container.flex",
+        "meta": {
+          "name": "Body"
+        },
+        "props": {
+          "direction": "row",
+          "wrap": "nowrap",
+          "style": {
+            "gap": 0,
+            "minHeight": 0
+          }
+        },
+        "children": [
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Navigation"
+            },
+            "props": {
+              "direction": "column",
+              "wrap": "nowrap",
+              "style": {
+                "gap": 12,
+                "backgroundColor": "#101010",
+                "padding": 16,
+                "borderRight": "1px solid #343434"
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Section"
+                },
+                "props": {
+                  "text": "WASH HEAT",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Scope"
+                },
+                "props": {
+                  "text": "RF01 / RF02",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Cdl"
+                },
+                "props": {
+                  "text": "CDL 1 or CDL 2\nOne handled part",
+                  "style": {
+                    "fontSize": 13,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavMain"
+                },
+                "props": {
+                  "text": "01  PART STATUS",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavParts"
+                },
+                "props": {
+                  "text": "02  PART DATA",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/parts')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "NavTools"
+                },
+                "props": {
+                  "text": "03  CALCULATIONS / RECORDS",
+                  "style": {
+                    "backgroundColor": "#342014",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #F37321",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "54px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.navigate(page='/tools')"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Timing"
+                },
+                "props": {
+                  "text": "ADVISORY TIMING\nPress arrival \u00b11 second",
+                  "style": {
+                    "fontSize": 12,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "SignIn"
+                },
+                "props": {
+                  "text": "SIGN IN",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434",
+                    "borderRadius": 4,
+                    "fontWeight": 600
+                  }
+                },
+                "position": {
+                  "basis": "44px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tsystem.perspective.login()"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "position": {
+              "basis": "235px",
+              "shrink": 0
+            }
+          },
+          {
+            "type": "ia.container.flex",
+            "meta": {
+              "name": "Content"
+            },
+            "props": {
+              "direction": "column",
+              "style": {
+                "backgroundColor": "#0B0B0B",
+                "padding": 28,
+                "gap": 14,
+                "overflow": "auto",
+                "minWidth": 0
+              }
+            },
+            "children": [
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Title"
+                },
+                "props": {
+                  "text": "WASH HEAT | RF01 + RF02",
+                  "style": {
+                    "fontSize": 30,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Mode"
+                },
+                "props": {
+                  "text": "DEVELOPMENT \u2022 SIMULATED / PLC_OBSERVED RUNS \u2022 PLC ADAPTER OFF BY DEFAULT \u2022 TROPOS NOT SENT",
+                  "style": {
+                    "fontSize": 15,
+                    "color": "#F2BD4B",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Boundary"
+                },
+                "props": {
+                  "text": "Same-furnace return \u00b7 one handled part \u00b7 cumulative time out \u00b7 D16 height \u00b7 qualifying-soak budget",
+                  "style": {
+                    "fontSize": 15,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "TransferGate"
+                },
+                "props": {
+                  "text": "FM20 Rev 57: Max Cycle Start = Max Transfer + DH Cycle Start \u2212 DH Tonnage time \u2212 3 seconds.",
+                  "style": {
+                    "fontSize": 15,
+                    "color": "#B7B7B7",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "Message"
+                },
+                "props": {
+                  "style": {
+                    "whiteSpace": "normal",
+                    "color": "#B7B7B7"
+                  }
+                },
+                "position": {
+                  "basis": "64px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.message"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Actions"
+                },
+                "props": {
+                  "wrap": "wrap",
+                  "style": {
+                    "gap": 10
+                  }
+                },
+                "position": {
+                  "basis": "48px",
+                  "shrink": 0
+                },
+                "children": [
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "Completed"
+                    },
+                    "props": {
+                      "text": "Record simulated completed wash",
+                      "style": {
+                        "backgroundColor": "#F37321",
+                        "color": "white",
+                        "border": "none",
+                        "borderRadius": 5
+                      }
+                    },
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    service.simulated_cycle(True)\n\t    self.view.custom.runs = service.list_runs()\n\t    records = service.list_records()\n\t    self.view.custom.recordPreview = system.util.jsonEncode(records[0], 2) if records else \"No completed records.\"\n\t    self.view.custom.message = \"Synthetic cycle saved transactionally. Tropos record is a review draft, NOT SENT.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)\n\t    self.view.custom.runs = []\n\t    self.view.custom.recordPreview = \"Not refreshed; database operation failed.\""
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "Active"
+                    },
+                    "props": {
+                      "text": "Create simulated reheating part",
+                      "style": {
+                        "backgroundColor": "#F37321",
+                        "color": "white",
+                        "border": "none",
+                        "borderRadius": 5
+                      }
+                    },
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    service.simulated_cycle(False)\n\t    self.view.custom.runs = service.list_runs()\n\t    records = service.list_records()\n\t    self.view.custom.recordPreview = system.util.jsonEncode(records[0], 2) if records else \"No completed records.\"\n\t    self.view.custom.message = \"Synthetic cycle saved transactionally. Tropos record is a review draft, NOT SENT.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)\n\t    self.view.custom.runs = []\n\t    self.view.custom.recordPreview = \"Not refreshed; database operation failed.\""
+                          }
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "type": "ia.input.button",
+                    "meta": {
+                      "name": "Refresh"
+                    },
+                    "props": {
+                      "text": "Refresh database snapshot",
+                      "style": {
+                        "backgroundColor": "#F37321",
+                        "color": "white",
+                        "border": "none",
+                        "borderRadius": 5
+                      }
+                    },
+                    "position": {
+                      "basis": "220px",
+                      "grow": 1
+                    },
+                    "events": {
+                      "component": {
+                        "onActionPerformed": {
+                          "type": "script",
+                          "scope": "G",
+                          "config": {
+                            "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    self.view.custom.runs = service.list_runs()\n\t    records = service.list_records()\n\t    self.view.custom.recordPreview = system.util.jsonEncode(records[0], 2) if records else \"No completed wash records yet.\"\n\t    self.view.custom.message = \"Database snapshot refreshed. Numbered workflow state is owned by Ignition.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)\n\t    self.view.custom.runs = []"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "RunsTitle"
+                },
+                "props": {
+                  "text": "Persisted part runs \u2014 status and freshness update every second",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.table",
+                "meta": {
+                  "name": "Runs"
+                },
+                "props": {
+                  "data": [],
+                  "columns": [
+                    {
+                      "field": "state_code",
+                      "header": {
+                        "title": "State #"
+                      },
+                      "width": 90
+                    },
+                    {
+                      "field": "serial",
+                      "header": {
+                        "title": "Serial"
+                      },
+                      "width": 140
+                    },
+                    {
+                      "field": "furnace",
+                      "header": {
+                        "title": "Furnace"
+                      },
+                      "width": 90
+                    },
+                    {
+                      "field": "segment",
+                      "header": {
+                        "title": "Segment"
+                      },
+                      "width": 90
+                    },
+                    {
+                      "field": "status",
+                      "header": {
+                        "title": "Status"
+                      },
+                      "width": 160
+                    },
+                    {
+                      "field": "out_seconds",
+                      "header": {
+                        "title": "Cumulative out (s)"
+                      },
+                      "width": 160
+                    },
+                    {
+                      "field": "remaining_seconds",
+                      "header": {
+                        "title": "Reheat remaining (s)"
+                      },
+                      "width": 170
+                    },
+                    {
+                      "field": "episodes",
+                      "header": {
+                        "title": "Wash episodes"
+                      },
+                      "width": 120
+                    },
+                    {
+                      "field": "mode",
+                      "header": {
+                        "title": "Mode"
+                      },
+                      "width": 120
+                    },
+                    {
+                      "field": "run_id",
+                      "header": {
+                        "title": "Run ID"
+                      },
+                      "width": 300
+                    }
+                  ],
+                  "pager": {
+                    "top": false,
+                    "bottom": false,
+                    "style": {
+                      "backgroundColor": "#242424",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "rows": {
+                    "height": 38,
+                    "style": {
+                      "color": "#F5F5F5"
+                    },
+                    "highlight": {
+                      "enabled": true,
+                      "color": "#342014"
+                    },
+                    "striped": {
+                      "enabled": true,
+                      "color": {
+                        "even": "#141414",
+                        "odd": "#1C1C1C"
+                      }
+                    }
+                  },
+                  "bodyStyle": {
+                    "backgroundColor": "#141414",
+                    "color": "#F5F5F5"
+                  },
+                  "cells": {
+                    "style": {
+                      "padding": "8px",
+                      "whiteSpace": "nowrap",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "headerStyle": {
+                    "backgroundColor": "#242424",
+                    "color": "#B7B7B7"
+                  },
+                  "selection": {
+                    "style": {
+                      "backgroundColor": "rgba(243,115,33,0.18)",
+                      "color": "#F5F5F5"
+                    }
+                  },
+                  "emptyMessage": {
+                    "style": {
+                      "backgroundColor": "#141414",
+                      "color": "#B7B7B7"
+                    }
+                  }
+                },
+                "position": {
+                  "basis": "250px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.data": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.runs"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "CalcTitle"
+                },
+                "props": {
+                  "text": "FM497 Rev. 5 \u2014 calculation preview (not saved or sent to equipment)",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.container.flex",
+                "meta": {
+                  "name": "Inputs"
+                },
+                "props": {
+                  "wrap": "wrap",
+                  "style": {
+                    "gap": 12
+                  }
+                },
+                "position": {
+                  "basis": "80px",
+                  "shrink": 0
+                },
+                "children": [
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "ODGroup"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "170px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "ODLabel"
+                        },
+                        "props": {
+                          "text": "OD (D10), inches",
+                          "style": {
+                            "fontSize": 14,
+                            "color": "#F5F5F5",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "OD"
+                        },
+                        "props": {
+                          "text": "10",
+                          "deferUpdates": true,
+                          "rejectUpdatesWhileFocused": true,
+                          "spellcheck": false,
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434"
+                          }
+                        },
+                        "position": {
+                          "basis": "36px"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "HeightGroup"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "170px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "HeightLabel"
+                        },
+                        "props": {
+                          "text": "Height (D16), inches",
+                          "style": {
+                            "fontSize": 14,
+                            "color": "#F5F5F5",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "Height"
+                        },
+                        "props": {
+                          "text": "20",
+                          "deferUpdates": true,
+                          "rejectUpdatesWhileFocused": true,
+                          "spellcheck": false,
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434"
+                          }
+                        },
+                        "position": {
+                          "basis": "36px"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "CircleGroup"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "170px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "CircleLabel"
+                        },
+                        "props": {
+                          "text": "Circle (D30), optional",
+                          "style": {
+                            "fontSize": 14,
+                            "color": "#F5F5F5",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "Circle"
+                        },
+                        "props": {
+                          "text": "",
+                          "deferUpdates": true,
+                          "rejectUpdatesWhileFocused": true,
+                          "spellcheck": false,
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434"
+                          }
+                        },
+                        "position": {
+                          "basis": "36px"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "ia.container.flex",
+                    "meta": {
+                      "name": "OutGroup"
+                    },
+                    "props": {
+                      "direction": "column",
+                      "style": {
+                        "gap": 5
+                      }
+                    },
+                    "position": {
+                      "grow": 1,
+                      "basis": "170px"
+                    },
+                    "children": [
+                      {
+                        "type": "ia.display.label",
+                        "meta": {
+                          "name": "OutLabel"
+                        },
+                        "props": {
+                          "text": "Cumulative time out, seconds",
+                          "style": {
+                            "fontSize": 14,
+                            "color": "#F5F5F5",
+                            "whiteSpace": "normal"
+                          }
+                        },
+                        "position": {
+                          "basis": "auto",
+                          "shrink": 0
+                        }
+                      },
+                      {
+                        "type": "ia.input.text-field",
+                        "meta": {
+                          "name": "Out"
+                        },
+                        "props": {
+                          "text": "120",
+                          "deferUpdates": true,
+                          "rejectUpdatesWhileFocused": true,
+                          "spellcheck": false,
+                          "style": {
+                            "backgroundColor": "#1C1C1C",
+                            "color": "#F5F5F5",
+                            "border": "1px solid #343434"
+                          }
+                        },
+                        "position": {
+                          "basis": "36px"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "Calculate"
+                },
+                "props": {
+                  "text": "Preview reheat calculation",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "white",
+                    "border": "none",
+                    "borderRadius": 5
+                  }
+                },
+                "position": {
+                  "basis": "42px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import domain\n\ttry:\n\t    inputs = self.getSibling(\"Inputs\")\n\t    result = domain.calculate_reheat(inputs.getChild(\"ODGroup\").getChild(\"OD\").props.text, inputs.getChild(\"HeightGroup\").getChild(\"Height\").props.text, inputs.getChild(\"CircleGroup\").getChild(\"Circle\").props.text, inputs.getChild(\"OutGroup\").getChild(\"Out\").props.text)\n\t    self.view.custom.calculation = system.util.jsonEncode(result, 2)\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.calculation = \"INVALID INPUT: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.text-area",
+                "meta": {
+                  "name": "Calculation"
+                },
+                "props": {
+                  "readOnly": true,
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "fontFamily": "monospace",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "230px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.calculation"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "TroposTitle"
+                },
+                "props": {
+                  "text": "Latest generated Tropos review record",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "TroposGate"
+                },
+                "props": {
+                  "text": "The seven FM497 fields are mapped. Target format/submission and Quality/Production acceptance are still pending.",
+                  "style": {
+                    "fontSize": 15,
+                    "color": "#F2BD4B",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "Download"
+                },
+                "props": {
+                  "text": "Download Tropos review JSON",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "white",
+                    "border": "none",
+                    "borderRadius": 5
+                  }
+                },
+                "position": {
+                  "basis": "42px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    record = system.util.jsonDecode(self.view.custom.recordPreview)\n\t    if record.get(\"record_schema\") != \"washheat.tropos-review.v1\":\n\t        raise ValueError(\"Refresh and preview a completed record first.\")\n\t    # Fetch the immutable persisted record by previewed ID, not the latest row.\n\t    payload = service.record_json(record[\"run_id\"], record[\"episode_no\"])\n\t    system.perspective.download(\"washheat-tropos-review-\"+record[\"run_id\"]+\".json\", payload, \"application/json\")\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.text-area",
+                "meta": {
+                  "name": "Record"
+                },
+                "props": {
+                  "readOnly": true,
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "fontFamily": "monospace",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "350px",
+                  "shrink": 0
+                },
+                "propConfig": {
+                  "props.text": {
+                    "binding": {
+                      "type": "property",
+                      "config": {
+                        "path": "view.custom.recordPreview"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.display.label",
+                "meta": {
+                  "name": "DecisionsTitle"
+                },
+                "props": {
+                  "text": "Ignition operator decisions \u2014 enter a run ID from the refreshed snapshot",
+                  "style": {
+                    "fontSize": 20,
+                    "color": "#F5F5F5",
+                    "whiteSpace": "normal"
+                  }
+                },
+                "position": {
+                  "basis": "auto",
+                  "shrink": 0
+                }
+              },
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "DecisionRun"
+                },
+                "props": {
+                  "text": "",
+                  "placeholder": "Run ID",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "36px"
+                }
+              },
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "DecisionReason"
+                },
+                "props": {
+                  "text": "",
+                  "placeholder": "Decision reason",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "36px"
+                }
+              },
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "MaxTransfer"
+                },
+                "props": {
+                  "text": "",
+                  "placeholder": "Maximum transfer (seconds)",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "36px"
+                }
+              },
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "DHCycle"
+                },
+                "props": {
+                  "text": "",
+                  "placeholder": "DH cycle start (seconds)",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "36px"
+                }
+              },
+              {
+                "type": "ia.input.text-field",
+                "meta": {
+                  "name": "DHTonnage"
+                },
+                "props": {
+                  "text": "",
+                  "placeholder": "DH tonnage timestamp (seconds)",
+                  "style": {
+                    "backgroundColor": "#1C1C1C",
+                    "color": "#F5F5F5",
+                    "border": "1px solid #343434"
+                  }
+                },
+                "position": {
+                  "basis": "36px"
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "SaveTransferLimit"
+                },
+                "props": {
+                  "text": "Save calculated Cycle Start limit for this run",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "white",
+                    "border": "none",
+                    "borderRadius": 5
+                  }
+                },
+                "position": {
+                  "basis": "42px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    if not self.session.props.auth.authenticated:\n\t        raise ValueError(\"Sign in to save timing inputs.\")\n\t    run_id = self.getSibling(\"DecisionRun\").props.text\n\t    rows = [row for row in self.view.custom.runs if row[\"run_id\"] == run_id]\n\t    if len(rows) != 1:\n\t        raise ValueError(\"Refresh and select one displayed run.\")\n\t    inputs = {\"max_transfer_seconds\": self.getSibling(\"MaxTransfer\").props.text,\n\t              \"dh_cycle_start_seconds\": self.getSibling(\"DHCycle\").props.text,\n\t              \"dh_tonnage_seconds\": self.getSibling(\"DHTonnage\").props.text}\n\t    state = service.record_transfer_limit(run_id, inputs, self.session.props.auth.user.userName, rows[0][\"version\"])\n\t    self.view.custom.calculation = system.util.jsonEncode(state[\"transfer_limit\"], 2)\n\t    self.view.custom.runs = service.list_runs()\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "UNLOAD_OK"
+                },
+                "props": {
+                  "text": "Unload OK",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "white",
+                    "border": "none",
+                    "borderRadius": 5
+                  }
+                },
+                "position": {
+                  "basis": "42px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    if not self.session.props.auth.authenticated:\n\t        raise ValueError(\"Sign in to record an attributable operator decision.\")\n\t    run_id = self.getSibling(\"DecisionRun\").props.text\n\t    rows = [row for row in self.view.custom.runs if row[\"run_id\"] == run_id]\n\t    if len(rows) != 1:\n\t        raise ValueError(\"Refresh and select a run from the displayed snapshot.\")\n\t    service.record_decision(run_id, 'UNLOAD_OK', self.getSibling(\"DecisionReason\").props.text, self.session.props.auth.user.userName, rows[0][\"version\"])\n\t    self.view.custom.runs = service.list_runs()\n\t    self.view.custom.message = \"Operator decision saved in Ignition.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "type": "ia.input.button",
+                "meta": {
+                  "name": "UNLOAD_NOT_OK"
+                },
+                "props": {
+                  "text": "Unload Not OK \u2014 request wash",
+                  "style": {
+                    "backgroundColor": "#F37321",
+                    "color": "white",
+                    "border": "none",
+                    "borderRadius": 5
+                  }
+                },
+                "position": {
+                  "basis": "42px",
+                  "shrink": 0
+                },
+                "events": {
+                  "component": {
+                    "onActionPerformed": {
+                      "type": "script",
+                      "scope": "G",
+                      "config": {
+                        "script": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    if not self.session.props.auth.authenticated:\n\t        raise ValueError(\"Sign in to record an attributable operator decision.\")\n\t    run_id = self.getSibling(\"DecisionRun\").props.text\n\t    rows = [row for row in self.view.custom.runs if row[\"run_id\"] == run_id]\n\t    if len(rows) != 1:\n\t        raise ValueError(\"Refresh and select a run from the displayed snapshot.\")\n\t    service.record_decision(run_id, 'UNLOAD_NOT_OK', self.getSibling(\"DecisionReason\").props.text, self.session.props.auth.user.userName, rows[0][\"version\"])\n\t    self.view.custom.runs = service.list_runs()\n\t    self.view.custom.message = \"Operator decision saved in Ignition.\"\n\texcept (Exception, JavaException) as error:\n\t    self.view.custom.message = \"FAILED: \" + str(error)"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "position": {
+              "grow": 1,
+              "basis": "0px",
+              "shrink": 1
+            }
+          }
+        ],
+        "position": {
+          "grow": 1,
+          "basis": "0px",
+          "shrink": 1
+        }
+      }
+    ],
+    "position": {
+      "grow": 0,
+      "basis": "auto",
+      "shrink": 0
+    }
+  },
+  "propConfig": {
+    "custom.runs": {
+      "binding": {
+        "type": "expr",
+        "config": {
+          "expression": "now(1000)"
+        },
+        "transforms": [
+          {
+            "type": "script",
+            "code": "\tfrom java.lang import Exception as JavaException\n\tfrom washheat import service\n\ttry:\n\t    return service.list_runs()\n\texcept (Exception, JavaException) as error:\n\t    self.custom.message = \"STATUS UNAVAILABLE: \" + str(error)\n\t    return []"
+          }
+        ]
+      }
+    }
+  }
+}

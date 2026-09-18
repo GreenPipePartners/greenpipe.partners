@@ -1,0 +1,106 @@
+RUNG 000 [ADDED]
+COMMENT
+Development observer only; no physical timing claim.
+XIC(S:FS)JSR(WH_CDL_Init,0);
+
+RUNG 001 [ADDED]
+JSR(WH_CDL_Begin,0);
+
+RUNG 002 [EXISTING]
+
+XIC(S:FS)[OTU(Removal_In_Process) ,OTU(UngripLatch) ,OTU(Removal_In_Process) ,OTU(Transfer_Timer_Running) ,OTU(CDL_Removing_Part) ,RES(Transfer_Timer) ,OTU(Transfer_Timer_QueUp) ];
+
+
+RUNG 003 [EXISTING]
+
+XIC(Transfer_Timer_QueUp)ONS(Transfer_Timer_Bits.2)[RES(Transfer_Timer) ,OTU(Transfer_Timer_Running) ];
+
+
+RUNG 004 [EXISTING]
+
+XIC(CDL_Removing_Part)XIO(CDL_Inside_RF01)XIO(CDL_Inside_RF02)XIO(CDL_Inside_BF03)[OTL(Removal_In_Process) ,OTU(CDL_Removing_Part) ];
+
+
+RUNG 005 [EXISTING]
+
+[XIC(CDLDataCtrlWord[0].24) XIC(CDL_Inside_RF01) ,XIC(CDLDataCtrlWord[0].25) XIC(CDL_Inside_RF02) ,XIC(CDLDataCtrlWord[0].26) XIC(CDL_Inside_BF03) ][OTL(Transfer_Timer_QueUp) ,OTL(CDL_Removing_Part) ];
+
+
+RUNG 006 [EXISTING]
+
+GT(Horizontal_Feedbacl_Position,Arm_Fully_Retracted_Setpoint)OTE(Arm_Fully_Retracted);
+
+
+RUNG 007 [EXISTING]
+
+XIC(Transfer_Timer_QueUp)XIO(Transfer_Timer_Running)XIC(UngripLatch)XIC(Gripper_Clamped_TM.DN)XIC(Mode_Manual)[XIC(Arm_Fully_Retracted) ONS(One_Shots.0) [OTL(Transfer_Timer_Running) ,OTU(Removal_In_Process) ] ,XIO(Arm_Fully_Retracted) XIO(Test_TTW) OTE(Transfer_Time_Wait) ];
+
+
+RUNG 008 [ADDED]
+COMMENT
+Freeze the timer start before any possible press-release stop; send it to FDC.
+JSR(WH_SendSignals,0);
+
+RUNG 009 [ADDED]
+XIO(S:FS)XIC(Transfer_Timer_Running)XIO(WH_CDL_WasRunning)JSR(WH_CDL_Start,0);
+
+RUNG 010 [EXISTING]
+
+LIMIT(-0.35,Longtravel_Joystick_Scaled,0.35)LIMIT(-0.045,Slew_Joystick_Scaled,0.045)OTE(LongTravelSlewJoysticksAtNeutral);
+
+
+RUNG 011 [EXISTING]
+
+XIC(Transfer_Timer_Running)[RTO(Transfer_Timer,?,?) ,OTE(CDLDataCtrlWord[0].2) ];
+
+
+RUNG 012 [EXISTING]
+
+DIV(Transfer_Timer.ACC,1000,TransferTimeSecs);
+
+
+RUNG 013 [EXISTING]
+
+XIO(Transfer_Timer.EN)DIV(Transfer_Timer.ACC,1000,Tranfer_Time_in_Seconds);
+
+
+RUNG 014 [ADDED]
+COMMENT
+Freeze raw timer before the ORIGINAL stop rung.
+XIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(P33000.In_Psn) ,XIC(P5000.In_Psn) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]JSR(WH_CDL_Stop,0);
+
+RUNG 015 [EXISTING]
+
+XIC(Transfer_Timer_Running)XIC(Gripper_Opened_TM.DN)[XIC(P33000.In_Psn) ,XIC(P5000.In_Psn) ,XIC(ctrl_DC_CDL.Ok_to_Enter_300MN) ]OTU(Transfer_Timer_Running)[OTU(Transfer_Timer_QueUp) ,OTU(Removal_In_Process) ,OTU(CDL_Removing_Part) ,OTU(UngripLatch) ];
+
+
+RUNG 016 [EXISTING]
+
+CMP(Gripper_Clamp_Pressure>100)TON(Gripper_Clamped_TM,?,?);
+
+
+RUNG 017 [EXISTING]
+
+MOVE(Gripper_Clamp_Pressure,CDLDataCtrlWord[1]);
+
+
+RUNG 018 [EXISTING]
+
+CMP(Gripper_Clamp_Pressure<80)[RES(Gripper_Clamped_TM) ,TON(Gripper_Opened_TM,?,?) ,ONS(OnsReset) [XIC(Gripper_Opened_TM.DN) RES(Gripper_Opened_TM) ,XIC(Transfer_Timer_QueUp) OTL(UngripLatch) ] ];
+
+
+RUNG 019 [ADDED]
+COMMENT
+Freshness-qualified FDC warning drives the new CDL transfer popup.
+JSR(WH_ReceiveDisplay,0);
+
+RUNG 020 [ADDED]
+JSR(WH_CDL_End,0);
+
+RUNG 021 [ADDED]
+XIC(Transfer_Timer_Running)OTE(WH_CDL_WasRunning);
+
+RUNG 022 [EXISTING]
+
+RET();
+

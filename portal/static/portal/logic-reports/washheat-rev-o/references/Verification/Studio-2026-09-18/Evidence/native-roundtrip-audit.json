@@ -1,0 +1,163 @@
+[
+  {
+    "project": "FDC",
+    "expected": "FDC20206_V20_03_07_26_WH_DEV_v37.L5X",
+    "native_export": "FDC_GUI_FINAL_ROUNDTRIP.L5X",
+    "expected_sha256": "fee45b2ce87fe76babd977a5facec7c258b00083a98c9bebd10f613ab92af2f0",
+    "native_export_sha256": "2e7384867944cf0c7c010ff2fbad9bc8299daeb95089ce64d4581abc7c620db5",
+    "modules_equal_except_DataExchangeId_and_recorded_display_metadata": true,
+    "registered_EDS_catalog_labels": [],
+    "native_module_display_metadata": [
+      {
+        "module": "SCADA_ENET",
+        "field": "Vendor",
+        "value": "Rockwell Automation/Allen-Bradley"
+      },
+      {
+        "module": "SCADA_ENET",
+        "field": "CatNum",
+        "value": "1756-EN2T"
+      },
+      {
+        "module": "CDL_ENET",
+        "field": "Vendor",
+        "value": "Rockwell Automation/Allen-Bradley"
+      },
+      {
+        "module": "CDL_ENET",
+        "field": "CatNum",
+        "value": "1756-ENBT"
+      },
+      {
+        "module": "ForgeHistorian",
+        "field": "CatNum",
+        "value": "1756-HIST1G"
+      },
+      {
+        "module": "SCADA_ENET2",
+        "field": "Vendor",
+        "value": "Rockwell Automation/Allen-Bradley"
+      },
+      {
+        "module": "SCADA_ENET2",
+        "field": "CatNum",
+        "value": "1756-EN2T"
+      }
+    ],
+    "native_hidden_member_display_radix": [
+      {
+        "datatype": "AB:1756_HIST:I:0",
+        "member": "Status",
+        "before": "Decimal",
+        "after": "Binary"
+      },
+      {
+        "datatype": "AB:1756_HIST:O:1",
+        "member": "ControlSwitches",
+        "before": "Decimal",
+        "after": "Binary"
+      }
+    ],
+    "task_order_and_settings_equal": true,
+    "message_parameters_equal": true,
+    "data_types_equal_except_recorded_display_radix": true,
+    "safety_info_equal": true,
+    "tag_attributes_except_DataExchangeId_and_all_explicit_decorated_values_preserved": true,
+    "tag_count": 2408,
+    "all_routine_text_equal_except_RLL_layout_and_timer_display_placeholders": true,
+    "routine_count": 128
+  },
+  {
+    "project": "CDL1",
+    "expected": "PA166_Howmett_C4010_260723_WH_DEV_v36.L5X",
+    "native_export": "CDL1_NATIVE_OVERLAY_02.L5X",
+    "expected_sha256": "73fc33d0cb4fdee2cc0a4bb44b9431fc0324a98cec18de7a46cd6a48b9200990",
+    "native_export_sha256": "5ed70a9f5520f7743f73d3f533dbb08e5b2105f96f5d44a0b138ccbb213ce69f",
+    "modules_equal_except_DataExchangeId_and_recorded_display_metadata": true,
+    "registered_EDS_catalog_labels": [],
+    "native_module_display_metadata": [],
+    "native_hidden_member_display_radix": [],
+    "task_order_and_settings_equal": true,
+    "message_parameters_equal": true,
+    "data_types_equal_except_recorded_display_radix": true,
+    "safety_info_equal": true,
+    "tag_attributes_except_DataExchangeId_and_all_explicit_decorated_values_preserved": true,
+    "tag_count": 519,
+    "all_routine_text_equal_except_RLL_layout_and_timer_display_placeholders": true,
+    "routine_count": 119
+  },
+  {
+    "project": "CDL2",
+    "expected": "CDL2_180912_WH_DEV_v37.L5X",
+    "native_export": "CDL2_NATIVE_OVERLAY_v37_02.L5X",
+    "expected_sha256": "f69f710e0dc33d29b7368509093911aa69b1a1ae3274c0ee60d3f5dbc7ee20b5",
+    "native_export_sha256": "e1750f1694a176fa43f7a0ed65b2f14599e0fdb27ccff88228934d7eb2dac86d",
+    "modules_equal_except_DataExchangeId_and_recorded_display_metadata": true,
+    "registered_EDS_catalog_labels": [],
+    "native_module_display_metadata": [],
+    "native_hidden_member_display_radix": [],
+    "task_order_and_settings_equal": true,
+    "message_parameters_equal": true,
+    "data_types_equal_except_recorded_display_radix": true,
+    "safety_info_equal": true,
+    "tag_attributes_except_DataExchangeId_and_all_explicit_decorated_values_preserved": true,
+    "tag_count": 225,
+    "all_routine_text_equal_except_RLL_layout_and_timer_display_placeholders": true,
+    "routine_count": 53
+  },
+  {
+    "project": "legacy-CDL",
+    "expected": "PA166_20422RDN_WH_DEV_v37.L5X",
+    "native_export": "legacy-CDL_NATIVE_OVERLAY_v37.L5X",
+    "expected_sha256": "81801c72b2da67b8a186866c6b80c41a423cc66c526dec358c8389932c65f06d",
+    "native_export_sha256": "04b39c5f7f185c1e285f4f4a87ba6c51fd40441ef213e015f28021b0da9c57cf",
+    "modules_equal_except_DataExchangeId_and_recorded_display_metadata": true,
+    "registered_EDS_catalog_labels": [],
+    "native_module_display_metadata": [],
+    "native_hidden_member_display_radix": [],
+    "task_order_and_settings_equal": true,
+    "message_parameters_equal": true,
+    "data_types_equal_except_recorded_display_radix": true,
+    "safety_info_equal": true,
+    "tag_attributes_except_DataExchangeId_and_all_explicit_decorated_values_preserved": true,
+    "tag_count": 974,
+    "all_routine_text_equal_except_RLL_layout_and_timer_display_placeholders": true,
+    "routine_count": 45
+  },
+  {
+    "project": "P300",
+    "expected": "P300MN_L84E_030726_WH_DEV_v37.L5X",
+    "native_export": "vendor-restored-sdk/P300MN_L84E_030726_WH_DEV_v37_ROUNDTRIP.L5X",
+    "expected_sha256": "2c2f72b2c55b512e159c7e53ce5a51d15b121386a7cab23f85aa3ade0dfed97c",
+    "native_export_sha256": "21df7585f63db79285144b7b6848de1f4914bd0e586de8b487be3bad6e65dcfb",
+    "modules_equal_except_DataExchangeId_and_recorded_display_metadata": true,
+    "registered_EDS_catalog_labels": [
+      {
+        "module": "Cylinder_1",
+        "added_catalog_label": "R-Series EtherNet/IP"
+      },
+      {
+        "module": "Cylinder_2",
+        "added_catalog_label": "R-Series EtherNet/IP"
+      },
+      {
+        "module": "Cylinder_3",
+        "added_catalog_label": "R-Series EtherNet/IP"
+      },
+      {
+        "module": "Cylinder_4",
+        "added_catalog_label": "R-Series EtherNet/IP"
+      }
+    ],
+    "native_module_display_metadata": [],
+    "native_hidden_member_display_radix": [],
+    "task_order_and_settings_equal": true,
+    "message_parameters_equal": true,
+    "data_types_equal_except_recorded_display_radix": true,
+    "safety_info_equal": true,
+    "tag_attributes_except_DataExchangeId_and_all_explicit_decorated_values_preserved": true,
+    "tag_count": 1590,
+    "all_routine_text_equal_except_RLL_layout_and_timer_display_placeholders": true,
+    "routine_count": 388
+  }
+]

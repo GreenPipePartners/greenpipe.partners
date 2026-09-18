@@ -1,0 +1,6093 @@
+{
+  "only_generated_mnemonic_changes": true,
+  "projects": [
+    {
+      "project": "FDC20206_V20_03_07_26.L5X",
+      "before_sha256": "b52bc317ccb87d5e5ba6a6c27a83a76f62c893d66a2550c4553613e2cd4778d7",
+      "after_sha256": "fee45b2ce87fe76babd977a5facec7c258b00083a98c9bebd10f613ab92af2f0",
+      "changed_rungs": [
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LEQ": 1,
+            "GEQ": 1,
+            "NEQ": 4,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LE": 1,
+            "GE": 1,
+            "NE": 4,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "3",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "4",
+          "removed_mnemonics": {
+            "EQU": 4
+          },
+          "added_mnemonics": {
+            "EQ": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "5",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "6",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "7",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "8",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "9",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "10",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "11",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "12",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "13",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "15",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "16",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "LT": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "17",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "18",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GRT": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GT": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "19",
+          "removed_mnemonics": {
+            "EQU": 7
+          },
+          "added_mnemonics": {
+            "EQ": 7
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "20",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "21",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "22",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "23",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "24",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "25",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "26",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "27",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "28",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GEQ": 1,
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GE": 1,
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "30",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "34",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "35",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "36",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GRT": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GT": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "37",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "38",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "39",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "40",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "41",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "42",
+          "removed_mnemonics": {
+            "EQU": 7
+          },
+          "added_mnemonics": {
+            "EQ": 7
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "43",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "44",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "45",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "46",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "47",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "49",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "50",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "51",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "52",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "53",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "54",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "55",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "56",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "57",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "58",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "59",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "60",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "61",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "62",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "63",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "64",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "65",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "66",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "67",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "68",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "69",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "70",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "71",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "72",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GEQ": 1,
+            "LEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GE": 1,
+            "LE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "73",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "LES": 1,
+            "GRT": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "LT": 1,
+            "GT": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "74",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "LES": 1,
+            "GRT": 1,
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "LT": 1,
+            "GT": 1,
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "75",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "76",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "77",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "78",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "79",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "80",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "81",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "82",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "83",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "84",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "86",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "NEQ": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "NE": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "87",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "NEQ": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "NE": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "88",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "89",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "90",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "91",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LES": 1,
+            "GEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LT": 1,
+            "GE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "92",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "93",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "94",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "95",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "96",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "97",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "98",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "99",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "100",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "101",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "102",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "103",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "104",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "105",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "106",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "AddOnInstructionDefinitions/WH_Channel",
+          "rung": "107",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "1",
+          "removed_mnemonics": {
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "3",
+          "removed_mnemonics": {
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "4",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "6",
+          "removed_mnemonics": {
+            "EQU": 3
+          },
+          "added_mnemonics": {
+            "EQ": 3
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "8",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "9",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "15",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "16",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "17",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "18",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "19",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "20",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "21",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "22",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "23",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "24",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_SiteBindings",
+          "rung": "25",
+          "removed_mnemonics": {
+            "EQU": 7,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 7,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_Startup",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_Startup",
+          "rung": "1",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "0",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "1",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "EQU": 1,
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "EQ": 1,
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "3",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "4",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "5",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GRT": 1,
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GT": 1,
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "7",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GRT": 1,
+            "NEQ": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GT": 1,
+            "NE": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "8",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GRT": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GT": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "9",
+          "removed_mnemonics": {
+            "GRT": 2,
+            "EQU": 4,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GT": 2,
+            "EQ": 4,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "10",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "11",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "12",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "15",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "17",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "18",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "20",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "21",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "22",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "23",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "24",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "25",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "26",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "27",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "28",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "29",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "31",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "32",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "34",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "35",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "36",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "37",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "38",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "39",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "NEQ": 2,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "NE": 2,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "40",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_ReceiveLinks",
+          "rung": "41",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "GEQ": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "GE": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "6",
+          "removed_mnemonics": {
+            "EQU": 5,
+            "GRT": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 5,
+            "GT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/MainProgram/Routines/WH_TransferDisplay",
+          "rung": "8",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "8",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "9",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "15",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "16",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "17",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "18",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "19",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "20",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "21",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "22",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "23",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "24",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "25",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "26",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "27",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "28",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "29",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "30",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "31",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "32",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "33",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "34",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "35",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "36",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "37",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "38",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "39",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "40",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "41",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "42",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "43",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "44",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "45",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "46",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "47",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "48",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "49",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "50",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "51",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "52",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "53",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "54",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "55",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "56",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "57",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "58",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "59",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "60",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "61",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "62",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "63",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "64",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "65",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "66",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "67",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "68",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "69",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "70",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "71",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "72",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "73",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "74",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "75",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "76",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "77",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "78",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "79",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "80",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "81",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "82",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "83",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "84",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "85",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "86",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "87",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "88",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "89",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "90",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "91",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "92",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "93",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "94",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF01CLX/Routines/WH_CapturePost",
+          "rung": "95",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "8",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "9",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "15",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "16",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "17",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "18",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "19",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "20",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "21",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "22",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "23",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "24",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "25",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "26",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "27",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "28",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "29",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "30",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "31",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "32",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "33",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "34",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "35",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "36",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "37",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "38",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "39",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "40",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "41",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "42",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "43",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "44",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "45",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "46",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "47",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "48",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "49",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "50",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "51",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "52",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "53",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "54",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "55",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "56",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "57",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "58",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "59",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "60",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "61",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "62",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "63",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "64",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "65",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "66",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "67",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "68",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "69",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "70",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "71",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "72",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "73",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "74",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "75",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "76",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "77",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "78",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "79",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "80",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "81",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "82",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "83",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "84",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "85",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "86",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "87",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "88",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "89",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "90",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "91",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "92",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "93",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "94",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/RF02CLX/Routines/WH_CapturePost",
+          "rung": "95",
+          "removed_mnemonics": {
+            "MOV": 1,
+            "GEQ": 1,
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1,
+            "GE": 1,
+            "EQ": 1
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    },
+    {
+      "project": "PA166_20422RDN.L5X",
+      "before_sha256": "c82736fb272fcac7d553fb5b58c2adc2b8f4f0a5d2e6b7e81ccaa5f5384684ab",
+      "after_sha256": "81801c72b2da67b8a186866c6b80c41a423cc66c526dec358c8389932c65f06d",
+      "changed_rungs": [
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Init",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Init",
+          "rung": "1",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Init",
+          "rung": "2",
+          "removed_mnemonics": {
+            "LES": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "LT": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Init",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Begin",
+          "rung": "7",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Start",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "NEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "NE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Start",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GEQ": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GE": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GEQ": 2,
+            "NEQ": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GE": 2,
+            "NE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "8",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "9",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "10",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_Stop",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_End",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_End",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_End",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_CDL_End",
+          "rung": "3",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "1",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "3",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "5",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_SendSignals",
+          "rung": "15",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_ReceiveDisplay",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_ReceiveDisplay",
+          "rung": "2",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/Automatic_Cycle/Routines/WH_ReceiveDisplay",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GRT": 1,
+            "EQU": 4
+          },
+          "added_mnemonics": {
+            "GT": 1,
+            "EQ": 4
+          }
+        },
+        {
+          "component": "Programs/External_Communication/Routines/WH_PackMessage",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/External_Communication/Routines/WH_PackMessage",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    },
+    {
+      "project": "P5000_10_09_2025.L5X",
+      "before_sha256": "fcf81018cc6ef88748ab852e7e37bebe508b96baa37ca622f48b455aa2cc3612",
+      "after_sha256": "8431e7b3ba50a1ea4321e40d65df8ea48962d2457f6375b6df6aa7af13805d40",
+      "changed_rungs": [
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "3",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    },
+    {
+      "project": "P300MN_L84E_030726.L5X",
+      "before_sha256": "bc5a26354e48bc209325d82ad46a76cc4ffac00b287ee8b78ac9517694345f1a",
+      "after_sha256": "2c2f72b2c55b512e159c7e53ce5a51d15b121386a7cab23f85aa3ade0dfed97c",
+      "changed_rungs": [
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/WH_Signals/Routines/WH_SendSignals",
+          "rung": "3",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    },
+    {
+      "project": "PA166_Howmett_C4010_260723.L5X",
+      "before_sha256": "d102ead69711b0fa32b2317205c2c816365430e825aab03a93afb34571688175",
+      "after_sha256": "73fc33d0cb4fdee2cc0a4bb44b9431fc0324a98cec18de7a46cd6a48b9200990",
+      "changed_rungs": [
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Init",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Init",
+          "rung": "1",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Init",
+          "rung": "2",
+          "removed_mnemonics": {
+            "LES": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "LT": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Init",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 3,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 3,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Begin",
+          "rung": "7",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Start",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "NEQ": 1,
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "NE": 1,
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Start",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 4,
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "EQ": 4,
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GEQ": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GE": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 2,
+            "GEQ": 2,
+            "NEQ": 1
+          },
+          "added_mnemonics": {
+            "EQ": 2,
+            "GE": 2,
+            "NE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 4
+          },
+          "added_mnemonics": {
+            "MOVE": 4
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "4",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "5",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "8",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "9",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "10",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_Stop",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_End",
+          "rung": "0",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_End",
+          "rung": "1",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "LES": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "LT": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_End",
+          "rung": "2",
+          "removed_mnemonics": {
+            "EQU": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_CDL_End",
+          "rung": "3",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "1",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "3",
+          "removed_mnemonics": {
+            "EQU": 2
+          },
+          "added_mnemonics": {
+            "EQ": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "5",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_SendSignals",
+          "rung": "15",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_PackMessage",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_PackMessage",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_ReceiveDisplay",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_ReceiveDisplay",
+          "rung": "2",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalComms/Routines/WH_ReceiveDisplay",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GRT": 1,
+            "EQU": 4
+          },
+          "added_mnemonics": {
+            "GT": 1,
+            "EQ": 4
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    },
+    {
+      "project": "CDL2_180912.L5X",
+      "before_sha256": "3a5737394163df07058aeb4bec7929a1895a37b47dd4ce7f3f1e4a8760a4c03f",
+      "after_sha256": "f69f710e0dc33d29b7368509093911aa69b1a1ae3274c0ee60d3f5dbc7ee20b5",
+      "changed_rungs": [
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "rung": "1",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "rung": "2",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "rung": "3",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_Adapter",
+          "rung": "7",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 3
+          },
+          "added_mnemonics": {
+            "MOVE": 3
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "1",
+          "removed_mnemonics": {
+            "LES": 1
+          },
+          "added_mnemonics": {
+            "LT": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "5",
+          "removed_mnemonics": {
+            "EQU": 1
+          },
+          "added_mnemonics": {
+            "EQ": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "6",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "10",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "11",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "12",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "13",
+          "removed_mnemonics": {
+            "MOV": 2
+          },
+          "added_mnemonics": {
+            "MOVE": 2
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "14",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_SendSignals",
+          "rung": "15",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_PackMessage",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_PackMessage",
+          "rung": "2",
+          "removed_mnemonics": {
+            "GEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "GE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_ReceiveDisplay",
+          "rung": "0",
+          "removed_mnemonics": {
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_ReceiveDisplay",
+          "rung": "2",
+          "removed_mnemonics": {
+            "NEQ": 1,
+            "MOV": 1
+          },
+          "added_mnemonics": {
+            "NE": 1,
+            "MOVE": 1
+          }
+        },
+        {
+          "component": "Programs/ExternalPLC/Routines/WH_ReceiveDisplay",
+          "rung": "4",
+          "removed_mnemonics": {
+            "GRT": 1,
+            "EQU": 4
+          },
+          "added_mnemonics": {
+            "GT": 1,
+            "EQ": 4
+          }
+        }
+      ],
+      "hardware_and_existing_logic_unchanged": true
+    }
+  ]
+}

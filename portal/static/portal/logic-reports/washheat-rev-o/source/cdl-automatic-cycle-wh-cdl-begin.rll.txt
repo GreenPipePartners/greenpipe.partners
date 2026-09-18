@@ -1,0 +1,39 @@
+RUNG 000 [ADDED]
+COMMENT
+30 -> 10 on the matching durable raw-timer receipt.
+EQ(WH_CDL_State,30)EQ(WH_CDL_AckBoot,WH_CDL_Boot)EQ(WH_CDL_AckSequence,WH_CDL_Event.Sequence)MOVE(10,WH_CDL_State);
+
+RUNG 001 [ADDED]
+COMMENT
+Clear the selection only while the legacy transfer timer is idle.
+XIO(Transfer_Timer_QueUp)XIO(Transfer_Timer_Running)MOVE(0,WH_CDL_Furnace);
+
+RUNG 002 [ADDED]
+COMMENT
+Observe source furnace in original priority order; BF03 maps to zero.
+XIC(CDLDataCtrlWord[0].24)XIC(CDL_Inside_RF01)MOVE(1,WH_CDL_Furnace);
+
+RUNG 003 [ADDED]
+COMMENT
+Observe source furnace in original priority order; BF03 maps to zero.
+XIC(CDLDataCtrlWord[0].25)XIC(CDL_Inside_RF02)MOVE(2,WH_CDL_Furnace);
+
+RUNG 004 [ADDED]
+COMMENT
+Observe source furnace in original priority order; BF03 maps to zero.
+XIC(CDLDataCtrlWord[0].26)XIC(CDL_Inside_BF03)MOVE(0,WH_CDL_Furnace);
+
+RUNG 005 [ADDED]
+COMMENT
+Conflicting furnace-selection observations latch fault 4.
+XIC(CDLDataCtrlWord[0].24)XIC(CDL_Inside_RF01)[XIC(CDLDataCtrlWord[0].25)XIC(CDL_Inside_RF02),XIC(CDLDataCtrlWord[0].26)XIC(CDL_Inside_BF03)]MOVE(4,WH_CDL_Fault);
+
+RUNG 006 [ADDED]
+COMMENT
+RF02/BF03 simultaneous selection also latches fault 4.
+XIC(CDLDataCtrlWord[0].25)XIC(CDL_Inside_RF02)XIC(CDLDataCtrlWord[0].26)XIC(CDL_Inside_BF03)MOVE(4,WH_CDL_Fault);
+
+RUNG 007 [ADDED]
+COMMENT
+Technical fault -> state 900.
+NE(WH_CDL_Fault,0)MOVE(900,WH_CDL_State);

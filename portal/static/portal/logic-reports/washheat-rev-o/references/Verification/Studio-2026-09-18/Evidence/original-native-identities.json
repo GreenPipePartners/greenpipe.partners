@@ -1,0 +1,44 @@
+[
+  {
+    "file": "/home/bobby/Projects/99013-ME-Program_Recovery/recovered/PLC/p5000/P5000_10_09_2025.ACD",
+    "name": "P5000",
+    "version": {
+      "String": "RSLogix 5000 v19.01"
+    },
+    "device": {
+      "VendorID": "1",
+      "ProductType": "14",
+      "ProductCode": "15",
+      "MajorRevision": "19",
+      "MinorRevision": "11"
+    }
+  },
+  {
+    "file": "/home/bobby/Projects/99013-ME-Program_Recovery/recovered/PLC/p300mn_l84e/P300MN_L84E_030726.ACD",
+    "name": "P33000_Controller",
+    "version": {
+      "String": "RSLogix 5000 v37.00"
+    },
+    "device": {
+      "VendorID": "1",
+      "ProductType": "14",
+      "ProductCode": "167",
+      "MajorRevision": "37",
+      "MinorRevision": "11"
+    }
+  },
+  {
+    "file": "/home/bobby/Projects/99013-ME-Program_Recovery/recovered/PLC/cdl2_180912/CDL2_180912.ACD",
+    "name": "Firth_Rixson_PA209",
+    "version": {
+      "String": "RSLogix 5000 v20.05"
+    },
+    "device": {
+      "VendorID": "1",
+      "ProductType": "14",
+      "ProductCode": "92",
+      "MajorRevision": "20",
+      "MinorRevision": "12"
+    }
+  }
+]

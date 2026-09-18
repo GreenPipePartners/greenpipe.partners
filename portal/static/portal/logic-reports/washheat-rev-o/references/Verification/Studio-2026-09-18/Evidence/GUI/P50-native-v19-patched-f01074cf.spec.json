@@ -1,0 +1,36 @@
+{
+  "actions": [
+    {
+      "op": "start",
+      "command": "\"C:\\Program Files (x86)\\Rockwell Software\\RSLogix 5000\\ENU\\v19\\Bin\\RS5000.Exe\" \"C:\\LogixAgent\\washheat-studio-20260918\\P5000_10_09_2025_WH_DEV_v19.L5X\""
+    },
+    {
+      "op": "finish_import",
+      "acd": "C:\\LogixAgent\\washheat-studio-20260918\\P50_WH_NATIVE_v19.ACD"
+    },
+    {
+      "op": "verify_controller",
+      "selector": {
+        "title_re": "RSLogix 5000 - .* in P50_WH_NATIVE_v19\\.ACD .*"
+      },
+      "screenshot": "C:\\LogixAgent\\washheat-studio-20260918\\P50-native-v19-patched.png"
+    },
+    {
+      "op": "keys",
+      "selector": {
+        "title_re": "RSLogix 5000 - .* in P50_WH_NATIVE_v19\\.ACD .*"
+      },
+      "keys": "^s"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "close",
+      "selector": {
+        "title_re": "RSLogix 5000 - .* in P50_WH_NATIVE_v19\\.ACD .*"
+      }
+    }
+  ]
+}

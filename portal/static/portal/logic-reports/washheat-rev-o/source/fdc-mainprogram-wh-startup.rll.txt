@@ -1,0 +1,14 @@
+RUNG 000 [ADDED]
+COMMENT
+INIT constants: signed DINT maximum and maximum minus one. Ordered branches initialize the controller-wide software constants before any consumer.
+[MOVE(2147483647,MAX_INT),SUB(MAX_INT,1,MAX_INT_MINUS_ONE)];
+
+RUNG 001 [ADDED]
+COMMENT
+Increment the development boot epoch once on S:FS; saturated counters cannot rearm.
+LT(WH_Settings.Boot,MAX_INT)ADD(WH_Settings.Boot,1,WH_Settings.Boot);
+
+RUNG 002 [ADDED]
+COMMENT
+Reset local correlation on the new epoch; retained network buffers cannot replay events.
+[FLL(0,WH_Site,1),FLL(0,WH_Source[0],192),FLL(0,WH_LinkState[0],3),FLL(0,WH_TransferLimit[0],192)];

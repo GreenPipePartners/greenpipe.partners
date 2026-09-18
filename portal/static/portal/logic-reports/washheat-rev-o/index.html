@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WashHeat — Report Viewers</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="logic-viewer.css">
+  <script src="logic-viewer.js" defer></script>
+</head>
+<body class="logic-demo">
+  <header class="demo-heading">
+    <div><p class="demo-eyebrow">Green Pipe Partners / engineering reports</p>
+      <h1>WashHeat · project review</h1>
+      <p>Revision O · source-backed routine drawings · read-only viewer prototype</p></div>
+    <button type="button" id="demo-theme">Light / dark</button>
+  </header>
+  <main>
+    <section class="demo-viewer-section">
+    <h2 class="demo-section-title">PLC logic</h2>
+    <logic-report src="washheat.logic.json" viewer-id="washheat-rev-o">
+      <p>Loading the routine index. <a href="routines.html">Open the static routine index</a>.</p>
+    </logic-report>
+    </section>
+    <section class="demo-viewer-section">
+    <h2 class="demo-section-title">Supporting resources</h2>
+    <logic-report src="washheat.resources.json" viewer-id="washheat-resources-rev-o">
+      <p>Loading the resource index. <a href="routines.html">Open the static resource index</a>.</p>
+    </logic-report>
+    </section>
+    <section class="demo-viewer-section">
+    <h2 class="demo-section-title">Perspective screens</h2>
+    <logic-report src="washheat.screens.json" viewer-id="washheat-screens-rev-o">
+      <p>Loading the screen index. <a href="routines.html">Open the static screen index</a>.</p>
+    </logic-report>
+    </section>
+  </main>
+  <footer class="demo-footer">The press changes are manual updates to the current live programs; implementation is pending. <a href="routines.html">Static index / SVG downloads</a></footer>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "actions": [
+    {
+      "op": "start",
+      "command": "\"C:\\Program Files (x86)\\Rockwell Software\\Studio 5000\\Logix Designer\\ENU\\v37\\Bin\\LogixDesigner.Exe\" \"C:\\LogixAgent\\washheat-studio-20260918\\CDL2_NATIVE_OVERLAY_v37_02.ACD\""
+    },
+    {
+      "op": "wait_project",
+      "timeout": 300
+    },
+    {
+      "op": "verify_controller",
+      "selector": {
+        "title_re": "Logix Designer - .* in CDL2_NATIVE_OVERLAY_v37_02\\.ACD .*"
+      },
+      "screenshot": "C:\\LogixAgent\\washheat-studio-20260918\\CDL2-native-final.png"
+    },
+    {
+      "op": "keys",
+      "selector": {
+        "title_re": "Logix Designer - .* in CDL2_NATIVE_OVERLAY_v37_02\\.ACD .*"
+      },
+      "keys": "^s"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "close",
+      "selector": {
+        "title_re": "Logix Designer - .* in CDL2_NATIVE_OVERLAY_v37_02\\.ACD .*"
+      }
+    }
+  ]
+}

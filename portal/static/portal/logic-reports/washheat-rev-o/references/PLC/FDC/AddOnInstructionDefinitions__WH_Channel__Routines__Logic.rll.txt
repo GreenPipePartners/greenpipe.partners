@@ -1,0 +1,539 @@
+RUNG 000 [ADDED]
+COMMENT
+Pre: invalidate telemetry before any field changes. CaptureState: 0 init, 10 armed, 20 before captured, 30 published, 900 fault.
+EQ(Phase,0)MOVE(0,State.SampleSequence);
+
+RUNG 001 [ADDED]
+COMMENT
+New boot: reset capture evidence and the native TIMER. Common condition is evaluated before all seven branches.
+EQ(Phase,0)NE(SeenBoot,Cfg.Boot)[COP(ZeroState,State,1),COP(ZeroEvent,Event,1),RES(Elapsed),MOVE(0,PreviousMask),MOVE(0,SampleCounter),COP(Cfg.Installation[0],SeenInstallation[0],4),MOVE(Cfg.Boot,SeenBoot)];
+
+RUNG 002 [ADDED]
+COMMENT
+Invalid boot or changed installation latches capture fault 10.
+EQ(Phase,0)[LE(Cfg.Boot,0),GE(Cfg.Boot,MaxInt),NE(SeenInstallation[0],Cfg.Installation[0]),NE(SeenInstallation[1],Cfg.Installation[1]),NE(SeenInstallation[2],Cfg.Installation[2]),NE(SeenInstallation[3],Cfg.Installation[3])]MOVE(10,State.Fault);
+
+RUNG 003 [ADDED]
+COMMENT
+0 -> 10: arm the initialized observer.
+EQ(Phase,0)EQ(State.CaptureState,0)MOVE(10,State.CaptureState);
+
+RUNG 004 [ADDED]
+COMMENT
+Compare all four installation words; this ordinary coil is recalculated each AOI invocation.
+EQ(Receipt.Installation[0],Event.Installation[0])EQ(Receipt.Installation[1],Event.Installation[1])EQ(Receipt.Installation[2],Event.Installation[2])EQ(Receipt.Installation[3],Event.Installation[3])OTE(ReceiptMatches);
+
+RUNG 005 [ADDED]
+COMMENT
+30 -> 10: accept only the matching durable event receipt.
+EQ(Phase,0)EQ(State.CaptureState,30)XIC(ReceiptMatches)EQ(Receipt.Boot,Event.Boot)EQ(Receipt.Sequence,Event.Sequence)MOVE(10,State.CaptureState);
+
+RUNG 006 [ADDED]
+COMMENT
+Resolve the permanent RF01/RF02 position index.
+EQ(Phase,0)SUB(Furnace,1,ChannelIndex);
+
+RUNG 007 [ADDED]
+COMMENT
+RF01 base is 0; RF02 base is 96.
+EQ(Phase,0)MUL(ChannelIndex,96,ChannelIndex);
+
+RUNG 008 [ADDED]
+COMMENT
+Add the one-based slot.
+EQ(Phase,0)ADD(ChannelIndex,Slot,ChannelIndex);
+
+RUNG 009 [ADDED]
+COMMENT
+Convert to the zero-based channel index.
+EQ(Phase,0)SUB(ChannelIndex,1,ChannelIndex);
+
+RUNG 010 [ADDED]
+COMMENT
+The selected removal item is the identity candidate. A stamp command alone does not publish a physical removal.
+EQ(Phase,0)EQ(Site.Active,0)XIC(Item.Control.cmdStamp)XIC(Item.Control.stsRemoved)XIO(Item.Control.stsEmpty)[ADD(Site.CandidateCount,1,Site.CandidateCount),MOVE(ChannelIndex,Site.CandidateIndex),MOVE(Furnace,Site.CandidateFurnace),COP(Item,Site.CandidateItem,1)];
+
+RUNG 011 [ADDED]
+COMMENT
+Freeze the actual selected press with the candidate identity.
+EQ(Phase,0)EQ(Site.CandidateIndex,ChannelIndex)GT(Site.CandidateCount,0)EQ(Furnace,1)MOVE(Site.Destination1,Site.CandidatePress);
+
+RUNG 012 [ADDED]
+COMMENT
+Freeze the actual selected press with the candidate identity.
+EQ(Phase,0)EQ(Site.CandidateIndex,ChannelIndex)GT(Site.CandidateCount,0)EQ(Furnace,2)MOVE(Site.Destination2,Site.CandidatePress);
+
+RUNG 013 [ADDED]
+COMMENT
+One handled part across both furnaces; multiple other channels may reheat concurrently.
+EQ(Phase,0)EQ(Site.Active,1)EQ(Site.Index,ChannelIndex)OTE(MapOwner);
+
+RUNG 014 [ADDED]
+COMMENT
+Refresh the handled-part mailbox state after processing its durable receipt.
+XIC(MapOwner)MOVE(0,Site.OwnerBusy);
+
+RUNG 015 [ADDED]
+COMMENT
+A different return slot must wait until the owner event is durably acknowledged.
+XIC(MapOwner)NE(State.CaptureState,10)MOVE(1,Site.OwnerBusy);
+
+RUNG 016 [ADDED]
+COMMENT
+A physical event may publish only into an armed, bounded channel mailbox.
+EQ(Phase,0)EQ(State.CaptureState,10)EQ(State.Fault,0)EQ(Site.Fault,0)LT(Source.Sequence,MaxIntMinusOne)OTE(MapReady);
+
+RUNG 017 [ADDED]
+COMMENT
+Invalidate the warning limit unless its complete per-slot load stamp and boot still match.
+XIC(MapOwner)MOVE(0,Site.LimitValid);
+
+RUNG 018 [ADDED]
+COMMENT
+Ignition publishes the calculated cycle-start limit for this boot and position.
+XIC(MapOwner)EQ(Limit.Boot,Cfg.Boot)EQ(Limit.Valid,1)GT(Limit.Milliseconds,0)OTE(MapLimit);
+
+RUNG 019 [ADDED]
+COMMENT
+Compare all seven original-load timestamp fields; no abbreviated identity check.
+EQ(Limit.LoadStamp[0],Site.Item.TimeStampIn.Year)EQ(Limit.LoadStamp[1],Site.Item.TimeStampIn.Month)EQ(Limit.LoadStamp[2],Site.Item.TimeStampIn.Day)EQ(Limit.LoadStamp[3],Site.Item.TimeStampIn.Hour)EQ(Limit.LoadStamp[4],Site.Item.TimeStampIn.Minute)EQ(Limit.LoadStamp[5],Site.Item.TimeStampIn.Second)EQ(Limit.LoadStamp[6],Site.Item.TimeStampIn.Microsecond)OTE(MapFault);
+
+RUNG 020 [ADDED]
+COMMENT
+Accept the calculated limit only for the frozen owner load. This does not classify the part as wash heat.
+XIC(MapLimit)XIC(MapFault)[MOVE(Limit.Milliseconds,Site.LimitMs),MOVE(1,Site.LimitValid)];
+
+RUNG 021 [ADDED]
+COMMENT
+Map the existing item identity and accumulated qualifying soak without resetting the legacy timer.
+EQ(Phase,0)XIO(Item.Control.stsEmpty)XIO(MapOwner)[MOVE(Item.SoakTimer.ACC,Source.QualifyingMs),MOVE(Item.MaxSoak.msecTime,Source.MaximumSoakMs),MOVE(Furnace,Source.OriginFurnace),COP(Item.strSN,Source.Identity.SN,1)];
+
+RUNG 022 [ADDED]
+COMMENT
+Map the existing item identity and accumulated qualifying soak without resetting the legacy timer.
+EQ(Phase,0)XIO(Item.Control.stsEmpty)XIO(MapOwner)[COP(Item.strWO,Source.Identity.WO,1),COP(Item.strPN,Source.Identity.PN,1),COP(Item.strStg,Source.Identity.Stage,1),COP(Item.strQA,Source.Identity.QA,1)];
+
+RUNG 023 [ADDED]
+COMMENT
+Map the existing item identity and accumulated qualifying soak without resetting the legacy timer.
+EQ(Phase,0)XIO(Item.Control.stsEmpty)XIO(MapOwner)[COP(Item.strRecipe,Source.Identity.Recipe,1),COP(Item.strPressQA,Source.Identity.PressQA,1),MOVE(Item.TimeStampIn.Year,Source.Identity.LoadStamp[0]),MOVE(Item.TimeStampIn.Month,Source.Identity.LoadStamp[1])];
+
+RUNG 024 [ADDED]
+COMMENT
+Map the existing item identity and accumulated qualifying soak without resetting the legacy timer.
+EQ(Phase,0)XIO(Item.Control.stsEmpty)XIO(MapOwner)[MOVE(Item.TimeStampIn.Day,Source.Identity.LoadStamp[2]),MOVE(Item.TimeStampIn.Hour,Source.Identity.LoadStamp[3]),MOVE(Item.TimeStampIn.Minute,Source.Identity.LoadStamp[4]),MOVE(Item.TimeStampIn.Second,Source.Identity.LoadStamp[5])];
+
+RUNG 025 [ADDED]
+COMMENT
+Map the existing item identity and accumulated qualifying soak without resetting the legacy timer.
+EQ(Phase,0)XIO(Item.Control.stsEmpty)XIO(MapOwner)MOVE(Item.TimeStampIn.Microsecond,Source.Identity.LoadStamp[6]);
+
+RUNG 026 [ADDED]
+COMMENT
+Recalculate live source quality every Pre scan.
+EQ(Phase,0)[MOVE(0,Source.BindingValid),MOVE(0,Source.QualifyingValid)];
+
+RUNG 027 [ADDED]
+COMMENT
+Identity and mapped signal links are available.
+EQ(Phase,0)EQ(Cfg.MappingApproved,1)GT(Source.Identity.SN.LEN,0)MOVE(1,Source.BindingValid);
+
+RUNG 028 [ADDED]
+COMMENT
+A nonnegative retained soak counter and positive original maximum are required.
+EQ(Phase,0)GE(Source.QualifyingMs,0)GT(Source.MaximumSoakMs,0)MOVE(1,Source.QualifyingValid);
+
+RUNG 029 [ADDED]
+COMMENT
+Observe each HMI command edge once, before the legacy routine clears it.
+XIC(MapOwner)[XIC(Item.Control.cmdValidate)XIO(PreviousMask.4),XIC(Item.Control.cmdCancelStamp)XIO(PreviousMask.6),XIC(Item.Control.cmdWashHeat)XIO(PreviousMask.3)]OTE(MapDecisionEdge);
+
+RUNG 030 [ADDED]
+COMMENT
+Keep the first pending decision timestamp while waiting for a durable receipt.
+XIC(MapDecisionEdge)EQ(Site.DecisionPending,0)GSV(WALLCLOCKTIME,,DateTime,Site.DecisionUTC[0]);
+
+RUNG 031 [ADDED]
+COMMENT
+CDL HMI observation: cmdValidate = Unload OK.
+XIC(MapOwner)XIC(Item.Control.cmdValidate)XIO(PreviousMask.4)OTL(Site.DecisionPending.0);
+
+RUNG 032 [ADDED]
+COMMENT
+CDL HMI observation: cmdCancelStamp = Unload Not OK/manual wash request.
+XIC(MapOwner)XIC(Item.Control.cmdCancelStamp)XIO(PreviousMask.6)OTL(Site.DecisionPending.1);
+
+RUNG 033 [ADDED]
+COMMENT
+CDL HMI observation: cmdWashHeat = Unload Not OK/manual wash request.
+XIC(MapOwner)XIC(Item.Control.cmdWashHeat)XIO(PreviousMask.3)OTL(Site.DecisionPending.1);
+
+RUNG 034 [ADDED]
+COMMENT
+A cancelled stamp before CDL timing started releases the selection without inventing a wash event.
+XIC(MapOwner)EQ(Site.Removed,0)EQ(Site.StartPending,0)XIC(Item.Control.cmdCancelStamp)[MOVE(0,Site.Active),MOVE(0,Site.DecisionPending)];
+
+RUNG 035 [ADDED]
+COMMENT
+Prioritize the actual CDL start before any later decision or cycle event.
+XIC(MapOwner)XIC(MapReady)EQ(Site.StartPending,1)EQ(Site.Removed,0)OTE(MapStart);
+
+RUNG 036 [ADDED]
+COMMENT
+Publish the explicit operator decision first when both observations await receipt; arrival times are advisory.
+XIC(MapOwner)XIC(MapReady)EQ(Site.Removed,1)GT(Site.DecisionPending,0)OTE(MapDecision);
+
+RUNG 037 [ADDED]
+COMMENT
+Cycle Start from the selected press closes the undecided/accepted transfer in Ignition.
+XIC(MapOwner)XIC(MapReady)EQ(Site.Removed,1)EQ(Site.CyclePending,1)EQ(Site.DecisionPending,0)XIC(Site.CycleGrace.DN)OTE(MapCycle);
+
+RUNG 038 [ADDED]
+COMMENT
+Observe the accepted door-closed wash load before legacy copy/clear.
+EQ(Phase,0)EQ(Site.Active,1)EQ(Site.Furnace,Furnace)XIC(Item.Control.cmdLoad)XIC(Item.Control.cmdLoadWashHeat)XIC(Item.Control.stsAccepted)OTE(MapReturnSeen);
+
+RUNG 039 [ADDED]
+COMMENT
+Latch return location/time and reset its stopwatch at the actual return scan.
+XIC(MapReturnSeen)XIC(MapReady)[ADD(Site.ReturnCount,1,Site.ReturnCount),MOVE(ChannelIndex,Site.ReturnIndex),GSV(WALLCLOCKTIME,,DateTime,Site.ReturnUTC[0]),RES(Elapsed)];
+
+RUNG 040 [ADDED]
+COMMENT
+Run the native Post stopwatch immediately; return publication waits for two-furnace arbitration.
+XIC(MapReturnSeen)XIC(MapReady)[MOVE(10,State.TimerState),ADD(Source.Sequence,1,State.TimerReturnSequence),MOVE(1,State.TimerValid)];
+
+RUNG 041 [ADDED]
+COMMENT
+Freeze the complete legacy-loaded return identity for later checks.
+EQ(Phase,1)EQ(Site.ReturnCount,1)EQ(Site.ReturnIndex,ChannelIndex)COP(Item,Site.ReturnItem,1);
+
+RUNG 042 [ADDED]
+COMMENT
+Physical-return confirmation is the accepted wash load at the door-closed boundary, not the wash decision button.
+EQ(Phase,0)EQ(Site.ReturnPending,1)EQ(Site.ReturnIndex,ChannelIndex)EQ(Site.StartPending,0)EQ(Site.DecisionPending,0)EQ(Site.CyclePending,0)EQ(Site.OwnerBusy,0)OTE(MapReturn);
+
+RUNG 043 [ADDED]
+COMMENT
+A new accepted return with an occupied mailbox is exposed as an overrun.
+XIC(MapReturnSeen)XIO(MapReady)MOVE(32,Site.Fault);
+
+RUNG 044 [ADDED]
+COMMENT
+Evaluate one physical-source publication gate before changing any flags.
+EQ(Phase,0)[XIC(MapStart),XIC(MapDecision),XIC(MapCycle),XIC(MapReturn)XIC(MapReady)]OTE(MapEmit);
+
+RUNG 045 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[MOVE(0,Source.Removal),MOVE(0,Source.ReturnConfirmed),MOVE(0,Source.CycleStart),MOVE(0,Source.Decision)];
+
+RUNG 046 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[MOVE(0,Source.WashAuthorized),MOVE(Site.Furnace,Source.OriginFurnace),MOVE(Site.Item.SoakTimer.ACC,Source.QualifyingMs),MOVE(Site.Item.MaxSoak.msecTime,Source.MaximumSoakMs)];
+
+RUNG 047 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[MOVE(Site.CdlId,Source.CdlId),MOVE(Site.Press,Source.Press),COP(Site.Item.strSN,Source.Identity.SN,1),COP(Site.Item.strWO,Source.Identity.WO,1)];
+
+RUNG 048 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[COP(Site.Item.strPN,Source.Identity.PN,1),COP(Site.Item.strStg,Source.Identity.Stage,1),COP(Site.Item.strQA,Source.Identity.QA,1),COP(Site.Item.strRecipe,Source.Identity.Recipe,1)];
+
+RUNG 049 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[COP(Site.Item.strPressQA,Source.Identity.PressQA,1),MOVE(Site.Item.TimeStampIn.Year,Source.Identity.LoadStamp[0]),MOVE(Site.Item.TimeStampIn.Month,Source.Identity.LoadStamp[1]),MOVE(Site.Item.TimeStampIn.Day,Source.Identity.LoadStamp[2])];
+
+RUNG 050 [ADDED]
+COMMENT
+Bind the source event to the frozen full part/load identity; clear prior event flags before the sequence advances.
+XIC(MapEmit)[MOVE(Site.Item.TimeStampIn.Hour,Source.Identity.LoadStamp[3]),MOVE(Site.Item.TimeStampIn.Minute,Source.Identity.LoadStamp[4]),MOVE(Site.Item.TimeStampIn.Second,Source.Identity.LoadStamp[5]),MOVE(Site.Item.TimeStampIn.Microsecond,Source.Identity.LoadStamp[6])];
+
+RUNG 051 [ADDED]
+COMMENT
+Removal time is the CDL timer start timestamp.
+XIC(MapStart)[MOVE(1,Source.Removal),COP(Site.StartUTC[0],Source.OccurredUTC[0],7),MOVE(0,Site.StartPending),MOVE(1,Site.Removed)];
+
+RUNG 052 [ADDED]
+COMMENT
+Publish the operator observation; Ignition owns the state transition and conflict handling.
+XIC(MapDecision)[MOVE(Site.DecisionPending,Source.Decision),COP(Site.DecisionUTC[0],Source.OccurredUTC[0],7),MOVE(Site.DecisionPending,Site.DecisionObserved),MOVE(0,Site.DecisionPending)];
+
+RUNG 053 [ADDED]
+COMMENT
+Preserve FDC arrival time. A Cycle Start is advisory, not a measurement of material deformation.
+XIC(MapCycle)[MOVE(1,Source.CycleStart),COP(Site.CycleUTC[0],Source.OccurredUTC[0],7),MOVE(0,Site.CyclePending)];
+
+RUNG 054 [ADDED]
+COMMENT
+Retain a wash-request owner for physical return when the operator decision wins a near-simultaneous cycle observation.
+XIC(MapCycle)NE(Site.DecisionObserved,2)MOVE(0,Site.Active);
+
+RUNG 055 [ADDED]
+COMMENT
+Return may use another segment in the same furnace; the original load identity is retained.
+XIC(MapReturn)XIC(MapReady)[MOVE(1,Source.ReturnConfirmed),COP(Site.ReturnUTC[0],Source.OccurredUTC[0],7),MOVE(1,Source.WashAuthorized),MOVE(0,Site.Active)];
+
+RUNG 056 [ADDED]
+COMMENT
+Use the frozen accepted-return soak counter, not an older removal snapshot.
+XIC(MapReturn)XIC(MapReady)MOVE(Site.ReturnItem.SoakTimer.ACC,Source.QualifyingMs);
+
+RUNG 057 [ADDED]
+COMMENT
+Release handled-part capture after its terminal source event.
+EQ(Phase,0)[XIC(MapCycle)NE(Site.DecisionObserved,2),XIC(MapReturn)XIC(MapReady)][MOVE(0,Site.Removed),MOVE(0,Site.ReturnPending)];
+
+RUNG 058 [ADDED]
+COMMENT
+Commit the next local physical sequence last; capture below freezes this complete frame.
+XIC(MapEmit)[MOVE(Cfg.MappingApproved,Source.BindingValid),ADD(Source.Sequence,1,Source.Sequence)];
+
+RUNG 059 [ADDED]
+COMMENT
+Correlate the running return stopwatch without resetting it after delayed publication.
+XIC(MapEmit)XIC(MapReturn)MOVE(Source.Sequence,State.TimerReturnSequence);
+
+RUNG 060 [ADDED]
+COMMENT
+Prevent a later-scanned return slot from overtaking this newly published owner event.
+XIC(MapEmit)XIC(MapOwner)MOVE(1,Site.OwnerBusy);
+
+RUNG 061 [ADDED]
+COMMENT
+Rebuild the command observation mask before legacy item processing.
+EQ(Phase,0)MOVE(0,Mask);
+
+RUNG 062 [ADDED]
+COMMENT
+Command observation 1: normal load; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdLoad)XIO(Item.Control.cmdLoadWashHeat)ADD(Mask,1,Mask);
+
+RUNG 063 [ADDED]
+COMMENT
+Command observation 2: wash load; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdLoad)XIC(Item.Control.cmdLoadWashHeat)ADD(Mask,2,Mask);
+
+RUNG 064 [ADDED]
+COMMENT
+Command observation 4: stamp; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdStamp)ADD(Mask,4,Mask);
+
+RUNG 065 [ADDED]
+COMMENT
+Command observation 8: wash command; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdWashHeat)ADD(Mask,8,Mask);
+
+RUNG 066 [ADDED]
+COMMENT
+Command observation 16: validate; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdValidate)ADD(Mask,16,Mask);
+
+RUNG 067 [ADDED]
+COMMENT
+Command observation 32: part-at-press command; not physical proof.
+EQ(Phase,0)XIC(Item.Control.cmdPartAtPress)ADD(Mask,32,Mask);
+
+RUNG 068 [ADDED]
+COMMENT
+Command observation 64: cancel; not physical proof.
+EQ(Phase,0)[XIC(Item.Control.cmdCancel),XIC(Item.Control.cmdCancelStamp)]ADD(Mask,64,Mask);
+
+RUNG 069 [ADDED]
+COMMENT
+Command observation 128: reset/clear; not physical proof.
+EQ(Phase,0)[XIC(Item.Control.cmdReset),XIC(Item.Control.cmdClear)]ADD(Mask,128,Mask);
+
+RUNG 070 [ADDED]
+COMMENT
+Freeze the PLC-local physical source frame before legacy processing.
+EQ(Phase,0)[CPS(Source,Frame,1),MOVE(0,NewPhysical)];
+
+RUNG 071 [ADDED]
+COMMENT
+Detect a newly published physical-source sequence.
+EQ(Phase,0)NE(Frame.Sequence,State.SourceSequence)MOVE(1,NewPhysical);
+
+RUNG 072 [ADDED]
+COMMENT
+Source sequence exhaustion or invalid sequence latches fault 13.
+EQ(Phase,0)EQ(NewPhysical,1)[GE(State.SourceSequence,MaxIntMinusOne),LE(Frame.Sequence,0)]MOVE(13,State.Fault);
+
+RUNG 073 [ADDED]
+COMMENT
+Calculate the next source sequence only within its bounded DINT range.
+EQ(Phase,0)EQ(NewPhysical,1)LT(State.SourceSequence,MaxIntMinusOne)GT(Frame.Sequence,0)ADD(State.SourceSequence,1,ExpectedSource);
+
+RUNG 074 [ADDED]
+COMMENT
+A source sequence gap latches fault 13.
+EQ(Phase,0)EQ(NewPhysical,1)LT(State.SourceSequence,MaxIntMinusOne)GT(Frame.Sequence,0)NE(Frame.Sequence,ExpectedSource)MOVE(13,State.Fault);
+
+RUNG 075 [ADDED]
+COMMENT
+Clear this invocation's capture request.
+EQ(Phase,0)MOVE(0,Capture);
+
+RUNG 076 [ADDED]
+COMMENT
+Capture the source-mapped physical/operator event. Broadcast command bits alone are context, not 96 events.
+EQ(Phase,0)EQ(NewPhysical,1)MOVE(1,Capture);
+
+RUNG 077 [ADDED]
+COMMENT
+Remember this scan's command mask after evaluating the edge.
+EQ(Phase,0)MOVE(Mask,PreviousMask);
+
+RUNG 078 [ADDED]
+COMMENT
+An event arriving outside armed state 10 latches overrun fault 11; frozen evidence survives.
+EQ(Phase,0)EQ(Capture,1)NE(State.CaptureState,10)MOVE(11,State.Fault);
+
+RUNG 079 [ADDED]
+COMMENT
+Bound the event counter before any publication increment.
+EQ(Phase,0)EQ(Capture,1)EQ(State.CaptureState,10)GE(State.EventSequence,MaxIntMinusOne)MOVE(12,State.Fault);
+
+RUNG 080 [ADDED]
+COMMENT
+Evaluate capture admission once. This real BOOL coil powers every following before-snapshot rung.
+EQ(Phase,0)EQ(Capture,1)EQ(State.Fault,0)OTE(CaptureBefore);
+
+RUNG 081 [ADDED]
+COMMENT
+Freeze before payload, ordered branches 1-4. Sequence stays zero; final branch changes 10 -> 20.
+XIC(CaptureBefore)[MOVE(0,Event.Sequence),COP(Item,Event.Before,1),COP(Frame,Event.Physical,1),COP(Site.Item,Event.BoundItem,1)];
+
+RUNG 082 [ADDED]
+COMMENT
+Freeze before payload, ordered branches 5-8. Sequence stays zero; final branch changes 10 -> 20.
+XIC(CaptureBefore)[COP(Cfg.Installation[0],Event.Installation[0],4),MOVE(Cfg.Boot,Event.Boot),MOVE(Furnace,Event.Furnace),MOVE(Slot,Event.Slot)];
+
+RUNG 083 [ADDED]
+COMMENT
+Freeze before payload, ordered branches 9-12. Sequence stays zero; final branch changes 10 -> 20.
+XIC(CaptureBefore)[MOVE(Mask,Event.CommandMask),MOVE(Cfg.ClockValidated,Event.ClockValidated),MOVE(Cfg.MappingApproved,Event.MappingApproved),MOVE(Cfg.QualifyingSourceApproved,Event.QualifyingSourceApproved)];
+
+RUNG 084 [ADDED]
+COMMENT
+Freeze before payload, ordered branches 13-15. Sequence stays zero; final branch changes 10 -> 20.
+XIC(CaptureBefore)[MOVE(NewPhysical,Event.PhysicalIsNew),GSV(WALLCLOCKTIME,,DateTime,Event.CapturedUTC[0]),MOVE(20,State.CaptureState)];
+
+RUNG 085 [ADDED]
+COMMENT
+For mapped returns retain the complete item frozen immediately after the actual accepted-load scan.
+XIC(CaptureBefore)XIC(MapReturn)COP(Site.ReturnItem,Event.BoundItem,1);
+
+RUNG 086 [ADDED]
+COMMENT
+Physical return: reset the native TIMER and enter TimerState 10 before its single Post-rung RTO execution.
+EQ(Phase,0)EQ(NewPhysical,1)EQ(Frame.ReturnConfirmed,1)EQ(Frame.Removal,0)NE(Frame.Sequence,State.TimerReturnSequence)[MOVE(10,State.TimerState),MOVE(Frame.Sequence,State.TimerReturnSequence),MOVE(Frame.BindingValid,State.TimerValid),RES(Elapsed)];
+
+RUNG 087 [ADDED]
+COMMENT
+Conflicting return/removal facts invalidate the timer; Ignition owns disposition.
+EQ(Phase,0)EQ(NewPhysical,1)NE(Frame.ReturnConfirmed,0)NE(Frame.Removal,0)MOVE(0,State.TimerValid);
+
+RUNG 088 [ADDED]
+COMMENT
+Remember the consumed physical-source sequence after its checks.
+EQ(Phase,0)EQ(NewPhysical,1)MOVE(Frame.Sequence,State.SourceSequence);
+
+RUNG 089 [ADDED]
+COMMENT
+Post: the dispatch RTO has already executed once; sample its millisecond accumulator.
+EQ(Phase,1)EQ(State.TimerState,10)MOVE(Elapsed.ACC,State.ElapsedMs);
+
+RUNG 090 [ADDED]
+COMMENT
+Physical removal: 10 -> 20 after measuring the removal scan; retain elapsed value.
+EQ(Phase,1)EQ(NewPhysical,1)EQ(Frame.Removal,1)EQ(Frame.ReturnConfirmed,0)MOVE(20,State.TimerState);
+
+RUNG 091 [ADDED]
+COMMENT
+Native timer completion/exhaustion or invalid accumulator latches timer fault 21.
+EQ(Phase,1)[XIC(Elapsed.DN),LT(Elapsed.ACC,0),GE(Elapsed.ACC,MaxInt)][MOVE(0,State.TimerValid),MOVE(21,State.Fault)];
+
+RUNG 092 [ADDED]
+COMMENT
+Evaluate publication once, before changing CaptureState; no jump or label is required.
+EQ(Phase,1)EQ(State.CaptureState,20)OTE(PublishAfter);
+
+RUNG 093 [ADDED]
+COMMENT
+Freeze the post-legacy item and measured timer in the same event.
+XIC(PublishAfter)[COP(Item,Event.After,1),MOVE(State.TimerReturnSequence,Event.TimerReturnSequence),MOVE(State.TimerValid,Event.TimerValid),MOVE(State.ElapsedMs,Event.ElapsedMs)];
+
+RUNG 094 [ADDED]
+COMMENT
+20 -> 30: increment the bounded event counter and commit Event.Sequence LAST.
+XIC(PublishAfter)[ADD(State.EventSequence,1,State.EventSequence),MOVE(30,State.CaptureState),MOVE(State.EventSequence,Event.Sequence)];
+
+RUNG 095 [ADDED]
+COMMENT
+Any latched technical fault enters state 900 and invalidates timer status.
+EQ(Phase,1)NE(State.Fault,0)[MOVE(900,State.CaptureState),MOVE(0,State.TimerValid)];
+
+RUNG 096 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 1-4; business rules execute in Ignition.
+EQ(Phase,1)[COP(Cfg.Installation[0],State.Installation[0],4),MOVE(Cfg.Boot,State.Boot),MOVE(Furnace,State.Furnace),MOVE(Slot,State.Slot)];
+
+RUNG 097 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 5-8; business rules execute in Ignition.
+EQ(Phase,1)[MOVE(Cfg.MappingApproved,State.MappingApproved),MOVE(Cfg.QualifyingSourceApproved,State.QualifyingSourceApproved),MOVE(Cfg.ClockValidated,State.ClockValidated),COP(Frame,State.Physical,1)];
+
+RUNG 098 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 9-12; business rules execute in Ignition.
+EQ(Phase,1)[COP(Item.strSN,State.CurrentIdentity.SN,1),COP(Item.strWO,State.CurrentIdentity.WO,1),COP(Item.strPN,State.CurrentIdentity.PN,1),COP(Item.strStg,State.CurrentIdentity.Stage,1)];
+
+RUNG 099 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 13-16; business rules execute in Ignition.
+EQ(Phase,1)[COP(Item.strQA,State.CurrentIdentity.QA,1),COP(Item.strRecipe,State.CurrentIdentity.Recipe,1),COP(Item.strPressQA,State.CurrentIdentity.PressQA,1),MOVE(Item.TimeStampIn.Year,State.CurrentIdentity.LoadStamp[0])];
+
+RUNG 100 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 17-20; business rules execute in Ignition.
+EQ(Phase,1)[MOVE(Item.TimeStampIn.Month,State.CurrentIdentity.LoadStamp[1]),MOVE(Item.TimeStampIn.Day,State.CurrentIdentity.LoadStamp[2]),MOVE(Item.TimeStampIn.Hour,State.CurrentIdentity.LoadStamp[3]),MOVE(Item.TimeStampIn.Minute,State.CurrentIdentity.LoadStamp[4])];
+
+RUNG 101 [ADDED]
+COMMENT
+Publish raw current telemetry, ordered branches 21-22; business rules execute in Ignition.
+EQ(Phase,1)[MOVE(Item.TimeStampIn.Second,State.CurrentIdentity.LoadStamp[5]),MOVE(Item.TimeStampIn.Microsecond,State.CurrentIdentity.LoadStamp[6])];
+
+RUNG 102 [ADDED]
+COMMENT
+Clear raw DINT item flags before sampling the legacy BOOL values.
+EQ(Phase,1)[MOVE(0,State.ItemEmpty),MOVE(0,State.ItemStamped),MOVE(0,State.ItemWashHeat)];
+
+RUNG 103 [ADDED]
+COMMENT
+Copy raw legacy flag stsEmpty.
+EQ(Phase,1)XIC(Item.Control.stsEmpty)MOVE(1,State.ItemEmpty);
+
+RUNG 104 [ADDED]
+COMMENT
+Copy raw legacy flag stsStamped.
+EQ(Phase,1)XIC(Item.Control.stsStamped)MOVE(1,State.ItemStamped);
+
+RUNG 105 [ADDED]
+COMMENT
+Copy raw legacy flag stsWashHeat.
+EQ(Phase,1)XIC(Item.Control.stsWashHeat)MOVE(1,State.ItemWashHeat);
+
+RUNG 106 [ADDED]
+COMMENT
+Wrap only the live-sample counter within its channel epoch.
+EQ(Phase,1)GE(SampleCounter,MaxIntMinusOne)MOVE(0,SampleCounter);
+
+RUNG 107 [ADDED]
+COMMENT
+Commit positive SampleSequence LAST, after all telemetry updates.
+EQ(Phase,1)[ADD(SampleCounter,1,SampleCounter),MOVE(SampleCounter,State.SampleSequence)];

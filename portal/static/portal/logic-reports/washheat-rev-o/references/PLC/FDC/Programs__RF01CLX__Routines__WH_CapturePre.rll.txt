@@ -1,0 +1,287 @@
+RUNG 000 [ADDED]
+WH_Channel(WH_Node_01A,0,1,1,RF01CLX_Items.Segment01A,WH_Settings,WH_Site,WH_TransferLimit[0],WH_Source[0],WH_State[0],WH_Event[0],WH_Receipt[0],WH_Elapsed[0],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 001 [ADDED]
+WH_Channel(WH_Node_01B,0,1,2,RF01CLX_Items.Segment01B,WH_Settings,WH_Site,WH_TransferLimit[1],WH_Source[1],WH_State[1],WH_Event[1],WH_Receipt[1],WH_Elapsed[1],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 002 [ADDED]
+WH_Channel(WH_Node_01C,0,1,3,RF01CLX_Items.Segment01C,WH_Settings,WH_Site,WH_TransferLimit[2],WH_Source[2],WH_State[2],WH_Event[2],WH_Receipt[2],WH_Elapsed[2],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 003 [ADDED]
+WH_Channel(WH_Node_01D,0,1,4,RF01CLX_Items.Segment01D,WH_Settings,WH_Site,WH_TransferLimit[3],WH_Source[3],WH_State[3],WH_Event[3],WH_Receipt[3],WH_Elapsed[3],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 004 [ADDED]
+WH_Channel(WH_Node_02A,0,1,5,RF01CLX_Items.Segment02A,WH_Settings,WH_Site,WH_TransferLimit[4],WH_Source[4],WH_State[4],WH_Event[4],WH_Receipt[4],WH_Elapsed[4],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 005 [ADDED]
+WH_Channel(WH_Node_02B,0,1,6,RF01CLX_Items.Segment02B,WH_Settings,WH_Site,WH_TransferLimit[5],WH_Source[5],WH_State[5],WH_Event[5],WH_Receipt[5],WH_Elapsed[5],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 006 [ADDED]
+WH_Channel(WH_Node_02C,0,1,7,RF01CLX_Items.Segment02C,WH_Settings,WH_Site,WH_TransferLimit[6],WH_Source[6],WH_State[6],WH_Event[6],WH_Receipt[6],WH_Elapsed[6],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 007 [ADDED]
+WH_Channel(WH_Node_02D,0,1,8,RF01CLX_Items.Segment02D,WH_Settings,WH_Site,WH_TransferLimit[7],WH_Source[7],WH_State[7],WH_Event[7],WH_Receipt[7],WH_Elapsed[7],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 008 [ADDED]
+WH_Channel(WH_Node_03A,0,1,9,RF01CLX_Items.Segment03A,WH_Settings,WH_Site,WH_TransferLimit[8],WH_Source[8],WH_State[8],WH_Event[8],WH_Receipt[8],WH_Elapsed[8],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 009 [ADDED]
+WH_Channel(WH_Node_03B,0,1,10,RF01CLX_Items.Segment03B,WH_Settings,WH_Site,WH_TransferLimit[9],WH_Source[9],WH_State[9],WH_Event[9],WH_Receipt[9],WH_Elapsed[9],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 010 [ADDED]
+WH_Channel(WH_Node_03C,0,1,11,RF01CLX_Items.Segment03C,WH_Settings,WH_Site,WH_TransferLimit[10],WH_Source[10],WH_State[10],WH_Event[10],WH_Receipt[10],WH_Elapsed[10],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 011 [ADDED]
+WH_Channel(WH_Node_03D,0,1,12,RF01CLX_Items.Segment03D,WH_Settings,WH_Site,WH_TransferLimit[11],WH_Source[11],WH_State[11],WH_Event[11],WH_Receipt[11],WH_Elapsed[11],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 012 [ADDED]
+WH_Channel(WH_Node_04A,0,1,13,RF01CLX_Items.Segment04A,WH_Settings,WH_Site,WH_TransferLimit[12],WH_Source[12],WH_State[12],WH_Event[12],WH_Receipt[12],WH_Elapsed[12],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 013 [ADDED]
+WH_Channel(WH_Node_04B,0,1,14,RF01CLX_Items.Segment04B,WH_Settings,WH_Site,WH_TransferLimit[13],WH_Source[13],WH_State[13],WH_Event[13],WH_Receipt[13],WH_Elapsed[13],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 014 [ADDED]
+WH_Channel(WH_Node_04C,0,1,15,RF01CLX_Items.Segment04C,WH_Settings,WH_Site,WH_TransferLimit[14],WH_Source[14],WH_State[14],WH_Event[14],WH_Receipt[14],WH_Elapsed[14],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 015 [ADDED]
+WH_Channel(WH_Node_04D,0,1,16,RF01CLX_Items.Segment04D,WH_Settings,WH_Site,WH_TransferLimit[15],WH_Source[15],WH_State[15],WH_Event[15],WH_Receipt[15],WH_Elapsed[15],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 016 [ADDED]
+WH_Channel(WH_Node_05A,0,1,17,RF01CLX_Items.Segment05A,WH_Settings,WH_Site,WH_TransferLimit[16],WH_Source[16],WH_State[16],WH_Event[16],WH_Receipt[16],WH_Elapsed[16],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 017 [ADDED]
+WH_Channel(WH_Node_05B,0,1,18,RF01CLX_Items.Segment05B,WH_Settings,WH_Site,WH_TransferLimit[17],WH_Source[17],WH_State[17],WH_Event[17],WH_Receipt[17],WH_Elapsed[17],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 018 [ADDED]
+WH_Channel(WH_Node_05C,0,1,19,RF01CLX_Items.Segment05C,WH_Settings,WH_Site,WH_TransferLimit[18],WH_Source[18],WH_State[18],WH_Event[18],WH_Receipt[18],WH_Elapsed[18],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 019 [ADDED]
+WH_Channel(WH_Node_05D,0,1,20,RF01CLX_Items.Segment05D,WH_Settings,WH_Site,WH_TransferLimit[19],WH_Source[19],WH_State[19],WH_Event[19],WH_Receipt[19],WH_Elapsed[19],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 020 [ADDED]
+WH_Channel(WH_Node_06A,0,1,21,RF01CLX_Items.Segment06A,WH_Settings,WH_Site,WH_TransferLimit[20],WH_Source[20],WH_State[20],WH_Event[20],WH_Receipt[20],WH_Elapsed[20],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 021 [ADDED]
+WH_Channel(WH_Node_06B,0,1,22,RF01CLX_Items.Segment06B,WH_Settings,WH_Site,WH_TransferLimit[21],WH_Source[21],WH_State[21],WH_Event[21],WH_Receipt[21],WH_Elapsed[21],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 022 [ADDED]
+WH_Channel(WH_Node_06C,0,1,23,RF01CLX_Items.Segment06C,WH_Settings,WH_Site,WH_TransferLimit[22],WH_Source[22],WH_State[22],WH_Event[22],WH_Receipt[22],WH_Elapsed[22],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 023 [ADDED]
+WH_Channel(WH_Node_06D,0,1,24,RF01CLX_Items.Segment06D,WH_Settings,WH_Site,WH_TransferLimit[23],WH_Source[23],WH_State[23],WH_Event[23],WH_Receipt[23],WH_Elapsed[23],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 024 [ADDED]
+WH_Channel(WH_Node_07A,0,1,25,RF01CLX_Items.Segment07A,WH_Settings,WH_Site,WH_TransferLimit[24],WH_Source[24],WH_State[24],WH_Event[24],WH_Receipt[24],WH_Elapsed[24],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 025 [ADDED]
+WH_Channel(WH_Node_07B,0,1,26,RF01CLX_Items.Segment07B,WH_Settings,WH_Site,WH_TransferLimit[25],WH_Source[25],WH_State[25],WH_Event[25],WH_Receipt[25],WH_Elapsed[25],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 026 [ADDED]
+WH_Channel(WH_Node_07C,0,1,27,RF01CLX_Items.Segment07C,WH_Settings,WH_Site,WH_TransferLimit[26],WH_Source[26],WH_State[26],WH_Event[26],WH_Receipt[26],WH_Elapsed[26],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 027 [ADDED]
+WH_Channel(WH_Node_07D,0,1,28,RF01CLX_Items.Segment07D,WH_Settings,WH_Site,WH_TransferLimit[27],WH_Source[27],WH_State[27],WH_Event[27],WH_Receipt[27],WH_Elapsed[27],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 028 [ADDED]
+WH_Channel(WH_Node_08A,0,1,29,RF01CLX_Items.Segment08A,WH_Settings,WH_Site,WH_TransferLimit[28],WH_Source[28],WH_State[28],WH_Event[28],WH_Receipt[28],WH_Elapsed[28],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 029 [ADDED]
+WH_Channel(WH_Node_08B,0,1,30,RF01CLX_Items.Segment08B,WH_Settings,WH_Site,WH_TransferLimit[29],WH_Source[29],WH_State[29],WH_Event[29],WH_Receipt[29],WH_Elapsed[29],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 030 [ADDED]
+WH_Channel(WH_Node_08C,0,1,31,RF01CLX_Items.Segment08C,WH_Settings,WH_Site,WH_TransferLimit[30],WH_Source[30],WH_State[30],WH_Event[30],WH_Receipt[30],WH_Elapsed[30],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 031 [ADDED]
+WH_Channel(WH_Node_08D,0,1,32,RF01CLX_Items.Segment08D,WH_Settings,WH_Site,WH_TransferLimit[31],WH_Source[31],WH_State[31],WH_Event[31],WH_Receipt[31],WH_Elapsed[31],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 032 [ADDED]
+WH_Channel(WH_Node_09A,0,1,33,RF01CLX_Items.Segment09A,WH_Settings,WH_Site,WH_TransferLimit[32],WH_Source[32],WH_State[32],WH_Event[32],WH_Receipt[32],WH_Elapsed[32],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 033 [ADDED]
+WH_Channel(WH_Node_09B,0,1,34,RF01CLX_Items.Segment09B,WH_Settings,WH_Site,WH_TransferLimit[33],WH_Source[33],WH_State[33],WH_Event[33],WH_Receipt[33],WH_Elapsed[33],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 034 [ADDED]
+WH_Channel(WH_Node_09C,0,1,35,RF01CLX_Items.Segment09C,WH_Settings,WH_Site,WH_TransferLimit[34],WH_Source[34],WH_State[34],WH_Event[34],WH_Receipt[34],WH_Elapsed[34],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 035 [ADDED]
+WH_Channel(WH_Node_09D,0,1,36,RF01CLX_Items.Segment09D,WH_Settings,WH_Site,WH_TransferLimit[35],WH_Source[35],WH_State[35],WH_Event[35],WH_Receipt[35],WH_Elapsed[35],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 036 [ADDED]
+WH_Channel(WH_Node_10A,0,1,37,RF01CLX_Items.Segment10A,WH_Settings,WH_Site,WH_TransferLimit[36],WH_Source[36],WH_State[36],WH_Event[36],WH_Receipt[36],WH_Elapsed[36],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 037 [ADDED]
+WH_Channel(WH_Node_10B,0,1,38,RF01CLX_Items.Segment10B,WH_Settings,WH_Site,WH_TransferLimit[37],WH_Source[37],WH_State[37],WH_Event[37],WH_Receipt[37],WH_Elapsed[37],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 038 [ADDED]
+WH_Channel(WH_Node_10C,0,1,39,RF01CLX_Items.Segment10C,WH_Settings,WH_Site,WH_TransferLimit[38],WH_Source[38],WH_State[38],WH_Event[38],WH_Receipt[38],WH_Elapsed[38],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 039 [ADDED]
+WH_Channel(WH_Node_10D,0,1,40,RF01CLX_Items.Segment10D,WH_Settings,WH_Site,WH_TransferLimit[39],WH_Source[39],WH_State[39],WH_Event[39],WH_Receipt[39],WH_Elapsed[39],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 040 [ADDED]
+WH_Channel(WH_Node_11A,0,1,41,RF01CLX_Items.Segment11A,WH_Settings,WH_Site,WH_TransferLimit[40],WH_Source[40],WH_State[40],WH_Event[40],WH_Receipt[40],WH_Elapsed[40],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 041 [ADDED]
+WH_Channel(WH_Node_11B,0,1,42,RF01CLX_Items.Segment11B,WH_Settings,WH_Site,WH_TransferLimit[41],WH_Source[41],WH_State[41],WH_Event[41],WH_Receipt[41],WH_Elapsed[41],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 042 [ADDED]
+WH_Channel(WH_Node_11C,0,1,43,RF01CLX_Items.Segment11C,WH_Settings,WH_Site,WH_TransferLimit[42],WH_Source[42],WH_State[42],WH_Event[42],WH_Receipt[42],WH_Elapsed[42],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 043 [ADDED]
+WH_Channel(WH_Node_11D,0,1,44,RF01CLX_Items.Segment11D,WH_Settings,WH_Site,WH_TransferLimit[43],WH_Source[43],WH_State[43],WH_Event[43],WH_Receipt[43],WH_Elapsed[43],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 044 [ADDED]
+WH_Channel(WH_Node_12A,0,1,45,RF01CLX_Items.Segment12A,WH_Settings,WH_Site,WH_TransferLimit[44],WH_Source[44],WH_State[44],WH_Event[44],WH_Receipt[44],WH_Elapsed[44],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 045 [ADDED]
+WH_Channel(WH_Node_12B,0,1,46,RF01CLX_Items.Segment12B,WH_Settings,WH_Site,WH_TransferLimit[45],WH_Source[45],WH_State[45],WH_Event[45],WH_Receipt[45],WH_Elapsed[45],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 046 [ADDED]
+WH_Channel(WH_Node_12C,0,1,47,RF01CLX_Items.Segment12C,WH_Settings,WH_Site,WH_TransferLimit[46],WH_Source[46],WH_State[46],WH_Event[46],WH_Receipt[46],WH_Elapsed[46],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 047 [ADDED]
+WH_Channel(WH_Node_12D,0,1,48,RF01CLX_Items.Segment12D,WH_Settings,WH_Site,WH_TransferLimit[47],WH_Source[47],WH_State[47],WH_Event[47],WH_Receipt[47],WH_Elapsed[47],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 048 [ADDED]
+WH_Channel(WH_Node_13A,0,1,49,RF01CLX_Items.Segment13A,WH_Settings,WH_Site,WH_TransferLimit[48],WH_Source[48],WH_State[48],WH_Event[48],WH_Receipt[48],WH_Elapsed[48],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 049 [ADDED]
+WH_Channel(WH_Node_13B,0,1,50,RF01CLX_Items.Segment13B,WH_Settings,WH_Site,WH_TransferLimit[49],WH_Source[49],WH_State[49],WH_Event[49],WH_Receipt[49],WH_Elapsed[49],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 050 [ADDED]
+WH_Channel(WH_Node_13C,0,1,51,RF01CLX_Items.Segment13C,WH_Settings,WH_Site,WH_TransferLimit[50],WH_Source[50],WH_State[50],WH_Event[50],WH_Receipt[50],WH_Elapsed[50],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 051 [ADDED]
+WH_Channel(WH_Node_13D,0,1,52,RF01CLX_Items.Segment13D,WH_Settings,WH_Site,WH_TransferLimit[51],WH_Source[51],WH_State[51],WH_Event[51],WH_Receipt[51],WH_Elapsed[51],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 052 [ADDED]
+WH_Channel(WH_Node_14A,0,1,53,RF01CLX_Items.Segment14A,WH_Settings,WH_Site,WH_TransferLimit[52],WH_Source[52],WH_State[52],WH_Event[52],WH_Receipt[52],WH_Elapsed[52],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 053 [ADDED]
+WH_Channel(WH_Node_14B,0,1,54,RF01CLX_Items.Segment14B,WH_Settings,WH_Site,WH_TransferLimit[53],WH_Source[53],WH_State[53],WH_Event[53],WH_Receipt[53],WH_Elapsed[53],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 054 [ADDED]
+WH_Channel(WH_Node_14C,0,1,55,RF01CLX_Items.Segment14C,WH_Settings,WH_Site,WH_TransferLimit[54],WH_Source[54],WH_State[54],WH_Event[54],WH_Receipt[54],WH_Elapsed[54],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 055 [ADDED]
+WH_Channel(WH_Node_14D,0,1,56,RF01CLX_Items.Segment14D,WH_Settings,WH_Site,WH_TransferLimit[55],WH_Source[55],WH_State[55],WH_Event[55],WH_Receipt[55],WH_Elapsed[55],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 056 [ADDED]
+WH_Channel(WH_Node_15A,0,1,57,RF01CLX_Items.Segment15A,WH_Settings,WH_Site,WH_TransferLimit[56],WH_Source[56],WH_State[56],WH_Event[56],WH_Receipt[56],WH_Elapsed[56],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 057 [ADDED]
+WH_Channel(WH_Node_15B,0,1,58,RF01CLX_Items.Segment15B,WH_Settings,WH_Site,WH_TransferLimit[57],WH_Source[57],WH_State[57],WH_Event[57],WH_Receipt[57],WH_Elapsed[57],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 058 [ADDED]
+WH_Channel(WH_Node_15C,0,1,59,RF01CLX_Items.Segment15C,WH_Settings,WH_Site,WH_TransferLimit[58],WH_Source[58],WH_State[58],WH_Event[58],WH_Receipt[58],WH_Elapsed[58],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 059 [ADDED]
+WH_Channel(WH_Node_15D,0,1,60,RF01CLX_Items.Segment15D,WH_Settings,WH_Site,WH_TransferLimit[59],WH_Source[59],WH_State[59],WH_Event[59],WH_Receipt[59],WH_Elapsed[59],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 060 [ADDED]
+WH_Channel(WH_Node_16A,0,1,61,RF01CLX_Items.Segment16A,WH_Settings,WH_Site,WH_TransferLimit[60],WH_Source[60],WH_State[60],WH_Event[60],WH_Receipt[60],WH_Elapsed[60],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 061 [ADDED]
+WH_Channel(WH_Node_16B,0,1,62,RF01CLX_Items.Segment16B,WH_Settings,WH_Site,WH_TransferLimit[61],WH_Source[61],WH_State[61],WH_Event[61],WH_Receipt[61],WH_Elapsed[61],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 062 [ADDED]
+WH_Channel(WH_Node_16C,0,1,63,RF01CLX_Items.Segment16C,WH_Settings,WH_Site,WH_TransferLimit[62],WH_Source[62],WH_State[62],WH_Event[62],WH_Receipt[62],WH_Elapsed[62],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 063 [ADDED]
+WH_Channel(WH_Node_16D,0,1,64,RF01CLX_Items.Segment16D,WH_Settings,WH_Site,WH_TransferLimit[63],WH_Source[63],WH_State[63],WH_Event[63],WH_Receipt[63],WH_Elapsed[63],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 064 [ADDED]
+WH_Channel(WH_Node_17A,0,1,65,RF01CLX_Items.Segment17A,WH_Settings,WH_Site,WH_TransferLimit[64],WH_Source[64],WH_State[64],WH_Event[64],WH_Receipt[64],WH_Elapsed[64],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 065 [ADDED]
+WH_Channel(WH_Node_17B,0,1,66,RF01CLX_Items.Segment17B,WH_Settings,WH_Site,WH_TransferLimit[65],WH_Source[65],WH_State[65],WH_Event[65],WH_Receipt[65],WH_Elapsed[65],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 066 [ADDED]
+WH_Channel(WH_Node_17C,0,1,67,RF01CLX_Items.Segment17C,WH_Settings,WH_Site,WH_TransferLimit[66],WH_Source[66],WH_State[66],WH_Event[66],WH_Receipt[66],WH_Elapsed[66],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 067 [ADDED]
+WH_Channel(WH_Node_17D,0,1,68,RF01CLX_Items.Segment17D,WH_Settings,WH_Site,WH_TransferLimit[67],WH_Source[67],WH_State[67],WH_Event[67],WH_Receipt[67],WH_Elapsed[67],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 068 [ADDED]
+WH_Channel(WH_Node_18A,0,1,69,RF01CLX_Items.Segment18A,WH_Settings,WH_Site,WH_TransferLimit[68],WH_Source[68],WH_State[68],WH_Event[68],WH_Receipt[68],WH_Elapsed[68],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 069 [ADDED]
+WH_Channel(WH_Node_18B,0,1,70,RF01CLX_Items.Segment18B,WH_Settings,WH_Site,WH_TransferLimit[69],WH_Source[69],WH_State[69],WH_Event[69],WH_Receipt[69],WH_Elapsed[69],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 070 [ADDED]
+WH_Channel(WH_Node_18C,0,1,71,RF01CLX_Items.Segment18C,WH_Settings,WH_Site,WH_TransferLimit[70],WH_Source[70],WH_State[70],WH_Event[70],WH_Receipt[70],WH_Elapsed[70],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 071 [ADDED]
+WH_Channel(WH_Node_18D,0,1,72,RF01CLX_Items.Segment18D,WH_Settings,WH_Site,WH_TransferLimit[71],WH_Source[71],WH_State[71],WH_Event[71],WH_Receipt[71],WH_Elapsed[71],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 072 [ADDED]
+WH_Channel(WH_Node_19A,0,1,73,RF01CLX_Items.Segment19A,WH_Settings,WH_Site,WH_TransferLimit[72],WH_Source[72],WH_State[72],WH_Event[72],WH_Receipt[72],WH_Elapsed[72],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 073 [ADDED]
+WH_Channel(WH_Node_19B,0,1,74,RF01CLX_Items.Segment19B,WH_Settings,WH_Site,WH_TransferLimit[73],WH_Source[73],WH_State[73],WH_Event[73],WH_Receipt[73],WH_Elapsed[73],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 074 [ADDED]
+WH_Channel(WH_Node_19C,0,1,75,RF01CLX_Items.Segment19C,WH_Settings,WH_Site,WH_TransferLimit[74],WH_Source[74],WH_State[74],WH_Event[74],WH_Receipt[74],WH_Elapsed[74],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 075 [ADDED]
+WH_Channel(WH_Node_19D,0,1,76,RF01CLX_Items.Segment19D,WH_Settings,WH_Site,WH_TransferLimit[75],WH_Source[75],WH_State[75],WH_Event[75],WH_Receipt[75],WH_Elapsed[75],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 076 [ADDED]
+WH_Channel(WH_Node_20A,0,1,77,RF01CLX_Items.Segment20A,WH_Settings,WH_Site,WH_TransferLimit[76],WH_Source[76],WH_State[76],WH_Event[76],WH_Receipt[76],WH_Elapsed[76],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 077 [ADDED]
+WH_Channel(WH_Node_20B,0,1,78,RF01CLX_Items.Segment20B,WH_Settings,WH_Site,WH_TransferLimit[77],WH_Source[77],WH_State[77],WH_Event[77],WH_Receipt[77],WH_Elapsed[77],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 078 [ADDED]
+WH_Channel(WH_Node_20C,0,1,79,RF01CLX_Items.Segment20C,WH_Settings,WH_Site,WH_TransferLimit[78],WH_Source[78],WH_State[78],WH_Event[78],WH_Receipt[78],WH_Elapsed[78],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 079 [ADDED]
+WH_Channel(WH_Node_20D,0,1,80,RF01CLX_Items.Segment20D,WH_Settings,WH_Site,WH_TransferLimit[79],WH_Source[79],WH_State[79],WH_Event[79],WH_Receipt[79],WH_Elapsed[79],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 080 [ADDED]
+WH_Channel(WH_Node_21A,0,1,81,RF01CLX_Items.Segment21A,WH_Settings,WH_Site,WH_TransferLimit[80],WH_Source[80],WH_State[80],WH_Event[80],WH_Receipt[80],WH_Elapsed[80],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 081 [ADDED]
+WH_Channel(WH_Node_21B,0,1,82,RF01CLX_Items.Segment21B,WH_Settings,WH_Site,WH_TransferLimit[81],WH_Source[81],WH_State[81],WH_Event[81],WH_Receipt[81],WH_Elapsed[81],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 082 [ADDED]
+WH_Channel(WH_Node_21C,0,1,83,RF01CLX_Items.Segment21C,WH_Settings,WH_Site,WH_TransferLimit[82],WH_Source[82],WH_State[82],WH_Event[82],WH_Receipt[82],WH_Elapsed[82],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 083 [ADDED]
+WH_Channel(WH_Node_21D,0,1,84,RF01CLX_Items.Segment21D,WH_Settings,WH_Site,WH_TransferLimit[83],WH_Source[83],WH_State[83],WH_Event[83],WH_Receipt[83],WH_Elapsed[83],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 084 [ADDED]
+WH_Channel(WH_Node_22A,0,1,85,RF01CLX_Items.Segment22A,WH_Settings,WH_Site,WH_TransferLimit[84],WH_Source[84],WH_State[84],WH_Event[84],WH_Receipt[84],WH_Elapsed[84],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 085 [ADDED]
+WH_Channel(WH_Node_22B,0,1,86,RF01CLX_Items.Segment22B,WH_Settings,WH_Site,WH_TransferLimit[85],WH_Source[85],WH_State[85],WH_Event[85],WH_Receipt[85],WH_Elapsed[85],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 086 [ADDED]
+WH_Channel(WH_Node_22C,0,1,87,RF01CLX_Items.Segment22C,WH_Settings,WH_Site,WH_TransferLimit[86],WH_Source[86],WH_State[86],WH_Event[86],WH_Receipt[86],WH_Elapsed[86],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 087 [ADDED]
+WH_Channel(WH_Node_22D,0,1,88,RF01CLX_Items.Segment22D,WH_Settings,WH_Site,WH_TransferLimit[87],WH_Source[87],WH_State[87],WH_Event[87],WH_Receipt[87],WH_Elapsed[87],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 088 [ADDED]
+WH_Channel(WH_Node_23A,0,1,89,RF01CLX_Items.Segment23A,WH_Settings,WH_Site,WH_TransferLimit[88],WH_Source[88],WH_State[88],WH_Event[88],WH_Receipt[88],WH_Elapsed[88],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 089 [ADDED]
+WH_Channel(WH_Node_23B,0,1,90,RF01CLX_Items.Segment23B,WH_Settings,WH_Site,WH_TransferLimit[89],WH_Source[89],WH_State[89],WH_Event[89],WH_Receipt[89],WH_Elapsed[89],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 090 [ADDED]
+WH_Channel(WH_Node_23C,0,1,91,RF01CLX_Items.Segment23C,WH_Settings,WH_Site,WH_TransferLimit[90],WH_Source[90],WH_State[90],WH_Event[90],WH_Receipt[90],WH_Elapsed[90],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 091 [ADDED]
+WH_Channel(WH_Node_23D,0,1,92,RF01CLX_Items.Segment23D,WH_Settings,WH_Site,WH_TransferLimit[91],WH_Source[91],WH_State[91],WH_Event[91],WH_Receipt[91],WH_Elapsed[91],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 092 [ADDED]
+WH_Channel(WH_Node_24A,0,1,93,RF01CLX_Items.Segment24A,WH_Settings,WH_Site,WH_TransferLimit[92],WH_Source[92],WH_State[92],WH_Event[92],WH_Receipt[92],WH_Elapsed[92],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 093 [ADDED]
+WH_Channel(WH_Node_24B,0,1,94,RF01CLX_Items.Segment24B,WH_Settings,WH_Site,WH_TransferLimit[93],WH_Source[93],WH_State[93],WH_Event[93],WH_Receipt[93],WH_Elapsed[93],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 094 [ADDED]
+WH_Channel(WH_Node_24C,0,1,95,RF01CLX_Items.Segment24C,WH_Settings,WH_Site,WH_TransferLimit[94],WH_Source[94],WH_State[94],WH_Event[94],WH_Receipt[94],WH_Elapsed[94],MAX_INT,MAX_INT_MINUS_ONE);
+
+RUNG 095 [ADDED]
+WH_Channel(WH_Node_24D,0,1,96,RF01CLX_Items.Segment24D,WH_Settings,WH_Site,WH_TransferLimit[95],WH_Source[95],WH_State[95],WH_Event[95],WH_Receipt[95],WH_Elapsed[95],MAX_INT,MAX_INT_MINUS_ONE);

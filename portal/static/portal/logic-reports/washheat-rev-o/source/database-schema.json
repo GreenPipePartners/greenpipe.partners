@@ -1,0 +1,2595 @@
+{
+  "tables": [
+    {
+      "name": "washheat.run",
+      "rawSql": "CREATE TABLE washheat.run (\n    run_id nvarchar(64) NOT NULL PRIMARY KEY,\n    furnace nvarchar(4) NOT NULL CHECK (furnace IN ('RF01','RF02')),\n    phase nvarchar(40) NOT NULL,\n    revision int NOT NULL CHECK (revision >= 0),\n    snapshot nvarchar(max) NOT NULL CHECK (ISJSON(snapshot) = 1),\n    created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME(),\n    updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()\n);",
+      "rows": [
+        "run_id nvarchar(64) NOT NULL PRIMARY KEY",
+        "furnace nvarchar(4) NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+        "phase nvarchar(40) NOT NULL",
+        "revision int NOT NULL CHECK (revision >= 0)",
+        "snapshot nvarchar(max) NOT NULL CHECK (ISJSON(snapshot) = 1)",
+        "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+        "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()"
+      ],
+      "source": "001_washheat.sql",
+      "sourceLine": 8,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY",
+          "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY",
+          "sourceLine": 9
+        },
+        {
+          "name": "furnace",
+          "type": "nvarchar(4)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+          "rawSql": "furnace nvarchar(4) NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+          "sourceLine": 10
+        },
+        {
+          "name": "phase",
+          "type": "nvarchar(40)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "phase nvarchar(40) NOT NULL",
+          "sourceLine": 11
+        },
+        {
+          "name": "revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (revision >= 0)",
+          "rawSql": "revision int NOT NULL CHECK (revision >= 0)",
+          "sourceLine": 12
+        },
+        {
+          "name": "snapshot",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(snapshot) = 1)",
+          "rawSql": "snapshot nvarchar(max) NOT NULL CHECK (ISJSON(snapshot) = 1)",
+          "sourceLine": 13
+        },
+        {
+          "name": "created_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 14
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 15
+        }
+      ],
+      "primaryKey": [
+        "run_id"
+      ],
+      "uniqueKeys": [],
+      "constraints": []
+    },
+    {
+      "name": "washheat.event",
+      "rawSql": "CREATE TABLE washheat.event (\n    event_id nvarchar(64) NOT NULL PRIMARY KEY,\n    run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id),\n    event_type nvarchar(40) NOT NULL,\n    event_at_ms bigint NOT NULL,\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1),\n    payload_sha256 char(64) NOT NULL,\n    actor nvarchar(128) NOT NULL,\n    state_revision int NOT NULL,\n    received_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME(),\n    UNIQUE (run_id, state_revision)\n);",
+      "rows": [
+        "event_id nvarchar(64) NOT NULL PRIMARY KEY",
+        "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+        "event_type nvarchar(40) NOT NULL",
+        "event_at_ms bigint NOT NULL",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+        "payload_sha256 char(64) NOT NULL",
+        "actor nvarchar(128) NOT NULL",
+        "state_revision int NOT NULL",
+        "received_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+        "UNIQUE (run_id, state_revision)"
+      ],
+      "source": "001_washheat.sql",
+      "sourceLine": 19,
+      "columns": [
+        {
+          "name": "event_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY",
+          "rawSql": "event_id nvarchar(64) NOT NULL PRIMARY KEY",
+          "sourceLine": 20
+        },
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+          "sourceLine": 21
+        },
+        {
+          "name": "event_type",
+          "type": "nvarchar(40)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "event_type nvarchar(40) NOT NULL",
+          "sourceLine": 22
+        },
+        {
+          "name": "event_at_ms",
+          "type": "bigint",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "event_at_ms bigint NOT NULL",
+          "sourceLine": 23
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+          "sourceLine": 24
+        },
+        {
+          "name": "payload_sha256",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "payload_sha256 char(64) NOT NULL",
+          "sourceLine": 25
+        },
+        {
+          "name": "actor",
+          "type": "nvarchar(128)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "actor nvarchar(128) NOT NULL",
+          "sourceLine": 26
+        },
+        {
+          "name": "state_revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "state_revision int NOT NULL",
+          "sourceLine": 27
+        },
+        {
+          "name": "received_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "received_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 28
+        }
+      ],
+      "primaryKey": [
+        "event_id"
+      ],
+      "uniqueKeys": [
+        [
+          "run_id",
+          "state_revision"
+        ]
+      ],
+      "constraints": [
+        "UNIQUE (run_id, state_revision)"
+      ]
+    },
+    {
+      "name": "washheat.handling_slot",
+      "rawSql": "CREATE TABLE washheat.handling_slot (\n        slot_id int NOT NULL PRIMARY KEY CHECK (slot_id = 1),\n        run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)\n    );",
+      "rows": [
+        "slot_id int NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+        "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)"
+      ],
+      "source": "001_washheat.sql",
+      "sourceLine": 34,
+      "columns": [
+        {
+          "name": "slot_id",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+          "rawSql": "slot_id int NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+          "sourceLine": 35
+        },
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NULL",
+          "options": "NULL REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+          "sourceLine": 36
+        }
+      ],
+      "primaryKey": [
+        "slot_id"
+      ],
+      "uniqueKeys": [],
+      "constraints": []
+    },
+    {
+      "name": "washheat.tropos_record",
+      "rawSql": "CREATE TABLE washheat.tropos_record (\n    run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id),\n    episode_no int NOT NULL,\n    record_revision int NOT NULL DEFAULT 1,\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1),\n    payload_sha256 char(64) NOT NULL,\n    review_status nvarchar(40) NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION',\n    submission_status nvarchar(40) NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT'),\n    created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME(),\n    PRIMARY KEY (run_id, episode_no, record_revision)\n);",
+      "rows": [
+        "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+        "episode_no int NOT NULL",
+        "record_revision int NOT NULL DEFAULT 1",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+        "payload_sha256 char(64) NOT NULL",
+        "review_status nvarchar(40) NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+        "submission_status nvarchar(40) NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+        "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+        "PRIMARY KEY (run_id, episode_no, record_revision)"
+      ],
+      "source": "001_washheat.sql",
+      "sourceLine": 42,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+          "sourceLine": 43
+        },
+        {
+          "name": "episode_no",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "episode_no int NOT NULL",
+          "sourceLine": 44
+        },
+        {
+          "name": "record_revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT 1",
+          "rawSql": "record_revision int NOT NULL DEFAULT 1",
+          "sourceLine": 45
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+          "sourceLine": 46
+        },
+        {
+          "name": "payload_sha256",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "payload_sha256 char(64) NOT NULL",
+          "sourceLine": 47
+        },
+        {
+          "name": "review_status",
+          "type": "nvarchar(40)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+          "rawSql": "review_status nvarchar(40) NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+          "sourceLine": 48
+        },
+        {
+          "name": "submission_status",
+          "type": "nvarchar(40)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+          "rawSql": "submission_status nvarchar(40) NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+          "sourceLine": 49
+        },
+        {
+          "name": "created_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 50
+        }
+      ],
+      "primaryKey": [
+        "run_id",
+        "episode_no",
+        "record_revision"
+      ],
+      "uniqueKeys": [],
+      "constraints": [
+        "PRIMARY KEY (run_id, episode_no, record_revision)"
+      ]
+    },
+    {
+      "name": "washheat.schema_version",
+      "rawSql": "CREATE TABLE washheat.schema_version(version int PRIMARY KEY, installed_at datetime2(3) DEFAULT SYSUTCDATETIME());",
+      "rows": [
+        "version int PRIMARY KEY",
+        "installed_at datetime2(3) DEFAULT SYSUTCDATETIME()"
+      ],
+      "source": "001_washheat.sql",
+      "sourceLine": 56,
+      "columns": [
+        {
+          "name": "version",
+          "type": "int",
+          "nullability": "UNSPECIFIED",
+          "options": "PRIMARY KEY",
+          "rawSql": "version int PRIMARY KEY",
+          "sourceLine": 56
+        },
+        {
+          "name": "installed_at",
+          "type": "datetime2(3)",
+          "nullability": "UNSPECIFIED",
+          "options": "DEFAULT SYSUTCDATETIME()",
+          "rawSql": "installed_at datetime2(3) DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 56
+        }
+      ],
+      "primaryKey": [
+        "version"
+      ],
+      "uniqueKeys": [],
+      "constraints": []
+    },
+    {
+      "name": "washheat.plc_binding",
+      "rawSql": "CREATE TABLE washheat.plc_binding (\n    binding_key char(64) NOT NULL PRIMARY KEY,\n    run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id),\n    controller nvarchar(128) NOT NULL,\n    channel_index int NULL CHECK (channel_index BETWEEN 0 AND 191),\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)\n);",
+      "rows": [
+        "binding_key char(64) NOT NULL PRIMARY KEY",
+        "run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+        "controller nvarchar(128) NOT NULL",
+        "channel_index int NULL CHECK (channel_index BETWEEN 0 AND 191)",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)"
+      ],
+      "source": "002_capture.sql",
+      "sourceLine": 5,
+      "columns": [
+        {
+          "name": "binding_key",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY",
+          "rawSql": "binding_key char(64) NOT NULL PRIMARY KEY",
+          "sourceLine": 6
+        },
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+          "sourceLine": 7
+        },
+        {
+          "name": "controller",
+          "type": "nvarchar(128)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "controller nvarchar(128) NOT NULL",
+          "sourceLine": 8
+        },
+        {
+          "name": "channel_index",
+          "type": "int",
+          "nullability": "NULL",
+          "options": "NULL CHECK (channel_index BETWEEN 0 AND 191)",
+          "rawSql": "channel_index int NULL CHECK (channel_index BETWEEN 0 AND 191)",
+          "sourceLine": 9
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+          "sourceLine": 10
+        }
+      ],
+      "primaryKey": [
+        "binding_key"
+      ],
+      "uniqueKeys": [
+        [
+          "run_id"
+        ]
+      ],
+      "constraints": []
+    },
+    {
+      "name": "washheat.plc_capture",
+      "rawSql": "CREATE TABLE washheat.plc_capture (\n    capture_key char(64) NOT NULL PRIMARY KEY,\n    channel_key char(64) NOT NULL,\n    event_sequence int NOT NULL CHECK (event_sequence>0),\n    run_id nvarchar(64) NULL REFERENCES washheat.run(run_id),\n    disposition int NOT NULL CHECK (disposition IN (100,200,900)),\n    reason nvarchar(1024) NULL,\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1),\n    payload_sha256 char(64) NOT NULL,\n    received_at_ms bigint NOT NULL,\n    UNIQUE (channel_key,event_sequence)\n);",
+      "rows": [
+        "capture_key char(64) NOT NULL PRIMARY KEY",
+        "channel_key char(64) NOT NULL",
+        "event_sequence int NOT NULL CHECK (event_sequence>0)",
+        "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+        "disposition int NOT NULL CHECK (disposition IN (100,200,900))",
+        "reason nvarchar(1024) NULL",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+        "payload_sha256 char(64) NOT NULL",
+        "received_at_ms bigint NOT NULL",
+        "UNIQUE (channel_key,event_sequence)"
+      ],
+      "source": "002_capture.sql",
+      "sourceLine": 14,
+      "columns": [
+        {
+          "name": "capture_key",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY",
+          "rawSql": "capture_key char(64) NOT NULL PRIMARY KEY",
+          "sourceLine": 15
+        },
+        {
+          "name": "channel_key",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "channel_key char(64) NOT NULL",
+          "sourceLine": 16
+        },
+        {
+          "name": "event_sequence",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (event_sequence>0)",
+          "rawSql": "event_sequence int NOT NULL CHECK (event_sequence>0)",
+          "sourceLine": 17
+        },
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NULL",
+          "options": "NULL REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+          "sourceLine": 18
+        },
+        {
+          "name": "disposition",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (disposition IN (100,200,900))",
+          "rawSql": "disposition int NOT NULL CHECK (disposition IN (100,200,900))",
+          "sourceLine": 19
+        },
+        {
+          "name": "reason",
+          "type": "nvarchar(1024)",
+          "nullability": "NULL",
+          "options": "NULL",
+          "rawSql": "reason nvarchar(1024) NULL",
+          "sourceLine": 20
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+          "sourceLine": 21
+        },
+        {
+          "name": "payload_sha256",
+          "type": "char(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "payload_sha256 char(64) NOT NULL",
+          "sourceLine": 22
+        },
+        {
+          "name": "received_at_ms",
+          "type": "bigint",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "received_at_ms bigint NOT NULL",
+          "sourceLine": 23
+        }
+      ],
+      "primaryKey": [
+        "capture_key"
+      ],
+      "uniqueKeys": [
+        [
+          "channel_key",
+          "event_sequence"
+        ]
+      ],
+      "constraints": [
+        "UNIQUE (channel_key,event_sequence)"
+      ]
+    },
+    {
+      "name": "washheat.plc_sample",
+      "rawSql": "CREATE TABLE washheat.plc_sample (\n    run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id),\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)\n);",
+      "rows": [
+        "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)"
+      ],
+      "source": "002_capture.sql",
+      "sourceLine": 28,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+          "sourceLine": 29
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+          "sourceLine": 30
+        }
+      ],
+      "primaryKey": [
+        "run_id"
+      ],
+      "uniqueKeys": [],
+      "constraints": []
+    },
+    {
+      "name": "washheat.part_recipe",
+      "rawSql": "CREATE TABLE washheat.part_recipe (\n    recipe_id nvarchar(64) NOT NULL PRIMARY KEY,\n    part_number nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL,\n    stage nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL,\n    qa_spec nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL,\n    press_recipe nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL,\n    press_qa nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL,\n    od_in decimal(18,6) NOT NULL CHECK (od_in > 0),\n    height_in decimal(18,6) NOT NULL CHECK (height_in > 0),\n    circle_in decimal(18,6) NULL CHECK (circle_in > 0),\n    max_transfer_seconds decimal(18,6) NULL,\n    dh_cycle_start_seconds decimal(18,6) NULL,\n    dh_tonnage_seconds decimal(18,6) NULL,\n    active bit NOT NULL DEFAULT 1,\n    revision int NOT NULL CHECK (revision > 0),\n    notes nvarchar(1024) NOT NULL DEFAULT '',\n    updated_by nvarchar(128) NOT NULL,\n    updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME(),\n    CONSTRAINT UQ_part_recipe_lookup UNIQUE (part_number, stage, qa_spec, press_recipe, press_qa),\n    CONSTRAINT CK_part_recipe_timing CHECK (\n      (max_transfer_seconds IS NULL AND dh_cycle_start_seconds IS NULL AND dh_tonnage_seconds IS NULL) OR\n      (max_transfer_seconds IS NOT NULL AND dh_cycle_start_seconds IS NOT NULL AND dh_tonnage_seconds IS NOT NULL\n       AND max_transfer_seconds >= 0 AND dh_cycle_start_seconds >= 0 AND dh_tonnage_seconds >= 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 > 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 <= 2147483.646))\n);",
+      "rows": [
+        "recipe_id nvarchar(64) NOT NULL PRIMARY KEY",
+        "part_number nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+        "stage nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+        "qa_spec nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+        "press_recipe nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+        "press_qa nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+        "od_in decimal(18,6) NOT NULL CHECK (od_in > 0)",
+        "height_in decimal(18,6) NOT NULL CHECK (height_in > 0)",
+        "circle_in decimal(18,6) NULL CHECK (circle_in > 0)",
+        "max_transfer_seconds decimal(18,6) NULL",
+        "dh_cycle_start_seconds decimal(18,6) NULL",
+        "dh_tonnage_seconds decimal(18,6) NULL",
+        "active bit NOT NULL DEFAULT 1",
+        "revision int NOT NULL CHECK (revision > 0)",
+        "notes nvarchar(1024) NOT NULL DEFAULT ''",
+        "updated_by nvarchar(128) NOT NULL",
+        "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+        "CONSTRAINT UQ_part_recipe_lookup UNIQUE (part_number, stage, qa_spec, press_recipe, press_qa)",
+        "CONSTRAINT CK_part_recipe_timing CHECK (\n      (max_transfer_seconds IS NULL AND dh_cycle_start_seconds IS NULL AND dh_tonnage_seconds IS NULL) OR\n      (max_transfer_seconds IS NOT NULL AND dh_cycle_start_seconds IS NOT NULL AND dh_tonnage_seconds IS NOT NULL\n       AND max_transfer_seconds >= 0 AND dh_cycle_start_seconds >= 0 AND dh_tonnage_seconds >= 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 > 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 <= 2147483.646))"
+      ],
+      "source": "003_part_catalog.sql",
+      "sourceLine": 5,
+      "columns": [
+        {
+          "name": "recipe_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY",
+          "rawSql": "recipe_id nvarchar(64) NOT NULL PRIMARY KEY",
+          "sourceLine": 6
+        },
+        {
+          "name": "part_number",
+          "type": "nvarchar(32)",
+          "nullability": "NOT NULL",
+          "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "rawSql": "part_number nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "sourceLine": 7
+        },
+        {
+          "name": "stage",
+          "type": "nvarchar(32)",
+          "nullability": "NOT NULL",
+          "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "rawSql": "stage nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "sourceLine": 8
+        },
+        {
+          "name": "qa_spec",
+          "type": "nvarchar(32)",
+          "nullability": "NOT NULL",
+          "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "rawSql": "qa_spec nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "sourceLine": 9
+        },
+        {
+          "name": "press_recipe",
+          "type": "nvarchar(32)",
+          "nullability": "NOT NULL",
+          "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "rawSql": "press_recipe nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "sourceLine": 10
+        },
+        {
+          "name": "press_qa",
+          "type": "nvarchar(32)",
+          "nullability": "NOT NULL",
+          "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "rawSql": "press_qa nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+          "sourceLine": 11
+        },
+        {
+          "name": "od_in",
+          "type": "decimal(18,6)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (od_in > 0)",
+          "rawSql": "od_in decimal(18,6) NOT NULL CHECK (od_in > 0)",
+          "sourceLine": 12
+        },
+        {
+          "name": "height_in",
+          "type": "decimal(18,6)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (height_in > 0)",
+          "rawSql": "height_in decimal(18,6) NOT NULL CHECK (height_in > 0)",
+          "sourceLine": 13
+        },
+        {
+          "name": "circle_in",
+          "type": "decimal(18,6)",
+          "nullability": "NULL",
+          "options": "NULL CHECK (circle_in > 0)",
+          "rawSql": "circle_in decimal(18,6) NULL CHECK (circle_in > 0)",
+          "sourceLine": 14
+        },
+        {
+          "name": "max_transfer_seconds",
+          "type": "decimal(18,6)",
+          "nullability": "NULL",
+          "options": "NULL",
+          "rawSql": "max_transfer_seconds decimal(18,6) NULL",
+          "sourceLine": 15
+        },
+        {
+          "name": "dh_cycle_start_seconds",
+          "type": "decimal(18,6)",
+          "nullability": "NULL",
+          "options": "NULL",
+          "rawSql": "dh_cycle_start_seconds decimal(18,6) NULL",
+          "sourceLine": 16
+        },
+        {
+          "name": "dh_tonnage_seconds",
+          "type": "decimal(18,6)",
+          "nullability": "NULL",
+          "options": "NULL",
+          "rawSql": "dh_tonnage_seconds decimal(18,6) NULL",
+          "sourceLine": 17
+        },
+        {
+          "name": "active",
+          "type": "bit",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT 1",
+          "rawSql": "active bit NOT NULL DEFAULT 1",
+          "sourceLine": 18
+        },
+        {
+          "name": "revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (revision > 0)",
+          "rawSql": "revision int NOT NULL CHECK (revision > 0)",
+          "sourceLine": 19
+        },
+        {
+          "name": "notes",
+          "type": "nvarchar(1024)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT ''",
+          "rawSql": "notes nvarchar(1024) NOT NULL DEFAULT ''",
+          "sourceLine": 20
+        },
+        {
+          "name": "updated_by",
+          "type": "nvarchar(128)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "updated_by nvarchar(128) NOT NULL",
+          "sourceLine": 21
+        },
+        {
+          "name": "updated_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 22
+        }
+      ],
+      "primaryKey": [
+        "recipe_id"
+      ],
+      "uniqueKeys": [
+        [
+          "part_number",
+          "stage",
+          "qa_spec",
+          "press_recipe",
+          "press_qa"
+        ]
+      ],
+      "constraints": [
+        "CONSTRAINT UQ_part_recipe_lookup UNIQUE (part_number, stage, qa_spec, press_recipe, press_qa)",
+        "CONSTRAINT CK_part_recipe_timing CHECK (\n      (max_transfer_seconds IS NULL AND dh_cycle_start_seconds IS NULL AND dh_tonnage_seconds IS NULL) OR\n      (max_transfer_seconds IS NOT NULL AND dh_cycle_start_seconds IS NOT NULL AND dh_tonnage_seconds IS NOT NULL\n       AND max_transfer_seconds >= 0 AND dh_cycle_start_seconds >= 0 AND dh_tonnage_seconds >= 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 > 0\n       AND max_transfer_seconds + dh_cycle_start_seconds - dh_tonnage_seconds - 3 <= 2147483.646))"
+      ]
+    },
+    {
+      "name": "washheat.part_recipe_revision",
+      "rawSql": "CREATE TABLE washheat.part_recipe_revision (\n    recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id),\n    revision int NOT NULL,\n    payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1),\n    changed_by nvarchar(128) NOT NULL,\n    changed_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME(),\n    PRIMARY KEY (recipe_id, revision)\n);",
+      "rows": [
+        "recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+        "revision int NOT NULL",
+        "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+        "changed_by nvarchar(128) NOT NULL",
+        "changed_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+        "PRIMARY KEY (recipe_id, revision)"
+      ],
+      "source": "003_part_catalog.sql",
+      "sourceLine": 33,
+      "columns": [
+        {
+          "name": "recipe_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+          "rawSql": "recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+          "sourceLine": 34
+        },
+        {
+          "name": "revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "revision int NOT NULL",
+          "sourceLine": 35
+        },
+        {
+          "name": "payload",
+          "type": "nvarchar(max)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+          "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+          "sourceLine": 36
+        },
+        {
+          "name": "changed_by",
+          "type": "nvarchar(128)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "changed_by nvarchar(128) NOT NULL",
+          "sourceLine": 37
+        },
+        {
+          "name": "changed_at",
+          "type": "datetime2(3)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+          "rawSql": "changed_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+          "sourceLine": 38
+        }
+      ],
+      "primaryKey": [
+        "recipe_id",
+        "revision"
+      ],
+      "uniqueKeys": [],
+      "constraints": [
+        "PRIMARY KEY (recipe_id, revision)"
+      ]
+    },
+    {
+      "name": "washheat.run_recipe",
+      "rawSql": "CREATE TABLE washheat.run_recipe (\n    run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id),\n    recipe_id nvarchar(64) NOT NULL,\n    recipe_revision int NOT NULL,\n    enrolled_by nvarchar(128) NOT NULL,\n    FOREIGN KEY (recipe_id, recipe_revision) REFERENCES washheat.part_recipe_revision(recipe_id, revision)\n);",
+      "rows": [
+        "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+        "recipe_id nvarchar(64) NOT NULL",
+        "recipe_revision int NOT NULL",
+        "enrolled_by nvarchar(128) NOT NULL",
+        "FOREIGN KEY (recipe_id, recipe_revision) REFERENCES washheat.part_recipe_revision(recipe_id, revision)"
+      ],
+      "source": "003_part_catalog.sql",
+      "sourceLine": 43,
+      "columns": [
+        {
+          "name": "run_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+          "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+          "sourceLine": 44
+        },
+        {
+          "name": "recipe_id",
+          "type": "nvarchar(64)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "recipe_id nvarchar(64) NOT NULL",
+          "sourceLine": 45
+        },
+        {
+          "name": "recipe_revision",
+          "type": "int",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "recipe_revision int NOT NULL",
+          "sourceLine": 46
+        },
+        {
+          "name": "enrolled_by",
+          "type": "nvarchar(128)",
+          "nullability": "NOT NULL",
+          "options": "NOT NULL",
+          "rawSql": "enrolled_by nvarchar(128) NOT NULL",
+          "sourceLine": 47
+        }
+      ],
+      "primaryKey": [
+        "run_id"
+      ],
+      "uniqueKeys": [],
+      "constraints": [
+        "FOREIGN KEY (recipe_id, recipe_revision) REFERENCES washheat.part_recipe_revision(recipe_id, revision)"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "FK01",
+      "child": "washheat.event",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..N",
+      "identifying": false
+    },
+    {
+      "id": "FK02",
+      "child": "washheat.handling_slot",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "0..1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..N",
+      "identifying": false
+    },
+    {
+      "id": "FK03",
+      "child": "washheat.tropos_record",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..N",
+      "identifying": true
+    },
+    {
+      "id": "FK04",
+      "child": "washheat.plc_binding",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..1",
+      "identifying": false
+    },
+    {
+      "id": "FK05",
+      "child": "washheat.plc_capture",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "0..1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..N",
+      "identifying": false
+    },
+    {
+      "id": "FK06",
+      "child": "washheat.plc_sample",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..1",
+      "identifying": true
+    },
+    {
+      "id": "FK07",
+      "child": "washheat.part_recipe_revision",
+      "childColumns": [
+        "recipe_id"
+      ],
+      "parent": "washheat.part_recipe",
+      "parentColumns": [
+        "recipe_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+      "childCardinality": "0..N",
+      "identifying": true
+    },
+    {
+      "id": "FK08",
+      "child": "washheat.run_recipe",
+      "childColumns": [
+        "run_id"
+      ],
+      "parent": "washheat.run",
+      "parentColumns": [
+        "run_id"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "childCardinality": "0..1",
+      "identifying": true
+    },
+    {
+      "id": "FK09",
+      "child": "washheat.run_recipe",
+      "childColumns": [
+        "recipe_id",
+        "recipe_revision"
+      ],
+      "parent": "washheat.part_recipe_revision",
+      "parentColumns": [
+        "recipe_id",
+        "revision"
+      ],
+      "parentCardinality": "1",
+      "onDelete": "NO ACTION",
+      "onUpdate": "NO ACTION",
+      "rawSql": "FOREIGN KEY (recipe_id, recipe_revision) REFERENCES washheat.part_recipe_revision(recipe_id, revision)",
+      "childCardinality": "0..N",
+      "identifying": false
+    }
+  ],
+  "foreign_keys": [
+    [
+      "washheat.event",
+      "washheat.run"
+    ],
+    [
+      "washheat.handling_slot",
+      "washheat.run"
+    ],
+    [
+      "washheat.tropos_record",
+      "washheat.run"
+    ],
+    [
+      "washheat.plc_binding",
+      "washheat.run"
+    ],
+    [
+      "washheat.plc_capture",
+      "washheat.run"
+    ],
+    [
+      "washheat.plc_sample",
+      "washheat.run"
+    ],
+    [
+      "washheat.part_recipe_revision",
+      "washheat.part_recipe"
+    ],
+    [
+      "washheat.run_recipe",
+      "washheat.run"
+    ],
+    [
+      "washheat.run_recipe",
+      "washheat.part_recipe_revision"
+    ]
+  ],
+  "source_receipts": [
+    {
+      "path": "solution/sql/001_washheat.sql",
+      "sha256": "3f049aae3fe0cd6f487558f816c9580a9a14da8e57b7f76b89b64f725c09b1b4"
+    },
+    {
+      "path": "solution/sql/002_capture.sql",
+      "sha256": "c50b76b981f28d2b9fad8cfda386435510e2365d137274297bf5c54ce4c793fe"
+    },
+    {
+      "path": "solution/sql/003_part_catalog.sql",
+      "sha256": "d33a9a11cb831de21eb371c8676933ac4cf6ddea17012f6950214cd29fdd7b28"
+    }
+  ],
+  "rendered_fields": [
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "recipe_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY",
+      "rawSql": "recipe_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "sourceLine": 6,
+      "table": "washheat.part_recipe",
+      "column": "recipe_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "recipe_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "part_number",
+      "type": "nvarchar(32)",
+      "nullability": "NOT NULL",
+      "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "rawSql": "part_number nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "sourceLine": 7,
+      "table": "washheat.part_recipe",
+      "column": "part_number",
+      "sql_type": "nvarchar(32)",
+      "raw_declaration": "part_number nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "stage",
+      "type": "nvarchar(32)",
+      "nullability": "NOT NULL",
+      "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "rawSql": "stage nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "sourceLine": 8,
+      "table": "washheat.part_recipe",
+      "column": "stage",
+      "sql_type": "nvarchar(32)",
+      "raw_declaration": "stage nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "qa_spec",
+      "type": "nvarchar(32)",
+      "nullability": "NOT NULL",
+      "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "rawSql": "qa_spec nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "sourceLine": 9,
+      "table": "washheat.part_recipe",
+      "column": "qa_spec",
+      "sql_type": "nvarchar(32)",
+      "raw_declaration": "qa_spec nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "press_recipe",
+      "type": "nvarchar(32)",
+      "nullability": "NOT NULL",
+      "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "rawSql": "press_recipe nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "sourceLine": 10,
+      "table": "washheat.part_recipe",
+      "column": "press_recipe",
+      "sql_type": "nvarchar(32)",
+      "raw_declaration": "press_recipe nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "press_qa",
+      "type": "nvarchar(32)",
+      "nullability": "NOT NULL",
+      "options": "COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "rawSql": "press_qa nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "sourceLine": 11,
+      "table": "washheat.part_recipe",
+      "column": "press_qa",
+      "sql_type": "nvarchar(32)",
+      "raw_declaration": "press_qa nvarchar(32) COLLATE Latin1_General_100_BIN2 NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "od_in",
+      "type": "decimal(18,6)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (od_in > 0)",
+      "rawSql": "od_in decimal(18,6) NOT NULL CHECK (od_in > 0)",
+      "sourceLine": 12,
+      "table": "washheat.part_recipe",
+      "column": "od_in",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "od_in decimal(18,6) NOT NULL CHECK (od_in > 0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "height_in",
+      "type": "decimal(18,6)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (height_in > 0)",
+      "rawSql": "height_in decimal(18,6) NOT NULL CHECK (height_in > 0)",
+      "sourceLine": 13,
+      "table": "washheat.part_recipe",
+      "column": "height_in",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "height_in decimal(18,6) NOT NULL CHECK (height_in > 0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "circle_in",
+      "type": "decimal(18,6)",
+      "nullability": "NULL",
+      "options": "NULL CHECK (circle_in > 0)",
+      "rawSql": "circle_in decimal(18,6) NULL CHECK (circle_in > 0)",
+      "sourceLine": 14,
+      "table": "washheat.part_recipe",
+      "column": "circle_in",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "circle_in decimal(18,6) NULL CHECK (circle_in > 0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "max_transfer_seconds",
+      "type": "decimal(18,6)",
+      "nullability": "NULL",
+      "options": "NULL",
+      "rawSql": "max_transfer_seconds decimal(18,6) NULL",
+      "sourceLine": 15,
+      "table": "washheat.part_recipe",
+      "column": "max_transfer_seconds",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "max_transfer_seconds decimal(18,6) NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "dh_cycle_start_seconds",
+      "type": "decimal(18,6)",
+      "nullability": "NULL",
+      "options": "NULL",
+      "rawSql": "dh_cycle_start_seconds decimal(18,6) NULL",
+      "sourceLine": 16,
+      "table": "washheat.part_recipe",
+      "column": "dh_cycle_start_seconds",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "dh_cycle_start_seconds decimal(18,6) NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "dh_tonnage_seconds",
+      "type": "decimal(18,6)",
+      "nullability": "NULL",
+      "options": "NULL",
+      "rawSql": "dh_tonnage_seconds decimal(18,6) NULL",
+      "sourceLine": 17,
+      "table": "washheat.part_recipe",
+      "column": "dh_tonnage_seconds",
+      "sql_type": "decimal(18,6)",
+      "raw_declaration": "dh_tonnage_seconds decimal(18,6) NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "active",
+      "type": "bit",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT 1",
+      "rawSql": "active bit NOT NULL DEFAULT 1",
+      "sourceLine": 18,
+      "table": "washheat.part_recipe",
+      "column": "active",
+      "sql_type": "bit",
+      "raw_declaration": "active bit NOT NULL DEFAULT 1",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (revision > 0)",
+      "rawSql": "revision int NOT NULL CHECK (revision > 0)",
+      "sourceLine": 19,
+      "table": "washheat.part_recipe",
+      "column": "revision",
+      "sql_type": "int",
+      "raw_declaration": "revision int NOT NULL CHECK (revision > 0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "notes",
+      "type": "nvarchar(1024)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT ''",
+      "rawSql": "notes nvarchar(1024) NOT NULL DEFAULT ''",
+      "sourceLine": 20,
+      "table": "washheat.part_recipe",
+      "column": "notes",
+      "sql_type": "nvarchar(1024)",
+      "raw_declaration": "notes nvarchar(1024) NOT NULL DEFAULT ''",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "updated_by",
+      "type": "nvarchar(128)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "updated_by nvarchar(128) NOT NULL",
+      "sourceLine": 21,
+      "table": "washheat.part_recipe",
+      "column": "updated_by",
+      "sql_type": "nvarchar(128)",
+      "raw_declaration": "updated_by nvarchar(128) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "updated_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 22,
+      "table": "washheat.part_recipe",
+      "column": "updated_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY",
+      "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "sourceLine": 9,
+      "table": "washheat.run",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "furnace",
+      "type": "nvarchar(4)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+      "rawSql": "furnace nvarchar(4) NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+      "sourceLine": 10,
+      "table": "washheat.run",
+      "column": "furnace",
+      "sql_type": "nvarchar(4)",
+      "raw_declaration": "furnace nvarchar(4) NOT NULL CHECK (furnace IN ('RF01','RF02'))",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "phase",
+      "type": "nvarchar(40)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "phase nvarchar(40) NOT NULL",
+      "sourceLine": 11,
+      "table": "washheat.run",
+      "column": "phase",
+      "sql_type": "nvarchar(40)",
+      "raw_declaration": "phase nvarchar(40) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (revision >= 0)",
+      "rawSql": "revision int NOT NULL CHECK (revision >= 0)",
+      "sourceLine": 12,
+      "table": "washheat.run",
+      "column": "revision",
+      "sql_type": "int",
+      "raw_declaration": "revision int NOT NULL CHECK (revision >= 0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "snapshot",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(snapshot) = 1)",
+      "rawSql": "snapshot nvarchar(max) NOT NULL CHECK (ISJSON(snapshot) = 1)",
+      "sourceLine": 13,
+      "table": "washheat.run",
+      "column": "snapshot",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "snapshot nvarchar(max) NOT NULL CHECK (ISJSON(snapshot) = 1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "created_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 14,
+      "table": "washheat.run",
+      "column": "created_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "updated_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 15,
+      "table": "washheat.run",
+      "column": "updated_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "updated_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "binding_key",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY",
+      "rawSql": "binding_key char(64) NOT NULL PRIMARY KEY",
+      "sourceLine": 6,
+      "table": "washheat.plc_binding",
+      "column": "binding_key",
+      "sql_type": "char(64)",
+      "raw_declaration": "binding_key char(64) NOT NULL PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+      "sourceLine": 7,
+      "table": "washheat.plc_binding",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL UNIQUE REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "controller",
+      "type": "nvarchar(128)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "controller nvarchar(128) NOT NULL",
+      "sourceLine": 8,
+      "table": "washheat.plc_binding",
+      "column": "controller",
+      "sql_type": "nvarchar(128)",
+      "raw_declaration": "controller nvarchar(128) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "channel_index",
+      "type": "int",
+      "nullability": "NULL",
+      "options": "NULL CHECK (channel_index BETWEEN 0 AND 191)",
+      "rawSql": "channel_index int NULL CHECK (channel_index BETWEEN 0 AND 191)",
+      "sourceLine": 9,
+      "table": "washheat.plc_binding",
+      "column": "channel_index",
+      "sql_type": "int",
+      "raw_declaration": "channel_index int NULL CHECK (channel_index BETWEEN 0 AND 191)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "sourceLine": 10,
+      "table": "washheat.plc_binding",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "slot_id",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+      "rawSql": "slot_id int NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+      "sourceLine": 35,
+      "table": "washheat.handling_slot",
+      "column": "slot_id",
+      "sql_type": "int",
+      "raw_declaration": "slot_id int NOT NULL PRIMARY KEY CHECK (slot_id = 1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NULL",
+      "options": "NULL REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "sourceLine": 36,
+      "table": "washheat.handling_slot",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "version",
+      "type": "int",
+      "nullability": "UNSPECIFIED",
+      "options": "PRIMARY KEY",
+      "rawSql": "version int PRIMARY KEY",
+      "sourceLine": 56,
+      "table": "washheat.schema_version",
+      "column": "version",
+      "sql_type": "int",
+      "raw_declaration": "version int PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "installed_at",
+      "type": "datetime2(3)",
+      "nullability": "UNSPECIFIED",
+      "options": "DEFAULT SYSUTCDATETIME()",
+      "rawSql": "installed_at datetime2(3) DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 56,
+      "table": "washheat.schema_version",
+      "column": "installed_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "installed_at datetime2(3) DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "recipe_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+      "rawSql": "recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+      "sourceLine": 34,
+      "table": "washheat.part_recipe_revision",
+      "column": "recipe_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "recipe_id nvarchar(64) NOT NULL REFERENCES washheat.part_recipe(recipe_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "revision int NOT NULL",
+      "sourceLine": 35,
+      "table": "washheat.part_recipe_revision",
+      "column": "revision",
+      "sql_type": "int",
+      "raw_declaration": "revision int NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "sourceLine": 36,
+      "table": "washheat.part_recipe_revision",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "changed_by",
+      "type": "nvarchar(128)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "changed_by nvarchar(128) NOT NULL",
+      "sourceLine": 37,
+      "table": "washheat.part_recipe_revision",
+      "column": "changed_by",
+      "sql_type": "nvarchar(128)",
+      "raw_declaration": "changed_by nvarchar(128) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "changed_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "changed_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 38,
+      "table": "washheat.part_recipe_revision",
+      "column": "changed_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "changed_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "sourceLine": 44,
+      "table": "washheat.run_recipe",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "recipe_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "recipe_id nvarchar(64) NOT NULL",
+      "sourceLine": 45,
+      "table": "washheat.run_recipe",
+      "column": "recipe_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "recipe_id nvarchar(64) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "recipe_revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "recipe_revision int NOT NULL",
+      "sourceLine": 46,
+      "table": "washheat.run_recipe",
+      "column": "recipe_revision",
+      "sql_type": "int",
+      "raw_declaration": "recipe_revision int NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "enrolled_by",
+      "type": "nvarchar(128)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "enrolled_by nvarchar(128) NOT NULL",
+      "sourceLine": 47,
+      "table": "washheat.run_recipe",
+      "column": "enrolled_by",
+      "sql_type": "nvarchar(128)",
+      "raw_declaration": "enrolled_by nvarchar(128) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "event_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY",
+      "rawSql": "event_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "sourceLine": 20,
+      "table": "washheat.event",
+      "column": "event_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "event_id nvarchar(64) NOT NULL PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "sourceLine": 21,
+      "table": "washheat.event",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "event_type",
+      "type": "nvarchar(40)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "event_type nvarchar(40) NOT NULL",
+      "sourceLine": 22,
+      "table": "washheat.event",
+      "column": "event_type",
+      "sql_type": "nvarchar(40)",
+      "raw_declaration": "event_type nvarchar(40) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "event_at_ms",
+      "type": "bigint",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "event_at_ms bigint NOT NULL",
+      "sourceLine": 23,
+      "table": "washheat.event",
+      "column": "event_at_ms",
+      "sql_type": "bigint",
+      "raw_declaration": "event_at_ms bigint NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "sourceLine": 24,
+      "table": "washheat.event",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload_sha256",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "payload_sha256 char(64) NOT NULL",
+      "sourceLine": 25,
+      "table": "washheat.event",
+      "column": "payload_sha256",
+      "sql_type": "char(64)",
+      "raw_declaration": "payload_sha256 char(64) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "actor",
+      "type": "nvarchar(128)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "actor nvarchar(128) NOT NULL",
+      "sourceLine": 26,
+      "table": "washheat.event",
+      "column": "actor",
+      "sql_type": "nvarchar(128)",
+      "raw_declaration": "actor nvarchar(128) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "state_revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "state_revision int NOT NULL",
+      "sourceLine": 27,
+      "table": "washheat.event",
+      "column": "state_revision",
+      "sql_type": "int",
+      "raw_declaration": "state_revision int NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "received_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "received_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 28,
+      "table": "washheat.event",
+      "column": "received_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "received_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "capture_key",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY",
+      "rawSql": "capture_key char(64) NOT NULL PRIMARY KEY",
+      "sourceLine": 15,
+      "table": "washheat.plc_capture",
+      "column": "capture_key",
+      "sql_type": "char(64)",
+      "raw_declaration": "capture_key char(64) NOT NULL PRIMARY KEY",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "channel_key",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "channel_key char(64) NOT NULL",
+      "sourceLine": 16,
+      "table": "washheat.plc_capture",
+      "column": "channel_key",
+      "sql_type": "char(64)",
+      "raw_declaration": "channel_key char(64) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "event_sequence",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (event_sequence>0)",
+      "rawSql": "event_sequence int NOT NULL CHECK (event_sequence>0)",
+      "sourceLine": 17,
+      "table": "washheat.plc_capture",
+      "column": "event_sequence",
+      "sql_type": "int",
+      "raw_declaration": "event_sequence int NOT NULL CHECK (event_sequence>0)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NULL",
+      "options": "NULL REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "sourceLine": 18,
+      "table": "washheat.plc_capture",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NULL REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "disposition",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (disposition IN (100,200,900))",
+      "rawSql": "disposition int NOT NULL CHECK (disposition IN (100,200,900))",
+      "sourceLine": 19,
+      "table": "washheat.plc_capture",
+      "column": "disposition",
+      "sql_type": "int",
+      "raw_declaration": "disposition int NOT NULL CHECK (disposition IN (100,200,900))",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "reason",
+      "type": "nvarchar(1024)",
+      "nullability": "NULL",
+      "options": "NULL",
+      "rawSql": "reason nvarchar(1024) NULL",
+      "sourceLine": 20,
+      "table": "washheat.plc_capture",
+      "column": "reason",
+      "sql_type": "nvarchar(1024)",
+      "raw_declaration": "reason nvarchar(1024) NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "sourceLine": 21,
+      "table": "washheat.plc_capture",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload_sha256",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "payload_sha256 char(64) NOT NULL",
+      "sourceLine": 22,
+      "table": "washheat.plc_capture",
+      "column": "payload_sha256",
+      "sql_type": "char(64)",
+      "raw_declaration": "payload_sha256 char(64) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "received_at_ms",
+      "type": "bigint",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "received_at_ms bigint NOT NULL",
+      "sourceLine": 23,
+      "table": "washheat.plc_capture",
+      "column": "received_at_ms",
+      "sql_type": "bigint",
+      "raw_declaration": "received_at_ms bigint NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "sourceLine": 29,
+      "table": "washheat.plc_sample",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL PRIMARY KEY REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload)=1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "sourceLine": 30,
+      "table": "washheat.plc_sample",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload)=1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "run_id",
+      "type": "nvarchar(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL REFERENCES washheat.run(run_id)",
+      "rawSql": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "sourceLine": 43,
+      "table": "washheat.tropos_record",
+      "column": "run_id",
+      "sql_type": "nvarchar(64)",
+      "raw_declaration": "run_id nvarchar(64) NOT NULL REFERENCES washheat.run(run_id)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "episode_no",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "episode_no int NOT NULL",
+      "sourceLine": 44,
+      "table": "washheat.tropos_record",
+      "column": "episode_no",
+      "sql_type": "int",
+      "raw_declaration": "episode_no int NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "record_revision",
+      "type": "int",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT 1",
+      "rawSql": "record_revision int NOT NULL DEFAULT 1",
+      "sourceLine": 45,
+      "table": "washheat.tropos_record",
+      "column": "record_revision",
+      "sql_type": "int",
+      "raw_declaration": "record_revision int NOT NULL DEFAULT 1",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload",
+      "type": "nvarchar(max)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL CHECK (ISJSON(payload) = 1)",
+      "rawSql": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "sourceLine": 46,
+      "table": "washheat.tropos_record",
+      "column": "payload",
+      "sql_type": "nvarchar(max)",
+      "raw_declaration": "payload nvarchar(max) NOT NULL CHECK (ISJSON(payload) = 1)",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "payload_sha256",
+      "type": "char(64)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL",
+      "rawSql": "payload_sha256 char(64) NOT NULL",
+      "sourceLine": 47,
+      "table": "washheat.tropos_record",
+      "column": "payload_sha256",
+      "sql_type": "char(64)",
+      "raw_declaration": "payload_sha256 char(64) NOT NULL",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "review_status",
+      "type": "nvarchar(40)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+      "rawSql": "review_status nvarchar(40) NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+      "sourceLine": 48,
+      "table": "washheat.tropos_record",
+      "column": "review_status",
+      "sql_type": "nvarchar(40)",
+      "raw_declaration": "review_status nvarchar(40) NOT NULL DEFAULT 'PENDING_QUALITY_PRODUCTION'",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "submission_status",
+      "type": "nvarchar(40)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+      "rawSql": "submission_status nvarchar(40) NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+      "sourceLine": 49,
+      "table": "washheat.tropos_record",
+      "column": "submission_status",
+      "sql_type": "nvarchar(40)",
+      "raw_declaration": "submission_status nvarchar(40) NOT NULL DEFAULT 'NOT_SENT' CHECK (submission_status = 'NOT_SENT')",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    },
+    {
+      "project_id": "12001-HAN-WashHeat",
+      "document_id": "12001-HAN-SR-001",
+      "revision": "O",
+      "source_references": [
+        "solution/sql/001_washheat.sql",
+        "solution/sql/002_capture.sql",
+        "solution/sql/003_part_catalog.sql"
+      ],
+      "name": "created_at",
+      "type": "datetime2(3)",
+      "nullability": "NOT NULL",
+      "options": "NOT NULL DEFAULT SYSUTCDATETIME()",
+      "rawSql": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "sourceLine": 50,
+      "table": "washheat.tropos_record",
+      "column": "created_at",
+      "sql_type": "datetime2(3)",
+      "raw_declaration": "created_at datetime2(3) NOT NULL DEFAULT SYSUTCDATETIME()",
+      "role": "field",
+      "display_profile": "gpp.database-schema@0.2.0"
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "status": "PASSED",
+  "gateway": "http://127.0.0.1:18183",
+  "mode": "ISOLATED_LAB",
+  "prefix": "SIM-UI-mu5zl1wk",
+  "count": 15,
+  "checks": [
+    {
+      "check": "Anonymous catalogue save is rejected",
+      "passed": true
+    },
+    {
+      "check": "Perspective Identity Provider login returns to Parts",
+      "passed": true
+    },
+    {
+      "check": "Barcode keys preserve leading zeros and separate specifications",
+      "passed": true
+    },
+    {
+      "check": "Barcode supplies no invented dimensions",
+      "passed": true
+    },
+    {
+      "check": "Authenticated add persists revision 1",
+      "passed": true
+    },
+    {
+      "check": "Authenticated edit persists revision 2",
+      "passed": true
+    },
+    {
+      "check": "Editing an exact lookup key is rejected",
+      "passed": true
+    },
+    {
+      "check": "Search and row selection reload committed keys and dimensions",
+      "passed": true
+    },
+    {
+      "check": "History shows both revisions with authenticated actor",
+      "passed": true
+    },
+    {
+      "check": "Synthetic part deactivated through normal revisioned save",
+      "passed": true
+    },
+    {
+      "check": "Part Status retains configured Press recipe column for older runs",
+      "passed": true
+    },
+    {
+      "check": "Part Status row binds exact run and stays readable when hovered",
+      "passed": true
+    },
+    {
+      "check": "Tools computes 51.08 minute FM497 example",
+      "passed": true
+    },
+    {
+      "check": "Tools applies strict greater-than-300-second boundary",
+      "passed": true
+    },
+    {
+      "check": "No browser JavaScript errors",
+      "passed": true
+    }
+  ],
+  "release_zip_sha256": "c78596c0a9b6751fa50ba43eacd1f88ca6dc71e0383991499810688ad762e13f",
+  "completed_at_utc": "2026-09-17T20:33:04.554Z"
+}

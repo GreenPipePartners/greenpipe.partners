@@ -1,0 +1,32 @@
+{
+  "actions": [
+    {
+      "op": "wait_project",
+      "pid": 24556
+    },
+    {
+      "op": "verify_controller",
+      "selector": {
+        "title_re": "Logix Designer - .* in P300MN_L84E_030726_WH_DEV_v37\\.ACD .*"
+      },
+      "screenshot": "C:\\LogixAgent\\washheat-studio-20260918\\P300-final.png"
+    },
+    {
+      "op": "keys",
+      "selector": {
+        "title_re": "Logix Designer - .* in P300MN_L84E_030726_WH_DEV_v37\\.ACD .*"
+      },
+      "keys": "^s"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "close",
+      "selector": {
+        "title_re": "Logix Designer - .* in P300MN_L84E_030726_WH_DEV_v37\\.ACD .*"
+      }
+    }
+  ]
+}

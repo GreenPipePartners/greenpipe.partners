@@ -1,0 +1,125 @@
+Verifying Controller...
+Warning: Tag 'Local:2:I': Force detected.
+Verifying routine 'Logic' of add-on instruction 'CalcRamp'
+Verifying routine 'Logic' of add-on instruction 'SCP'
+Verifying routine 'AFRest' of program 'AFRest'
+Verifying routine 'OEE' of program 'ERP'
+Verifying routine 'PushCounter' of program 'ERP'
+Verifying routine 'SetState' of program 'ERP'
+Verifying routine 'SLXITAfterForge' of program 'ERP'
+Error: SLXITAfterForge: Invalid component specifier.
+Verifying routine 'SLXITCSV' of program 'ERP'
+Error: SLXITCSV: Invalid component specifier.
+Verifying routine 'SLXITQuench' of program 'ERP'
+Error: SLXITQuench: Invalid component specifier.
+Verifying routine 'SLXITString' of program 'ERP'
+Error: SLXITString: Invalid component specifier.
+Verifying routine 'State' of program 'ERP'
+Error: Rung 4, JXR: Too many parameters.
+Error: Rung 4, JXR: Too many parameters.
+Error: Rung 4, JXR: Too many parameters.
+Error: Rung 5, JXR: Too many parameters.
+Error: Rung 6, JXR: Too many parameters.
+Verifying routine 'TransferTime' of program 'ERP'
+Verifying routine 'HKF' of program 'HPU'
+Verifying routine 'ManualState' of program 'HPU'
+Verifying routine 'PE1' of program 'HPU'
+Warning: Rung 3: Shorted branch detected.
+Verifying routine 'PE12' of program 'HPU'
+Verifying routine 'PE131' of program 'HPU'
+Verifying routine 'PE132' of program 'HPU'
+Verifying routine 'PE14' of program 'HPU'
+Warning: Rung 1: AFI detected.
+Warning: Rung 2: AFI detected.
+Verifying routine 'PE2' of program 'HPU'
+Warning: Rung 3: Shorted branch detected.
+Verifying routine 'PE31' of program 'HPU'
+Verifying routine 'PE32' of program 'HPU'
+Verifying routine 'PE4' of program 'HPU'
+Verifying routine 'PE81' of program 'HPU'
+Verifying routine 'PE82' of program 'HPU'
+Verifying routine 'SetState' of program 'HPU'
+Verifying routine 'State' of program 'HPU'
+Warning: Rung 8: Shorted branch detected.
+Warning: Rung 9: Shorted branch detected.
+Warning: Rung 10: Shorted branch detected.
+Warning: Rung 11: Shorted branch detected.
+Verifying routine 'Status' of program 'HPU'
+Warning: Rung 10: Shorted branch detected.
+Verifying routine 'SetState' of program 'InLowerEject'
+Verifying routine 'State' of program 'InLowerEject'
+Warning: Rung 0: Shorted branch detected.
+Verifying routine 'ITSLX' of program 'ITSLX'
+Error: ITSLX: Invalid component specifier.
+Verifying routine 'ITSLXString' of program 'ITSLX'
+Error: ITSLXString: Invalid component specifier.
+Verifying routine 'State' of program 'ITSLX'
+Error: Rung 0, JXR: Too many parameters.
+Error: Rung 1, JXR: Too many parameters.
+Verifying routine 'ControlPower' of program 'Logic'
+Verifying routine 'ModeSetState' of program 'Logic'
+Verifying routine 'ModeState' of program 'Logic'
+Verifying routine 'State' of program 'Logic'
+Warning: Rung 2: AFI detected.
+Verifying routine 'SetState' of program 'LowerDieSlide'
+Verifying routine 'State' of program 'LowerDieSlide'
+Verifying routine 'SetState' of program 'LUBE'
+Verifying routine 'State' of program 'LUBE'
+Verifying routine 'State' of program 'ML1400SLX'
+Verifying routine 'SetState' of program 'OutLowerEject'
+Verifying routine 'State' of program 'OutLowerEject'
+Warning: Rung 4: AFI detected.
+Warning: Rung 7: AFI detected.
+Verifying routine 'FastInEnable' of program 'Press'
+Verifying routine 'FastOutEnable' of program 'Press'
+Verifying routine 'InEnable' of program 'Press'
+Verifying routine 'Maintenance' of program 'Press'
+Verifying routine 'MoveDisable' of program 'Press'
+Verifying routine 'MoveDisableWait' of program 'Press'
+Warning: Rung 0: AFI detected.
+Verifying routine 'MoveEnable' of program 'Press'
+Verifying routine 'SetState' of program 'Press'
+Verifying routine 'State' of program 'Press'
+Warning: Rung 5: Shorted branch detected.
+Warning: Rung 12: AFI detected.
+Verifying routine 'Status' of program 'Press'
+Warning: Rung 0: Shorted branch detected.
+Verifying routine 'Quench' of program 'Quench'
+Verifying routine 'Robot_P5000' of program 'ROBOT'
+Warning: Rung 2: Shorted branch detected.
+Verifying routine 'State' of program 'ROBOT'
+Warning: Rung 13: AFI detected.
+Verifying routine 'BypassState' of program 'SLXDC'
+Verifying routine 'State' of program 'SLXDC'
+Verifying routine 'SLXIT' of program 'SLXIT'
+Error: SLXIT: Invalid component specifier.
+Verifying routine 'State' of program 'SLXIT'
+Error: Rung 8, JXR: Too many parameters.
+Error: Rung 9, JXR: Too many parameters.
+Error: Rung 10, JXR: Too many parameters.
+Verifying routine 'State' of program 'SLXML1400'
+Verifying routine 'SetState' of program 'Tooling'
+Verifying routine 'State' of program 'Tooling'
+Verifying routine 'WH_SendSignals' of program 'WH_Signals'
+Warning: Duplicate Destructive Bit Reference Detected: 'Local:2:O.Data[1].1'
+    Press - MoveDisableWait, Rung 0, OTU  
+    Press - MoveEnable, Rung 0, OTL  
+    Press - MoveDisable, Rung 0, OTU  
+    Press - Maintenance, Rung 0, OTE  
+Warning: Duplicate Destructive Bit Reference Detected: 'Local:2:O.Data[2].1'
+    OutLowerEject - SetState, Rung 2, OTL  
+    OutLowerEject - SetState, Rung 0, OTU  
+    Press - MoveDisableWait, Rung 0, OTU  
+    Press - MoveEnable, Rung 0, OTL  
+    Press - MoveDisable, Rung 0, OTU  
+    Press - Maintenance, Rung 0, OTE  
+    LowerDieSlide - SetState, Rung 2, OTL  
+    LowerDieSlide - SetState, Rung 5, OTL  
+    LowerDieSlide - SetState, Rung 1, OTL  
+    LowerDieSlide - SetState, Rung 4, OTL  
+    LowerDieSlide - SetState, Rung 6, OTL  
+    LowerDieSlide - SetState, Rung 3, OTL  
+    LowerDieSlide - SetState, Rung 0, OTU  
+    InLowerEject - SetState, Rung 0, OTU  
+    InLowerEject - SetState, Rung 2, OTL  
+Complete - 17 error(s), 22 warning(s)
