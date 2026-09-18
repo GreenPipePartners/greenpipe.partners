@@ -27,7 +27,7 @@
         this.group = this.manifest.groups?.[0]?.label;
         this.scale = 0.5;
         this.mode = matchMedia('(max-width:800px)').matches ? 'fixed' : 'fit';
-        this.format = this.manifest.default_format || 'svg';
+        this.format = this.isScreens ? 'png' : 'svg';
         this.theme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
         this.dataset.imageTheme = this.theme;
         this.expanded = new Map();
@@ -99,11 +99,8 @@
             <button type="button" data-action="in" aria-label="Zoom in">+</button>
             <button type="button" data-action="fit">Fit width</button><button type="button" data-action="actual">100%</button>
             <label>Rung <select class="lv-rung" aria-label="Jump to rung"></select></label>
-            <label>Image <select class="lv-format" aria-label="Image format"><option value="svg">SVG</option><option value="png">PNG</option></select></label>
             <button type="button" data-action="fullscreen">Full screen</button>
-            <button type="button" data-action="copy">Copy link</button>
             <a class="lv-svg" target="_blank" rel="noopener">Open SVG</a>
-            <a class="lv-source" target="_blank" rel="noopener">RLL source</a>
           </div>
           <div class="lv-viewport" tabindex="0" aria-label="Routine drawing; scroll to navigate"></div>
           <p class="lv-status" role="status" aria-live="polite"></p>
@@ -123,15 +120,9 @@
         this.search.placeholder = this.isScreens ? 'Page, route or screen state' : 'Schema, messages or calculations';
         this.tree.setAttribute('aria-label',this.isScreens ? 'Perspective screens' : 'Supporting resources');
         this.querySelector('.lv-main').setAttribute('aria-label',this.isScreens ? 'Selected screen' : 'Selected resource');
-        this.querySelector('.lv-source').textContent = 'Source';
         this.rung.parentElement.hidden = true;
       }
-      if (this.isScreens) {
-        this.querySelector('.lv-format').replaceChildren(new Option('PNG','png'));
-        this.querySelector('.lv-format').parentElement.hidden = true;
-        this.querySelector('.lv-svg').textContent = 'Open image';
-        this.querySelector('.lv-source').textContent = 'View JSON';
-      }
+      if (this.isScreens) this.querySelector('.lv-svg').remove();
       for (const group of this.manifest.groups || []) {
         const button = element('button', group.label);
         button.type = 'button';
@@ -141,11 +132,6 @@
       }
       this.search.addEventListener('input', () => this.renderTree());
       this.context.addEventListener('change', () => this.renderTree());
-      this.querySelector('.lv-format').value = this.format;
-      this.querySelector('.lv-format').addEventListener('change', event => {
-        this.format = event.target.value;
-        this.updateTiles();
-      });
       this.viewport.addEventListener('scroll', () => {
         cancelAnimationFrame(this.scrollFrame);
         this.scrollFrame = requestAnimationFrame(() => this.updateTiles());
@@ -165,12 +151,6 @@
         if (action === 'fullscreen') {
           try { if (document.fullscreenElement) await document.exitFullscreen(); else await this.requestFullscreen(); }
           catch { this.status.textContent = 'Full screen is unavailable in this browser or embed.'; }
-        }
-        if (action === 'copy') {
-          const url = new URL(location.href);
-          url.hash = this.link(this.current.id, this.rung.value === '' ? null : Number(this.rung.value));
-          try { await navigator.clipboard.writeText(url.href); this.status.textContent = 'Routine link copied.'; }
-          catch { this.status.textContent = url.href; }
         }
       });
     }
@@ -271,7 +251,9 @@
         }
         content.append(columns);
       }
-      for (const text of legend?.notes || this.current.legend_notes || []) content.append(element('p',text));
+      if (this.isResources && !this.isScreens) {
+        for (const text of this.current.legend_notes || []) content.append(element('p',text));
+      }
     }
 
     select(id, push, selectedRung = null) {
@@ -286,7 +268,6 @@
       this.querySelector('.lv-meta').textContent = this.isResources ? `${routine.description} · ${routine.path}` : `${routine.change} · ${routine.source_rungs} source / ${routine.displayed_rungs} displayed rungs · ${routine.path}`;
       this.renderLegend();
       this.updateDownloadLink();
-      this.querySelector('.lv-source').href = this.asset(routine.source);
       const top = element('option', 'Top'); top.value = '';
       this.rung.replaceChildren(top);
       for (const r of routine.rungs || []) {
@@ -294,7 +275,7 @@
         option.value = String(r.number); this.rung.append(option);
       }
       this.surface = element('div', undefined, 'lv-surface');
-      this.surface.setAttribute('aria-label', `${routine.title}; source available through the toolbar`);
+      this.surface.setAttribute('aria-label', routine.title);
       this.tileNodes = routine.tiles.map((tile, index) => {
         const node = element('div', undefined, 'lv-tile');
         node.dataset.tile = index;
@@ -327,7 +308,8 @@
     }
 
     updateDownloadLink() {
-      this.querySelector('.lv-svg').href = this.themedAsset(this.current,this.isScreens ? 'png' : 'svg');
+      const link = this.querySelector('.lv-svg');
+      if (link) link.href = this.themedAsset(this.current,'svg');
     }
 
     syncTheme() {
@@ -390,7 +372,7 @@
         }
         if (current()) { img.dataset.ready = 'true'; tile.node.replaceChildren(img); }
       } catch {
-        if (current()) this.status.textContent = 'Image unavailable. Open the image or source using the toolbar.';
+        if (current()) this.status.textContent = 'Image unavailable. Reload the viewer to try again.';
       }
     }
 

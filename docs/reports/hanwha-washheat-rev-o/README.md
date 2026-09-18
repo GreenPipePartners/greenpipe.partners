@@ -11,11 +11,13 @@ Registered as an Engineering Report for Hanwha through portal migration 0009. Mi
 
 The report uses the existing Gist renderer. Standalone HTTPS iframe blocks embed PLC logic, Ignition screens and supplemental calculations/diagrams, with Calculation flow selected initially. A narrowly scoped renderer class gives these viewers a taller frame; the existing report model, customer list and theme control provide the surrounding page. Same-origin viewers observe the site's theme, including their prebuilt images. The report title, captions and viewer interface omit publication revision labels.
 
+Toolbars retain zoom, fit width, full screen, PLC rung selection and Open SVG for diagrams. Drawings use SVG with automatic PNG fallback. The image-format selector, Copy link, source links, Open image and View JSON are omitted. PLC legends retain the color/group keys; the PLC and Perspective explanatory paragraphs are omitted.
+
 ## Contents
 
 - 39 PLC routine/AOI drawings, 903 source rungs, searchable FDC / Presses / CDLs hierarchy.
 - Database schema, message translation and calculation-flow resource table.
-- Three Perspective views represented by six captured screen states, linked to the exact released view JSON.
+- Three Perspective views represented by six captured screen states, with source correspondence retained in the manifest.
 - Prebuilt dark and light SVG/PNG assets; no PLC parsing or Excalidraw runtime on the reader's device.
 - Source listings, verification evidence and separate editable FDC / Presses / CDLs Excalidraw downloads.
 - Portable Obsidian report, Studio-check package and standalone web-viewer ZIP as release assets.

@@ -30,12 +30,12 @@
       "bytes": 1686
     },
     "logic-viewer.css": {
-      "sha256": "d8fd7d737a16ddef0e51a6501034f26291bcbe8f370bf417c921018e450021ab",
-      "bytes": 9669
+      "sha256": "e7bf557f0b3f51ff16eb920f1aa01bc35499a1b2a20c8fb842375c345931bfa3",
+      "bytes": 9615
     },
     "logic-viewer.js": {
-      "sha256": "298e00bf449496b87809677c497b0cb5eefdcf186321a3ac5642c9dd9d99cfb2",
-      "bytes": 23685
+      "sha256": "e18f2091cbf783df71425cf2bf8c37558326f9e6c82ed740b112e00688109c48",
+      "bytes": 22386
     },
     "logic.html": {
       "sha256": "55daf99ac313cb0ac99c766368d8215f3923f6e8d8dcb2473d64ef822621ed47",
@@ -3086,13 +3086,13 @@
     },
     "logic-viewer.css": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic-viewer.css",
-      "sha256": "d8fd7d737a16ddef0e51a6501034f26291bcbe8f370bf417c921018e450021ab",
-      "bytes": 9669
+      "sha256": "e7bf557f0b3f51ff16eb920f1aa01bc35499a1b2a20c8fb842375c345931bfa3",
+      "bytes": 9615
     },
     "logic-viewer.js": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic-viewer.js",
-      "sha256": "298e00bf449496b87809677c497b0cb5eefdcf186321a3ac5642c9dd9d99cfb2",
-      "bytes": 23685
+      "sha256": "e18f2091cbf783df71425cf2bf8c37558326f9e6c82ed740b112e00688109c48",
+      "bytes": 22386
     },
     "logic.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic.html",

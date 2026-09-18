@@ -63,7 +63,6 @@ logic-report .lv-meta { color:var(--lv-muted); font-size:12px; margin:0; overflo
 logic-report .lv-tools { display:flex; align-items:center; flex-wrap:wrap; gap:6px; padding:9px 12px; background:var(--lv-inset); border-bottom:1px solid var(--lv-line); }
 logic-report .lv-tools button, logic-report .lv-tools a { font-size:12px; padding:6px 8px; white-space:nowrap; }
 logic-report .lv-tools select { max-width:210px; min-width:100px; padding:5px; font-size:12px; }
-logic-report .lv-tools .lv-format { min-width:62px; }
 logic-report .lv-tools label { font-size:12px; }
 logic-report .lv-tools a { color:var(--lv-green); text-decoration:underline; }
 logic-report .lv-tools output { min-width:42px; font:12px ui-monospace,monospace; text-align:center; }
