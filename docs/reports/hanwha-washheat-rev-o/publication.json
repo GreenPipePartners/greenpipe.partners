@@ -1,65 +1,12 @@
 {
   "schema": "gpp.report-publication/1",
-  "revision": "O",
   "customer": "Hanwha",
   "source_report_sha256": "56a150ee09058263bcc161811483459bf18bc163a431778639bdc4c5933d2994",
-  "web_report_sha256": "f3f1246be6217cc4e789cabfae4ca8172566967d80c2cc5f7df9dabf1ad5b7df",
-  "engineering_code_blocks_unchanged": true,
-  "top_level_sections_preserved": true,
+  "web_report_sha256": "f9aa19d4763d66cf07472b19c21b54879bd7e0d403627f61b62858cbc4d08664",
   "viewer_count": 3,
-  "routine_deep_links": 39,
-  "wiki_references_replaced": 46,
-  "reference_links": {
-    "Reports/12001-HAN-WashHeat/Rev-O/References/Deployment/Press-Manual-Update.md": "Press-Manual-Update.md",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/Implementation/WashHeat-Ignition.zip": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/Implementation/WashHeat-Ignition.zip",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/build-manifest.json": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/build-manifest.json",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/source-receipts.json": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/source-receipts.json",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/Verification/Studio-2026-09-18/Evidence/": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/Verification/Studio-2026-09-18/Evidence/index.html",
-    "Reports/12001-HAN-WashHeat/Rev-O/Assets/washheat-message-translations-rev-o.excalidraw.md": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/editable/washheat-message-translations-rev-o.excalidraw",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/message-translations.json": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/message-translations.json",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/UIReview/": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/UIReview/index.html",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/Verification/Gateway/": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/Verification/Gateway/index.html",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/Verification/Studio-2026-09-18/Evidence/final-verification-summary.json": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/Verification/Studio-2026-09-18/Evidence/final-verification-summary.json",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/P50/Programs__WH_Signals__Routines__WH_SendSignals.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/P50/Programs__WH_Signals__Routines__WH_SendSignals.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/P300/Programs__WH_Signals__Routines__WH_SendSignals.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/P300/Programs__WH_Signals__Routines__WH_SendSignals.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Begin.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Begin.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_End.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_End.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Init.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Init.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Start.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Start.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Stop.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_CDL_Stop.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_PackMessage.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_PackMessage.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_ReceiveDisplay.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_ReceiveDisplay.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__WH_SendSignals.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__WH_SendSignals.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__CDL_DC.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__CDL_DC.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL1/Programs__ExternalComms__Routines__Transfer_Timer.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL1/Programs__ExternalComms__Routines__Transfer_Timer.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL2/Programs__ExternalPLC__Routines__WH_Adapter.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL2/Programs__ExternalPLC__Routines__WH_Adapter.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL2/Programs__ExternalPLC__Routines__WH_PackMessage.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL2/Programs__ExternalPLC__Routines__WH_PackMessage.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL2/Programs__ExternalPLC__Routines__WH_ReceiveDisplay.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL2/Programs__ExternalPLC__Routines__WH_ReceiveDisplay.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL2/Programs__ExternalPLC__Routines__WH_SendSignals.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL2/Programs__ExternalPLC__Routines__WH_SendSignals.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL2/Programs__ExternalPLC__Routines__ToDataCollector.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL2/Programs__ExternalPLC__Routines__ToDataCollector.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Begin.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Begin.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_End.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_End.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Init.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Init.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Start.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Start.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Stop.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_CDL_Stop.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_ReceiveDisplay.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_ReceiveDisplay.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_SendSignals.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__WH_SendSignals.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__External_Communication__Routines__WH_PackMessage.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__External_Communication__Routines__WH_PackMessage.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__Automatic_Cycle__Routines__Transfer_Timer.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__Automatic_Cycle__Routines__Transfer_Timer.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/CDL/Programs__External_Communication__Routines__CDL_DC.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/CDL/Programs__External_Communication__Routines__CDL_DC.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/AddOnInstructionDefinitions__WH_Channel__Routines__Logic.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/AddOnInstructionDefinitions__WH_Channel__Routines__Logic.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__MainProgram__Routines__WH_ReceiveLinks.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__MainProgram__Routines__WH_ReceiveLinks.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__MainProgram__Routines__WH_SiteBindings.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__MainProgram__Routines__WH_SiteBindings.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__MainProgram__Routines__WH_Startup.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__MainProgram__Routines__WH_Startup.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__MainProgram__Routines__WH_TransferDisplay.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__MainProgram__Routines__WH_TransferDisplay.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF01CLX__Routines__WH_CapturePost.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF01CLX__Routines__WH_CapturePost.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF01CLX__Routines__WH_CapturePre.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF01CLX__Routines__WH_CapturePre.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF02CLX__Routines__WH_CapturePost.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF02CLX__Routines__WH_CapturePost.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF02CLX__Routines__WH_CapturePre.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF02CLX__Routines__WH_CapturePre.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__MainProgram__Routines__MainRoutine.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__MainProgram__Routines__MainRoutine.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF01CLX__Routines__Main.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF01CLX__Routines__Main.rll.txt",
-    "Reports/12001-HAN-WashHeat/Rev-O/References/PLC/FDC/Programs__RF02CLX__Routines__Main.rll.txt": "https://greenpipe.partners/static/portal/logic-reports/washheat-rev-o/references/PLC/FDC/Programs__RF02CLX__Routines__Main.rll.txt"
-  },
+  "routine_deep_links": 0,
+  "wiki_references_replaced": 0,
+  "reference_links": {},
   "release_tag": "hanwha-washheat-rev-o-2026-09-18",
   "files": {
     "editable/washheat-message-translations-rev-o.excalidraw": {
@@ -79,20 +26,20 @@
       "bytes": 710677
     },
     "index.html": {
-      "sha256": "111f3faa5585c29c35787087751a68b666a64a90f0e04aa7efd328c7383fecad",
-      "bytes": 1851
+      "sha256": "0cd0b09b4537464e3aa7aaa219746949db69b0a9d6da64f9245bb0d1f976f885",
+      "bytes": 1686
     },
     "logic-viewer.css": {
       "sha256": "d8fd7d737a16ddef0e51a6501034f26291bcbe8f370bf417c921018e450021ab",
       "bytes": 9669
     },
     "logic-viewer.js": {
-      "sha256": "23c86664a003bf021b5777ee62fee6816e079cfc1548089a1fd13adf25a2f193",
-      "bytes": 23793
+      "sha256": "298e00bf449496b87809677c497b0cb5eefdcf186321a3ac5642c9dd9d99cfb2",
+      "bytes": 23685
     },
     "logic.html": {
-      "sha256": "e04ebc19b92f64e30bb4e5d5f24aa4426dec81d7bbdc49170b11145892fa4735",
-      "bytes": 1009
+      "sha256": "55daf99ac313cb0ac99c766368d8215f3923f6e8d8dcb2473d64ef822621ed47",
+      "bytes": 843
     },
     "references/Implementation/WashHeat-Ignition.zip": {
       "sha256": "c78596c0a9b6751fa50ba43eacd1f88ca6dc71e0383991499810688ad762e13f",
@@ -523,12 +470,12 @@
       "bytes": 145190
     },
     "resources.html": {
-      "sha256": "b4c80736d1d75bb7341fe2a21d1dcd26f8408edef05737bbb3afd35f21208799",
-      "bytes": 958
+      "sha256": "4282dc6b5ee5af5b4cde1917493eaeb1d8e0f505382ee7402f122f6bf5e2e284",
+      "bytes": 916
     },
     "routines.html": {
-      "sha256": "501a195c540d161dd389b0475df9f4018b0c9fc853d4eb45ee96a9294d1ad9b3",
-      "bytes": 13508
+      "sha256": "21eed100013102fc75fee8a5b6f56a8d6262d27afbaec5aeedcfa9e95a8ad095",
+      "bytes": 13407
     },
     "screens/barcode-entry-a4aa66050a998512.png": {
       "sha256": "a4aa66050a998512c0fe769d5aca01426f70583b0376011c99c5b59aefa68710",
@@ -579,8 +526,8 @@
       "bytes": 106607
     },
     "screens.html": {
-      "sha256": "075464c0fad010b91427db544f2a409584ea1a8322483af0f148c264fe41c7c1",
-      "bytes": 1031
+      "sha256": "1b8455ab673dc62f44b03cc919d04cc1b558134858fd87eb3fdf6e6a96528acc",
+      "bytes": 866
     },
     "source/calculation-flow.py.txt": {
       "sha256": "64188466b545a0cef0c703f6f74da91169f276d931a23dc6da0ee0e478d04706",
@@ -3134,8 +3081,8 @@
   "source_provenance": {
     "index.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/index.html",
-      "sha256": "111f3faa5585c29c35787087751a68b666a64a90f0e04aa7efd328c7383fecad",
-      "bytes": 1851
+      "sha256": "0cd0b09b4537464e3aa7aaa219746949db69b0a9d6da64f9245bb0d1f976f885",
+      "bytes": 1686
     },
     "logic-viewer.css": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic-viewer.css",
@@ -3144,28 +3091,28 @@
     },
     "logic-viewer.js": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic-viewer.js",
-      "sha256": "23c86664a003bf021b5777ee62fee6816e079cfc1548089a1fd13adf25a2f193",
-      "bytes": 23793
+      "sha256": "298e00bf449496b87809677c497b0cb5eefdcf186321a3ac5642c9dd9d99cfb2",
+      "bytes": 23685
     },
     "logic.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/logic.html",
-      "sha256": "e04ebc19b92f64e30bb4e5d5f24aa4426dec81d7bbdc49170b11145892fa4735",
-      "bytes": 1009
+      "sha256": "55daf99ac313cb0ac99c766368d8215f3923f6e8d8dcb2473d64ef822621ed47",
+      "bytes": 843
     },
     "resources.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/resources.html",
-      "sha256": "b4c80736d1d75bb7341fe2a21d1dcd26f8408edef05737bbb3afd35f21208799",
-      "bytes": 958
+      "sha256": "4282dc6b5ee5af5b4cde1917493eaeb1d8e0f505382ee7402f122f6bf5e2e284",
+      "bytes": 916
     },
     "routines.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/routines.html",
-      "sha256": "501a195c540d161dd389b0475df9f4018b0c9fc853d4eb45ee96a9294d1ad9b3",
-      "bytes": 13508
+      "sha256": "21eed100013102fc75fee8a5b6f56a8d6262d27afbaec5aeedcfa9e95a8ad095",
+      "bytes": 13407
     },
     "screens.html": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/screens.html",
-      "sha256": "075464c0fad010b91427db544f2a409584ea1a8322483af0f148c264fe41c7c1",
-      "bytes": 1031
+      "sha256": "1b8455ab673dc62f44b03cc919d04cc1b558134858fd87eb3fdf6e6a96528acc",
+      "bytes": 866
     },
     "screens/barcode-entry-a4aa66050a998512.png": {
       "source": "Reports/12001-HAN-WashHeat/Web-Logic-Viewer/screens/barcode-entry-a4aa66050a998512.png",
@@ -6955,11 +6902,14 @@
   },
   "gist_id": "e0b8e388d5adbe939b6f2ab8895d9426",
   "gist_url": "https://gist.github.com/Bobby-Miller/e0b8e388d5adbe939b6f2ab8895d9426",
-  "gist_revision": "3f6f048267412fea3383bf55872bde99aa10fc6c",
+  "gist_revision": "2ed53fa5d09f9ca826781efd1fea9f381c042c70",
   "gist_public": false,
   "report_url": "https://greenpipe.partners/reports/Hanwha/e0b8e388d5adbe939b6f2ab8895d9426",
   "gist_files": {
-    "report.md": "f3f1246be6217cc4e789cabfae4ca8172566967d80c2cc5f7df9dabf1ad5b7df",
-    "Press-Manual-Update.md": "ffb7cee6b1b56bbb975715c19bdaccb2948882b60fb7f348a369f747d3fa5e8d"
-  }
+    "report.md": "f9aa19d4763d66cf07472b19c21b54879bd7e0d403627f61b62858cbc4d08664"
+  },
+  "previous_gist_revision": "3f6f048267412fea3383bf55872bde99aa10fc6c",
+  "presentation": "viewers-only",
+  "title": "WashHeat Automation",
+  "source_revision": "O"
 }

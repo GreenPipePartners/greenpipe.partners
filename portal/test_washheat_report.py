@@ -1,4 +1,3 @@
-import json
 from html.parser import HTMLParser
 from pathlib import Path
 from unittest.mock import patch
@@ -9,7 +8,6 @@ from django.contrib.staticfiles import finders
 from django.test import TestCase
 from django.urls import reverse
 
-from .gists import _document_anchor_id
 from .models import Report
 
 
@@ -40,10 +38,10 @@ class WashHeatReportTests(TestCase):
 
     def render_report(self):
         gist = {
-            "description": "Hanwha WashHeat Automation — Revision O",
+            "description": "Hanwha WashHeat Automation",
             "files": {
                 name: {"content": (SNAPSHOT / name).read_text(), "type": "text/markdown"}
-                for name in ("report.md", "Press-Manual-Update.md")
+                for name in ("report.md",)
             },
         }
         with patch("portal.gists._fetch_json", return_value=gist):
@@ -53,7 +51,7 @@ class WashHeatReportTests(TestCase):
 
     def test_registered_as_hanwha_engineering_report_in_existing_list(self):
         self.assertEqual(self.report.report_type, Report.ReportType.ENGINEERING)
-        self.assertEqual(self.report.title, "WashHeat Automation — Revision O")
+        self.assertEqual(self.report.title, "WashHeat Automation")
         response = self.client.get(reverse("portal:customer_reports", kwargs={
             "customer": "Hanwha", "access_key": GIST_ID,
         }))
@@ -61,7 +59,7 @@ class WashHeatReportTests(TestCase):
         self.assertIn(self.report.get_absolute_url(), [r["url"] for r in response.context["engineering_reports"]])
         self.assertTrue(response.context["weekly_reports"])
 
-    def test_full_narrative_has_three_viewers_and_rendered_manual_instructions(self):
+    def test_report_contains_only_the_three_displays(self):
         response = self.render_report()
         links = Links(response.content.decode())
         self.assertEqual(len(links.frames), 3)
@@ -69,24 +67,20 @@ class WashHeatReportTests(TestCase):
             STATIC_PREFIX + page for page in ("logic.html", "resources.html", "screens.html")
         })
         self.assertContains(response, 'class="report-embed report-logic-embed"', count=3)
-        self.assertContains(response, 'id="' + _document_anchor_id("Press-Manual-Update.md") + '"')
-        self.assertIn("#" + _document_anchor_id("Press-Manual-Update.md"), links.links)
-        self.assertContains(response, "±1-second")
-        self.assertContains(response, "Manual update of current live program")
-        self.assertNotContains(response, "![[")
+        self.assertEqual([frame["title"] for frame in links.frames], [
+            "PLC logic", "Ignition screens", "Supplemental calculations and diagrams",
+        ])
+        self.assertNotContains(response, 'data-report-document')
+        self.assertNotContains(response, "Revision O")
+        self.assertNotContains(response, "Downloadable delivery")
+        self.assertTrue(all(line.startswith("<iframe ") for line in (SNAPSHOT / "report.md").read_text().splitlines() if line))
 
-    def test_all_report_static_links_and_routine_targets_resolve(self):
+    def test_display_links_resolve_and_calculations_are_initially_selected(self):
         links = Links(self.render_report().content.decode())
         static_links = [urlparse(href) for href in links.links]
         static_links = [url for url in static_links if url.path.startswith(STATIC_PREFIX)]
-        self.assertGreater(len(static_links), 80)
+        self.assertEqual(len(static_links), 3)
         for url in static_links:
             with self.subTest(path=url.path, fragment=url.fragment):
                 self.assertIsNotNone(finders.find(unquote(url.path.removeprefix("/static/"))))
-                if url.fragment.startswith("logic-"):
-                    page = Path(url.path).name
-                    kind = {"logic.html": "logic", "resources.html": "resources", "screens.html": "screens"}[page]
-                    manifest_path = finders.find(STATIC_PREFIX.removeprefix("/static/") + f"washheat.{kind}.json")
-                    manifest = json.loads(Path(manifest_path).read_text())
-                    entries = manifest.get("routines", manifest.get("resources", manifest.get("screens")))
-                    self.assertIn(url.fragment.split("/")[1], {entry["id"] for entry in entries})
+        self.assertEqual(static_links[-1].fragment, "logic-washheat-resources-rev-o/calculation-flow")

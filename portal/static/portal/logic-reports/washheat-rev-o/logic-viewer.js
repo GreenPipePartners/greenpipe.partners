@@ -305,7 +305,7 @@
       this.viewport.scrollTo(0, 0);
       if (this.mode === 'fit') this.scale = this.fitScale();
       this.resizeDrawing();
-      this.status.textContent = `Revision ${this.manifest.revision} · source SHA-256 ${routine.source_sha256.slice(0, 16)}… · ${routine.note || 'Read-only published logic; source-backed SVG.'}`;
+      this.status.textContent = `Source SHA-256 ${routine.source_sha256.slice(0, 16)}…`;
       if (previousGroup !== this.group || !this.tree.children.length) this.renderTree();
       else this.tree.querySelectorAll('[data-entry]').forEach(link => link.setAttribute('aria-current', String(link.dataset.entry === id)));
       this.rung.value = Number.isInteger(selectedRung) ? String(selectedRung) : '';
