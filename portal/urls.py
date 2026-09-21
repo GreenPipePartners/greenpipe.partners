@@ -1,6 +1,6 @@
 from django.urls import path, re_path
 
-from . import views
+from . import schedules, views
 
 app_name = "portal"
 
@@ -49,4 +49,7 @@ urlpatterns = [
     ),
     path("reports/<str:customer>/all/<slug:access_key>", views.customer_reports, name="customer_reports"),
     path("reports/<str:customer>/<slug:gist_id>", views.report_detail, name="report_detail"),
+    path("schedule/", schedules.index, name="schedule_index"),
+    path("schedule/<str:customer>/all/<slug:access_key>", schedules.all_days, name="schedule_all"),
+    path("schedule/<str:customer>/<slug:gist_id>", schedules.detail, name="schedule_detail"),
 ]

@@ -16,6 +16,7 @@ class Report(models.Model):
     class ReportType(models.TextChoices):
         WEEKLY = "weekly", "Weekly"
         ENGINEERING = "engineering", "Engineering"
+        SCHEDULE = "schedule", "Daily schedule"
 
     customer = models.CharField(max_length=80)
     customer_name = models.CharField(max_length=120, blank=True)
@@ -43,7 +44,8 @@ class Report(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("portal:report_detail", kwargs={"customer": self.customer, "gist_id": self.gist_id})
+        view = "portal:schedule_detail" if self.report_type == self.ReportType.SCHEDULE else "portal:report_detail"
+        return reverse(view, kwargs={"customer": self.customer, "gist_id": self.gist_id})
 
     def __str__(self):
         if self.title:

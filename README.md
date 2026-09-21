@@ -94,6 +94,36 @@ The public URL shape is hidden/direct only:
 
 The Gist must contain `report.md` or `Report.md`. HTTPS iframe tags in the report are rendered as sandboxed, responsive embeds. Other files in the Gist are rendered as source snippets based on file extension, for example `.sql` as SQL and `.py` as Python.
 
+## Daily Schedules
+
+Schedules use the report publishing flow: one secret GitHub Gist containing
+`report.md` per day, and one `Report` record with type **Daily schedule**. Use a
+shared `customer` value as the trip slug, `customer_name` as the trip name, and
+set both dates to that day's date. The title is the short daily focus.
+
+```text
+/schedule/{trip}/{gist_id}
+/schedule/{trip}/all/{any_registered_schedule_gist_id}
+```
+
+Each day has chronological day tabs and previous/next links. **All days** shows
+the complete itinerary; **Print all days / PDF** starts each day on a new sheet.
+Keep each Markdown source concise enough to fit one Letter page. The root
+`/schedule/` is a neutral landing page; trip links are direct-only. Schedule
+responses request no indexing and no referrer, and omit public trip listings.
+
+The existing Gist Markdown renderer supplies the content. Schedule Gists are
+cached server-side for 60 seconds, so edits appear within about a minute. Flight
+and session times should remain exact; round only flexible planning blocks and
+label commute allowances as estimates. No calendar or booking is changed.
+
+Validate with `uv run python manage.py check`, `uv run python manage.py
+makemigrations --check --dry-run`, and `uv run python manage.py test portal`.
+Check a mobile viewport and print the all-days view to confirm one sheet per day.
+Publish through the existing Render deployment after the schema/data migrations
+and Gists are ready. The September 21–25 ICC trip is registered by migration
+`0012_add_icc_2026_schedule`; its content lives in the five Gists.
+
 ## Public Releases
 
 Release notices are managed through Django admin with a topic, release date, and GitHub Gist URL. The Gist must contain `release.md` (case-insensitive); images, CSV attachments, and source files are rendered with the notice.

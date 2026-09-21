@@ -1,0 +1,57 @@
+{% extends "portal/base.html" %}
+{% load static %}
+
+{% block title %}{% if selected %}{{ selected.start_date|date:"D, M j" }} · {% endif %}{{ schedule_title }} · Schedule{% endblock %}
+{% block meta_description %}A daily plan with room to breathe.{% endblock %}
+{% block og_title %}Daily schedule{% endblock %}
+{% block og_description %}A daily plan with room to breathe.{% endblock %}
+{% block twitter_title %}Daily schedule{% endblock %}
+{% block twitter_description %}A daily plan with room to breathe.{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'portal/schedule.css' %}">{% endblock %}
+
+{% block content %}
+<div class="schedule-shell">
+    <header class="schedule-toolbar">
+        <a class="schedule-brand" href="{% url 'portal:schedule_index' %}">Green Pipe <span>/ schedule</span></a>
+        {% if pages %}
+        <div class="schedule-actions">
+            <button type="button" onclick="window.print()">{% if show_all %}Print all days / PDF{% else %}Print day / PDF{% endif %}</button>
+            {% if not show_all %}<a href="{{ all_url }}">All days</a>{% endif %}
+        </div>
+        {% endif %}
+    </header>
+
+    {% if days %}
+    <nav class="schedule-days" aria-label="Schedule days">
+        {% for day in days %}
+        <a href="{{ day.get_absolute_url }}"{% if day.pk == selected.pk %} aria-current="page"{% endif %}>
+            <span>{{ day.start_date|date:"D" }}</span><strong>{{ day.start_date|date:"M j" }}</strong>
+        </a>
+        {% endfor %}
+    </nav>
+    {% endif %}
+
+    {% for page in pages %}
+    <article class="schedule-day" aria-labelledby="day-{{ page.day.pk }}">
+        <header class="schedule-heading">
+            <p class="schedule-kicker">{{ schedule_title }}</p>
+            <h1 id="day-{{ page.day.pk }}">{{ page.day.start_date|date:"l, F j" }}</h1>
+            <p class="schedule-subtitle">{{ page.day.title }}</p>
+        </header>
+        <div class="schedule-body">{{ page.html }}</div>
+    </article>
+    {% empty %}
+    <article class="schedule-day">
+        <h1>Daily schedules</h1>
+        <p>Open your direct schedule link to see the plan, move between days, or save a printable copy.</p>
+    </article>
+    {% endfor %}
+
+    {% if selected %}
+    <nav class="schedule-pagination" aria-label="Previous and next day">
+        {% if previous_day %}<a href="{{ previous_day.get_absolute_url }}">← {{ previous_day.start_date|date:"l" }}</a>{% endif %}
+        {% if next_day %}<a href="{{ next_day.get_absolute_url }}">{{ next_day.start_date|date:"l" }} →</a>{% endif %}
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}

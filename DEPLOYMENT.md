@@ -41,6 +41,13 @@ The Docker start command runs `python manage.py migrate --noinput` before Gunico
 - The Flux deployment contract lives in `greenpipe-website-contract.md`; the website publishes typed install intent, release artifacts, checksums, signatures, manifests, and status views only.
 - Fluxup is the primary installer UX: `sudo "$(command -v uvx)" fluxup init`.
 - Reports are hidden direct URLs managed through Django admin. They fetch GitHub Gists by ID and require `report.md`.
+- Daily schedules reuse `Report` with type `schedule`, one `report.md` Gist per
+  day. `/schedule/{trip}/{gist_id}` opens one day and
+  `/schedule/{trip}/all/{registered_gist_id}` opens the printable trip. Migrations
+  `0011` and `0012` add the type and register the September 2026 ICC itinerary.
+  Content updates require only editing the relevant Gist (60-second cache);
+  new trips/days require records in admin or a data migration. Verify the day
+  links and all-days PDF after deployment.
 - Django admin is mounted at `/control/`.
 
 ## Admin bootstrap

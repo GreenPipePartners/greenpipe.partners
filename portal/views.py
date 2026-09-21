@@ -256,6 +256,8 @@ def report_detail(request, customer, gist_id):
     report = Report.objects.filter(customer=customer, gist_id=gist_id).first()
     if not report:
         raise Http404("Report not found.")
+    if report.report_type == Report.ReportType.SCHEDULE:
+        return redirect(report.get_absolute_url())
 
     try:
         gist_report = load_report_gist(report.gist_id)
