@@ -1,6 +1,11 @@
-FROM node:22.12.0-bookworm-slim AS docs
+FROM node:22.23.4-bookworm-slim AS docs
 
 ENV ASTRO_TELEMETRY_DISABLED=1
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge '20250419~deb12u2' \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
@@ -12,11 +17,17 @@ COPY logo_hollow.png ./logo_hollow.png
 RUN npm ci && npm run docs:build
 
 
-FROM python:3.14-slim AS app
+FROM python:3.14.9-slim-trixie AS app
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     DJANGO_DEBUG=False
+
+# The eMudhra fix must be present in the OS store used by urllib and SMTP.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates \
+    && dpkg --compare-versions "$(dpkg-query -W -f='${Version}' ca-certificates)" ge '20250419+deb13u1' \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 

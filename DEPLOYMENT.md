@@ -13,7 +13,7 @@ uv run python manage.py runserver
 
 Open `http://127.0.0.1:8000/` for the homepage, `http://127.0.0.1:8000/about/` for About, `http://127.0.0.1:8000/fluxy/` for signed Fluxy module downloads, `http://127.0.0.1:8000/docs/flux/latest/` for Flux docs, and `http://127.0.0.1:8000/health/` for the health check.
 
-Astro/Starlight docs can be previewed with `npm run docs:dev` and built with `npm run docs:build`. Docs builds require Node `>=22.12.0`.
+Astro/Starlight docs can be previewed with `npm run docs:dev` and built with `npm run docs:build`. Use the patched Node version in `.node-version` (22.23.4), or a patched 24.x/26.x version allowed by `package.json`.
 
 ## Render setup
 
@@ -21,6 +21,42 @@ Astro/Starlight docs can be previewed with `npm run docs:dev` and built with `np
 2. Render reads `render.yaml` and creates the Docker-backed `greenpipe-partners` web service and `greenpipe-partners-db` Postgres database on the `basic-256mb` instance type.
 3. Point DNS for `greenpipe.partners` and `www.greenpipe.partners` to Render after the service is live.
 4. Keep secret values and billing in Render; keep code, settings, and service shape in Git.
+
+## eMudhra certificate remediation (2026-10-23)
+
+The [Render advisory](https://render.com/docs/advisory-emudhra) applies to both
+the Node docs build and the Python application's outbound HTTPS connections.
+
+- The Docker build uses Node 22.23.4 and Python 3.14.9, and refreshes the Debian
+  CA stores in both stages, enforcing the patched package versions.
+- `certifi>=2026.10.19` is a direct dependency. Requests and Botocore use it by
+  default; PanelLock configures Stripe to use the same maintained bundle.
+- Python's `urllib` (GitHub Gists) and SMTP use the updated system CA store.
+
+After publishing the fix, rebuild **all three** Docker services from the fixed
+commit: `greenpipe-partners`, `panellock-catalog-review`, and
+`panellock-plan-expiry`. Use **Manual Deploy > Clear build cache & deploy** if
+triggering the builds manually. Restarting an existing image is insufficient.
+
+Run this from the rebuilt web service's Render shell, and each cron service's
+temporary dashboard shell:
+
+```bash
+python manage.py check_tls_trust
+```
+
+The command checks a valid HTTPS endpoint, then both compromised-certificate
+endpoints from the advisory using urllib, Requests, Botocore, and Stripe. It
+requires certificate-verification errors; DNS errors, timeouts, and successful
+HTTP responses (including non-200 responses) do not count as rejection.
+Do not set custom `SSL_CERT_FILE`, `SSL_CERT_DIR`, `REQUESTS_CA_BUNDLE`,
+`CURL_CA_BUNDLE`, or `AWS_CA_BUNDLE` values to older trust stores.
+
+The accompanying dependency audit also required Django 6.1.2, cryptography
+50.0.2, sqlparse 0.6.0, urllib3 2.8.0, Astro 7.4.2, and Starlight 0.42.6.
+The lockfiles contain these fixes and refreshed JavaScript transitive
+dependencies. Astro retains the unified Markdown processor and HTML whitespace
+handling used by the existing docs.
 
 ## Database
 

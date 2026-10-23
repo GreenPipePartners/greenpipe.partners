@@ -1,10 +1,13 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 
 export default defineConfig({
   site: "https://greenpipe.partners",
   base: "/docs/flux/0.1.0",
   outDir: ".runtime/site",
+  compressHTML: true,
+  markdown: { processor: unified() },
   integrations: [
     starlight({
       title: "Flux Docs",

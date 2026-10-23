@@ -33,7 +33,7 @@ npm run docs:dev
 npm run docs:build
 ```
 
-Docs builds require Node `>=22.12.0`.
+Docs builds use Node `22.23.4` from `.node-version`, or a patched 24.x/26.x version allowed by `package.json`.
 
 Astro builds to `.runtime/site/` for static mounting under `/docs/flux/0.1.0/`.
 
